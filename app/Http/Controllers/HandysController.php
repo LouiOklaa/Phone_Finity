@@ -33,7 +33,6 @@ class HandysController extends Controller
      */
     public function store(Request $request)
     {
-        $section_name = abschnitte::where('id' , $request->section_id)->first()->name;
 
         $validatedData=$request->validate([
 
@@ -42,6 +41,7 @@ class HandysController extends Controller
             'status' => 'required',
             'preis' => 'required',
             'amount' => 'required',
+            'image' => 'required',
 
         ],[
 
@@ -51,10 +51,16 @@ class HandysController extends Controller
             'status.required' =>'Bitte wählen Sie den Zustand des Handy aus',
             'preis.required' =>'Bitte geben Sie den Handypreis an',
             'amount.required' =>'Bitte geben Sie den Menge an',
+            'image.required' =>'Bitte geben Sie ein Handyfoto ein',
 
         ]);
 
-        $handy = handys::create([
+        $section_name = abschnitte::where('id' , $request->section_id)->first()->name;
+
+        $img = $request->file('image');
+        $file_name = rand() . '.' . $img->getClientOriginalExtension();
+
+        handys::create([
 
             'name' => $request->name,
             'section_id' => $request->section_id,
@@ -63,19 +69,12 @@ class HandysController extends Controller
             'preis' => $request->preis,
             'amount' => $request->amount,
             'note' => $request->note,
+            'image' => $file_name,
 
         ]);
 
-        if ($request->hasFile('image')){
-
-            $img = $request->file('image');
-            $file_name = rand() . '.' . $img->getClientOriginalExtension();
-            $handy->image = $file_name;
-            $handy->save();
-
             // Move Files
             $request->image->move(public_path('Attachments/Handys'), $file_name);
-        }
 
         session()->flash('Add' , 'Das Handy wurde erfolgreich hinzugefügt');
         return redirect('/handys');
@@ -113,13 +112,13 @@ class HandysController extends Controller
             $this->validate($request, [
 
                 'name' => 'required',
-                'section_id' => 'required',
+                'section_name' => 'required',
                 'preis' => 'required',
                 'amount' => 'required',
             ], [
 
                 'name.required' => 'Bitte geben Sie den Handynamen ein',
-                'section_id.required' => 'Bitte geben Sie den Abschnitt ein',
+                'section_name.required' => 'Bitte geben Sie den Abschnitt ein',
                 'preis.required' => 'Bitte geben Sie den Preis ein',
                 'amount.required' => 'Bitte geben Sie den Menge ein',
 
@@ -202,7 +201,8 @@ class HandysController extends Controller
     {
         $id = $request->id;
         $image = handys::where('id' , $request->id)->first()->image;
-        handys::find($id)->delete();
+
+        handys::findOrFail($id)->delete();
 
         Storage::disk('public_handys')->delete($image);
 

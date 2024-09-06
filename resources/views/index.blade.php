@@ -119,33 +119,40 @@
 <div class="clearfix xs-shown"></div>
 <div class="menu">
 <ul class="menu-items">
-<li>
-<a href="index.html">Startseite</a><span class="toggle-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
-</li>
-<li>
-<span class="menu-item">Neue Handys</span>
-<span class="toggle-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
-<ul class="right">
-    <li><a href="contact-us.html">Samsung</a></li>
-    <li><a href="contact-us.html">Iphone</a></li>
-    <li><a href="contact-us.html">Redmi</a></li>
-</ul>
-</li>
-<li>
-    <span class="menu-item">Gebrauchte Handys</span>
-    <span class="toggle-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
-    <ul class="right">
-        <li><a href="contact-us.html">Samsung</a></li>
-        <li><a href="contact-us.html">Iphone</a></li>
-        <li><a href="contact-us.html">Redmi</a></li>
-    </ul>
-</li>
-<li><a href="projects.html">Galerie</a></li>
-<li>
-<a href="contact-us.html">Contact Us</a><span class="toggle-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
-</li>
-<li><a href="#" data-show-block="search"><i class="fas fa-search" aria-hidden="true"></i></a></li>
-<li class="menu-item-stick-left"><a href="#" data-show-block="cart"><i class="fas fa-shopping-cart" aria-hidden="true"></i><span class="item-label-sale item-label">3</span></a></li>
+    <li>
+     <a href="index.html">Startseite</a><span class="toggle-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
+    </li>
+    <li>
+        <span class="menu-item">Neue Handys</span>
+        <span class="toggle-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
+        <ul class="right">
+            <li><a href="contact-us.html">Samsung</a></li>
+            <li><a href="contact-us.html">Iphone</a></li>
+            <li><a href="contact-us.html">Redmi</a></li>
+        </ul>
+    </li>
+    <li>
+        <span class="menu-item">Gebrauchte Handys</span>
+        <span class="toggle-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
+        <ul class="right">
+            <li><a href="contact-us.html">Samsung</a></li>
+            <li><a href="contact-us.html">Iphone</a></li>
+            <li><a href="contact-us.html">Redmi</a></li>
+        </ul>
+    </li>
+    <li>
+        <span class="menu-item">Zubehör</span>
+        <span class="toggle-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
+        <ul class="right">
+            <li><a href="contact-us.html">Samsung</a></li>
+            <li><a href="contact-us.html">Iphone</a></li>
+            <li><a href="contact-us.html">Redmi</a></li>
+        </ul>
+    </li>
+    <li><a href="projects.html">Galerie</a></li>
+    <li>
+        <a href="contact-us.html">Contact Us</a><span class="toggle-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
+    </li>
 </ul>
 
 <div class="clearfix"></div>

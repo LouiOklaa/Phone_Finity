@@ -13,6 +13,7 @@ class abschnitte extends Model
         'name',
         'note',
     ];
+
     public function handys(){
         return
         $this->hasMany(handys::class);

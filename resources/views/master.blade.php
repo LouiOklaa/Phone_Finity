@@ -111,8 +111,8 @@
                 </a>
                 <div class="collapse" id="ui-basic">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"> <a class="nav-link" href="{{ url('/' . $page='handys') }}">Gerätes</a></li>
-                        <li class="nav-item"> <a class="nav-link" href="{{ url('/' . $page='abschnitte') }}">Abschnitte</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="{{ url('/' . $page='zubehör') }}">Hanadyzubehör</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="{{ url('/' . $page='zubehör_abschnitte') }}">Zubehör Abschnitte</a></li>
                     </ul>
                 </div>
             </li>

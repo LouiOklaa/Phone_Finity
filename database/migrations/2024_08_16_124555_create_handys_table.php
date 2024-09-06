@@ -21,7 +21,7 @@ return new class extends Migration
             $table->decimal('preis',14,2);
             $table->integer('amount');
             $table->text('note')->nullable();
-            $table->string('image')->nullable();
+            $table->string('image');
             $table->timestamps();
         });
     }

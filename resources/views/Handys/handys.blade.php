@@ -82,7 +82,7 @@
                                                 <td>{{$one->amount}} Stück</td>
                                                 <td>{{$one->note}}</td>
                                                 <td>
-                                                    <button class="btn btn-sm btn-rounded btn-inverse-primary" href="#edit_modal" title="Edit" data-id="{{$one->id}}" data-name="{{$one->name}}"  data-section_name="{{$one->section_name}}" data-status="{{$one->status}}"  data-preis="{{$one->preis}}" data-note="{{$one->note}}"  data-toggle="modal">Bearbeitens</button>
+                                                    <button class="btn btn-sm btn-rounded btn-inverse-primary" href="#edit_modal" title="Edit" data-id="{{$one->id}}" data-name="{{$one->name}}"  data-section_name="{{$one->section_name}}" data-status="{{$one->status}}"  data-preis="{{$one->preis}}" data-amount="{{$one->amount}}" data-note="{{$one->note}}"  data-toggle="modal">Bearbeitens</button>
                                                     <button class="btn btn-sm btn-rounded btn-inverse-danger" title="Delete" href="#delete_modal" data-id="{{$one->id}}" data-name="{{$one->name}}" data-toggle="modal">Löschen</button>
                                                 </td>
                                             </tr>
@@ -222,7 +222,7 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content modal-content-demo">
                             <div class="modal-header">
-                                <h4 class="modal-title">Sind Sie sicher, dass Sie diesen Abschnitt löschen möchten ?</h4>
+                                <h4 class="modal-title">Sind Sie sicher, dass Sie dieses Handy löschen möchten ?</h4>
                                 <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
                             </div>
                             <div class="modal-body">
