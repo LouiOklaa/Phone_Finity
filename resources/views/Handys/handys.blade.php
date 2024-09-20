@@ -107,7 +107,7 @@
                                     <div class="form-group">
                                         <input type="hidden" name="id" id="id" value="">
                                         <label for="name" class="col-form-label">Gerät Name :</label>
-                                        <input class="form-control" name="name" id="name" type="text">
+                                        <input class="form-control" name="name" id="name" type="text" style="color: #6C7293">
                                     </div>
                                     <div class="form-group">
                                         <label class="my-1 mr-2" for="section_id">Typ :</label>
@@ -129,15 +129,15 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="preis" class="col-form-label">Preis :</label>
-                                        <input class="form-control" name="preis" id="preis" type="text">
+                                        <input class="form-control" name="preis" id="preis" type="text" style="color: #6C7293">
                                     </div>
                                     <div class="form-group">
                                         <label for="amount" class="col-form-label">Menge :</label>
-                                        <input class="form-control" name="amount" id="amount" type="number">
+                                        <input class="form-control" name="amount" id="amount" type="number" style="color: #6C7293">
                                     </div>
                                     <div class="form-group">
                                         <label for="note">Beschreibung :</label>
-                                        <textarea class="form-control" name="note" id="note" rows="3"></textarea>
+                                        <textarea class="form-control" name="note" id="note" rows="3" style="color: #6C7293"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>Handy Foto </label>
@@ -194,11 +194,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="amount" class="col-form-label">Menge :</label>
-                                            <input class="form-control" name="amount" id="amount" type="number" required>
+                                            <input class="form-control" name="amount" id="amount" type="number" style="color: #6C7293" required>
                                         </div>
                                        <div class="form-group">
                                             <label for="note">Beschreibung :</label>
-                                            <textarea class="form-control" name="note" id="note" rows="3"></textarea>
+                                            <textarea class="form-control" name="note" id="note" rows="3" style="color: #6C7293"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>Handy Foto </label>

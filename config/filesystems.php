@@ -54,6 +54,11 @@ return [
             'root'   => public_path() . '\Attachments\Accessories',
         ],
 
+        'public_gallery' => [
+            'driver' => 'local',
+            'root'   => public_path() . '\Attachments\Galerie',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
