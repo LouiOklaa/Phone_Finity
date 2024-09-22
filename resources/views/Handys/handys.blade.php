@@ -66,6 +66,7 @@
                                         <th>Preis</th>
                                         <th>Menge</th>
                                         <th>Beschreibung</th>
+                                        <th>Foto</th>
                                         <th>Aktion</th>
                                     </tr>
                                     </thead>
@@ -81,6 +82,7 @@
                                                 <td>{{$one->preis}} €</td>
                                                 <td>{{$one->amount}} Stück</td>
                                                 <td>{{$one->note}}</td>
+                                                <td><a href="{{asset( 'Attachments/Handys/' . $one->image)}}"><img src="Attachments/Handys/{{$one->image}}" style="height:30px; width:50px; border-radius: 0;"></a></td>
                                                 <td>
                                                     <button class="btn btn-sm btn-rounded btn-inverse-primary" href="#edit_modal" title="Edit" data-id="{{$one->id}}" data-name="{{$one->name}}"  data-section_name="{{$one->section_name}}" data-status="{{$one->status}}"  data-preis="{{$one->preis}}" data-amount="{{$one->amount}}" data-note="{{$one->note}}"  data-toggle="modal">Bearbeitens</button>
                                                     <button class="btn btn-sm btn-rounded btn-inverse-danger" title="Delete" href="#delete_modal" data-id="{{$one->id}}" data-name="{{$one->name}}" data-toggle="modal">Löschen</button>
