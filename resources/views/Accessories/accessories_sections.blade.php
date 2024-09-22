@@ -113,11 +113,11 @@
                                     <div class="form-group">
                                         <input type="hidden" name="id" id="id" value="">
                                         <label for="name" class="col-form-label">Abschnitte Name :</label>
-                                        <input class="form-control" name="name" id="name" type="text">
+                                        <input class="form-control" name="name" id="name" type="text" style="color: #6C7293">
                                     </div>
                                     <div class="form-group">
                                         <label for="note">Beschreibung :</label>
-                                        <textarea class="form-control" name="note" id="note" rows="3"></textarea>
+                                        <textarea class="form-control" name="note" id="note" rows="3"  style="color: #6C7293"></textarea>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-rounded btn-primary">Bestätigung</button>

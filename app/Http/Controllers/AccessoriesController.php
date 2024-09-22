@@ -158,5 +158,6 @@ class AccessoriesController extends Controller
 
         session()->flash('Delete','Das Produkt wurde erflogreich gelöscht');
         return back();
+
     }
 }
