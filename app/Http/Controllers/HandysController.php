@@ -190,7 +190,7 @@ class HandysController extends Controller
             }
         }
 
-        session()->flash('Edit','Des Handy wurde erflogreich geänderts');
+        session()->flash('Edit','Das Handy wurde erflogreich geänderts');
         return redirect('/handys');
     }
 

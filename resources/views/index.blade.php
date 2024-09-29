@@ -78,10 +78,10 @@
 <div class="cols-list pull-left cols-md">
 
 
-<div class="list-item"><span class="info-icon"><i class="fas fa-home" aria-hidden="true"></i></span>Sidestate NSW 4132, Australia
+<div class="list-item"><span class="info-icon"><i class="fas fa-home" style="color: #CA5098;" aria-hidden="true"></i></span>Sidestate NSW 4132, Australia
 </div>
 
-<div class="list-item"><span class="info-icon"><i class="fas fa-phone"></i></span>Help: + 88 018 4113 6251
+<div class="list-item"><span class="info-icon"><i class="fas fa-phone" style="color: #CA5098;"></i></span>Hilfe: {{$information->phone_number}}
 </div>
 
 
@@ -89,19 +89,13 @@
 <div class="cols-list pull-right cols-md socials">
 
 
-<div class="list-item"><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i>
-</a></div>
-
 <div class="list-item"><a href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i>
 </a></div>
 
-<div class="list-item"><a href="#"><i class="fab fa-pinterest" aria-hidden="true"></i>
+<div class="list-item"><a href="#"><i class="fab fa-instagram" aria-hidden="true"></i>
 </a></div>
 
-<div class="list-item"><a href="#"><i class="fab fa-google-plus-g" aria-hidden="true"></i>
-</a></div>
-
-<div class="list-item"><a href="#"><i class="fab fa-dribbble" aria-hidden="true"></i>
+<div class="list-item"><a href="#"><i class="fab fa-tiktok" aria-hidden="true"></i>
 </a></div>
 
 
@@ -111,7 +105,7 @@
 
 <nav class="stick-menu menu-wrap simple line transparent">
 <div class="menu-container menu-row">
-<div class="logo"><a href="index.html"><img src="http://via.placeholder.com/210x60" alt="ProFix" /></a></div>
+<div class="logo"><a href="index.html"><img src="{{url('/assets/images/icons/phonephinity.png')}}" alt="ProFix" /></a></div>
 <div class="header-toggler pull-right xs-shown">
 <label class="header-shown-sign" for="header-hidden"><i class="fas fa-times" aria-hidden="true"></i></label>
 <label class="header-hidden-sign" for="header-shown"><i class="fas fa-bars" aria-hidden="true"></i></label>
@@ -176,7 +170,7 @@
 
 
 
-<img src="http://via.placeholder.com/1920x1080" alt="" data-cover-image="true" />
+<img src="{{url('/assets/images/home-page/Home-page-1.jpg')}}" alt="" data-cover-image="true" />
 
 <div class="theme-back"></div>
 
@@ -204,7 +198,7 @@
 
 
 
-<img src="http://via.placeholder.com/1920x1080" alt="" data-cover-image="true" />
+<img src="{{url('/assets/images/home-page/Home-page-2.jpg')}}" alt="" data-cover-image="true" />
 
 <div class="theme-back"></div>
 
@@ -230,7 +224,7 @@
 
 
 
-<img src="http://via.placeholder.com/1920x1080" alt="" data-cover-image="true" />
+<img src="{{url('/assets/images/home-page/Home-page-3.jpg')}}" alt="" data-cover-image="true" />
 
 <div class="theme-back"></div>
 
@@ -405,7 +399,7 @@
 </div>
 <section class="with-bg solid-section">
 
-<div class="fix-image-wrap" data-image-src="http://via.placeholder.com/1920x1080" data-parallax="scroll"></div>
+<div class="fix-image-wrap" data-image-src="{{url('/assets/images/home-page/Home-page-4.jpg')}}" data-parallax="scroll"></div>
 <div class="theme-back inner-shadow"></div>
 <div class="container text-center">
 
@@ -925,7 +919,7 @@ search
 <div class="row cols-md">
 <div class="sm-col-3">
 <div class="footer-logo">
-<img src="http://via.placeholder.com/180x50" alt="ProFix" />
+<img src="{{url('/assets/images/icons/phonephinity.png')}}" alt="ProFix" />
 </div>
 <div class="footer-text sm-text-justify">Profix is a Premium PSD Template. Best choice for your online store. Let purchase it to enjoy now</div>
 </div>
@@ -1029,7 +1023,7 @@ search
 <!-- Inits theme scripts -->
 
 <script src="./assets/js/script.js" type="text/javascript"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADqmeC3KqUupDX0ztEBAAqI9W_J3kKVBc"></script>
 
 
 </body>

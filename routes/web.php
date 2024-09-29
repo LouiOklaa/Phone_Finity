@@ -5,6 +5,7 @@ use App\Http\Controllers\AccessoriesController;
 use App\Http\Controllers\AccessoriesSectionsController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\GeneralInformationController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HandysController;
 use App\Http\Controllers\ServicesController;
@@ -27,7 +28,7 @@ Route::get('/', function () {
     return view('index');
 });
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/admin', [HomeController::class, 'index']);
 Route::resource('handys', HandysController::class);
@@ -37,5 +38,6 @@ Route::resource('zubehör', AccessoriesController::class);
 Route::resource('galerie', GalleryController::class);
 Route::resource('dienstleistungen', ServicesController::class);
 Route::resource('dienstleistungensbereich', ServicesSectionsController::class);
+Route::resource('allgemeineinformationen', GeneralInformationController::class);
 
 Route::get('/{page}', [AdminController::class, 'index']);

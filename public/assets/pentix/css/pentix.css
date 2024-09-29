@@ -230,7 +230,7 @@ th {
   transition: all 0.2s linear 0s;
 }
 .btn:before {
-  background: #29abe2;
+  background: #CA5098;
 }
 .btn:hover,
 .btn:focus,
@@ -549,7 +549,7 @@ textarea.field-control {
 .field-control:focus ~ .field-back,
 .chosen-container-active ~ .field-back {
   border-width: 2px;
-  border-color: #29abe2;
+  border-color: #CA5098;
 }
 .field-icon {
   position: absolute;
@@ -646,7 +646,7 @@ select.field-control option {
   position: absolute;
   left: 4px;
   top: 4px;
-  background-color: #29abe2;
+  background-color: #CA5098;
   -webkit-transition: all 0.2s linear 0s;
   -moz-transition: all 0.2s linear 0s;
   -o-transition: all 0.2s linear 0s;
@@ -774,7 +774,7 @@ label:hover .check-i {
   background-color: #f7f7f7;
 }
 .chosen-field .chosen-results li.highlighted {
-  background: #29abe2;
+  background: #CA5098;
   color: #fff;
 }
 .chosen-field .chosen-results li.no-results {
@@ -813,7 +813,7 @@ label:hover .check-i {
 .field-spin-sides .field-decrement:hover,
 .field-spin-sides .field-increment:focus,
 .field-spin-sides .field-decrement:focus {
-  color: #29abe2;
+  color: #CA5098;
 }
 .field-spin-sides .field-increment {
   left: auto;
@@ -1002,7 +1002,7 @@ body.body .auto-size {
 }
 a {
   text-decoration: none;
-  color: #29abe2;
+  color: #CA5098;
   -webkit-transition: all 0.2s linear 0s;
   -moz-transition: all 0.2s linear 0s;
   -o-transition: all 0.2s linear 0s;
@@ -1035,13 +1035,13 @@ a.active {
 .content-link:focus,
 .content-link:active,
 .content-link.active {
-  color: #29abe2;
+  color: #CA5098;
 }
 .simple-link:hover,
 .simple-link:focus,
 .simple-link:active,
 .simple-link.active {
-  color: #29abe2;
+  color: #CA5098;
   text-decoration: underline;
 }
 .solid-link,
@@ -1057,7 +1057,7 @@ a.active {
 .muted-solid-link:active,
 .solid-link.active,
 .muted-solid-link.active {
-  color: #29abe2;
+  color: #CA5098;
 }
 .muted-solid-link {
   padding: 5px;
@@ -1068,12 +1068,12 @@ a.active {
 .muted-solid-link:active,
 .muted-solid-link.active {
   color: #fff;
-  background-color: #29abe2;
+  background-color: #CA5098;
 }
 .btn-link,
 .btn-text {
   line-height: 46px;
-  color: #29abe2;
+  color: #CA5098;
   white-space: nowrap;
   font-weight: 600;
   display: inline-block;
@@ -2644,7 +2644,7 @@ body.body .border-clear-bottom {
   top: 0;
   height: 0;
   width: 4px;
-  background-color: #29abe2;
+  background-color: #CA5098;
 }
 .toggle-block {
   display: none;

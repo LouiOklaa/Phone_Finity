@@ -140,11 +140,11 @@
                 </div>
             </li>
             <li class="nav-item menu-items">
-                <a class="nav-link" href="pages/charts/chartjs.html">
+                <a class="nav-link" href="{{ url('/' . $page='allgemeineinformationen') }}">
               <span class="menu-icon">
                 <i class="mdi mdi-chart-bar"></i>
               </span>
-                    <span class="menu-title">Charts</span>
+                    <span class="menu-title" style="font-size: 13px;">Allgemeine Informationen</span>
                 </a>
             </li>
             <li class="nav-item menu-items">
