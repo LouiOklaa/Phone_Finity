@@ -78,10 +78,9 @@
 <div class="cols-list pull-left cols-md">
 
 
-<div class="list-item"><span class="info-icon"><i class="fas fa-home" style="color: #CA5098;" aria-hidden="true"></i></span>Sidestate NSW 4132, Australia
-</div>
+<div class="list-item"><span class="info-icon"><i class="fas fa-home" style="color: #CA5098;" aria-hidden="true"></i></span>S{{$information->address}}</div>
 
-<div class="list-item"><span class="info-icon"><i class="fas fa-phone" style="color: #CA5098;"></i></span>Hilfe: {{$information->phone_number}}
+<div class="list-item"><span class="info-icon"><i class="fas fa-phone" style="color: #CA5098;"></i></span>Hilfe : {{$information->phone_number}}
 </div>
 
 
@@ -89,13 +88,13 @@
 <div class="cols-list pull-right cols-md socials">
 
 
-<div class="list-item"><a href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i>
+<div class="list-item"><a href="{{$information->facebook_link}}"><i class="fab fa-facebook-f" aria-hidden="true"></i>
 </a></div>
 
-<div class="list-item"><a href="#"><i class="fab fa-instagram" aria-hidden="true"></i>
+<div class="list-item"><a href="{{$information->instagram_link}}"><i class="fab fa-instagram" aria-hidden="true"></i>
 </a></div>
 
-<div class="list-item"><a href="#"><i class="fab fa-tiktok" aria-hidden="true"></i>
+<div class="list-item"><a href="{{$information->tiktok_link}}"><i class="fab fa-tiktok" aria-hidden="true"></i>
 </a></div>
 
 
@@ -145,7 +144,7 @@
     </li>
     <li><a href="projects.html">Galerie</a></li>
     <li>
-        <a href="contact-us.html">Contact Us</a><span class="toggle-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
+        <a href="contact-us.html">Kontakt</a><span class="toggle-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
     </li>
 </ul>
 
@@ -180,9 +179,9 @@
 
 
 
-<div class="banner-title res-text-xxl">Fast & Quick Fix</div>
+<div class="banner-title res-text-xxl">Schnelle und zügige Reparatur</div>
 
-<div class="banner-subtitle res-text-md">Just send valuable laptop, PC, MAC, Mobile,<br />Gaming Device or Smartphone and we'll take care of it.</div>
+<div class="banner-subtitle res-text-md">Senden Sie einfach wertvolle Laptops, PCs, Macs, Handys,<br /> Gaming-Geräte oder PlayStation, und wir kümmern uns darum.</div>
 
 
 
@@ -208,8 +207,9 @@
 
 
 
-<div class="banner-title res-text-xxl">Any Kind of Upgrades</div>
+<div class="banner-title res-text-xxl">Alle Arten von Smartphones</div>
 
+<div class="banner-subtitle res-text-md">Samsung - Apple - Xiaomi - Redmi - Honor - Pixel</div>
 
 
 </div>
@@ -234,9 +234,9 @@
 
 
 
-<div class="banner-title res-text-xxl">Data Recovery</div>
+<div class="banner-title res-text-xxl">Alle Handy-Zubehör</div>
 
-<div class="banner-subtitle res-text-md">You Lose - We'll Find</div>
+<div class="banner-subtitle res-text-md">Panzerglas - Handyhüllen - Powerbank - Kopfhörer</div>
 
 
 
@@ -281,13 +281,12 @@
 <div class="price-back"></div>
 
 <div class="price-image">
-<img class="image" src="./assets/images/icons/notebook-dark.png" alt="" />
+<img class="image" src="./assets/images/icons/printer-dark.png" alt="" />
 </div>
 
-<div class="price-title">Laptop Repair</div>
-<div class="price-subtext">starting at...</div>
-<div class="price">$20.00</div>
-<a class="btn-md btns-bordered btn text-upper" href="#">read more</a>
+<div class="price-title">Neue Handys</div>
+<div class="price-subtext">Ab...</div>
+<div class="price" style="color: #CA5098;">85.00€</div>
 </div>
 </div>
 <div class="sm-col-6">
@@ -295,13 +294,12 @@
 <div class="price-back"></div>
 
 <div class="price-image">
-<img class="image" src="./assets/images/icons/computer-dark.png" alt="" />
+<img class="image" src="./assets/images/icons/mobile-dark.png" alt="" />
 </div>
 
-<div class="price-title">Computer Repair</div>
-<div class="price-subtext">starting at...</div>
-<div class="price">$20.00</div>
-<a class="btn-md btns-bordered btn text-upper" href="#">read more</a>
+<div class="price-title">Smartphone Reparatur</div>
+<div class="price-subtext">Ab...</div>
+<div class="price" style="color: #CA5098;">20.00€</div>
 </div>
 </div>
 </div>
@@ -313,13 +311,12 @@
 <div class="price-back"></div>
 
 <div class="price-image">
-<img class="image" src="./assets/images/icons/printer-dark.png" alt="" />
+<img class="image" src="./assets/images/icons/notebook-dark.png" alt="" />
 </div>
 
-<div class="price-title">Printer Repair</div>
-<div class="price-subtext">starting at...</div>
-<div class="price">$110.00</div>
-<a class="btn-md btns-bordered btn text-upper" href="#">read more</a>
+<div class="price-title">Laptop Reparatur</div>
+<div class="price-subtext">Ab...</div>
+<div class="price" style="color: #CA5098;">20.00€</div>
 </div>
 </div>
 <div class="sm-col-6">
@@ -327,13 +324,12 @@
 <div class="price-back"></div>
 
 <div class="price-image">
-<img class="image" src="./assets/images/icons/mobile-dark.png" alt="" />
+<img class="image" src="./assets/images/icons/computer-dark.png" alt="" />
 </div>
 
-<div class="price-title">Smartphone Repair</div>
-<div class="price-subtext">starting at...</div>
-<div class="price">$45.00</div>
-<a class="btn-md btns-bordered btn text-upper" href="#">read more</a>
+<div class="price-title">Computer Reparatur</div>
+<div class="price-subtext">Ab...</div>
+<div class="price" style="color: #CA5098;">20.00€</div>
 </div>
 </div>
 </div>
@@ -348,9 +344,9 @@
 
 <div class="section-head text-center container-md">
 
-<h2 class="section-title text-upper text-lg" data-inview-showup="showup-translate-right">Why choose us</h2>
+<h2 class="section-title text-upper text-lg" data-inview-showup="showup-translate-right">Warum uns wählen ?</h2>
 
-<p data-inview-showup="showup-translate-left">Some Of Our Features</p>
+<p data-inview-showup="showup-translate-left">Einige unserer Funktionen.</p>
 </div>
 <div class="row cols-md rows-lg text-center">
 <div class="md-col-6">
@@ -358,15 +354,15 @@
 <div class="sm-col-6">
 <div class="feature feature-side text-left" data-inview-showup="showup-translate-up">
 <div class="feature-icon"><i class="fas fa-rocket" aria-hidden="true"></i></div>
-<div class="feature-title text-upper">We are fast</div>
-<div class="feature-text">Qualified Workers Lorem Ipsum is simply dummy text of the printing</div>
+<div class="feature-title text-upper">Wir sind schnell.</div><br>
+<div class="feature-text">Wir bieten schnelle Reparaturen, damit Sie Ihr Gerät so schnell wie möglich zurückbekommen.</div>
 </div>
 </div>
 <div class="sm-col-6">
 <div class="feature feature-side text-left" data-inview-showup="showup-translate-up">
 <div class="feature-icon"><i class="fas fa-dollar-sign" aria-hidden="true"></i></div>
-<div class="feature-title text-upper">No fix, no fee</div>
-<div class="feature-text">Repair on Demand Lorem Ipsum is simply dummy text of the printing</div>
+<div class="feature-title text-upper">Keine Reparatur, keine Gebühr.</div>
+<div class="feature-text" style="margin-top: -2px;">Unsere 30-tägige Garantie sorgt dafür, dass Sie mit Ihrer Reparatur vollkommen zufrieden sind.</div>
 </div>
 </div>
 </div>
@@ -376,15 +372,15 @@
 <div class="sm-col-6">
 <div class="feature feature-side text-left" data-inview-showup="showup-translate-up">
 <div class="feature-icon"><i class="far fa-calendar-check" aria-hidden="true"></i></div>
-<div class="feature-title text-upper">30 days warranty</div>
-<div class="feature-text">Guaranteed Service Lorem Ipsum is simply dummy text of the printing</div>
+<div class="feature-title text-upper">30 Tage Garantie.</div><br>
+<div class="feature-text">Wenn wir Ihr Gerät nicht reparieren können, zahlen Sie nichts – ganz einfach!</div>
 </div>
 </div>
 <div class="sm-col-6">
 <div class="feature feature-side text-left" data-inview-showup="showup-translate-up">
 <div class="feature-icon"><i class="fas fa-users" aria-hidden="true"></i></div>
-<div class="feature-title text-upper">Expert staff</div>
-<div class="feature-text">Available Anytime Lorem Ipsum is simply dummy text of the printing</div>
+<div class="feature-title text-upper">Expertenpersonal.</div><br>
+<div class="feature-text">Unser Team aus Experten sorgt dafür, dass Ihr Gerät von den besten Händen behandelt wird.</div>
 </div>
 </div>
 </div>
@@ -405,19 +401,19 @@
 
 <div class="section-head text-center container-md">
 
-<h2 class="section-title text-upper text-lg" data-inview-showup="showup-translate-right">Service process</h2>
+<h2 class="section-title text-upper text-lg" data-inview-showup="showup-translate-right">Serviceprozess</h2>
 
-<p data-inview-showup="showup-translate-left">easy and effective way to get your device repaired</p>
+<p data-inview-showup="showup-translate-left">Ein einfacher und effektiver Weg, um Ihr Gerät reparieren zu lassen.</p>
 </div>
 <div class="service-steps text-upper" data-inview-showup="showup-scale">
 
-<div class="step"><span class="step-number">1</span>damage device</div>
+<div class="step"><span class="step-number active">1</span>Beschädigtes Gerät</div>
 
-<div class="step"><span class="step-number">2</span>send it to us</div>
+<div class="step"><span class="step-number">2</span>Schicken Sie es uns</div>
 
-<div class="step"><span class="step-number active">3</span>fast fix</div>
+<div class="step"><span class="step-number active">3</span>Schnelle Reparatur</div>
 
-<div class="step"><span class="step-number">4</span>quick return</div>
+<div class="step"><span class="step-number">4</span>Schnelle Rückgabe</div>
 
 </div>
 
@@ -429,9 +425,170 @@
 
 <div class="section-head text-center container-md">
 
-<h2 class="section-title text-upper text-lg" data-inview-showup="showup-translate-right">Services</h2>
+<h2 class="section-title text-upper text-lg" data-inview-showup="showup-translate-right">Handys</h2>
 
-<p data-inview-showup="showup-translate-left">We offer a full range of repair services provided by an experienced and specialized team</p>
+<p data-inview-showup="showup-translate-left">Wir bieten die neuesten Smartphones auf dem Markt an. Entdecken Sie moderne Handys mit fortschrittlicher Technologie und innovativen Funktionen.</p>
+</div>
+<div class="row cols-md rows-md">
+
+
+<div class="md-col-4 sm-col-6">
+<div class="item" data-inview-showup="showup-translate-up">
+<a href="service.html" class="block-link text-center">
+<span class="image-wrap"><img class="image" src="http://via.placeholder.com/720x405" alt="" /></span>
+<span class="hover">
+<span class="hover-show">
+<span class="back"></span>
+<span class="content"><i class="fas fa-search" aria-hidden="true"></i></span>
+</span>
+</span>
+</a>
+<div class="item-content">
+<div class="item-title text-upper"><a href="service.html">Data backup &amp; recovery</a></div>
+<div class="item-text">We working hard to build a reputation of customer satisfaction through technical excellence and friendly staff
+</div>
+<a href="service.html" class="btn btn-md btns-bordered pull-right text-upper">read more</a>
+</div>
+</div>
+</div>
+
+
+<div class="md-col-4 sm-col-6">
+<div class="item" data-inview-showup="showup-translate-up">
+<a href="service.html" class="block-link text-center">
+<span class="image-wrap"><img class="image" src="http://via.placeholder.com/720x405" alt="" /></span>
+<span class="hover">
+<span class="hover-show">
+<span class="back"></span>
+<span class="content"><i class="fas fa-search" aria-hidden="true"></i></span>
+</span>
+</span>
+</a>
+<div class="item-content">
+<div class="item-title text-upper"><a href="service.html">Laptop &amp; Mac Upgrade</a></div>
+<div class="item-text">We working hard to build a reputation of customer satisfaction through technical excellence and friendly staff
+</div>
+<a href="service.html" class="btn btn-md btns-bordered pull-right text-upper">read more</a>
+</div>
+</div>
+</div>
+
+
+<div class="md-col-4 sm-col-6">
+<div class="item" data-inview-showup="showup-translate-up">
+<a href="service.html" class="block-link text-center">
+<span class="image-wrap"><img class="image" src="http://via.placeholder.com/720x405" alt="" /></span>
+<span class="hover">
+<span class="hover-show">
+<span class="back"></span>
+<span class="content"><i class="fas fa-search" aria-hidden="true"></i></span>
+</span>
+</span>
+</a>
+<div class="item-content">
+<div class="item-title text-upper"><a href="service.html">Repair Smartphone</a></div>
+<div class="item-text">We working hard to build a reputation of customer satisfaction through technical excellence and friendly staff
+</div>
+<a href="service.html" class="btn btn-md btns-bordered pull-right text-upper">read more</a>
+</div>
+</div>
+</div>
+
+
+<div class="md-col-4 sm-col-6">
+<div class="item" data-inview-showup="showup-translate-up">
+<a href="service.html" class="block-link text-center">
+<span class="image-wrap"><img class="image" src="http://via.placeholder.com/720x405" alt="" /></span>
+<span class="hover">
+<span class="hover-show">
+<span class="back"></span>
+<span class="content"><i class="fas fa-search" aria-hidden="true"></i></span>
+</span>
+</span>
+</a>
+<div class="item-content">
+<div class="item-title text-upper"><a href="service.html">Tablet Repair</a></div>
+<div class="item-text">We working hard to build a reputation of customer satisfaction through technical excellence and friendly staff
+</div>
+<a href="service.html" class="btn btn-md btns-bordered pull-right text-upper">read more</a>
+</div>
+</div>
+</div>
+
+
+<div class="md-col-4 sm-col-6">
+<div class="item" data-inview-showup="showup-translate-up">
+<a href="service.html" class="block-link text-center">
+<span class="image-wrap"><img class="image" src="http://via.placeholder.com/720x405" alt="" /></span>
+<span class="hover">
+<span class="hover-show">
+<span class="back"></span>
+<span class="content"><i class="fas fa-search" aria-hidden="true"></i></span>
+</span>
+</span>
+</a>
+<div class="item-content">
+<div class="item-title text-upper"><a href="service.html">Repair PC &amp; Laptop Hardware</a></div>
+<div class="item-text">We working hard to build a reputation of customer satisfaction through technical excellence and friendly staff
+</div>
+<a href="service.html" class="btn btn-md btns-bordered pull-right text-upper">read more</a>
+</div>
+</div>
+</div>
+
+<div class="md-col-4 sm-col-6">
+<div class="item" data-inview-showup="showup-translate-up">
+<a href="service.html" class="block-link text-center">
+<span class="image-wrap"><img class="image" src="http://via.placeholder.com/720x405" alt="" /></span>
+<span class="hover">
+<span class="hover-show">
+<span class="back"></span>
+<span class="content"><i class="fas fa-search" aria-hidden="true"></i></span>
+</span>
+</span>
+</a>
+<div class="item-content">
+<div class="item-title text-upper"><a href="service.html">Network Solution</a></div>
+<div class="item-text">We working hard to build a reputation of customer satisfaction through technical excellence and friendly staff
+</div>
+<a href="service.html" class="btn btn-md btns-bordered pull-right text-upper">read more</a>
+</div>
+</div>
+</div>
+
+</div>
+<div class="text-center shift-xl">
+<a class="btn text-upper" href="services.html" data-inview-showup="showup-translate-up"><i class="fas fa-th-large" aria-hidden="true"></i>&nbsp;&nbsp;Alle Handys anzeigen</a>
+</div>
+
+</div>
+</section>
+
+<section class="main-bg" data-inview-showup="showup-translate-up">
+<div class="container">
+
+
+<div class="contact-table only-xs-text-center">
+<div class="contact-icon"><a href="{{$information->facebook_link}}" style="color: #FFFFFF" class="fab fa-facebook" aria-hidden="true"></a></div>
+<div class="contact-icon"><a href="{{$information->instagram_link}}" style="color: #FFFFFF" class="fab fa-instagram" aria-hidden="true"></a></div>
+<div class="contact-icon"><a href="{{$information->tiktok_link}}" style="color: #FFFFFF" class="fab fa-tiktok" aria-hidden="true"></a></div>
+<div class="contact-content">
+<div class="contact-title">Folgen Sie uns !</div>
+<div class="text-justify only-xs-text-justify-center"> Bleiben Sie informiert und werden Sie Teil unserer Familie. Wir freuen uns, Sie bei uns zu haben !</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<section class="muted-bg solid-section">
+<div class="container">
+
+<div class="section-head text-center container-md">
+
+<h2 class="section-title text-upper text-lg" data-inview-showup="showup-translate-right">Dienstleistungen</h2>
+
+<p data-inview-showup="showup-translate-left">Wir bieten ein umfassendes Angebot an Reparaturdiensten, die von einem erfahrenen und spezialisierten Team durchgeführt werden.</p>
 </div>
 <div class="row cols-md rows-md">
 
@@ -563,11 +720,12 @@
 
 </div>
 <div class="text-center shift-xl">
-<a class="btn text-upper" href="services.html" data-inview-showup="showup-translate-up"><i class="fas fa-th-large" aria-hidden="true"></i>&nbsp;&nbsp;view all services</a>
+<a class="btn text-upper" href="services.html" data-inview-showup="showup-translate-up"><i class="fas fa-th-large" aria-hidden="true"></i>&nbsp;&nbsp;Alle Dienstleistungen anzeigen</a>
 </div>
 
 </div>
 </section>
+
 <section class="main-bg decorated-bg text-center tight solid-section">
 <div class="container">
 
@@ -575,25 +733,25 @@
 <div class="row cols-md rows-xl" data-inview-showup="showup-translate-up">
 <div class="sm-col-3">
 <div class="counter">
-<div class="counter-title text-upper">Happy client</div>
+<div class="counter-title text-upper">Zufriedener Kunde</div>
 <div class="counter-value" data-waypoint-counter="3720">3720</div>
 </div>
 </div>
 <div class="sm-col-3">
 <div class="counter">
-<div class="counter-title text-upper">Finished projects</div>
+<div class="counter-title text-upper">Abgeschlossene Projekte</div>
 <div class="counter-value" data-waypoint-counter="4170">4170</div>
 </div>
 </div>
 <div class="sm-col-3">
 <div class="counter">
-<div class="counter-title text-upper">Computer serviced</div>
+<div class="counter-title text-upper">Computer gewartet</div>
 <div class="counter-value" data-waypoint-counter="2730">2730</div>
 </div>
 </div>
 <div class="sm-col-3">
 <div class="counter">
-<div class="counter-title text-upper">Mobile serviced</div>
+<div class="counter-title text-upper">Handy gewartet</div>
 <div class="counter-value" data-waypoint-counter="1510">1510</div>
 </div>
 </div>
@@ -606,9 +764,9 @@
 
 <div class="section-head text-center container-md">
 
-<h2 class="section-title text-upper text-lg" data-inview-showup="showup-translate-right">What people say</h2>
+<h2 class="section-title text-upper text-lg" data-inview-showup="showup-translate-right">Was die Leute sagen</h2>
 
-<p data-inview-showup="showup-translate-left">Real customers reviews</p>
+<p data-inview-showup="showup-translate-left">Echte Kundenbewertungen</p>
 </div>
 <div class="owl-carousel" data-inview-showup="showup-translate-up" data-owl-dots="true">
 <div class="item">
@@ -700,11 +858,11 @@ Keep up the excellent work. Thank you so much for your help. This is simply unbe
 <div class="contact-table only-xs-text-center">
 <div class="contact-icon xs-hidden"><i class="fas fa-bicycle" aria-hidden="true"></i></div>
 <div class="contact-content">
-<div class="contact-title">Request free consultation</div>
-<div class="text-justify only-xs-text-justify-center">Get answers and advice from people you want it from.</div>
+<div class="contact-title">Kostenlose Beratung anfordern</div>
+<div class="text-justify only-xs-text-justify-center">Holen Sie sich Antworten und Ratschläge von den Fachleuten im Bereich.</div>
 </div>
 <div class="contact-btn">
-<a href="contact-us.html" class="btn btns-white text-upper">Contact Us</a>
+<a href="contact-us.html" class="btn btns-white text-upper">Kontaktiere Sie uns</a>
 </div>
 </div>
 
@@ -715,7 +873,7 @@ Keep up the excellent work. Thank you so much for your help. This is simply unbe
 
 <div class="section-head text-center container-md">
 
-<h2 class="section-title text-upper text-lg" data-inview-showup="showup-translate-right">We are authorized</h2>
+<h2 class="section-title text-upper text-lg" data-inview-showup="showup-translate-right">Wir sind autorisiert</h2>
 
 
 </div>
@@ -761,15 +919,15 @@ Keep up the excellent work. Thank you so much for your help. This is simply unbe
 <div class="info-container">
 <div class="our-info side main-bg">
 <div class="info-block">
-<div class="info-title text-upper">Contact Us</div>
-<div class="info-line"><span class="info-icon"><i class="fas fa-map-marker-alt fa-fw" aria-hidden="true"></i></span>Sidestate NSW 4132, Australia</div>
-<div class="info-line"><span class="info-icon"><i class="fas fa-phone fa-fw" aria-hidden="true"></i></span>(555) 555-0312</div>
-<div class="info-line"><span class="info-icon"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></span>info@profix.com</div>
+<div class="info-title text-upper">Kontaktiere Sie uns</div>
+<div class="info-line"><span class="info-icon"><i class="fas fa-map-marker-alt fa-fw" aria-hidden="true"></i></span>{{$information->address}}</div>
+<div class="info-line"><span class="info-icon"><i class="fas fa-phone fa-fw" aria-hidden="true"></i></span>{{$information->phone_number}}</div>
+<div class="info-line"><span class="info-icon"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></span>{{$information->email}}</div>
 </div>
 <div class="info-block">
-<div class="info-title text-upper">Opening Hours</div>
-<div class="info-line">Monday-Friday<span class="pull-right">10:00 - 18:00</span></div>
-<div class="info-line">Saturday, Sunday<span class="pull-right">Closed</span></div>
+<div class="info-title text-upper">Öffnungszeit</div>
+<div class="info-line">Montag-Samstag<span class="pull-right">10:00 - 21:00</span></div>
+<div class="info-line">Sonntag<span class="pull-right">geschlossen</span></div>
 </div>
 </div>
 </div>
@@ -919,35 +1077,33 @@ search
 <div class="row cols-md">
 <div class="sm-col-3">
 <div class="footer-logo">
-<img src="{{url('/assets/images/icons/phonephinity.png')}}" alt="ProFix" />
+<img src="{{url('/assets/images/icons/phonephinity.png')}}" alt="Phone_Finity" />
 </div>
-<div class="footer-text sm-text-justify">Profix is a Premium PSD Template. Best choice for your online store. Let purchase it to enjoy now</div>
+<div class="footer-text sm-text-justify" style="margin-left: 12px;">Profix is a Premium PSD Template. Best choice for your online store. Let purchase it to enjoy now</div>
 </div>
 <div class="sm-col-8 sm-push-1">
 <div class="row cols-md">
 <div class="sm-col-4">
-<div class="footer-title alt-color text-upper">Address</div>
-<div class="footer-text">Sidestate NSW 4132,<br />Australia</div>
+<div class="footer-title alt-color text-upper">Adresse</div>
+<div class="footer-text">{{$information->address}}</div>
 </div>
 <div class="sm-col-4">
-<div class="footer-title alt-color text-upper">Contacts</div>
-<div class="footer-text">(555) 555-0312<br />info@profix.com</div>
+<div class="footer-title alt-color text-upper">Kontakte</div>
+<div class="footer-text">{{$information->phone_number}}<br />{{$information->email}}</div>
 </div>
 <div class="sm-col-4">
-<div class="footer-title alt-color text-upper">Socials</div>
-<div class="cols-list socials cols-sm inline-block">
-<a href="#" class="list-item"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
-<a href="#" class="list-item"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-<a href="#" class="list-item"><i class="fab fa-pinterest" aria-hidden="true"></i></a>
-<a href="#" class="list-item"><i class="fab fa-google-plus-g" aria-hidden="true"></i></a>
-<a href="#" class="list-item"><i class="fab fa-dribbble" aria-hidden="true"></i></a>
+<div class="footer-title alt-color text-upper">Soziale Medien</div>
+<div class="cols-list socials cols-sm inline-block" style="margin-left: -1px">
+<a href="{{$information->facebook_link}}" class="list-item"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+<a href="{{$information->instagram_link}}" class="list-item"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+<a href="{{$information->tiktok_link}}" class="list-item"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="footer-copyrights text-center top-separator ins-md">&copy; 2017 <b>ProFix</b>. All Rights Reserved</div>
+<div class="footer-copyrights text-center top-separator ins-md">&copy; <script>document.write(new Date().getFullYear());</script> <b>Loui Oklaa</b> Alle Rechte vorbehalten.</div>
 </div>
 </footer>
 

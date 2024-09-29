@@ -10,6 +10,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HandysController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\ServicesSectionsController;
+use App\Http\Controllers\ViewController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,7 @@ Route::get('/', function () {
 
 Auth::routes(['register' => false]);
 
+Route::get('/', [ViewController::class, 'index']);
 Route::get('/admin', [HomeController::class, 'index']);
 Route::resource('handys', HandysController::class);
 Route::resource('abschnitte', AbschnitteController::class);
