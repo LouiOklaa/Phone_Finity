@@ -29,7 +29,7 @@ Route::get('/', function () {
     return view('index');
 });
 
-Auth::routes(['register' => false]);
+Auth::routes(['register' => false ,'reset' => false ,'verify' => false ,'confirm' => false]);
 
 Route::get('/', [ViewController::class, 'index']);
 Route::get('/admin', [HomeController::class, 'index']);
