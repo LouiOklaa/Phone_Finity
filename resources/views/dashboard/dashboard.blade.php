@@ -1,4 +1,7 @@
 @extends('master')
+@section('title')
+    LouiSoft Admin
+@endsection
 @section('contents')
     <!-- partial -->
     <div class="main-panel">

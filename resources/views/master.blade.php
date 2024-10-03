@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>CV Admin</title>
+    <title> @yield("title") </title>
     {{--  Progress bar  --}}
     <link href="css/aos.css?ver=1.1.0" rel="stylesheet">
     <link href="css/bootstrap.min.css?ver=1.1.0" rel="stylesheet">
@@ -22,23 +22,26 @@
     <!-- Layout styles -->
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="assets/images/favicon.png" />
+    <link rel="shortcut icon" href="{{ asset('assets/images/auth/favicon.png') }}" />
     @yield('CSS')
 </head>
 <body>
 <div class="container-scroller">
     <!-- partial:partials/_sidebar.html -->
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-            <a class="sidebar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
-            <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
+        <div class="d-flex justify-content-center align-items-center">
+                <h2 class="main-logo1 d-flex align-items-center tx-28 logo-heading">
+                    <a href="{{ url('/' . $page='admin') }}" style="text-decoration: none; color: inherit;">
+                   <img src="{{ URL::asset('assets/images/auth/favicon.png') }}" alt="logo" class="logo-img">LouiSoft
+                    </a>
+                </h2>
         </div>
         <ul class="nav">
             <li class="nav-item profile">
                 <div class="profile-desc">
                     <div class="profile-pic">
                         <div class="count-indicator">
-                            <img class="img-xs rounded-circle " src="assets/images/faces/face15.jpg" alt="">
+                            <img class="img-xs rounded-circle " src="assets/images/faces/face.jpg" alt="">
                             <span class="count bg-success"></span>
                         </div>
                         <div class="profile-name">
@@ -47,49 +50,36 @@
                         </div>
                     </div>
                     <a href="#" id="profile-dropdown" data-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
-                    <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list" aria-labelledby="profile-dropdown">
-                        <a href="#" class="dropdown-item preview-item">
+                    <div class="dropdown-menu dropdown-menu-left sidebar-dropdown preview-list" aria-labelledby="profile-dropdown">
+                        <a class="dropdown-item preview-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                             <div class="preview-thumbnail">
-                                <div class="preview-icon bg-dark rounded-circle">
-                                    <i class="mdi mdi-settings text-primary"></i>
-                                </div>
+                                <i class="mdi mdi-logout text-danger"></i>
                             </div>
                             <div class="preview-item-content">
-                                <p class="preview-subject ellipsis mb-1 text-small">Account settings</p>
-                            </div>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item preview-item">
-                            <div class="preview-thumbnail">
-                                <div class="preview-icon bg-dark rounded-circle">
-                                    <i class="mdi mdi-onepassword  text-info"></i>
-                                </div>
-                            </div>
-                            <div class="preview-item-content">
-                                <p class="preview-subject ellipsis mb-1 text-small">Change Password</p>
-                            </div>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item preview-item">
-                            <div class="preview-thumbnail">
-                                <div class="preview-icon bg-dark rounded-circle">
-                                    <i class="mdi mdi-calendar-today text-success"></i>
-                                </div>
-                            </div>
-                            <div class="preview-item-content">
-                                <p class="preview-subject ellipsis mb-1 text-small">To-do list</p>
+                                <p class="preview-subject mb-1">Abmelden</p>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
                             </div>
                         </a>
                     </div>
                 </div>
             </li>
             <li class="nav-item nav-category">
-                <span class="nav-link">Navigation</span>
+                <span class="nav-link">Hauptmenü</span>
+            </li>
+            <li class="nav-item menu-items">
+                <a class="nav-link" href="{{ url('/' . $page='allgemeineinformationen') }}">
+              <span class="menu-icon">
+                <i class="mdi mdi-information-variant"></i>
+              </span>
+                    <span class="menu-title">Allg. Informationen</span>
+                </a>
             </li>
             <li class="nav-item menu-items">
                 <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <span class="menu-icon">
-                <i class="mdi mdi-cellphone-iphone"></i>
+                <i class="mdi mdi mdi-cellphone"></i>
               </span>
                     <span class="menu-title">Handys</span>
                     <i class="menu-arrow"></i>
@@ -104,7 +94,7 @@
             <li class="nav-item menu-items">
                 <a class="nav-link" data-toggle="collapse" href="#ui-basic-1" aria-expanded="false" aria-controls="auth">
               <span class="menu-icon">
-                <i class="mdi mdi-security"></i>
+                <i class="mdi mdi-headphones"></i>
               </span>
                     <span class="menu-title">Zubehör</span>
                     <i class="menu-arrow"></i>
@@ -117,17 +107,9 @@
                 </div>
             </li>
             <li class="nav-item menu-items">
-                <a class="nav-link" href="{{ url('/' . $page='galerie') }}">
-              <span class="menu-icon">
-                <i class="mdi mdi-table-large"></i>
-              </span>
-                    <span class="menu-title">Galerie</span>
-                </a>
-            </li>
-            <li class="nav-item menu-items">
                 <a class="nav-link" data-toggle="collapse" href="#ui-basic-2" aria-expanded="false" aria-controls="auth">
               <span class="menu-icon">
-                <i class="mdi mdi-security"></i>
+                <i class="mdi mdi-library-books"></i>
               </span>
                     <span class="menu-title">Dienstleistungen</span>
                     <i class="menu-arrow"></i>
@@ -140,27 +122,19 @@
                 </div>
             </li>
             <li class="nav-item menu-items">
-                <a class="nav-link" href="{{ url('/' . $page='allgemeineinformationen') }}">
+                <a class="nav-link" href="{{ url('/' . $page='galerie') }}">
               <span class="menu-icon">
-                <i class="mdi mdi-chart-bar"></i>
+                <i class="mdi mdi-collage"></i>
               </span>
-                    <span class="menu-title" style="font-size: 13px;">Allgemeine Informationen</span>
+                    <span class="menu-title">Galerie</span>
                 </a>
             </li>
             <li class="nav-item menu-items">
-                <a class="nav-link" href="pages/icons/mdi.html">
-              <span class="menu-icon">
-                <i class="mdi mdi-contacts"></i>
-              </span>
-                    <span class="menu-title">Icons</span>
-                </a>
-            </li>
-            <li class="nav-item menu-items">
-                <a class="nav-link" href="http://www.bootstrapdash.com/demo/corona-free/jquery/documentation/documentation.html">
+                <a class="nav-link" href="{{ url('/' . $page='dokumentation') }}">
               <span class="menu-icon">
                 <i class="mdi mdi-file-document-box"></i>
               </span>
-                    <span class="menu-title">Documentation</span>
+                    <span class="menu-title">Dokumentation</span>
                 </a>
             </li>
         </ul>
@@ -170,144 +144,68 @@
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar p-0 fixed-top d-flex flex-row">
             <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo-mini" href="{{ url('/' . $page='home') }}"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
+                <a class="navbar-brand brand-logo-mini" href="{{ url('/' . $page='admin') }}"><img src="{{ URL::asset('assets/images/auth/favicon.png') }}" style="width: 2em; height: 2em;" alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
-                <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-                    <span class="mdi mdi-menu"></span>
-                </button>
-                <ul class="navbar-nav w-100">
-                    <li class="nav-item w-100">
-                        <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-                            <input type="text" class="form-control" placeholder="Search products">
-                        </form>
-                    </li>
-                </ul>
+                <ul class="w-100"></ul>
                 <ul class="navbar-nav navbar-nav-right">
-                    <li class="nav-item dropdown d-none d-lg-block">
-                        <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" data-bs-toggle="dropdown" aria-expanded="false" href="#">+ Create New Project</a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="createbuttonDropdown">
-                            <h6 class="p-3 mb-0">Projects</h6>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-dark rounded-circle">
-                                        <i class="mdi mdi-file-outline text-primary"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <p class="preview-subject ellipsis mb-1">Software Development</p>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-dark rounded-circle">
-                                        <i class="mdi mdi-web text-info"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <p class="preview-subject ellipsis mb-1">UI Development</p>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-dark rounded-circle">
-                                        <i class="mdi mdi-layers text-danger"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <p class="preview-subject ellipsis mb-1">Software Testing</p>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <p class="p-3 mb-0 text-center">See all projects</p>
-                        </div>
-                    </li>
-                    <li class="nav-item nav-settings d-none d-lg-block">
-                        <a class="nav-link" href="#">
-                            <i class="mdi mdi-view-grid"></i>
+                    <li class="nav-item nav-settings">
+                        <a class="nav-link" href="#" id="fullscreenBtn">
+                            <i class="mdi mdi-fullscreen" style="font-size: 23px;"></i>
                         </a>
                     </li>
                     <li class="nav-item dropdown border-left">
-                        <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="mdi mdi-email"></i>
-                            <span class="count bg-success"></span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
-                            <h6 class="p-3 mb-0">Messages</h6>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <img src="assets/images/faces/face4.jpg" alt="image" class="rounded-circle profile-pic">
-                                </div>
-                                <div class="preview-item-content">
-                                    <p class="preview-subject ellipsis mb-1">Mark send you a message</p>
-                                    <p class="text-muted mb-0"> 1 Minutes ago </p>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <img src="assets/images/faces/face2.jpg" alt="image" class="rounded-circle profile-pic">
-                                </div>
-                                <div class="preview-item-content">
-                                    <p class="preview-subject ellipsis mb-1">Cregh send you a message</p>
-                                    <p class="text-muted mb-0"> 15 Minutes ago </p>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <img src="assets/images/faces/face3.jpg" alt="image" class="rounded-circle profile-pic">
-                                </div>
-                                <div class="preview-item-content">
-                                    <p class="preview-subject ellipsis mb-1">Profile picture updated</p>
-                                    <p class="text-muted mb-0"> 18 Minutes ago </p>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <p class="p-3 mb-0 text-center">4 new messages</p>
+                        <div class="nav-link nav-itemd-none d-md-flex">
+                            <span class="avatar country-Flag mr-0 align-self-center bg-transparent"><img src="{{URL::asset('assets/images/icons/palestine_flag.png')}}" alt="img"></span>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
+                            <!-- Smaller profile picture for opening dropdown -->
                             <div class="navbar-profile">
-                                <img class="img-xs rounded-circle" src="assets/images/faces/face15.jpg" alt="">
-                                <p class="mb-0 d-none d-sm-block navbar-profile-name">{{Auth::user()->name}}</p>
+                                <img class="img-xs rounded-circle" src="assets/images/faces/face.jpg" alt="" style="width: 35px; height: 35px;"> <!-- Reduced size here -->
+                                <p class="mb-0 d-none d-sm-block navbar-profile-name">{{ Auth::user()->name }}</p>
                                 <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                             </div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
-                            <h6 class="p-3 mb-0">{{Auth::user()->email}}</h6>
+                            <!-- User profile with picture and email in the dropdown -->
+                            <div class="dropdown-item preview-item" style="display: flex; flex-direction: column; align-items: center;  pointer-events: none;">
+                                <img class="img-md rounded-circle mb-2" src="assets/images/faces/face.jpg" alt="" style="width: 50px; height: 50px;"> <!-- This size remains as it is -->
+                                <p class="mb-0 font-weight-bold">{{ Auth::user()->name }}</p>
+                                <p class="text-muted small">{{ Auth::user()->email }}</p>
+                            </div>
+
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item preview-item">
+
+                            <!-- Logout Button -->
+                            <a style="height: 40px;" class="dropdown-item preview-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                 <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-dark rounded-circle">
-                                        <i class="mdi mdi-settings text-success"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <p class="preview-subject mb-1">Settings</p>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item preview-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-dark rounded-circle">
+                                    <div class="preview-icon menu-icon rounded-circle">
                                         <i class="mdi mdi-logout text-danger"></i>
                                     </div>
                                 </div>
                                 <div class="preview-item-content">
-                                    <p class="preview-subject mb-1">Log out</p>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
+                                    <p class="preview-subject mb-1">Abmelden</p>
+                                </div>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </a>
+
+                            <div class="dropdown-divider"></div>
+
+                            <!-- Support Button -->
+                            <a style="height: 40px;" class="dropdown-item preview-item" href="https://mail.google.com/mail/?view=cm&fs=1&to=louioklaa2001@gmail.com" target="_blank">
+                                <div class="preview-thumbnail">
+                                    <div class="preview-icon rounded-circle">
+                                        <i class="mdi mdi-contact-mail text-primary"></i>
+                                    </div>
+                                </div>
+                                <div class="preview-item-content">
+                                    <p class="preview-subject mb-1">Support</p>
                                 </div>
                             </a>
-                            <div class="dropdown-divider"></div>
-                            <p class="p-3 mb-0 text-center">Advanced settings</p>
                         </div>
                     </li>
                 </ul>
@@ -322,10 +220,7 @@
 
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
-            <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2021</span>
-                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin template</a> from Bootstrapdash.com</span>
-            </div>
+            <div class="footer-copyrights text-center top-separator ins-md" style="font-size: 15px; font-weight: bolder;">&copy; <script>document.write(new Date().getFullYear());</script> <a href="https://www.linkedin.com/in/loui-oklaa/"  style="font-weight: bolder; color: #0162E8">Loui Oklaa</a> Alle Rechte vorbehalten.</div>
         </footer>
         <!-- partial -->
     </div>
@@ -365,6 +260,20 @@
 <script src="js/now-ui-kit.js?ver=1.1.0"></script>
 <script src="js/aos.js?ver=1.1.0"></script>
 <script src="scripts/main.js?ver=1.1.0"></script>
+<script>
+    // Add click event listener to the icon
+    document.getElementById('fullscreenBtn').addEventListener('click', function() {
+        if (!document.fullscreenElement) {
+            // Enter full screen
+            document.documentElement.requestFullscreen().catch(err => {
+                console.log(`Error: ${err.message}`); // Handle errors
+            });
+        } else {
+            // Exit full screen
+            document.exitFullscreen();
+        }
+    });
+</script>
 
 @yield('JS')
 

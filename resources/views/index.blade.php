@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<title>ProFix - Computer & Mobile Phone Repair Service Company HTML5 Template</title>
+<title>Phone Finity</title>
 
 
 
@@ -59,7 +59,7 @@
 
 <link href="./assets/css/pex-theme.css" rel="stylesheet" type="text/css">
 
-
+<link rel="shortcut icon" href="{{ asset('assets/images/icons/icon.png') }}" />
 
 
 </head>
@@ -431,130 +431,30 @@
 </div>
 <div class="row cols-md rows-md">
 
+@foreach($handys->take(6) as $one)
 
 <div class="md-col-4 sm-col-6">
 <div class="item" data-inview-showup="showup-translate-up">
-<a href="service.html" class="block-link text-center">
-<span class="image-wrap"><img class="image" src="http://via.placeholder.com/720x405" alt="" /></span>
+<a href="{{asset( 'Attachments/Handys/' . $one->image)}}" class="block-link text-center">
+<span class="image-wrap"><img class="image" src="{{url('/Attachments/Handys/' .$one->image)}}" alt="" /></span>
 <span class="hover">
 <span class="hover-show">
 <span class="back"></span>
-<span class="content"><i class="fas fa-search" aria-hidden="true"></i></span>
 </span>
 </span>
 </a>
 <div class="item-content">
-<div class="item-title text-upper"><a href="service.html">Data backup &amp; recovery</a></div>
-<div class="item-text">We working hard to build a reputation of customer satisfaction through technical excellence and friendly staff
-</div>
-<a href="service.html" class="btn btn-md btns-bordered pull-right text-upper">read more</a>
-</div>
-</div>
-</div>
-
-
-<div class="md-col-4 sm-col-6">
-<div class="item" data-inview-showup="showup-translate-up">
-<a href="service.html" class="block-link text-center">
-<span class="image-wrap"><img class="image" src="http://via.placeholder.com/720x405" alt="" /></span>
-<span class="hover">
-<span class="hover-show">
-<span class="back"></span>
-<span class="content"><i class="fas fa-search" aria-hidden="true"></i></span>
-</span>
-</span>
-</a>
-<div class="item-content">
-<div class="item-title text-upper"><a href="service.html">Laptop &amp; Mac Upgrade</a></div>
-<div class="item-text">We working hard to build a reputation of customer satisfaction through technical excellence and friendly staff
-</div>
-<a href="service.html" class="btn btn-md btns-bordered pull-right text-upper">read more</a>
+<div class="item-title text-upper text-center">{{$one->name}}</div>
+<div><b class="item-title">Zustand : </b><b>{{$one->status}}</b></div>
+<div><b class="item-title">Preis : </b><b>{{$one->preis}}€</b></div>
+<div><b class="item-title">Hersteller : </b><b>{{$one->section_name}}</b></div>
+<div><b class="item-title">Spezifikationen : </b><b>{{$one->note}}</b></div>
 </div>
 </div>
 </div>
 
+@endforeach
 
-<div class="md-col-4 sm-col-6">
-<div class="item" data-inview-showup="showup-translate-up">
-<a href="service.html" class="block-link text-center">
-<span class="image-wrap"><img class="image" src="http://via.placeholder.com/720x405" alt="" /></span>
-<span class="hover">
-<span class="hover-show">
-<span class="back"></span>
-<span class="content"><i class="fas fa-search" aria-hidden="true"></i></span>
-</span>
-</span>
-</a>
-<div class="item-content">
-<div class="item-title text-upper"><a href="service.html">Repair Smartphone</a></div>
-<div class="item-text">We working hard to build a reputation of customer satisfaction through technical excellence and friendly staff
-</div>
-<a href="service.html" class="btn btn-md btns-bordered pull-right text-upper">read more</a>
-</div>
-</div>
-</div>
-
-
-<div class="md-col-4 sm-col-6">
-<div class="item" data-inview-showup="showup-translate-up">
-<a href="service.html" class="block-link text-center">
-<span class="image-wrap"><img class="image" src="http://via.placeholder.com/720x405" alt="" /></span>
-<span class="hover">
-<span class="hover-show">
-<span class="back"></span>
-<span class="content"><i class="fas fa-search" aria-hidden="true"></i></span>
-</span>
-</span>
-</a>
-<div class="item-content">
-<div class="item-title text-upper"><a href="service.html">Tablet Repair</a></div>
-<div class="item-text">We working hard to build a reputation of customer satisfaction through technical excellence and friendly staff
-</div>
-<a href="service.html" class="btn btn-md btns-bordered pull-right text-upper">read more</a>
-</div>
-</div>
-</div>
-
-
-<div class="md-col-4 sm-col-6">
-<div class="item" data-inview-showup="showup-translate-up">
-<a href="service.html" class="block-link text-center">
-<span class="image-wrap"><img class="image" src="http://via.placeholder.com/720x405" alt="" /></span>
-<span class="hover">
-<span class="hover-show">
-<span class="back"></span>
-<span class="content"><i class="fas fa-search" aria-hidden="true"></i></span>
-</span>
-</span>
-</a>
-<div class="item-content">
-<div class="item-title text-upper"><a href="service.html">Repair PC &amp; Laptop Hardware</a></div>
-<div class="item-text">We working hard to build a reputation of customer satisfaction through technical excellence and friendly staff
-</div>
-<a href="service.html" class="btn btn-md btns-bordered pull-right text-upper">read more</a>
-</div>
-</div>
-</div>
-
-<div class="md-col-4 sm-col-6">
-<div class="item" data-inview-showup="showup-translate-up">
-<a href="service.html" class="block-link text-center">
-<span class="image-wrap"><img class="image" src="http://via.placeholder.com/720x405" alt="" /></span>
-<span class="hover">
-<span class="hover-show">
-<span class="back"></span>
-<span class="content"><i class="fas fa-search" aria-hidden="true"></i></span>
-</span>
-</span>
-</a>
-<div class="item-content">
-<div class="item-title text-upper"><a href="service.html">Network Solution</a></div>
-<div class="item-text">We working hard to build a reputation of customer satisfaction through technical excellence and friendly staff
-</div>
-<a href="service.html" class="btn btn-md btns-bordered pull-right text-upper">read more</a>
-</div>
-</div>
-</div>
 
 </div>
 <div class="text-center shift-xl">
@@ -586,137 +486,77 @@
 
 <div class="section-head text-center container-md">
 
+<h2 class="section-title text-upper text-lg" data-inview-showup="showup-translate-right">Zubehör</h2>
+
+<p data-inview-showup="showup-translate-left">Wir bieten eine breite Auswahl an Zubehör in bester Qualität an.</p>
+</div>
+<div class="row cols-md rows-md">
+
+@foreach($accessories->take(3) as $one)
+
+<div class="md-col-4 sm-col-6">
+<div class="item" data-inview-showup="showup-translate-up">
+<a href="{{asset( 'Attachments/Accessories/' . $one->image)}}" class="block-link text-center">
+<span class="image-wrap"><img class="image" src="{{url('/Attachments/Accessories/' .$one->image)}}" alt="" /></span>
+<span class="hover">
+<span class="hover-show">
+<span class="back"></span>
+</span>
+</span>
+</a>
+<div class="item-content">
+<div class="item-title text-upper text-center">{{$one->name}}</div>
+<div><b class="item-title">Art : </b><b>{{$one->section_name}}</b></div>
+<div><b class="item-title">Typ : </b><b>{{$one->brand}}</b></div>
+<div><b class="item-title">Preis : </b><b>{{$one->price}}€</b></div>
+    @if(!empty($one->note))
+<div><b class="item-title">Spezifikationen : </b><b>{{$one->note}}</b></div>
+    @endif
+</div>
+</div>
+</div>
+@endforeach
+
+</div>
+<div class="text-center shift-xl">
+<a class="btn text-upper" href="services.html" data-inview-showup="showup-translate-up"><i class="fas fa-th-large" aria-hidden="true"></i>&nbsp;&nbsp;Alle Dienstleistungen anzeigen</a>
+</div>
+
+</div>
+</section>
+
+<section class="muted-bg solid-section">
+<div class="container">
+
+<div class="section-head text-center container-md">
+
 <h2 class="section-title text-upper text-lg" data-inview-showup="showup-translate-right">Dienstleistungen</h2>
 
 <p data-inview-showup="showup-translate-left">Wir bieten ein umfassendes Angebot an Reparaturdiensten, die von einem erfahrenen und spezialisierten Team durchgeführt werden.</p>
 </div>
 <div class="row cols-md rows-md">
 
+@foreach($services->take(3) as $one)
 
 <div class="md-col-4 sm-col-6">
 <div class="item" data-inview-showup="showup-translate-up">
-<a href="service.html" class="block-link text-center">
-<span class="image-wrap"><img class="image" src="http://via.placeholder.com/720x405" alt="" /></span>
+<a href="{{asset( 'Attachments/Services/' . $one->image)}}" class="block-link text-center">
+<span class="image-wrap"><img class="image" src="{{url('/Attachments/Services/' .$one->image)}}" alt="" /></span>
 <span class="hover">
 <span class="hover-show">
 <span class="back"></span>
-<span class="content"><i class="fas fa-search" aria-hidden="true"></i></span>
 </span>
 </span>
 </a>
 <div class="item-content">
-<div class="item-title text-upper"><a href="service.html">Data backup &amp; recovery</a></div>
-<div class="item-text">We working hard to build a reputation of customer satisfaction through technical excellence and friendly staff
-</div>
-<a href="service.html" class="btn btn-md btns-bordered pull-right text-upper">read more</a>
-</div>
-</div>
-</div>
-
-
-<div class="md-col-4 sm-col-6">
-<div class="item" data-inview-showup="showup-translate-up">
-<a href="service.html" class="block-link text-center">
-<span class="image-wrap"><img class="image" src="http://via.placeholder.com/720x405" alt="" /></span>
-<span class="hover">
-<span class="hover-show">
-<span class="back"></span>
-<span class="content"><i class="fas fa-search" aria-hidden="true"></i></span>
-</span>
-</span>
-</a>
-<div class="item-content">
-<div class="item-title text-upper"><a href="service.html">Laptop &amp; Mac Upgrade</a></div>
-<div class="item-text">We working hard to build a reputation of customer satisfaction through technical excellence and friendly staff
-</div>
-<a href="service.html" class="btn btn-md btns-bordered pull-right text-upper">read more</a>
+<div class="item-title text-upper text-center">{{$one->name}}</div>
+<div><b class="item-title">Typ : </b><b>{{$one->section_name}}</b></div>
+<div><b class="item-title">Preis : </b><b>Ab  {{$one->price}}€</b></div>
+<div><b class="item-title">Dauer : </b><b>{{$one->note}}</b></div>
 </div>
 </div>
 </div>
-
-
-<div class="md-col-4 sm-col-6">
-<div class="item" data-inview-showup="showup-translate-up">
-<a href="service.html" class="block-link text-center">
-<span class="image-wrap"><img class="image" src="http://via.placeholder.com/720x405" alt="" /></span>
-<span class="hover">
-<span class="hover-show">
-<span class="back"></span>
-<span class="content"><i class="fas fa-search" aria-hidden="true"></i></span>
-</span>
-</span>
-</a>
-<div class="item-content">
-<div class="item-title text-upper"><a href="service.html">Repair Smartphone</a></div>
-<div class="item-text">We working hard to build a reputation of customer satisfaction through technical excellence and friendly staff
-</div>
-<a href="service.html" class="btn btn-md btns-bordered pull-right text-upper">read more</a>
-</div>
-</div>
-</div>
-
-
-<div class="md-col-4 sm-col-6">
-<div class="item" data-inview-showup="showup-translate-up">
-<a href="service.html" class="block-link text-center">
-<span class="image-wrap"><img class="image" src="http://via.placeholder.com/720x405" alt="" /></span>
-<span class="hover">
-<span class="hover-show">
-<span class="back"></span>
-<span class="content"><i class="fas fa-search" aria-hidden="true"></i></span>
-</span>
-</span>
-</a>
-<div class="item-content">
-<div class="item-title text-upper"><a href="service.html">Tablet Repair</a></div>
-<div class="item-text">We working hard to build a reputation of customer satisfaction through technical excellence and friendly staff
-</div>
-<a href="service.html" class="btn btn-md btns-bordered pull-right text-upper">read more</a>
-</div>
-</div>
-</div>
-
-
-<div class="md-col-4 sm-col-6">
-<div class="item" data-inview-showup="showup-translate-up">
-<a href="service.html" class="block-link text-center">
-<span class="image-wrap"><img class="image" src="http://via.placeholder.com/720x405" alt="" /></span>
-<span class="hover">
-<span class="hover-show">
-<span class="back"></span>
-<span class="content"><i class="fas fa-search" aria-hidden="true"></i></span>
-</span>
-</span>
-</a>
-<div class="item-content">
-<div class="item-title text-upper"><a href="service.html">Repair PC &amp; Laptop Hardware</a></div>
-<div class="item-text">We working hard to build a reputation of customer satisfaction through technical excellence and friendly staff
-</div>
-<a href="service.html" class="btn btn-md btns-bordered pull-right text-upper">read more</a>
-</div>
-</div>
-</div>
-
-
-<div class="md-col-4 sm-col-6">
-<div class="item" data-inview-showup="showup-translate-up">
-<a href="service.html" class="block-link text-center">
-<span class="image-wrap"><img class="image" src="http://via.placeholder.com/720x405" alt="" /></span>
-<span class="hover">
-<span class="hover-show">
-<span class="back"></span>
-<span class="content"><i class="fas fa-search" aria-hidden="true"></i></span>
-</span>
-</span>
-</a>
-<div class="item-content">
-<div class="item-title text-upper"><a href="service.html">Network Solution</a></div>
-<div class="item-text">We working hard to build a reputation of customer satisfaction through technical excellence and friendly staff
-</div>
-<a href="service.html" class="btn btn-md btns-bordered pull-right text-upper">read more</a>
-</div>
-</div>
-</div>
+@endforeach
 
 </div>
 <div class="text-center shift-xl">
@@ -1103,7 +943,7 @@ search
 </div>
 </div>
 </div>
-<div class="footer-copyrights text-center top-separator ins-md">&copy; <script>document.write(new Date().getFullYear());</script> <b>Loui Oklaa</b> Alle Rechte vorbehalten.</div>
+<div class="footer-copyrights text-center top-separator ins-md">&copy; <script>document.write(new Date().getFullYear());</script> <a href="https://www.linkedin.com/in/loui-oklaa/"  style="font-weight: bolder;">Loui Oklaa</a> Alle Rechte vorbehalten.</div>
 </div>
 </footer>
 

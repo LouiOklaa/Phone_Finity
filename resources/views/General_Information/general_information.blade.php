@@ -1,4 +1,7 @@
 @extends('master')
+@section('title')
+    Allgemeine Informationen
+@endsection
 @section('contents')
 
     <!-- partial -->

@@ -1,4 +1,7 @@
 @extends('master')
+@section('title')
+    Zubehör
+@endsection
 @section('contents')
 
     <!-- partial -->
@@ -83,7 +86,7 @@
                                                 <td>{{$one->note}}</td>
                                                 <td><a href="{{asset( 'Attachments/Accessories/' . $one->image)}}"><img src="Attachments/Accessories/{{$one->image}}" style="height:30px; width:50px; border-radius: 0;"></a></td>
                                                 <td>
-                                                    <button class="btn btn-sm btn-rounded btn-inverse-primary" href="#edit_modal" title="Edit" data-id="{{$one->id}}" data-name="{{$one->name}}"  data-section_name="{{$one->section_name}}" data-brand="{{$one->brand}}" data-price="{{$one->price}}" data-note="{{$one->note}}"  data-toggle="modal">Bearbeitens</button>
+                                                    <button class="btn btn-sm btn-rounded btn-inverse-primary" href="#edit_modal" title="Edit" data-id="{{$one->id}}" data-name="{{$one->name}}"  data-section_name="{{$one->section_name}}" data-brand="{{$one->brand}}" data-price="{{$one->price}}" data-note="{{$one->note}}"  data-toggle="modal">Bearbeiten</button>
                                                     <button class="btn btn-sm btn-rounded btn-inverse-danger" title="Delete" href="#delete_modal" data-id="{{$one->id}}" data-name="{{$one->name}}" data-toggle="modal">Löschen</button>
                                                 </td>
                                             </tr>

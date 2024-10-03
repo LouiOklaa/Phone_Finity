@@ -31,15 +31,20 @@ Route::get('/', function () {
 
 Auth::routes(['register' => false ,'reset' => false ,'verify' => false ,'confirm' => false]);
 
-Route::get('/', [ViewController::class, 'index']);
-Route::get('/admin', [HomeController::class, 'index']);
-Route::resource('handys', HandysController::class);
-Route::resource('abschnitte', AbschnitteController::class);
-Route::resource('zubehör_abschnitte', AccessoriesSectionsController::class);
-Route::resource('zubehör', AccessoriesController::class);
-Route::resource('galerie', GalleryController::class);
-Route::resource('dienstleistungen', ServicesController::class);
-Route::resource('dienstleistungensbereich', ServicesSectionsController::class);
-Route::resource('allgemeineinformationen', GeneralInformationController::class);
+Route::group(['middleware' => 'auth'], function () {
 
+    Route::get('/admin', [HomeController::class, 'index']);
+    Route::resource('handys', HandysController::class);
+    Route::resource('abschnitte', AbschnitteController::class);
+    Route::resource('zubehör_abschnitte', AccessoriesSectionsController::class);
+    Route::resource('zubehör', AccessoriesController::class);
+    Route::resource('galerie', GalleryController::class);
+    Route::resource('dienstleistungen', ServicesController::class);
+    Route::resource('dienstleistungensbereich', ServicesSectionsController::class);
+    Route::resource('allgemeineinformationen', GeneralInformationController::class);
+    Route::get('/dokumentation', function () { return view('Documentation.documentation'); });
+
+});
+
+Route::get('/', [ViewController::class, 'index']);
 Route::get('/{page}', [AdminController::class, 'index']);

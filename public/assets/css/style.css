@@ -21288,4 +21288,134 @@ div.tagsinput {
 .img-raised {
     box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.3); }
 
+/* General styling */
+.logo-heading {
+    font-size: 28px;
+    margin-top: 10px;
+    margin-bottom: -60px;
+    margin-right: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Ensure the content is centered */
+    flex-direction: row; /* Ensure logo and text are aligned horizontally */
+}
+
+.logo-img {
+    width: 1.2em;
+    height: 1.2em;
+    margin-bottom: 9px;
+    margin-right: 10px;
+}
+
+/* Styling for medium screens (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .logo-heading {
+        font-size: 24px;  /* Slightly smaller font size for medium screens */
+        margin-bottom: 0;  /* Fix bottom margin */
+        margin-right: 30px;  /* Adjust right margin */
+        text-align: left;  /* Align text to the left for medium screens */
+    }
+
+    .logo-img {
+        width: 1.3em;  /* Slightly larger icon size */
+        height: 1.3em;
+        margin-right: 8px;  /* Adjust space between logo and text */
+    }
+}
+
+/* Styling for mobile screens (up to 768px) */
+@media (max-width: 768px) {
+    .logo-heading {
+        font-size: 20px;  /* Adjust font size for smaller screens */
+        margin-bottom: 20px;  /* Adjust bottom margin */
+        margin-right: 70px;  /* Adjust right margin */
+        text-align: center;  /* Center the text */
+        flex-direction: row;  /* Keep the logo and text side by side on mobile */
+    }
+
+    .logo-img {
+        width: 1.5em;  /* Adjust icon size for mobile */
+        height: 1.5em;
+        margin-right: 5px;  /* Adjust space between logo and text */
+    }
+}
+
+
+
+/* Default for larger screens */
+.navbar-profile img {
+    width: 35px; /* Reduced size of the main profile picture */
+    height: 35px;
+}
+
+.preview-item-content {
+    font-size: 16px;
+}
+
+.preview-thumbnail .preview-icon {
+    width: 30px;
+    height: 30px;
+}
+
+/* Medium screen improvements (for screens between 768px and 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .navbar-profile img {
+        width: 40px; /* Slightly larger profile picture for medium screens */
+        height: 40px;
+    }
+
+    .dropdown-menu {
+        max-width: 250px; /* Increase dropdown size slightly for medium screens */
+        width: 85%; /* Use 85% width for better alignment */
+        padding: 10px;
+        top: 50px; /* Ensure the dropdown does not overlap the profile picture */
+    }
+
+    .preview-item-content {
+        font-size: 14px; /* Slightly smaller font size */
+    }
+
+    .preview-thumbnail .preview-icon {
+        width: 25px; /* Medium size for icons */
+        height: 25px;
+    }
+
+    .dropdown-item {
+        padding: 8px 15px; /* Adjust padding for medium screens */
+    }
+}
+
+/* Mobile improvements using media queries (below 768px) */
+@media (max-width: 768px) {
+    /* Reduce size for mobile screens */
+    .navbar-profile img {
+        width: 30px;
+        height: 30px;
+    }
+
+    /* Smaller icons in the dropdown for mobile */
+    .preview-thumbnail .preview-icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* Reduce font size inside the dropdown for mobile */
+    .preview-item-content {
+        font-size: 12px;
+    }
+
+    /* Reduce dropdown size and adjust width */
+    .dropdown-menu {
+        max-width: 200px;
+        width: 85%; /* Adjust width for small screens */
+        padding: 5px;
+        top: 50px; /* Ensure dropdown does not overlap profile picture */
+    }
+
+    /* Reduce padding inside dropdown items */
+    .dropdown-item {
+        padding: 5px 10px;
+    }
+}
+
 /*# sourceMappingURL=maps/style.css.map */

@@ -1,4 +1,7 @@
 @extends('master')
+@section('title')
+    Dienstleistungensbereich
+@endsection
 @section('contents')
 
     <!-- partial -->
@@ -96,7 +99,7 @@
                                             <td>{{$one->name}}</td>
                                             <td>{{$one->note}}</td>
                                             <td>
-                                                <button class="btn btn-sm btn-rounded btn-inverse-primary" href="#edit_modal" title="Edit" data-id="{{$one->id}}" data-name="{{$one->name}}" data-note="{{$one->note}}"   data-toggle="modal">Bearbeitens</button>
+                                                <button class="btn btn-sm btn-rounded btn-inverse-primary" href="#edit_modal" title="Edit" data-id="{{$one->id}}" data-name="{{$one->name}}" data-note="{{$one->note}}"   data-toggle="modal">Bearbeiten</button>
                                                 <button class="btn btn-sm btn-rounded btn-inverse-danger" title="Delete" href="#delete_modal" data-id="{{$one->id}}" data-name="{{$one->name}}" data-toggle="modal">Löschen</button>
                                             </td>
                                         </tr>

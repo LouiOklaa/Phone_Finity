@@ -1,4 +1,7 @@
 @extends('master')
+@section('title')
+    Galerie
+@endsection
 @section('contents')
     <!-- partial -->
     <div class="main-panel">
@@ -83,7 +86,7 @@
                                                 </div>
                                                 <br>
                                                 <div class="text-center" style="margin-bottom: 10px;">
-                                                    <button class="btn btn-sm btn-rounded btn-inverse-primary" href="#edit_modal" title="Edit" data-id="{{$one->id}}" data-name="{{$one->name}}" data-note="{{$one->note}}" data-toggle="modal">Bearbeitens</button>
+                                                    <button class="btn btn-sm btn-rounded btn-inverse-primary" href="#edit_modal" title="Edit" data-id="{{$one->id}}" data-name="{{$one->name}}" data-note="{{$one->note}}" data-toggle="modal">Bearbeiten</button>
                                                     <button class="btn btn-sm btn-rounded btn-inverse-danger" href="#delete_modal" title="Delete" data-id="{{$one->id}}" data-name="{{$one->name}}" data-toggle="modal">Löschen</button>
                                                 </div>
                                             </div>
@@ -110,7 +113,7 @@
                                                 </div>
                                                 <br>
                                                 <div class="text-center" style="margin-bottom: 10px;">
-                                                    <button class="btn btn-sm btn-rounded btn-inverse-primary" href="#edit_modal" title="Edit" data-id="{{$one->id}}" data-name="{{$one->name}}" data-note="{{$one->note}}" data-toggle="modal">Bearbeitens</button>
+                                                    <button class="btn btn-sm btn-rounded btn-inverse-primary" href="#edit_modal" title="Edit" data-id="{{$one->id}}" data-name="{{$one->name}}" data-note="{{$one->note}}" data-toggle="modal">Bearbeiten</button>
                                                     <button class="btn btn-sm btn-rounded btn-inverse-danger" href="#delete_modal" title="Delete" data-id="{{$one->id}}" data-name="{{$one->name}}" data-toggle="modal">Löschen</button>
                                                 </div>
                                             </div>
