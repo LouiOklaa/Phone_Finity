@@ -78,7 +78,7 @@
 <div class="cols-list pull-left cols-md">
 
 
-<div class="list-item"><span class="info-icon"><i class="fas fa-home" style="color: #CA5098;" aria-hidden="true"></i></span>S{{$information->address}}</div>
+<div class="list-item"><span class="info-icon"><i class="fas fa-home" style="color: #CA5098;" aria-hidden="true"></i></span>{{$information->address}}</div>
 
 <div class="list-item"><span class="info-icon"><i class="fas fa-phone" style="color: #CA5098;"></i></span>Hilfe : {{$information->phone_number}}
 </div>
@@ -169,7 +169,7 @@
 
 
 
-<img src="{{url('/assets/images/home-page/Home-page-1.jpg')}}" alt="" data-cover-image="true" />
+<img src="{{url('/Attachments/Home_Page/' .$information->img1)}}" alt="" data-cover-image="true" />
 
 <div class="theme-back"></div>
 
@@ -197,7 +197,7 @@
 
 
 
-<img src="{{url('/assets/images/home-page/Home-page-2.jpg')}}" alt="" data-cover-image="true" />
+<img src="{{url('/Attachments/Home_Page/' .$information->img2)}}" alt="" data-cover-image="true" />
 
 <div class="theme-back"></div>
 
@@ -224,7 +224,7 @@
 
 
 
-<img src="{{url('/assets/images/home-page/Home-page-3.jpg')}}" alt="" data-cover-image="true" />
+<img src="{{url('/Attachments/Home_Page/' .$information->img3)}}" alt="" data-cover-image="true" />
 
 <div class="theme-back"></div>
 
@@ -395,7 +395,7 @@
 </div>
 <section class="with-bg solid-section">
 
-<div class="fix-image-wrap" data-image-src="{{url('/assets/images/home-page/Home-page-4.jpg')}}" data-parallax="scroll"></div>
+<div class="fix-image-wrap" data-image-src="{{url('/Attachments/Home_Page/' .$information->img4)}}" data-parallax="scroll"></div>
 <div class="theme-back inner-shadow"></div>
 <div class="container text-center">
 

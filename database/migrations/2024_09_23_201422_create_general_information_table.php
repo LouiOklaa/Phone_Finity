@@ -20,6 +20,10 @@ return new class extends Migration
             $table->string('facebook_link')->nullable();
             $table->string('instagram_link')->nullable();
             $table->string('tiktok_link')->nullable();
+            $table->string('img1')->nullable();
+            $table->string('img2')->nullable();
+            $table->string('img3')->nullable();
+            $table->string('img4')->nullable();
             $table->timestamps();
         });
     }

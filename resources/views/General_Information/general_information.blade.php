@@ -4,25 +4,9 @@
     <!-- partial -->
     <div class="main-panel">
         <div class="content-wrapper">
-            @if (session()->has('Add'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>{{ session()->get('Add') }}</strong>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            @endif
             @if (session()->has('Edit'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <strong>{{ session()->get('Edit') }}</strong>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            @endif
-            @if (session()->has('Delete'))
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>{{ session()->get('Delete') }}</strong>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -104,6 +88,26 @@
                                     <label for="language">TikTok Link</label>
                                     <input type="text" class="form-control" id="tiktok_link" name="tiktok_link" placeholder="{{$information->tiktok_link}}" readonly style="background: #2A3038">
                                 </div>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                        <tr class="text-center">
+                                            <th> Startseitenfoto 1 </th>
+                                            <th> Startseitenfoto 2 </th>
+                                            <th> Startseitenfoto 3 </th>
+                                            <th> Startseitenfoto 4 </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="text-center">
+                                                <td><a href="{{asset( 'Attachments/Home_Page/' . $information->img1)}}"><img src="Attachments/Home_Page/{{$information->img1}}" style="height:30px; width:50px; border-radius: 0;"></a></td>
+                                                <td><a href="{{asset( 'Attachments/Home_Page/' . $information->img2)}}"><img src="Attachments/Home_Page/{{$information->img2}}" style="height:30px; width:50px; border-radius: 0;"></a></td>
+                                                <td><a href="{{asset( 'Attachments/Home_Page/' . $information->img3)}}"><img src="Attachments/Home_Page/{{$information->img3}}" style="height:30px; width:50px; border-radius: 0;"></a></td>
+                                                <td><a href="{{asset( 'Attachments/Home_Page/' . $information->img4)}}"><img src="Attachments/Home_Page/{{$information->img4}}" style="height:30px; width:50px; border-radius: 0;"></a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -118,7 +122,7 @@
                                 <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
                             </div>
                             <div class="modal-body">
-                                <form action="allgemeineinformationen/update" method="post" autocomplete="off">
+                                <form action="allgemeineinformationen/update" method="post" enctype="multipart/form-data" autocomplete="off">
                                     {{method_field('patch')}}
                                     {{csrf_field()}}
                                     <div class="modal-body">
@@ -150,6 +154,30 @@
                                         <div class="form-group">
                                             <label for="tiktok_link" class="col-form-label">TikTok Link :</label>
                                             <input class="form-control" name="tiktok_link" id="tiktok_link" type="text" style="color: #6C7293">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Startseitenfoto 1</label>
+                                        <div class="col-sm-12 col-md-12">
+                                            <input type="file" id="img1" name="img1" class="dropify" accept=".jpg, .png, image/jpeg, image/png" data-height="30" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Startseitenfoto 2</label>
+                                        <div class="col-sm-12 col-md-12">
+                                            <input type="file" id="img2" name="img2" class="dropify" accept=".jpg, .png, image/jpeg, image/png" data-height="30" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Startseitenfoto 3</label>
+                                        <div class="col-sm-12 col-md-12">
+                                            <input type="file" id="img3" name="img3" class="dropify" accept=".jpg, .png, image/jpeg, image/png" data-height=30" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Startseitenfoto 4</label>
+                                        <div class="col-sm-12 col-md-12">
+                                            <input type="file" id="img4" name="img4" class="dropify" accept=".jpg, .png, image/jpeg, image/png" data-height="30" />
                                         </div>
                                     </div>
                                     <div class="modal-footer">

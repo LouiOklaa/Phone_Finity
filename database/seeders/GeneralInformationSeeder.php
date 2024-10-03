@@ -21,6 +21,10 @@ class GeneralInformationSeeder extends Seeder
             'facebook_link' => 'https://www.facebook.com/',
             'instagram_link' => 'https://www.instagram.com/',
             'tiktok_link' => 'https://www.tiktok.com/',
+            'img1' => 'Home-page-1.jpg',
+            'img2' => 'Home-page-2.jpg',
+            'img3' => 'Home-page-3.jpg',
+            'img4' => 'Home-page-4.jpg',
         ]);
     }
 }

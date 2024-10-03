@@ -17,5 +17,9 @@ class GeneralInformation extends Model
         'facebook_link',
         'instagram_link',
         'tiktok_link',
+        'img1',
+        'img2',
+        'img3',
+        'img4',
     ];
 }

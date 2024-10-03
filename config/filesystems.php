@@ -64,6 +64,11 @@ return [
             'root'   => public_path() . '\Attachments\Services',
         ],
 
+        'public_home-page' => [
+            'driver' => 'local',
+            'root'   => public_path() . '\Attachments\Home_Page',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

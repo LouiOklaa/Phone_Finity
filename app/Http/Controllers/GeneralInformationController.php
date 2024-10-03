@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\GeneralInformation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class GeneralInformationController extends Controller
 {
@@ -53,7 +54,6 @@ class GeneralInformationController extends Controller
      */
     public function update(Request $request)
     {
-        $id = $request->id;
 
         $this->validate($request, [
 
@@ -77,7 +77,7 @@ class GeneralInformationController extends Controller
 
         ]);
 
-        $information = GeneralInformation::find($id);
+        $information = GeneralInformation::findOrFail($request->id);
         $information->update([
             'phone_number' => $request->phone_number,
             'address' => $request->address,
@@ -88,7 +88,60 @@ class GeneralInformationController extends Controller
             'tiktok_link' => $request->tiktok_link,
         ]);
 
-        session()->flash('edit','Die Informationen wurden erfolgreich geändert');
+        if ($request->hasFile('img1')){
+
+            Storage::disk('public_home-page')->delete($information->img1);
+
+            $img1 = $request->file('img1');
+            $file_name1 = rand() . '.' . $img1->getClientOriginalExtension();
+            $information->img1 = $file_name1;
+            $information->save();
+
+            // Move File
+            $request->img1->move(public_path('Attachments/Home_Page'), $file_name1);
+        }
+
+        if ($request->hasFile('img2')){
+
+            Storage::disk('public_home-page')->delete($information->img2);
+
+            $img2 = $request->file('img2');
+            $file_name2 = rand() . '.' . $img2->getClientOriginalExtension();
+            $information->img2 = $file_name2;
+            $information->save();
+
+            // Move File
+            $request->img2->move(public_path('Attachments/Home_Page'), $file_name2);
+        }
+
+        if ($request->hasFile('img3')){
+
+            Storage::disk('public_home-page')->delete($information->img3);
+
+            $img3 = $request->file('img3');
+            $file_name3 = rand() . '.' . $img3->getClientOriginalExtension();
+            $information->img3 = $file_name3;
+            $information->save();
+
+            // Move File
+            $request->img3->move(public_path('Attachments/Home_Page'), $file_name3);
+        }
+
+        if ($request->hasFile('img4')){
+
+            Storage::disk('public_home-page')->delete($information->img4);
+
+            $img4 = $request->file('img4');
+            $file_name4 = rand() . '.' . $img4->getClientOriginalExtension();
+            $information->img4 = $file_name4;
+            $information->save();
+
+            // Move File
+            $request->img4->move(public_path('Attachments/Home_Page'), $file_name4);
+        }
+
+
+        session()->flash('Edit','Die Informationen wurden erfolgreich geändert');
         return back();
     }
 
