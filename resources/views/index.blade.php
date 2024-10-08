@@ -104,7 +104,7 @@
 
 <nav class="stick-menu menu-wrap simple line transparent">
 <div class="menu-container menu-row">
-<div class="logo"><a href="index.html"><img src="{{url('/assets/images/icons/phonephinity.png')}}" alt="ProFix" /></a></div>
+<div class="logo"><a href="{{url('/')}}"><img src="{{url('/assets/images/icons/phonefinity.png')}}" alt="Phone_Finity" /></a></div>
 <div class="header-toggler pull-right xs-shown">
 <label class="header-shown-sign" for="header-hidden"><i class="fas fa-times" aria-hidden="true"></i></label>
 <label class="header-hidden-sign" for="header-shown"><i class="fas fa-bars" aria-hidden="true"></i></label>
@@ -113,15 +113,15 @@
 <div class="menu">
 <ul class="menu-items">
     <li>
-     <a href="index.html">Startseite</a><span class="toggle-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
+     <a href="{{url('/')}}">Startseite</a><span class="toggle-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
     </li>
     <li>
         <span class="menu-item">Neue Handys</span>
         <span class="toggle-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
         <ul class="right">
-            <li><a href="contact-us.html">Samsung</a></li>
-            <li><a href="contact-us.html">Iphone</a></li>
-            <li><a href="contact-us.html">Redmi</a></li>
+            @foreach($handys_sections as $one)
+                <li><a href="{{ route('new_mobiles', $one->name) }}">{{$one->name}}</a></li>
+            @endforeach
         </ul>
     </li>
     <li>
@@ -299,7 +299,7 @@
 
 <div class="price-title">Smartphone Reparatur</div>
 <div class="price-subtext">Ab...</div>
-<div class="price" style="color: #CA5098;">20.00€</div>
+<div class="price" style="color: #CA5098;">15.00€</div>
 </div>
 </div>
 </div>
@@ -316,7 +316,7 @@
 
 <div class="price-title">Laptop Reparatur</div>
 <div class="price-subtext">Ab...</div>
-<div class="price" style="color: #CA5098;">20.00€</div>
+<div class="price" style="color: #CA5098;">25.00€</div>
 </div>
 </div>
 <div class="sm-col-6">
@@ -611,80 +611,50 @@
 <div class="owl-carousel" data-inview-showup="showup-translate-up" data-owl-dots="true">
 <div class="item">
 <div class="simple-testimonial text-center">
-<div class="tt-title">Great customer support</div>
+<div class="tt-title">Toller Kundensupport</div>
 <div class="tt-rating"><i class="tt-star fa fa-star" aria-hidden="true"></i><i class="tt-star fa fa-star" aria-hidden="true"></i><i class="tt-star fa fa-star" aria-hidden="true"></i><i class="tt-star fa fa-star" aria-hidden="true"></i><i class="tt-star fa fa-star" aria-hidden="true"></i></div>
 <div class="tt-content">
 <div class="tt-quote">&#8220;</div>
-Thanks John, I was really pleased with Profix’s service. Would definitely recommend you and have alredy given out some of your business cards that were left with me. All the best for future succes.
-</div>
-<div class="tt-icon"><img src="./assets/images/icons/notebook-sm.png" alt=""></div>
-<div class="pexx-tt-user-title">Michale John</div>
-<div class="pexx-tt-user-subtitle">Co-Founder, InfoLabs</div>
-</div>
-</div>
-<div class="item">
-<div class="simple-testimonial text-center">
-<div class="tt-title">Flexible services</div>
-<div class="tt-rating"><i class="tt-star fa fa-star" aria-hidden="true"></i><i class="tt-star fa fa-star" aria-hidden="true"></i><i class="tt-star fa fa-star" aria-hidden="true"></i><i class="tt-star fa fa-star" aria-hidden="true"></i><i class="tt-star fa fa-star" aria-hidden="true"></i></div>
-<div class="tt-content">
-<div class="tt-quote">&#8220;</div>
-Profix did great job with fixing my laptop for a good price. I recommend any body with laptop problems, they will give you excellent service to all his customers.
-</div>
-<div class="tt-icon"><img src="./assets/images/icons/computer-sm.png" alt=""></div>
-<div class="pexx-tt-user-title">Merry Smith</div>
-<div class="pexx-tt-user-subtitle">CFO, InfoTech</div>
-</div>
-</div>
-<div class="item">
-<div class="simple-testimonial text-center">
-<div class="tt-title">Excellent team</div>
-<div class="tt-rating"><i class="tt-star fa fa-star" aria-hidden="true"></i><i class="tt-star fa fa-star" aria-hidden="true"></i><i class="tt-star fa fa-star" aria-hidden="true"></i><i class="tt-star fa fa-star" aria-hidden="true"></i><i class="tt-star fa fa-star" aria-hidden="true"></i></div>
-<div class="tt-content">
-<div class="tt-quote">&#8220;</div>
-Keep up the excellent work. Thank you so much for your help. This is simply unbelievable!
-</div>
-<div class="tt-icon"><img src="./assets/images/icons/printer-sm.png" alt=""></div>
-<div class="pexx-tt-user-title">Michale John</div>
-<div class="pexx-tt-user-subtitle">Co-Founder, InfoLabs</div>
-</div>
-</div>
-<div class="item">
-<div class="simple-testimonial text-center">
-<div class="tt-title">Flexible services</div>
-<div class="tt-rating"><i class="tt-star fa fa-star" aria-hidden="true"></i><i class="tt-star fa fa-star" aria-hidden="true"></i><i class="tt-star fa fa-star" aria-hidden="true"></i><i class="tt-star fa fa-star" aria-hidden="true"></i><i class="tt-star fa fa-star" aria-hidden="true"></i></div>
-<div class="tt-content">
-<div class="tt-quote">&#8220;</div>
-Profix did great job with fixing my laptop for a good price. I recommend any body with laptop problems, they will give you excellent service to all his customers.
+    Vielen Dank, Mohammed! Ich war wirklich zufrieden mit dem Service von Phone Finity. Ich würde euch auf jeden Fall empfehlen und habe bereits einige eurer Visitenkarten verteilt, die ihr mir hinterlassen habt. Alles Gute für euren zukünftigen Erfolg.
 </div>
 <div class="tt-icon"><img src="./assets/images/icons/mobile-sm.png" alt=""></div>
-<div class="pexx-tt-user-title">Merry Smith</div>
-<div class="pexx-tt-user-subtitle">CFO, InfoTech</div>
+<div class="pexx-tt-user-title">Khaled Agha</div>
 </div>
 </div>
 <div class="item">
 <div class="simple-testimonial text-center">
-<div class="tt-title">Great customer support</div>
+<div class="tt-title">Flexible Dienstleistungen</div>
 <div class="tt-rating"><i class="tt-star fa fa-star" aria-hidden="true"></i><i class="tt-star fa fa-star" aria-hidden="true"></i><i class="tt-star fa fa-star" aria-hidden="true"></i><i class="tt-star fa fa-star" aria-hidden="true"></i><i class="tt-star fa fa-star" aria-hidden="true"></i></div>
 <div class="tt-content">
 <div class="tt-quote">&#8220;</div>
-Thanks John, I was really pleased with Profix’s service. Would definitely recommend you and have alredy given out some of your business cards that were left with me. All the best for future succes.
+    Phone Finity hat meinen Laptop zu einem guten Preis hervorragend repariert. Ich empfehle sie jedem mit Laptop-Problemen. Sie bieten exzellenten Service für alle ihre Kunden.
 </div>
-<div class="tt-icon"><img src="./assets/images/icons/computer-sm.png" alt=""></div>
-<div class="pexx-tt-user-title">Michale John</div>
-<div class="pexx-tt-user-subtitle">Co-Founder, InfoLabs</div>
+<div class="tt-icon"><img src="./assets/images/icons/notebook-sm.png" alt=""></div>
+<div class="pexx-tt-user-title">Mohamed Al-Ahmad</div>
 </div>
 </div>
 <div class="item">
 <div class="simple-testimonial text-center">
-<div class="tt-title">Excellent team</div>
+<div class="tt-title">Ausgezeichnetes Team</div>
 <div class="tt-rating"><i class="tt-star fa fa-star" aria-hidden="true"></i><i class="tt-star fa fa-star" aria-hidden="true"></i><i class="tt-star fa fa-star" aria-hidden="true"></i><i class="tt-star fa fa-star" aria-hidden="true"></i><i class="tt-star fa fa-star" aria-hidden="true"></i></div>
 <div class="tt-content">
 <div class="tt-quote">&#8220;</div>
-Keep up the excellent work. Thank you so much for your help. This is simply unbelievable!
+    Macht weiter so mit der hervorragenden Arbeit. Vielen Dank für eure Hilfe. Das ist einfach unglaublich!
 </div>
 <div class="tt-icon"><img src="./assets/images/icons/printer-sm.png" alt=""></div>
-<div class="pexx-tt-user-title">Michale John</div>
-<div class="pexx-tt-user-subtitle">Co-Founder, InfoLabs</div>
+<div class="pexx-tt-user-title">Maram Said</div>
+</div>
+</div>
+<div class="item">
+<div class="simple-testimonial text-center">
+<div class="tt-title">Guter Kundenservice</div>
+<div class="tt-rating"><i class="tt-star fa fa-star" aria-hidden="true"></i><i class="tt-star fa fa-star" aria-hidden="true"></i><i class="tt-star fa fa-star" aria-hidden="true"></i><i class="tt-star fa fa-star" aria-hidden="true"></i><i class="tt-star fa fa-star" aria-hidden="true"></i></div>
+<div class="tt-content">
+<div class="tt-quote">&#8220;</div>
+    Ich hatte eine großartige Erfahrung mit dem Kundenservice! Das Team war sehr hilfsbereit und freundlich. Sie haben meine Fragen schnell beantwortet und mir bei meinem Problem geholfen. Sehr empfehlenswert!
+</div>
+<div class="tt-icon"><img src="./assets/images/icons/computer-sm.png" alt=""></div>
+<div class="pexx-tt-user-title">Mohamad Alturjman</div>
 </div>
 </div>
 </div>
@@ -720,31 +690,23 @@ Keep up the excellent work. Thank you so much for your help. This is simply unbe
 <div class="owl-carousel" data-inview-showup="showup-translate-up" data-owl-responsive="2;3;4;5" data-owl-items="5">
 
 <div class="item">
-<a class="grayscale-link" href="#"><img class="image" src="http://via.placeholder.com/720x405" alt="" /></a>
+<a class="grayscale-link" href="https://www.samsung.com/de/"><img class="image" src="{{url('/assets/images/icons/samsung.png')}}" alt="Samsung" /></a>
 </div>
 
 <div class="item">
-<a class="grayscale-link" href="#"><img class="image" src="http://via.placeholder.com/720x405" alt="" /></a>
+<a class="grayscale-link" href="https://www.apple.com/de/"><img class="image" src="{{url('/assets/images/icons/apple.png')}}" alt="Apple" /></a>
 </div>
 
 <div class="item">
-<a class="grayscale-link" href="#"><img class="image" src="http://via.placeholder.com/720x405" alt="" /></a>
+<a class="grayscale-link" href="https://www.mi.com/de/"><img class="image" src="{{url('/assets/images/icons/xiaomi.png')}}" alt="Xiaomi" /></a>
 </div>
 
 <div class="item">
-<a class="grayscale-link" href="#"><img class="image" src="http://via.placeholder.com/720x405" alt="" /></a>
+<a class="grayscale-link" href="https://www.po.co/de/"><img class="image" src="{{url('/assets/images/icons/poco.png')}}" alt="Poco" /></a>
 </div>
 
 <div class="item">
-<a class="grayscale-link" href="#"><img class="image" src="http://via.placeholder.com/720x405" alt="" /></a>
-</div>
-
-<div class="item">
-<a class="grayscale-link" href="#"><img class="image" src="http://via.placeholder.com/720x405" alt="" /></a>
-</div>
-
-<div class="item">
-<a class="grayscale-link" href="#"><img class="image" src="http://via.placeholder.com/720x405" alt="" /></a>
+<a class="grayscale-link" href="https://www.huawei.com/en/"><img class="image" src="{{url('/assets/images/icons/huawei.png')}}" alt="Huawei" /></a>
 </div>
 
 </div>
@@ -858,53 +820,9 @@ Keep up the excellent work. Thank you so much for your help. This is simply unbe
 </div>
 
 </div>
-<div class="line-sides main-bg shift-lg"></div>
-<div class="row out-md">
-<div class="col-6 cart-price-title">Subtotal:</div>
-<div class="col-6 text-right cart-price">$105.20</div>
-</div>
-<div class="line-sides main-bg offs-lg"></div>
-<div class="clearfix">
-<a href="./cart.html" class="btn text-upper btn-md btns-bordered pull-left">view cart</a>
-<a href="./checkout.html" class="btn text-upper btn-md pull-right">checkout</a>
-</div>
-</div>
-</div><a href="#" class="scroll-top disabled"><i class="fas fa-angle-up" aria-hidden="true"></i></a>
-<div class="singlepage-block collapse alt-bg" data-block="search" data-show-block-class="animation-scale-top-right" data-hide-block-class="animation-unscale-top-right">
-<a href="#" class="close-link" data-close-block><i class="fas fa-times" aria-hidden="true"></i></a>
-<div class="pos-v-center col-12">
-<div class="container">
-<form action="#">
-<div class="row cols-md rows-md">
-<div class="lg-col-9 md-col-8 sm-col-12">
-<div class="field-group">
-
-<div class="field-wrap">
-<input class="field-control" name="search" placeholder="Search Tags" required="required" />
-
-
-
-
-<span class="field-back"></span>
-
-</div>
-
-
-</div>
-</div>
-<div class="lg-col-3 md-col-4 sm-col-6">
-<button class="btn btns-white-bordered text-upper" type="submit">
-search
-</button></div>
-</div>
-</form>
-</div>
 </div>
 </div>
 <div class="loader-block">
-
-
-
 <div class="loader-back alt-bg"></div>
 
 <div class="loader-image"><img class="image" src="./assets/images/parts/loader.gif" alt="" /></div>
@@ -917,9 +835,9 @@ search
 <div class="row cols-md">
 <div class="sm-col-3">
 <div class="footer-logo">
-<img src="{{url('/assets/images/icons/phonephinity.png')}}" alt="Phone_Finity" />
+<img src="{{url('/assets/images/icons/phonefinity.png')}}" alt="Phone_Finity" />
 </div>
-<div class="footer-text sm-text-justify" style="margin-left: 12px;">Profix is a Premium PSD Template. Best choice for your online store. Let purchase it to enjoy now</div>
+<div class="footer-text sm-text-justify" style="margin-left: 12px;">Phone Finity ist Ihr zuverlässiger Ansprechpartner für Handyreparaturen und den Verkauf der neuesten Smartphones. Ob schnelle Reparatur oder neues Gerät – Phone Finity bietet hochwertige Lösungen, um Sie verbunden zu halten.</div>
 </div>
 <div class="sm-col-8 sm-push-1">
 <div class="row cols-md">
@@ -946,6 +864,7 @@ search
 <div class="footer-copyrights text-center top-separator ins-md">&copy; <script>document.write(new Date().getFullYear());</script> <a href="https://www.linkedin.com/in/loui-oklaa/"  style="font-weight: bolder;">Loui Oklaa</a> Alle Rechte vorbehalten.</div>
 </div>
 </footer>
+
 
 
 

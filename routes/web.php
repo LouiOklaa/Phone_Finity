@@ -47,4 +47,6 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::get('/', [ViewController::class, 'index']);
+Route::get('/neue/handys/{section_name}', [ViewController::class, 'showMobilesByCategory'])->name('new_mobiles');
+
 Route::get('/{page}', [AdminController::class, 'index']);
