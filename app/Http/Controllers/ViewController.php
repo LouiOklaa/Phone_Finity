@@ -36,6 +36,12 @@ class ViewController extends Controller
 
         return view('Handys.show_mobiles', compact('handys'));
     }
+    public function showMobiles()
+    {
+        $handys = handys::all();
+
+        return view('Handys.show_mobiles', compact('handys'));
+    }
 
     public function showAccessories($brand , $section_name)
     {

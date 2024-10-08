@@ -4,9 +4,21 @@
         Neue Handys
     @elseif(request()->routeIs('used_mobiles'))
         Gebrauchte Handys
+    @elseif(request()->routeIs('all_mobiles'))
+        Alle Handys
+    @endif
+@endsection
+@section('current_page')
+    @if(request()->routeIs('new_mobiles'))
+        Neue Handys
+    @elseif(request()->routeIs('used_mobiles'))
+        Gebrauchte Handys
+    @elseif(request()->routeIs('all_mobiles'))
+        Alle Handys
     @endif
 @endsection
 @section('contents')
+
 
     <div class="clearfix container">
         <div class="page-content">
@@ -54,25 +66,22 @@
                             <div class="md-col-4"> <!-- تعديل هنا -->
                                 <div class="item shop-item shop-item-simple" data-inview-showup="showup-scale">
                                     <div class="item-back"></div>
-                                    <a href="{{asset( 'Attachments/Handys/' . $one->image)}}l"
+                                    <a href="{{asset( 'Attachments/Handys/' . $one->image)}}"
                                        class="item-image responsive-1by1"><img
                                             src="{{url('/Attachments/Handys/' .$one->image)}}" alt=""/></a>
                                     <div class="item-content shift-md">
                                         <div class="item-textes">
-                                            <div class="item-title text-upper"><a href="shop-item.html"
-                                                                                  class="content-link">{{$one->name}}</a>
-                                            </div>
-                                            <div class="item-categories">
-                                                <a href="shop-category.html" class="content-link">mouse</a>
+                                            <div class="item-title text-upper hover"><i style="font-style: normal; font-size: 18px;" class="content-link">{{$one->name}}</i>
                                             </div>
                                         </div>
                                         <div class="item-prices">
-                                            <div class="item-price">$45.05</div>
+                                            <div class="item-price" style="color: #CA5098; ">{{$one->preis}}€</div>
                                         </div>
                                     </div>
-                                    <div class="item-links">
-                                        <a href="shop-item.html" class="btn text-upper btn-md btns-bordered">view</a>
-                                        <a href="#" class="btn text-upper btn-md">add to cart</a>
+                                    <div class="item-content">
+                                        <div><b style="font-family: Montserrat; font-weight: 600; color: #CA5098; font-size: 16px;  margin-bottom: 15px;">Zustand : </b><b>{{$one->status}}</b></div>
+                                        <div><b style="font-family: Montserrat; font-weight: 600; color: #CA5098; font-size: 16px;  margin-bottom: 15px;">Hersteller : </b><b>{{$one->section_name}}</b></div>
+                                        <div><b style="font-family: Montserrat; font-weight: 600; color: #CA5098; font-size: 16px;  margin-bottom: 15px;">Spezifikationen : </b><b>{{$one->note}}</b></div>
                                     </div>
                                 </div>
                             </div>

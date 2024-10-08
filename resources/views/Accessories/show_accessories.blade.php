@@ -2,6 +2,9 @@
 @section('title')
     Zubehör
 @endsection
+@section('current_page')
+    Zubehör
+@endsection
 @section('contents')
 
     <div class="clearfix container">

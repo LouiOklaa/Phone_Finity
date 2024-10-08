@@ -474,7 +474,7 @@
 
 </div>
 <div class="text-center shift-xl">
-<a class="btn text-upper" href="services.html" data-inview-showup="showup-translate-up"><i class="fas fa-th-large" aria-hidden="true"></i>&nbsp;&nbsp;Alle Handys anzeigen</a>
+<a class="btn text-upper" href="{{ route('all_mobiles') }}" data-inview-showup="showup-translate-up"><i class="fas fa-th-large" aria-hidden="true"></i>&nbsp;&nbsp;Alle Handys anzeigen</a>
 </div>
 
 </div>

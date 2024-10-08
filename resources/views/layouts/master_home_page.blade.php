@@ -150,6 +150,8 @@
                         <a href="contact-us.html">Kontakt</a><span class="toggle-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
                     </li>
                 </ul>
+                <div class="clearfix"></div>
+                <div class="line-right xs-hidden"></div>
 
             </div>
         </div>
@@ -168,12 +170,12 @@
             <ul class="page-path">
 
 
-                <li><a href="index.html">Home</a></li>
+                <li><a href="{{url('/')}}">Startseite</a></li>
 
 
                 <li class="path-separator"><i class="fas fa-chevron-right" aria-hidden="true"></i></li>
 
-                <li>Shop</li>
+                <li>@yield('current_page')</li>
 
             </ul>
         </div>
