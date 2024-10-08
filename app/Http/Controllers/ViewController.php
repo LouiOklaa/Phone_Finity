@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\abschnitte;
 use App\Models\Accessories;
+use App\Models\accessories_sections;
 use App\Models\GeneralInformation;
 use App\Models\handys;
 use App\Models\Services;
@@ -18,17 +19,29 @@ class ViewController extends Controller
         $handys_sections = abschnitte::all();
         $services = Services::all();
         $accessories = accessories::all();
-        return view('index' , compact('information' , 'handys' , 'services' , 'accessories' , 'handys_sections'));
+        $accessories_brand = accessories::pluck('brand')->unique();
+        return view('index' , compact('information' , 'handys' , 'services' , 'accessories' , 'handys_sections' , 'accessories_brand'));
     }
 
-    public function showMobilesByCategory($section_name)
+    public function showNewMobiles($section_name)
     {
-        $information = GeneralInformation::first();
-        // Fetch section based on name
-        $handys = handys::where('section_name', $section_name)->get();
-        $handys_sections = abschnitte::all();
+        $handys = handys::where('section_name', $section_name)->where('status' , 'Neu')->get();
 
-        return view('Handys.new_mobiles', compact('handys' , 'information' , 'handys_sections'));
+        return view('Handys.show_mobiles', compact('handys'));
+    }
+
+    public function showUsedMobiles($section_name)
+    {
+        $handys = handys::where('section_name', $section_name)->where('status' , 'Gebraucht')->get();
+
+        return view('Handys.show_mobiles', compact('handys'));
+    }
+
+    public function showAccessories($brand , $section_name)
+    {
+        $accessories = accessories::where('brand' , $brand)->where('section_name', $section_name)->get();
+
+        return view('Accessories.show_accessories', compact('accessories'));
     }
 
 }

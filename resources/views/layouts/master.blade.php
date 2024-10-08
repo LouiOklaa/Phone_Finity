@@ -102,7 +102,7 @@
                 <div class="collapse" id="ui-basic-1">
                     <ul class="nav flex-column sub-menu">
                         <li class="nav-item"> <a class="nav-link" href="{{ url('/' . $page='zubehör') }}">Hanadyzubehör</a></li>
-                        <li class="nav-item"> <a class="nav-link" href="{{ url('/' . $page='zubehör_abschnitte') }}">Zubehör Abschnitte</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="{{ url('/' . $page='zubehör_kategorien') }}">Zubehör Abschnitte</a></li>
                     </ul>
                 </div>
             </li>

@@ -36,7 +36,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin', [HomeController::class, 'index']);
     Route::resource('handys', HandysController::class);
     Route::resource('abschnitte', AbschnitteController::class);
-    Route::resource('zubehör_abschnitte', AccessoriesSectionsController::class);
+    Route::resource('zubehör_kategorien', AccessoriesSectionsController::class);
     Route::resource('zubehör', AccessoriesController::class);
     Route::resource('galerie', GalleryController::class);
     Route::resource('dienstleistungen', ServicesController::class);
@@ -47,6 +47,8 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::get('/', [ViewController::class, 'index']);
-Route::get('/neue/handys/{section_name}', [ViewController::class, 'showMobilesByCategory'])->name('new_mobiles');
+Route::get('/neue/handys/{section_name}', [ViewController::class, 'showNewMobiles'])->name('new_mobiles');
+Route::get('/gebrauchte/handys/{section_name}', [ViewController::class, 'showUsedMobiles'])->name('used_mobiles');
+Route::get('/zubehör/{brand}/{section_name}', [ViewController::class, 'showAccessories'])->name('show_accessories');
 
 Route::get('/{page}', [AdminController::class, 'index']);

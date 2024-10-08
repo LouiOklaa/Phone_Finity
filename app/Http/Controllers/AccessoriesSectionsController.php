@@ -47,7 +47,7 @@ class AccessoriesSectionsController extends Controller
         ]);
 
         session()->flash('Add' , 'Der Abschnitt wurde erfolgreich hinzugefügt');
-        return redirect("/zubehör_abschnitte");
+        return redirect("/zubehör_kategorien");
     }
 
     /**
@@ -91,7 +91,7 @@ class AccessoriesSectionsController extends Controller
         ]);
 
         session()->flash('Edit','Der Abschnitt wurde erflogreich geändert');
-        return redirect('/zubehör_abschnitte');
+        return redirect('/zubehör_kategorien');
     }
 
     /**
@@ -103,6 +103,6 @@ class AccessoriesSectionsController extends Controller
         accessories_sections::find($id)->delete();
 
         session()->flash('Delete','Der Abschnitt wurde erflogreich gelöscht');
-        return redirect('/zubehör_abschnitte');
+        return redirect('/zubehör_kategorien');
     }
 }

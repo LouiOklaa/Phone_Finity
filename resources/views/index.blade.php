@@ -128,18 +128,34 @@
         <span class="menu-item">Gebrauchte Handys</span>
         <span class="toggle-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
         <ul class="right">
-            <li><a href="contact-us.html">Samsung</a></li>
-            <li><a href="contact-us.html">Iphone</a></li>
-            <li><a href="contact-us.html">Redmi</a></li>
+            @foreach($handys_sections as $one)
+                <li><a href="{{ route('used_mobiles', $one->name) }}">{{$one->name}}</a></li>
+            @endforeach
         </ul>
     </li>
     <li>
         <span class="menu-item">Zubehör</span>
         <span class="toggle-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
         <ul class="right">
-            <li><a href="contact-us.html">Samsung</a></li>
-            <li><a href="contact-us.html">Iphone</a></li>
-            <li><a href="contact-us.html">Redmi</a></li>
+            @foreach($accessories_brand as $one)
+                <li>
+                    <span class="menu-item">{{$one}}</span>
+                    <span class="menu-sign-right"><i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+                    <ul>
+                        @php
+                            $displayedSections = []; // An array to store the names of the displayed sections
+                        @endphp
+                        @foreach($accessories as $x)
+                            @if($x->brand == $one && !in_array($x->section_name, $displayedSections))
+                               <li><a href="{{ route('show_accessories',[$x->brand , $x->section_name]) }}">{{$x->section_name}}</a></li>
+                               @php
+                                   $displayedSections[] = $x->section_name; // Add sections to the array
+                               @endphp
+                            @endif
+                        @endforeach
+                    </ul>
+                </li>
+            @endforeach
         </ul>
     </li>
     <li><a href="projects.html">Galerie</a></li>
