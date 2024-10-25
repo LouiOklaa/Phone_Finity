@@ -50,6 +50,9 @@ Route::get('/', [ViewController::class, 'index']);
 Route::get('/neue/handys/{section_name}', [ViewController::class, 'showNewMobiles'])->name('new_mobiles');
 Route::get('/gebrauchte/handys/{section_name}', [ViewController::class, 'showUsedMobiles'])->name('used_mobiles');
 Route::get('/alle_handys', [ViewController::class, 'showMobiles'])->name('all_mobiles');
+
+
 Route::get('/zubehör/{brand}/{section_name}', [ViewController::class, 'showAccessories'])->name('show_accessories');
+Route::get('/alle_zubehör', [ViewController::class, 'showAccessories'])->name('all_accessories');
 
 Route::get('/{page}', [AdminController::class, 'index']);

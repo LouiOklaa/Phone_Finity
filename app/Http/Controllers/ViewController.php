@@ -43,9 +43,20 @@ class ViewController extends Controller
         return view('Handys.show_mobiles', compact('handys'));
     }
 
-    public function showAccessories($brand , $section_name)
+    public function showAccessories(Request $request , $brand = null , $section_name = null)
     {
-        $accessories = accessories::where('brand' , $brand)->where('section_name', $section_name)->get();
+
+        if ($request->routeIs('show_accessories')){
+
+            $accessories = accessories::where('brand' , $brand)->where('section_name', $section_name)->get();
+
+        }
+
+        else{
+
+            $accessories = accessories::all();
+
+        }
 
         return view('Accessories.show_accessories', compact('accessories'));
     }
