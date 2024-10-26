@@ -4,8 +4,8 @@
         Neue Handys
     @elseif(request()->routeIs('used_mobiles'))
         Gebrauchte Handys
-    @elseif(request()->routeIs('all_mobiles'))
-        Alle Handys
+    @else
+        Handys
     @endif
 @endsection
 @section('current_page')
@@ -13,8 +13,8 @@
         Neue Handys
     @elseif(request()->routeIs('used_mobiles'))
         Gebrauchte Handys
-    @elseif(request()->routeIs('all_mobiles'))
-        Alle Handys
+    @else
+        Handys
     @endif
 @endsection
 @section('contents')
@@ -22,48 +22,54 @@
 
     <div class="clearfix container">
         <div class="page-content">
-            <section class="content-section">
-                <form>
-                    <div class="row">
-                        <div class="sm-col-6 md-col-4">
-                            <div class="field-group shop-line-field chosen-field">
-                                <label>sort by</label>
-                                <div class="field-wrap">
-                                    <select class="field-control" name="sortby">
-                                        <option name="sortby">Name</option>
-                                        <option name="sortby" value="1">Newest</option>
-                                        <option name="sortby" value="2">Best match</option>
-                                    </select>
-                                    <span class="select-arrow"><i class="fas fa-chevron-down"></i></span>
-                                    <span class="field-back"></span>
+            @if(count($handys) !== 0)
+                <section class="content-section">
+                    <form method="post" action="{{ route('sort_mobiles') }}" id="sortForm">
+                        @csrf
+                        @if(count($handys) !== 0)
+                            <input type="hidden" name="category" value="{{ $handys->first()->section_name ?? '' }}">
+                            <input type="hidden" name="status" value="{{ $handys->first()->status ?? '' }}">
+                        @endif
+                        <div class="row">
+                            <div class="sm-col-6 md-col-4">
+                                <div class="field-group shop-line-field chosen-field">
+                                    <label>Sortieren nach</label>
+                                    <div class="field-wrap">
+                                        <select class="field-control" name="sort" id="sort" onchange="document.getElementById('sortForm').submit();">
+                                            <option value="name" {{ request('sort') == 'name' ? 'selected' : '' }}>Name</option>
+                                            <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }}>Neueste</option>
+                                            <option value="oldest" {{ request('sort') == 'oldest' ? 'selected' : '' }}>Älteste</option>
+                                            <option value="price1" {{ request('sort') == 'price1' ? 'selected' : '' }}>Niedrigster Preis</option>
+                                            <option value="price2" {{ request('sort') == 'price2' ? 'selected' : '' }}>Höchster Preis</option>
+                                        </select>
+                                        <span class="select-arrow"><i class="fas fa-chevron-down"></i></span>
+                                        <span class="field-back"></span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="sm-col-6 md-col-4">
-                            <div class="field-group shop-line-field chosen-field">
-                                <label>show</label>
-                                <div class="field-wrap">
-                                    <select class="field-control" name="show" selected="selected">
-                                        <option name="show">4</option>
-                                        <option name="show" value="1" selected="selected">8</option>
-                                        <option name="show" value="2">10</option>
-                                        <option name="show" value="3">20</option>
-                                    </select>
-                                    <span class="select-arrow"><i class="fas fa-chevron-down"></i></span>
-                                    <span class="field-back"></span>
+                            <div class="sm-col-6 md-col-4">
+                                <div class="field-group shop-line-field chosen-field">
+                                    <label>show</label>
+                                    <div class="field-wrap">
+                                        <select class="field-control" name="show" selected="selected">
+                                            <option name="show">4</option>
+                                            <option name="show" value="1" selected="selected">8</option>
+                                            <option name="show" value="2">10</option>
+                                            <option name="show" value="3">20</option>
+                                        </select>
+                                        <span class="select-arrow"><i class="fas fa-chevron-down"></i></span>
+                                        <span class="field-back"></span>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="sm-col-12 md-col-4 md-text-right shop-results-text">
+                                Showing 9 to 16 of 20 total
+                            </div>
                         </div>
-                        <div class="sm-col-12 md-col-4 md-text-right shop-results-text">
-                            Showing 9 to 16 of 20 total
-                        </div>
-                    </div>
-                </form>
-
-                <div class="row cols-md rows-md">
-                    @if(count($handys) !== 0)
+                    </form>
+                    <div class="row cols-md rows-md">
                         @foreach($handys as $one)
-                            <div class="md-col-4"> <!-- تعديل هنا -->
+                            <div class="md-col-4">
                                 <div class="item shop-item shop-item-simple" data-inview-showup="showup-scale">
                                     <div class="item-back"></div>
                                     <a href="{{asset( 'Attachments/Handys/' . $one->image)}}"
@@ -86,11 +92,10 @@
                                 </div>
                             </div>
                         @endforeach
-                    @else
-                        <h1>Keine zurzeit</h1>
-                    @endif
+            @else
+                <h1>Keine zurzeit</h1>
+            @endif
                 </div>
-
                 <div class="text-center shift-lg" data-inview-showup="showup-translate-up">
                     <div class="paginator">
                         <a href="#" class="previous"><i class="fas fa-angle-left" aria-hidden="true"></i></a>
@@ -101,8 +106,6 @@
                         <a href="#" class="next"><i class="fas fa-angle-right" aria-hidden="true"></i></a>
                     </div>
                 </div>
-
-
             </section>
         </div>
     </div>

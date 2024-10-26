@@ -50,9 +50,14 @@ Route::get('/', [ViewController::class, 'index']);
 Route::get('/neue/handys/{section_name}', [ViewController::class, 'showNewMobiles'])->name('new_mobiles');
 Route::get('/gebrauchte/handys/{section_name}', [ViewController::class, 'showUsedMobiles'])->name('used_mobiles');
 Route::get('/alle_handys', [ViewController::class, 'showMobiles'])->name('all_mobiles');
+Route::post('/alle_handys/sortieren', [ViewController::class, 'sortAllMobiles'])->name('sort_all_mobiles');
+Route::post('/handys/sortieren', [ViewController::class, 'sortMobiles'])->name('sort_mobiles');
 
 
 Route::get('/zubehör/{brand}/{section_name}', [ViewController::class, 'showAccessories'])->name('show_accessories');
 Route::get('/alle_zubehör', [ViewController::class, 'showAccessories'])->name('all_accessories');
+Route::post('/alle_zubehör/sortieren', [ViewController::class, 'sortAllAccessories'])->name('sort_all_accessories');
+Route::post('/zubehör/sortieren', [ViewController::class, 'sortAccessories'])->name('sort_accessories');
+
 
 Route::get('/{page}', [AdminController::class, 'index']);

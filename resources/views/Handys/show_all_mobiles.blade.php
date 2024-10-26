@@ -1,87 +1,90 @@
 @extends('layouts.master_home_page')
 @section('title')
-    Zubehör
+    @if(request()->routeIs('all_mobiles'))
+        Alle Handys
+    @else
+        Handys
+    @endif
 @endsection
 @section('current_page')
-    Zubehör
+    @if(request()->routeIs('all_mobiles'))
+        Alle Handys
+    @else
+        Handys
+    @endif
 @endsection
 @section('contents')
-
     <div class="clearfix container">
         <div class="page-content">
-            <section class="content-section">
-                <form method="post" action="{{ route('sort_accessories') }}" id="sortForm">
-                    @csrf
-                    @if(!request()->routeIs('all_accessories'))
-                        <input type="hidden" name="brand" value="{{ $accessories->first()->brand ?? '' }}">
-                        <input type="hidden" name="section_name" value="{{ $accessories->first()->section_name ?? '' }}">
+            @if(count($handys) !== 0)
+                <section class="content-section">
+                    <form method="post" action="{{ route('sort_all_mobiles') }}" id="sortForm">
+                        @csrf
+                        <div class="row">
+                            <div class="sm-col-6 md-col-4">
+                                <div class="field-group shop-line-field chosen-field">
+                                    <label>Sortieren nach</label>
+                                    <div class="field-wrap">
+                                        <select class="field-control" name="sort" id="sort" onchange="document.getElementById('sortForm').submit();">
+                                            <option value="name" {{ request('sort') == 'name' ? 'selected' : '' }}>Name</option>
+                                            <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }}>Neueste</option>
+                                            <option value="oldest" {{ request('sort') == 'oldest' ? 'selected' : '' }}>Älteste</option>
+                                            <option value="price1" {{ request('sort') == 'price1' ? 'selected' : '' }}>Niedrigster Preis</option>
+                                            <option value="price2" {{ request('sort') == 'price2' ? 'selected' : '' }}>Höchster Preis</option>
+                                        </select>
+                                        <span class="select-arrow"><i class="fas fa-chevron-down"></i></span>
+                                        <span class="field-back"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sm-col-6 md-col-4">
+                                <div class="field-group shop-line-field chosen-field">
+                                    <label>show</label>
+                                    <div class="field-wrap">
+                                        <select class="field-control" name="show" selected="selected">
+                                            <option name="show">4</option>
+                                            <option name="show" value="1" selected="selected">8</option>
+                                            <option name="show" value="2">10</option>
+                                            <option name="show" value="3">20</option>
+                                        </select>
+                                        <span class="select-arrow"><i class="fas fa-chevron-down"></i></span>
+                                        <span class="field-back"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sm-col-12 md-col-4 md-text-right shop-results-text">
+                                Showing 9 to 16 of 20 total
+                            </div>
+                        </div>
+                    </form>
+                    <div class="row cols-md rows-md">
+                        @foreach($handys as $one)
+                            <div class="md-col-4">
+                                <div class="item shop-item shop-item-simple" data-inview-showup="showup-scale">
+                                    <div class="item-back"></div>
+                                    <a href="{{asset( 'Attachments/Handys/' . $one->image)}}"
+                                       class="item-image responsive-1by1"><img
+                                            src="{{url('/Attachments/Handys/' .$one->image)}}" alt=""/></a>
+                                    <div class="item-content shift-md">
+                                        <div class="item-textes">
+                                            <div class="item-title text-upper hover"><i style="font-style: normal; font-size: 18px;" class="content-link">{{$one->name}}</i>
+                                            </div>
+                                        </div>
+                                        <div class="item-prices">
+                                            <div class="item-price" style="color: #CA5098; ">{{$one->preis}}€</div>
+                                        </div>
+                                    </div>
+                                    <div class="item-content">
+                                        <div><b style="font-family: Montserrat; font-weight: 600; color: #CA5098; font-size: 16px;  margin-bottom: 15px;">Zustand : </b><b>{{$one->status}}</b></div>
+                                        <div><b style="font-family: Montserrat; font-weight: 600; color: #CA5098; font-size: 16px;  margin-bottom: 15px;">Hersteller : </b><b>{{$one->section_name}}</b></div>
+                                        <div><b style="font-family: Montserrat; font-weight: 600; color: #CA5098; font-size: 16px;  margin-bottom: 15px;">Spezifikationen : </b><b>{{$one->note}}</b></div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @else
+                        <h1>Keine zurzeit</h1>
                     @endif
-                    <div class="row">
-                        <div class="sm-col-6 md-col-4">
-                            <div class="field-group shop-line-field chosen-field">
-                                <label>Sortieren nach</label>
-                                <div class="field-wrap">
-                                    <select class="field-control" name="sort" id="sort" onchange="document.getElementById('sortForm').submit();">
-                                        <option value="name" {{ request('sort') == 'name' ? 'selected' : '' }}>Name</option>
-                                        <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }}>Neueste</option>
-                                        <option value="oldest" {{ request('sort') == 'oldest' ? 'selected' : '' }}>Älteste</option>
-                                        <option value="price1" {{ request('sort') == 'price1' ? 'selected' : '' }}>Niedrigster Preis</option>
-                                        <option value="price2" {{ request('sort') == 'price2' ? 'selected' : '' }}>Höchster Preis</option>
-                                    </select>
-                                    <span class="select-arrow"><i class="fas fa-chevron-down"></i></span>
-                                    <span class="field-back"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="sm-col-6 md-col-4">
-                            <div class="field-group shop-line-field chosen-field">
-                                <label>show</label>
-                                <div class="field-wrap">
-                                    <select class="field-control" name="show" selected="selected">
-                                        <option name="show">4</option>
-                                        <option name="show" value="1" selected="selected">8</option>
-                                        <option name="show" value="2">10</option>
-                                        <option name="show" value="3">20</option>
-                                    </select>
-                                    <span class="select-arrow"><i class="fas fa-chevron-down"></i></span>
-                                    <span class="field-back"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="sm-col-12 md-col-4 md-text-right shop-results-text">
-                            Showing 9 to 16 of 20 total
-                        </div>
-                    </div>
-                </form>
-
-                <div class="row cols-md rows-md">
-                    @foreach($accessories as $one)
-                        <div class="md-col-4"> <!-- تعديل هنا -->
-                            <div class="item shop-item shop-item-simple" data-inview-showup="showup-scale">
-                                <div class="item-back"></div>
-                                <a href="{{asset( 'Attachments/Accessories/' . $one->image)}}l"
-                                   class="item-image responsive-1by1"><img
-                                        src="{{url('/Attachments/Accessories/' .$one->image)}}" alt=""/></a>
-                                <div class="item-content shift-md">
-                                    <div class="item-textes">
-                                        <div class="item-title text-upper"><a href="shop-item.html"
-                                                                              class="content-link">{{$one->name}}</a>
-                                        </div>
-                                        <div class="item-categories">
-                                            <a href="shop-category.html" class="content-link">mouse</a>
-                                        </div>
-                                    </div>
-                                    <div class="item-prices">
-                                        <div class="item-price">{{$one->price}}</div>
-                                    </div>
-                                </div>
-                                <div class="item-links">
-                                    <a href="shop-item.html" class="btn text-upper btn-md btns-bordered">view</a>
-                                    <a href="#" class="btn text-upper btn-md">add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
                 </div>
 
                 <div class="text-center shift-lg" data-inview-showup="showup-translate-up">

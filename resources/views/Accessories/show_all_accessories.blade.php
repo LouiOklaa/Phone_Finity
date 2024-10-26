@@ -10,12 +10,8 @@
     <div class="clearfix container">
         <div class="page-content">
             <section class="content-section">
-                <form method="post" action="{{ route('sort_accessories') }}" id="sortForm">
+                <form method="post" action="{{ route('sort_all_accessories') }}" id="sortForm">
                     @csrf
-                    @if(!request()->routeIs('all_accessories'))
-                        <input type="hidden" name="brand" value="{{ $accessories->first()->brand ?? '' }}">
-                        <input type="hidden" name="section_name" value="{{ $accessories->first()->section_name ?? '' }}">
-                    @endif
                     <div class="row">
                         <div class="sm-col-6 md-col-4">
                             <div class="field-group shop-line-field chosen-field">
