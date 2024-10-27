@@ -6,12 +6,12 @@
     Zubehör
 @endsection
 @section('contents')
-
     <div class="clearfix container">
         <div class="page-content">
             <section class="content-section">
-                <form method="post" action="{{ route('sort_accessories') }}" id="sortForm">
+                <form method="post" action="{{ route('sort_accessories') }}" id="sortForm" onsubmit="return false;">
                     @csrf
+                    <input type="hidden" name="page" value="{{ request()->get('page', 1) }}">
                     @if(!request()->routeIs('all_accessories'))
                         <input type="hidden" name="brand" value="{{ $accessories->first()->brand ?? '' }}">
                         <input type="hidden" name="section_name" value="{{ $accessories->first()->section_name ?? '' }}">
@@ -21,7 +21,8 @@
                             <div class="field-group shop-line-field chosen-field">
                                 <label>Sortieren nach</label>
                                 <div class="field-wrap">
-                                    <select class="field-control" name="sort" id="sort" onchange="document.getElementById('sortForm').submit();">
+                                    <select class="field-control shop-results-text2" name="sort4" id="sort4" onchange="handleSortChange()">
+                                        <option value="" disabled selected>Filter</option>
                                         <option value="name" {{ request('sort') == 'name' ? 'selected' : '' }}>Name</option>
                                         <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }}>Neueste</option>
                                         <option value="oldest" {{ request('sort') == 'oldest' ? 'selected' : '' }}>Älteste</option>
@@ -33,205 +34,51 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="sm-col-6 md-col-4">
-                            <div class="field-group shop-line-field chosen-field">
-                                <label>show</label>
-                                <div class="field-wrap">
-                                    <select class="field-control" name="show" selected="selected">
-                                        <option name="show">4</option>
-                                        <option name="show" value="1" selected="selected">8</option>
-                                        <option name="show" value="2">10</option>
-                                        <option name="show" value="3">20</option>
-                                    </select>
-                                    <span class="select-arrow"><i class="fas fa-chevron-down"></i></span>
-                                    <span class="field-back"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="sm-col-12 md-col-4 md-text-right shop-results-text">
-                            Showing 9 to 16 of 20 total
+                        <div class="showing shop-results-text">
+                            Anzeigen von @if($accessories->firstItem()==0)0 @else {{ $accessories->firstItem() }} @endif bis @if($accessories->lastItem()==0) 0 @else {{ $accessories->lastItem() }} @endif von {{ $accessories->total() }} gesamt
                         </div>
                     </div>
                 </form>
-
                 <div class="row cols-md rows-md">
-                    @foreach($accessories as $one)
-                        <div class="md-col-4"> <!-- تعديل هنا -->
-                            <div class="item shop-item shop-item-simple" data-inview-showup="showup-scale">
-                                <div class="item-back"></div>
-                                <a href="{{asset( 'Attachments/Accessories/' . $one->image)}}l"
-                                   class="item-image responsive-1by1"><img
-                                        src="{{url('/Attachments/Accessories/' .$one->image)}}" alt=""/></a>
-                                <div class="item-content shift-md">
-                                    <div class="item-textes">
-                                        <div class="item-title text-upper"><a href="shop-item.html"
-                                                                              class="content-link">{{$one->name}}</a>
-                                        </div>
-                                        <div class="item-categories">
-                                            <a href="shop-category.html" class="content-link">mouse</a>
-                                        </div>
-                                    </div>
-                                    <div class="item-prices">
-                                        <div class="item-price">{{$one->price}}</div>
-                                    </div>
-                                </div>
-                                <div class="item-links">
-                                    <a href="shop-item.html" class="btn text-upper btn-md btns-bordered">view</a>
-                                    <a href="#" class="btn text-upper btn-md">add to cart</a>
-                                </div>
-                            </div>
+                    @if(count($accessories) !== 0)
+                        @include('Accessories.partials_accessories_list')
+                    @else
+                        <div class="text-center" style="margin-top: 30px;">
+                            <h3>Derzeit sind keine Zubehör in dieser Kategorie verfügbar 😞</h3>
                         </div>
-                    @endforeach
+                    @endif
                 </div>
-
                 <div class="text-center shift-lg" data-inview-showup="showup-translate-up">
                     <div class="paginator">
-                        <a href="#" class="previous"><i class="fas fa-angle-left" aria-hidden="true"></i></a>
-                        <span class="active">2</span>
-                        <a href="#">3</a>
-                        <span>...</span>
-                        <a href="#">12</a>
-                        <a href="#" class="next"><i class="fas fa-angle-right" aria-hidden="true"></i></a>
+                        {{-- Link to Previous Page --}}
+                        @if ($accessories->onFirstPage())
+                            <span class="previous disabled"><i class="fas fa-angle-left" aria-hidden="true"></i></span>
+                        @else
+                            <a href="{{ $accessories->previousPageUrl() }}" class="previous"><i class="fas fa-angle-left" aria-hidden="true"></i></a>
+                        @endif
+
+                        {{-- Loop through available pages --}}
+                        @for ($i = 1; $i <= $accessories->lastPage(); $i++)
+                            @if ($i === $accessories->currentPage())
+                                <span class="active">{{ $i }}</span>
+                            @else
+                                <a href="{{ $accessories->url($i) }}">{{ $i }}</a>
+                            @endif
+                        @endfor
+
+                        {{-- Link to Next Page --}}
+                        @if ($accessories->hasMorePages())
+                            <a href="{{ $accessories->nextPageUrl() }}" class="next"><i class="fas fa-angle-right" aria-hidden="true"></i></a>
+                        @else
+                            <span class="next disabled"><i class="fas fa-angle-right" aria-hidden="true"></i></span>
+                        @endif
                     </div>
                 </div>
-
-
             </section>
         </div>
     </div>
-    <div class="block-cart collapse" data-block="cart" data-show-block-class="animation-scale-top-right"
-         data-hide-block-class="animation-unscale-top-right">
-        <div class="cart-inner">
-            <a href="#" class="close-link" data-close-block><i class="fas fa-times" aria-hidden="true"></i></a>
-            <h4 class="text-upper text-center">Your cart</h4>
-            <div class="items">
-                <div class="items collapse" data-block="cart" data-show-block-class="animation-scale-top-right"
-                     data-hide-block-class="animation-unscale-top-right">
-
-
-                    <div class="shop-side-item cart-item">
-                        <a href="#" class="remove"><i class="fas fa-times"></i></a>
-                        <div class="item-side-image">
-                            <a href="shop-item.html" class="item-image responsive-1by1"><img
-                                    src="http://via.placeholder.com/500x500" alt=""/></a>
-                        </div>
-                        <div class="item-side">
-                            <div class="item-title">
-
-
-                                <a class="item-label-sm item-label-sale item-label" href="#">sale</a>
-
-
-                                <a href="shop-item.html" class="content-link text-upper">USB 3.0 HUB</a>
-                            </div>
-                            <div class="item-quantity">Quantity - 1</div>
-                            <div class="item-prices">
-                                <div class="item-price">$67.05</div>
-
-                                <div class="item-old-price">$102.5</div>
-
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="shop-side-item cart-item">
-                        <a href="#" class="remove"><i class="fas fa-times"></i></a>
-                        <div class="item-side-image">
-                            <a href="shop-item.html" class="item-image responsive-1by1"><img
-                                    src="http://via.placeholder.com/500x500" alt=""/></a>
-                        </div>
-                        <div class="item-side">
-                            <div class="item-title">
-
-
-                                <a class="item-label-sm item-label-new item-label" href="#">new</a>
-
-
-                                <a href="shop-item.html" class="content-link text-upper">Cable Organizer</a>
-                            </div>
-                            <div class="item-quantity">Quantity - 1</div>
-                            <div class="item-prices">
-                                <div class="item-price">$15.25</div>
-
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="shop-side-item cart-item">
-                        <a href="#" class="remove"><i class="fas fa-times"></i></a>
-                        <div class="item-side-image">
-                            <a href="shop-item.html" class="item-image responsive-1by1"><img
-                                    src="http://via.placeholder.com/500x500" alt=""/></a>
-                        </div>
-                        <div class="item-side">
-                            <div class="item-title">
-
-                                <a href="shop-item.html" class="content-link text-upper">10" Octa Core Tablet</a>
-                            </div>
-                            <div class="item-quantity">Quantity - 1</div>
-                            <div class="item-prices">
-                                <div class="item-price">$145.99</div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-            <div class="line-sides main-bg shift-lg"></div>
-            <div class="row out-md">
-                <div class="col-6 cart-price-title">Subtotal:</div>
-                <div class="col-6 text-right cart-price">$105.20</div>
-            </div>
-            <div class="line-sides main-bg offs-lg"></div>
-            <div class="clearfix">
-                <a href="./cart.html" class="btn text-upper btn-md btns-bordered pull-left">view cart</a>
-                <a href="./checkout.html" class="btn text-upper btn-md pull-right">checkout</a>
-            </div>
-        </div>
-    </div><a href="#" class="scroll-top disabled"><i class="fas fa-angle-up" aria-hidden="true"></i></a>
-    <div class="singlepage-block collapse alt-bg" data-block="search" data-show-block-class="animation-scale-top-right"
-         data-hide-block-class="animation-unscale-top-right">
-        <a href="#" class="close-link" data-close-block><i class="fas fa-times" aria-hidden="true"></i></a>
-        <div class="pos-v-center col-12">
-            <div class="container">
-                <form action="#">
-                    <div class="row cols-md rows-md">
-                        <div class="lg-col-9 md-col-8 sm-col-12">
-                            <div class="field-group">
-
-                                <div class="field-wrap">
-                                    <input class="field-control" name="search" placeholder="Search Tags"
-                                           required="required"/>
-
-
-                                    <span class="field-back"></span>
-
-                                </div>
-
-
-                            </div>
-                        </div>
-                        <div class="lg-col-3 md-col-4 sm-col-6">
-                            <button class="btn btns-white-bordered text-upper" type="submit">
-                                search
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
     <div class="loader-block">
-
-
         <div class="loader-back alt-bg"></div>
-
         <div class="loader-image"><img class="image" src="./assets/images/parts/loader.gif" alt=""/></div>
-
-
     </div>
 @endsection

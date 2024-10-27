@@ -5409,6 +5409,11 @@ body.body .text-valid {
   line-height: 20px;
   padding: 12px 0;
 }
+.shop-results-text2 {
+    color: #CA5098;
+    font-weight: 600;
+    line-height: 20px;
+}
 /* shop items, featured */
 .item-label {
   padding: 5px 10px;
@@ -7193,5 +7198,14 @@ a.item-label:hover {
   }
   .user-dashboard-orders-list .user-dashboard-item-number {
     width: 120px;
+  }
+  .showing {
+    text-align: right;
+  }
+
+  @media (max-width: 768px) {
+    .showing {
+        text-align: left;
+    }
   }
 }

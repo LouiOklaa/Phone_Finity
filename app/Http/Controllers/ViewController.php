@@ -25,20 +25,20 @@ class ViewController extends Controller
 
     public function showNewMobiles($section_name)
     {
-        $handys = handys::where('section_name', $section_name)->where('status' , 'Neu')->get();
+        $handys = handys::where('section_name', $section_name)->where('status' , 'Neu')->paginate(9);
 
         return view('Handys.show_mobiles', compact('handys'));
     }
 
     public function showUsedMobiles($section_name)
     {
-        $handys = handys::where('section_name', $section_name)->where('status' , 'Gebraucht')->get();
+        $handys = handys::where('section_name', $section_name)->where('status' , 'Gebraucht')->paginate(9);
 
         return view('Handys.show_mobiles', compact('handys'));
     }
     public function showMobiles()
     {
-        $handys = handys::all();
+        $handys = handys::paginate(9);
 
         return view('Handys.show_all_mobiles', compact('handys'));
     }
@@ -48,63 +48,61 @@ class ViewController extends Controller
         $query = handys::query();
 
         if ($request->has('category') && $request->has('status')) {
-            $query->where('section_name', $request->get('category'))->where('status' , $request->get('status'))->get();
+            $query->where('section_name', $request->get('category'))->where('status', $request->get('status'));
         }
 
-        // Check the sorting method and apply the appropriate sorting.
+        //paginate to get data for the page only
+        $page = $request->get('page', 1);
+        $handys = $query->paginate(9, ['*'], 'page', $page);
+
+        // Sort data within the current page only
         if ($request->has('sort')) {
-            switch ($request->get('sort')) {
-                case 'name':
-                    $query->orderBy('name', 'asc');
-                    break;
-                case 'price1':
-                    $query->orderBy('preis', 'asc');
-                    break;
-                case 'price2':
-                    $query->orderBy('preis', 'desc');
-                    break;
-                case 'newest':
-                    $query->orderBy('created_at', 'desc');
-                    break;
-                case 'oldest':
-                    $query->orderBy('created_at', 'asc');
-                    break;
-            }
+            $handys->setCollection(
+                match ($request->get('sort')) {
+                    'name' => $handys->getCollection()->sortBy('name'),
+                    'price1' => $handys->getCollection()->sortBy('preis'),
+                    'price2' => $handys->getCollection()->sortByDesc('preis'),
+                    'newest' => $handys->getCollection()->sortByDesc('created_at'),
+                    'oldest' => $handys->getCollection()->sortBy('created_at'),
+                    default => $handys->getCollection(),
+                }
+            );
         }
 
-        $handys = $query->get();
+        // Add parameters to ensure they are preserved when navigating between pages
+        $handys->appends($request->all());
+        $html = view('Handys.partials_mobiles_list', compact('handys'))->render();
 
-        return view('Handys.show_mobiles', compact('handys'));
+        return response()->json(['html' => $html]);
     }
 
     public function sortAllMobiles(Request $request)
     {
         $query = handys::query();
 
-        // Check the sorting method and apply the appropriate sorting.
+        //paginate to get data for the page only
+        $page = $request->get('page', 1);
+        $handys = $query->paginate(9, ['*'], 'page', $page);
+
+        // Sort data within the current page only
         if ($request->has('sort')) {
-            switch ($request->get('sort')) {
-                case 'name':
-                    $query->orderBy('name', 'asc');
-                    break;
-                case 'price1':
-                    $query->orderBy('preis', 'asc');
-                    break;
-                case 'price2':
-                    $query->orderBy('preis', 'desc');
-                    break;
-                case 'newest':
-                    $query->orderBy('created_at', 'desc');
-                    break;
-                case 'oldest':
-                    $query->orderBy('created_at', 'asc');
-                    break;
-            }
+            $handys->setCollection(
+                match ($request->get('sort')) {
+                    'name' => $handys->getCollection()->sortBy('name'),
+                    'price1' => $handys->getCollection()->sortBy('preis'),
+                    'price2' => $handys->getCollection()->sortByDesc('preis'),
+                    'newest' => $handys->getCollection()->sortByDesc('created_at'),
+                    'oldest' => $handys->getCollection()->sortBy('created_at'),
+                    default => $handys->getCollection(),
+                }
+            );
         }
 
-        $handys = $query->get();
+        // Add parameters to ensure they are preserved when navigating between pages
+        $handys->appends($request->all());
+        $html = view('Handys.partials_mobiles_list', compact('handys'))->render();
 
-        return view('Handys.show_all_mobiles', compact('handys'));
+        return response()->json(['html' => $html]);
     }
 
     public function showAccessories(Request $request , $brand = null , $section_name = null)
@@ -112,17 +110,16 @@ class ViewController extends Controller
 
         if ($request->routeIs('show_accessories')){
 
-            $accessories = accessories::where('brand' , $brand)->where('section_name', $section_name)->get();
+            $accessories = accessories::where('brand' , $brand)->where('section_name', $section_name)->paginate(9);
             return view('Accessories.show_accessories', compact('accessories'));
 
         }
 
         else{
 
-            $accessories = accessories::all();
+            $accessories = accessories::paginate(9);
             return view('Accessories.show_all_accessories', compact('accessories'));
         }
-
 
     }
 
@@ -131,64 +128,61 @@ class ViewController extends Controller
         $query = Accessories::query();
 
         if ($request->has('brand') && $request->has('section_name')) {
-            $query->where('brand', $request->get('brand'))->where('section_name' , $request->get('section_name'))->get();
+            $query->where('brand', $request->get('brand'))->where('section_name' , $request->get('section_name'));
         }
 
+        //paginate to get data for the page only
+        $page = $request->get('page', 1);
+        $accessories = $query->paginate(9, ['*'], 'page', $page);
 
-        // Check the sorting method and apply the appropriate sorting.
+        // Sort data within the current page only
         if ($request->has('sort')) {
-            switch ($request->get('sort')) {
-                case 'name':
-                    $query->orderBy('name', 'asc');
-                    break;
-                case 'price1':
-                    $query->orderBy('price', 'asc');
-                    break;
-                case 'price2':
-                    $query->orderBy('price', 'desc');
-                    break;
-                case 'newest':
-                    $query->orderBy('created_at', 'desc');
-                    break;
-                case 'oldest':
-                    $query->orderBy('created_at', 'asc');
-                    break;
-            }
+            $accessories->setCollection(
+                match ($request->get('sort')) {
+                    'name' => $accessories->getCollection()->sortBy('name'),
+                    'price1' => $accessories->getCollection()->sortBy('price'),
+                    'price2' => $accessories->getCollection()->sortByDesc('price'),
+                    'newest' => $accessories->getCollection()->sortByDesc('created_at'),
+                    'oldest' => $accessories->getCollection()->sortBy('created_at'),
+                    default => $accessories->getCollection(),
+                }
+            );
         }
 
-        $accessories = $query->get();
+        // Add parameters to ensure they are preserved when navigating between pages
+        $accessories->appends($request->all());
+        $html = view('Accessories.partials_accessories_list', compact('accessories'))->render();
 
-        return view('Accessories.show_accessories', compact('accessories'));
+        return response()->json(['html' => $html]);
     }
 
     public function sortAllAccessories(Request $request)
     {
         $query = Accessories::query();
 
-        // Check the sorting method and apply the appropriate sorting.
+        //paginate to get data for the page only
+        $page = $request->get('page', 1);
+        $accessories = $query->paginate(9, ['*'], 'page', $page);
+
+        // Sort data within the current page only
         if ($request->has('sort')) {
-            switch ($request->get('sort')) {
-                case 'name':
-                    $query->orderBy('name', 'asc');
-                    break;
-                case 'price1':
-                    $query->orderBy('price', 'asc');
-                    break;
-                case 'price2':
-                    $query->orderBy('price', 'desc');
-                    break;
-                case 'newest':
-                    $query->orderBy('created_at', 'desc');
-                    break;
-                case 'oldest':
-                    $query->orderBy('created_at', 'asc');
-                    break;
-            }
+            $accessories->setCollection(
+                match ($request->get('sort')) {
+                    'name' => $accessories->getCollection()->sortBy('name'),
+                    'price1' => $accessories->getCollection()->sortBy('price'),
+                    'price2' => $accessories->getCollection()->sortByDesc('price'),
+                    'newest' => $accessories->getCollection()->sortByDesc('created_at'),
+                    'oldest' => $accessories->getCollection()->sortBy('created_at'),
+                    default => $accessories->getCollection(),
+                }
+            );
         }
 
-        $accessories = $query->get();
+        // Add parameters to ensure they are preserved when navigating between pages
+        $accessories->appends($request->all());
+        $html = view('Accessories.partials_accessories_list', compact('accessories'))->render();
 
-        return view('Accessories.show_all_accessories', compact('accessories'));
+        return response()->json(['html' => $html]);
     }
 
 }
