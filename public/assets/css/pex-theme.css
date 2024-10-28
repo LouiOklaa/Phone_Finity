@@ -5490,6 +5490,9 @@ a.item-label:hover {
 .shop-item .item-content {
   padding: 0 100px 0 0;
 }
+.shop-item .item-content2 {
+  padding: 0 50px 0 0;
+}
 .shop-item .item-content .item-prices {
   text-align: right;
   width: 90px;

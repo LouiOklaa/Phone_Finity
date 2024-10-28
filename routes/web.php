@@ -59,5 +59,9 @@ Route::get('/alle_zubehör', [ViewController::class, 'showAccessories'])->name('
 Route::post('/alle_zubehör/sortieren', [ViewController::class, 'sortAllAccessories'])->name('sort_all_accessories');
 Route::post('/zubehör/sortieren', [ViewController::class, 'sortAccessories'])->name('sort_accessories');
 
+Route::get('/dienstleistung/{section_name}', [ViewController::class, 'showServices'])->name('show_services');
+Route::get('/alle_dienstleistungen', [ViewController::class, 'showServices'])->name('all_services');
+Route::post('/alle_dienstleistungen/sortieren', [ViewController::class, 'sortAllServices'])->name('sort_all_services');
+Route::post('/dienstleistung/sortieren', [ViewController::class, 'sortServices'])->name('sort_services');
 
 Route::get('/{page}', [AdminController::class, 'index']);

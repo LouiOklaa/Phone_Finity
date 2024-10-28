@@ -150,7 +150,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="price" class="col-form-label">Preis :</label>
-                                        <input class="form-control" name="price" id="price" type="text">
+                                        <input class="form-control" name="price" id="price" type="number">
                                     </div>
                                     <div class="form-group">
                                         <label for="note">Beschreibung :</label>
@@ -215,7 +215,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="price" class="col-form-label">Preis :</label>
-                                            <input class="form-control" name="price" id="price" type="text"
+                                            <input class="form-control" name="price" id="price" type="number"
                                                    style="color: #6C7293" required>
                                         </div>
                                         <div class="form-group">

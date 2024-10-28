@@ -152,7 +152,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="preis" class="col-form-label">Preis :</label>
-                                        <input class="form-control" name="preis" id="preis" type="text"
+                                        <input class="form-control" name="preis" id="preis" type="number"
                                                style="color: #6C7293">
                                     </div>
                                     <div class="form-group">
@@ -222,7 +222,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="preis" class="col-form-label">Preis :</label>
-                                            <input class="form-control" name="preis" id="preis" type="text"
+                                            <input class="form-control" name="preis" id="preis" type="number"
                                                    style="color: #6C7293" required>
                                         </div>
                                         <div class="form-group">
@@ -244,9 +244,6 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-md btn-outline-primary btn-rounded ">
-                                            Aktualisieren
-                                        </button>
                                         <button type="button" class="btn btn-md btn-outline-secondary btn-rounded"
                                                 data-dismiss="modal">Abbrechen
                                         </button>

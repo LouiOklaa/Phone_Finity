@@ -158,6 +158,15 @@
             @endforeach
         </ul>
     </li>
+    <li>
+        <span class="menu-item">Dienstleistungen</span>
+        <span class="toggle-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
+        <ul class="right">
+            @foreach($services_sections as $one)
+                <li><a href="{{ route('show_services', ['section_name' => urlencode(str_replace(' ', '-', $one->name))]) }}">{{$one->name}}</a></li>
+            @endforeach
+        </ul>
+    </li>
     <li><a href="projects.html">Galerie</a></li>
     <li>
         <a href="contact-us.html">Kontakt</a><span class="toggle-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
@@ -576,7 +585,7 @@
 
 </div>
 <div class="text-center shift-xl">
-<a class="btn text-upper" href="services.html" data-inview-showup="showup-translate-up"><i class="fas fa-th-large" aria-hidden="true"></i>&nbsp;&nbsp;Alle Dienstleistungen anzeigen</a>
+<a class="btn text-upper" href="{{ route('all_services') }}" data-inview-showup="showup-translate-up"><i class="fas fa-th-large" aria-hidden="true"></i>&nbsp;&nbsp;Alle Dienstleistungen anzeigen</a>
 </div>
 
 </div>

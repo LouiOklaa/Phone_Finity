@@ -119,6 +119,15 @@
                                 @endforeach
                             </ul>
                         </li>
+                        <li>
+                            <span class="menu-item">Dienstleistungen</span>
+                            <span class="toggle-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
+                            <ul class="right">
+                                @foreach($services_sections as $one)
+                                    <li><a href="{{ route('show_services', ['section_name' => urlencode(str_replace(' ', '-', $one->name))]) }}">{{$one->name}}</a></li>
+                                @endforeach
+                            </ul>
+                        </li>
                         <li><a href="projects.html">Galerie</a></li>
                         <li>
                             <a href="contact-us.html">Kontakt</a><span class="toggle-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
@@ -359,6 +368,71 @@
                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
                 },
                 body: JSON.stringify({ sort: sortValue, page: page , section_name: section_name, brand: brand})
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // Update the page content with the new value returned.
+                    document.querySelector('.rows-md').innerHTML = data.html;
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    </script>
+    <!-- Sort All Services Script -->
+    <script>
+        document.getElementById('sort5').addEventListener('change', function () {
+            const sortValue = this.value;
+
+            // Define the filter option as the first option in the list of choices
+            const filterOption = this.options[0];
+            // Hide or show the filter option based on the selected option
+            if (sortValue) {
+                filterOption.style.display = 'none'; // Hide the filter option
+            } else {
+                filterOption.style.display = 'block'; // Show the filter option if nothing is
+            }
+
+            const page = new URLSearchParams(window.location.search).get('page') || 1;
+
+            fetch(`{{ route('sort_all_services') }}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({ sort: sortValue, page: page })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // Update the page content with the new value returned.
+                    document.querySelector('.rows-md').innerHTML = data.html;
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    </script>
+    <!-- Sort Services Script -->
+    <script>
+        document.getElementById('sort6').addEventListener('change', function () {
+            const sortValue = this.value;
+
+            // Define the filter option as the first option in the list of choices
+            const filterOption = this.options[0];
+            // Hide or show the filter option based on the selected option
+            if (sortValue) {
+                filterOption.style.display = 'none'; // Hide the filter option
+            } else {
+                filterOption.style.display = 'block'; // Show the filter option if nothing is
+            }
+
+            const page = new URLSearchParams(window.location.search).get('page') || 1;
+            const sectionName = document.querySelector('input[name="sectionName"]').value;
+
+            fetch(`{{ route('sort_services') }}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({ sort: sortValue, page: page , sectionName: sectionName,})
             })
                 .then(response => response.json())
                 .then(data => {

@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\abschnitte;
 use App\Models\Accessories;
-use App\Models\accessories_sections;
 use App\Models\GeneralInformation;
 use App\Models\handys;
 use App\Models\Services;
+use App\Models\ServicesSections;
 use Illuminate\Http\Request;
 
 class ViewController extends Controller
@@ -20,7 +20,8 @@ class ViewController extends Controller
         $services = Services::all();
         $accessories = accessories::all();
         $accessories_brand = accessories::pluck('brand')->unique();
-        return view('index' , compact('information' , 'handys' , 'services' , 'accessories' , 'handys_sections' , 'accessories_brand'));
+        $services_sections = ServicesSections::all();
+        return view('index' , compact('information' , 'handys' , 'services' , 'accessories' , 'handys_sections' , 'accessories_brand' , 'services_sections'));
     }
 
     public function showNewMobiles($section_name)
@@ -181,6 +182,88 @@ class ViewController extends Controller
         // Add parameters to ensure they are preserved when navigating between pages
         $accessories->appends($request->all());
         $html = view('Accessories.partials_accessories_list', compact('accessories'))->render();
+
+        return response()->json(['html' => $html]);
+    }
+
+    public function showServices(Request $request , $section_name = null)
+    {
+
+        if ($request->routeIs('show_services')){
+
+            $section_name = str_replace('-', ' ', urldecode($section_name));
+            $services = Services::where('section_name' , $section_name)->paginate(9);
+
+            return view('Services.show_services', compact('services'));
+
+        }
+
+        else{
+
+            $services = Services::paginate(9);
+            return view('Services.show_all_services', compact('services'));
+        }
+
+    }
+
+    public function sortServices(Request $request)
+    {
+        $query = Services::query();
+
+        if ($request->has('sectionName')) {
+            $query->where('section_name' , $request->get('sectionName'));
+        }
+
+        //paginate to get data for the page only
+        $page = $request->get('page', 1);
+        $services = $query->paginate(9, ['*'], 'page', $page);
+
+        // Sort data within the current page only
+        if ($request->has('sort')) {
+            $services->setCollection(
+                match ($request->get('sort')) {
+                    'name' => $services->getCollection()->sortBy('name'),
+                    'price1' => $services->getCollection()->sortBy('price'),
+                    'price2' => $services->getCollection()->sortByDesc('price'),
+                    'newest' => $services->getCollection()->sortByDesc('created_at'),
+                    'oldest' => $services->getCollection()->sortBy('created_at'),
+                    default => $services->getCollection(),
+                }
+            );
+        }
+
+        // Add parameters to ensure they are preserved when navigating between pages
+        $services->appends($request->all());
+        $html = view('Services.partials_services_list', compact('services'))->render();
+
+        return response()->json(['html' => $html]);
+    }
+
+    public function sortAllServices(Request $request)
+    {
+        $query = Services::query();
+
+        //paginate to get data for the page only
+        $page = $request->get('page', 1);
+        $services = $query->paginate(9, ['*'], 'page', $page);
+
+        // Sort data within the current page only
+        if ($request->has('sort')) {
+            $services->setCollection(
+                match ($request->get('sort')) {
+                    'name' => $services->getCollection()->sortBy('name'),
+                    'price1' => $services->getCollection()->sortBy('price'),
+                    'price2' => $services->getCollection()->sortByDesc('price'),
+                    'newest' => $services->getCollection()->sortByDesc('created_at'),
+                    'oldest' => $services->getCollection()->sortBy('created_at'),
+                    default => $services->getCollection(),
+                }
+            );
+        }
+
+        // Add parameters to ensure they are preserved when navigating between pages
+        $services->appends($request->all());
+        $html = view('Services.partials_services_list', compact('services'))->render();
 
         return response()->json(['html' => $html]);
     }
