@@ -22,7 +22,7 @@
                         @if($one->note != 0)
                             {{$one->note}}
                         @else
-                            Unverfügbar.
+                            Unverfügbar
                         @endif
                     </b></div>
             </div>

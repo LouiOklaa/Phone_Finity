@@ -196,9 +196,9 @@
                             </div>
                             <div class="sm-col-4">
                                 <div class="footer-title alt-color text-upper">Soziale Medien</div>
-                                <div class="cols-list socials cols-sm inline-block" style="margin-left: -1px">
-                                    <a href="{{$information->facebook_link}}" class="list-item"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
-                                    <a href="{{$information->instagram_link}}" class="list-item"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                                <div class="cols-list socials cols-sm inline-block">
+                                    <a href="{{$information->facebook_link}}" class="list-item">&nbsp<i class="fab fa-facebook-f" aria-hidden="true"></i>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+                                    <a href="{{$information->instagram_link}}" class="list-item"><i class="fab fa-instagram" aria-hidden="true"></i>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
                                     <a href="{{$information->tiktok_link}}" class="list-item"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
                                 </div>
                             </div>

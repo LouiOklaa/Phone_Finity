@@ -244,6 +244,9 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
+                                        <button type="submit" class="btn btn-md btn-outline-primary btn-rounded ">
+                                            Aktualisieren
+                                        </button>
                                         <button type="button" class="btn btn-md btn-outline-secondary btn-rounded"
                                                 data-dismiss="modal">Abbrechen
                                         </button>

@@ -4193,6 +4193,13 @@ body.body .res-text-xs {
   }
   .only-xs-text-center {
     text-align: center;
+      flex-direction: row;
+      justify-content: center;
+      flex: initial;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 20px;
   }
   .only-xs-text-left {
     text-align: left;
