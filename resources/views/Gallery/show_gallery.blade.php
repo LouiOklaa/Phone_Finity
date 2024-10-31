@@ -11,38 +11,44 @@
             <div class="showing shop-results-text">
                 Anzeigen von @if($projects->firstItem()==0)0 @else {{ $projects->firstItem() }} @endif bis @if($projects->lastItem()==0) 0 @else {{ $projects->lastItem() }} @endif von {{ $projects->total() }} gesamt
             </div>
-            <div class="shuffle-js">
-                <div class="row cols-tiny rows-tiny shuffle-items">
-                    @foreach($projects as $one)
-                      <?php $mediaExtensions = pathinfo("Attachments/Galerie/$one->media", PATHINFO_EXTENSION) ?>
-                        <div class="shuffle-item col-12 md-col-4 sm-col-6">
-                            <a href="{{asset( 'Attachments/Galerie/' . $one->media)}}">
-                                <div class="item muted-bg" data-inview-showup="showup-scale">
-                                    <div class="block-link">
-                                        <div class="image-wrap">
-                                            @if(in_array($mediaExtensions , ['jpg' , 'jpeg' , 'png' , 'gif']))
-                                             <img class="image" src="Attachments/Galerie/{{$one->media}}" alt=""/>
-                                            @elseif(in_array($mediaExtensions , ['mp4' , 'mkv' , 'mov']))
-                                                <video class="image" src="Attachments/Galerie/{{$one->media}}" alt=""></video>
-                                            @endif
-                                        </div>
-                                        <div class="hover">
-                                            <div class="hover-lines">
-                                                <div class="back"></div>
-                                                <div class="line-content">
-                                                    <h5 class="text-white">{{$one->name}}</h5>
-                                                    <p>{{$one->note}}</p>
+            @if(count($projects) !== 0)
+                <div class="shuffle-js">
+                    <div class="row cols-tiny rows-tiny shuffle-items">
+                        @foreach($projects as $one)
+                                <?php $mediaExtensions = pathinfo("Attachments/Galerie/$one->media", PATHINFO_EXTENSION) ?>
+                            <div class="shuffle-item col-12 md-col-4 sm-col-6">
+                                <a href="{{asset( 'Attachments/Galerie/' . $one->media)}}">
+                                    <div class="item muted-bg" data-inview-showup="showup-scale">
+                                        <div class="block-link">
+                                            <div class="image-wrap">
+                                                @if(in_array($mediaExtensions , ['jpg' , 'jpeg' , 'png' , 'gif']))
+                                                    <img class="image" src="Attachments/Galerie/{{$one->media}}" alt=""/>
+                                                @elseif(in_array($mediaExtensions , ['mp4' , 'mkv' , 'mov']))
+                                                    <video class="image" src="Attachments/Galerie/{{$one->media}}" alt=""></video>
+                                                @endif
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover-lines">
+                                                    <div class="back"></div>
+                                                    <div class="line-content">
+                                                        <h5 class="text-white">{{$one->name}}</h5>
+                                                        <p>{{$one->note}}</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
-                    @endforeach
+                                </a>
+                            </div>
+                        @endforeach
 
+                    </div>
                 </div>
-            </div>
+            @else
+                <div class="text-center" style="margin-top: 30px;">
+                    <h3>Derzeit sind keine Fotos 😞</h3>
+                </div>
+            @endif
 
         </div>
         <div class="text-center shift-lg" data-inview-showup="showup-translate-up">
