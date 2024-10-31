@@ -61,6 +61,9 @@
                         </button>
                     </div>
                     <br>
+                    <div class="showing shop-results-text">
+                        Anzeigen von @if($projects->firstItem()==0)0 @else {{ $projects->firstItem() }} @endif bis @if($projects->lastItem()==0) 0 @else {{ $projects->lastItem() }} @endif von {{ $projects->total() }} gesamt
+                    </div>
                     <div class="gallery">
                         <div class="row">
                             <?php $i = 0 ?>
@@ -149,6 +152,32 @@
                                     </div>
                                 @endif
                             @endforeach
+                            <div class="text-center shift-lg" data-inview-showup="showup-translate-up">
+                                <div class="paginator">
+                                    {{-- Link to Previous Page --}}
+                                    @if ($projects->onFirstPage())
+                                        <span class="previous disabled"><i class="fas fa-angle-left" aria-hidden="true"></i></span>
+                                    @else
+                                        <a href="{{ $projects->previousPageUrl() }}" class="previous"><i class="fas fa-angle-left" aria-hidden="true"></i></a>
+                                    @endif
+
+                                    {{-- Loop through available pages --}}
+                                    @for ($i = 1; $i <= $projects->lastPage(); $i++)
+                                        @if ($i === $projects->currentPage())
+                                            <span class="active">{{ $i }}</span>
+                                        @else
+                                            <a href="{{ $projects->url($i) }}">{{ $i }}</a>
+                                        @endif
+                                    @endfor
+
+                                    {{-- Link to Next Page --}}
+                                    @if ($projects->hasMorePages())
+                                        <a href="{{ $projects->nextPageUrl() }}" class="next"><i class="fas fa-angle-right" aria-hidden="true"></i></a>
+                                    @else
+                                        <span class="next disabled"><i class="fas fa-angle-right" aria-hidden="true"></i></span>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
                         <!--Start Add Modal -->
                         <div class="modal fade" id="add_modal">

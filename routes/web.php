@@ -64,4 +64,6 @@ Route::get('/alle_dienstleistungen', [ViewController::class, 'showServices'])->n
 Route::post('/alle_dienstleistungen/sortieren', [ViewController::class, 'sortAllServices'])->name('sort_all_services');
 Route::post('/dienstleistung/sortieren', [ViewController::class, 'sortServices'])->name('sort_services');
 
+Route::get('/unsere_galerie' , [ViewController::class, 'showGallery'])->name('show_gallery');
+
 Route::get('/{page}', [AdminController::class, 'index']);

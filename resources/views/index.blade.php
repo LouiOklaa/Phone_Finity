@@ -128,7 +128,7 @@
                                     @endforeach
                                 </ul>
                             </li>
-                            <li><a href="projects.html">Galerie</a></li>
+                            <li><a href="{{ route('show_gallery') }}">Galerie</a></li>
                             <li>
                                 <a href="contact-us.html">Kontakt</a><span class="toggle-icon"><i class="fas fa-chevron-down"
                                                                                                   aria-hidden="true"></i></span>
