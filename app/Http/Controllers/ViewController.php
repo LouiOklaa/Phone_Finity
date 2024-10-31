@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\abschnitte;
 use App\Models\Accessories;
+use App\Models\Gallery;
 use App\Models\GeneralInformation;
 use App\Models\handys;
 use App\Models\Services;
@@ -266,6 +267,13 @@ class ViewController extends Controller
         $html = view('Services.partials_services_list', compact('services'))->render();
 
         return response()->json(['html' => $html]);
+    }
+
+    public function showGallery()
+    {
+        $projects = Gallery::paginate(12);
+
+        return view('Gallery.show_gallery', compact('projects'));
     }
 
 }
