@@ -622,7 +622,7 @@
             </div>
         </section>
         <section class="map-section" data-inview-showup="showup-translate-right">
-            <div class="gmap" data-lat="-33.878897" data-lng="151.103737"></div>
+            <div class="gmap" data-lat="13.43312005807037" data-lng="52.48489494840933" id="map"></div>
             <div class="info-wrap">
                 <div class="info-container">
                     <div class="our-info side main-bg">
@@ -721,7 +721,29 @@
         <!-- Inits theme scripts -->
 
         <script src="./assets/js/script.js" type="text/javascript"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADqmeC3KqUupDX0ztEBAAqI9W_J3kKVBc"></script>
+
+        <!-- Google Maps -->
+        <script>
+            function initMap() {
+                var location = { lat: 52.48489494840933, lng: 13.43312005807037 };
+
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 18,
+                    center: location
+                });
+
+                var marker = new google.maps.Marker({
+                    position: location,
+                    map: map,
+                    title: "Standort",
+                    icon: {
+                        url: "http://maps.google.com/mapfiles/ms/icons/pink-dot.png",
+                        scaledSize: new google.maps.Size(50, 50)
+                    }
+                });
+            }
+        </script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADqmeC3KqUupDX0ztEBAAqI9W_J3kKVBc&callback=initMap"></script>
     </body>
 
 </html>

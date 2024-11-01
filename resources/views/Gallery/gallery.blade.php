@@ -68,117 +68,78 @@
                         <div class="row">
                             <?php $i = 0 ?>
                             @foreach($projects as $one)
-                                    <?php $i++ ?>
-                                    <?php $mediaExtensions = pathinfo("Attachments/Galerie/$one->media", PATHINFO_EXTENSION) ?>
-                                @if($i%2 == 0)
-                                    <div class="col-md-6">
-                                        <div class="card">
-                                            <div class="cc-porfolio-image img-raised" class="card-body"
-                                                 data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a
-                                                        href="{{asset( 'Attachments/Galerie/' . $one->media)}}">
-                                                    <figure class="cc-effect">
-                                                        @if(in_array($mediaExtensions , ['jpg' , 'jpeg' , 'png' , 'gif']))
-                                                            <img style="width: 350px; height: 300px;"
-                                                                 src="Attachments/Galerie/{{$one->media}}" alt="Image"/>
-                                                            <figcaption>
-                                                                <div class="h4">{{$one->name}}</div>
-                                                                <p>{{$one->note}}</p>
-                                                            </figcaption>
-                                                        @elseif(in_array($mediaExtensions , ['mp4' , 'mkv' , 'mov']))
-                                                            <video controls
-                                                                   style="width: 350px; height: 300px; object-fit: cover;"
-                                                                   src="Attachments/Galerie/{{$one->media}}"></video>
-                                                            <figcaption>
-                                                                <div class="h4">{{$one->name}}</div>
-                                                                <p>{{$one->note}}</p>
-                                                            </figcaption>
-                                                        @endif
-                                                    </figure>
-                                                </a>
-                                            </div>
-                                            <br>
-                                            <div class="text-center" style="margin-bottom: 10px;">
-                                                <button class="btn btn-sm btn-rounded btn-inverse-primary"
-                                                        href="#edit_modal" title="Edit" data-id="{{$one->id}}"
-                                                        data-name="{{$one->name}}" data-note="{{$one->note}}"
-                                                        data-toggle="modal">Bearbeiten
-                                                </button>
-                                                <button class="btn btn-sm btn-rounded btn-inverse-danger"
-                                                        href="#delete_modal" title="Delete" data-id="{{$one->id}}"
-                                                        data-name="{{$one->name}}" data-toggle="modal">Löschen
-                                                </button>
-                                            </div>
+                                <div class="col-md-4"> <!-- تقسيم العرض إلى 3 أعمدة -->
+                                    <div class="card">
+                                        <div class="cc-porfolio-image img-raised card-body"
+                                             data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                                            <a href="{{ asset('Attachments/Galerie/' . $one->media) }}">
+                                                <figure class="cc-effect">
+                                                        <?php $mediaExtensions = pathinfo("Attachments/Galerie/$one->media", PATHINFO_EXTENSION) ?>
+                                                    @if(in_array($mediaExtensions, ['jpg', 'jpeg', 'png', 'gif']))
+                                                        <img style="width: 100%; height: 300px; object-fit: cover;"
+                                                             src="Attachments/Galerie/{{ $one->media }}" alt="Image"/>
+                                                    @elseif(in_array($mediaExtensions, ['mp4', 'mkv', 'mov']))
+                                                        <video controls
+                                                               style="width: 100%; height: 300px; object-fit: cover;"
+                                                               src="Attachments/Galerie/{{ $one->media }}"></video>
+                                                    @endif
+                                                    <figcaption>
+                                                        <div class="h4">{{ $one->name }}</div>
+                                                        <p>{{ $one->note }}</p>
+                                                    </figcaption>
+                                                </figure>
+                                            </a>
+                                        </div>
+                                        <br>
+                                        <div class="text-center" style="margin-bottom: 10px;">
+                                            <button class="btn btn-sm btn-rounded btn-inverse-primary" href="#edit_modal" title="Edit"
+                                                    data-id="{{ $one->id }}" data-name="{{ $one->name }}" data-note="{{ $one->note }}"
+                                                    data-toggle="modal">Bearbeiten
+                                            </button>
+                                            <button class="btn btn-sm btn-rounded btn-inverse-danger" href="#delete_modal" title="Delete"
+                                                    data-id="{{ $one->id }}" data-name="{{ $one->name }}" data-toggle="modal">Löschen
+                                            </button>
                                         </div>
                                     </div>
-                                @else
-                                    <div class="col-md-6">
-                                        <div class="card">
-                                            <div class="cc-porfolio-image img-raised" class="card-body"
-                                                 data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a
-                                                        href="{{asset( 'Attachments/Galerie/' . $one->media)}}">
-                                                    <figure class="cc-effect">
-                                                        @if(in_array($mediaExtensions , ['jpg' , 'jpeg' , 'png' , 'gif']))
-                                                            <img style="width: 350px; height: 300px; object-position: center"
-                                                                 src="Attachments/Galerie/{{$one->media}}" alt="Image"/>
-                                                            <figcaption>
-                                                                <div class="h4">{{$one->name}}</div>
-                                                                <p>{{$one->note}}</p>
-                                                            </figcaption>
-                                                        @elseif(in_array($mediaExtensions , ['mp4' , 'mkv' , 'mov']))
-                                                            <video controls
-                                                                   style="width: 350px; height: 300px; object-fit: cover;"
-                                                                   src="Attachments/Galerie/{{$one->media}}"></video>
-                                                            <figcaption>
-                                                                <div class="h4">{{$one->name}}</div>
-                                                                <p>{{$one->note}}</p>
-                                                            </figcaption>
-                                                        @endif
-                                                    </figure>
-                                                </a>
-                                            </div>
-                                            <br>
-                                            <div class="text-center" style="margin-bottom: 10px;">
-                                                <button class="btn btn-sm btn-rounded btn-inverse-primary"
-                                                        href="#edit_modal" title="Edit" data-id="{{$one->id}}"
-                                                        data-name="{{$one->name}}" data-note="{{$one->note}}"
-                                                        data-toggle="modal">Bearbeiten
-                                                </button>
-                                                <button class="btn btn-sm btn-rounded btn-inverse-danger"
-                                                        href="#delete_modal" title="Delete" data-id="{{$one->id}}"
-                                                        data-name="{{$one->name}}" data-toggle="modal">Löschen
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endif
+                                </div>
                             @endforeach
-                            <div class="text-center shift-lg" data-inview-showup="showup-translate-up">
-                                <div class="paginator">
-                                    {{-- Link to Previous Page --}}
-                                    @if ($projects->onFirstPage())
-                                        <span class="previous disabled"><i class="fas fa-angle-left" aria-hidden="true"></i></span>
-                                    @else
-                                        <a href="{{ $projects->previousPageUrl() }}" class="previous"><i class="fas fa-angle-left" aria-hidden="true"></i></a>
-                                    @endif
+                        </div>
+                        <div class="text-center shift-lg paginator-container" data-inview-showup="showup-translate-up">
+                            <div class="paginator">
+                                {{-- Link to Previous Page --}}
+                                @if ($projects->onFirstPage())
+                                    <span class="previous disabled"><i class="fas fa-angle-left" aria-hidden="true"></i></span>
+                                @else
+                                    <a href="{{ $projects->previousPageUrl() }}" class="previous"><i class="fas fa-angle-left" aria-hidden="true"></i></a>
+                                @endif
 
-                                    {{-- Loop through available pages --}}
-                                    @for ($i = 1; $i <= $projects->lastPage(); $i++)
+                                {{-- Loop through available pages --}}
+                                @for ($i = 1; $i <= $projects->lastPage(); $i++)
+                                    @if ($i === 1 || $i === $projects->lastPage() || abs($projects->currentPage() - $i) <= 1)
+                                        {{-- Show current, first, last, and neighboring pages --}}
                                         @if ($i === $projects->currentPage())
                                             <span class="active">{{ $i }}</span>
                                         @else
                                             <a href="{{ $projects->url($i) }}">{{ $i }}</a>
                                         @endif
-                                    @endfor
-
-                                    {{-- Link to Next Page --}}
-                                    @if ($projects->hasMorePages())
-                                        <a href="{{ $projects->nextPageUrl() }}" class="next"><i class="fas fa-angle-right" aria-hidden="true"></i></a>
-                                    @else
-                                        <span class="next disabled"><i class="fas fa-angle-right" aria-hidden="true"></i></span>
+                                    @elseif ($i === 2 && $projects->currentPage() > 3)
+                                        {{-- Show ellipsis after the first page --}}
+                                        <span class="ellipsis">...</span>
+                                    @elseif ($i === $projects->lastPage() - 1 && $projects->currentPage() < $projects->lastPage() - 2)
+                                        {{-- Show ellipsis before the last page --}}
+                                        <span class="ellipsis">...</span>
                                     @endif
-                                </div>
+                                @endfor
+
+                                {{-- Link to Next Page --}}
+                                @if ($projects->hasMorePages())
+                                    <a href="{{ $projects->nextPageUrl() }}" class="next"><i class="fas fa-angle-right" aria-hidden="true"></i></a>
+                                @else
+                                    <span class="next disabled"><i class="fas fa-angle-right" aria-hidden="true"></i></span>
+                                @endif
                             </div>
                         </div>
+
                         <!--Start Add Modal -->
                         <div class="modal fade" id="add_modal">
                             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -316,6 +277,74 @@
                 </div>
             </div>
         </div>
+        <style>
+            .paginator-container {
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
+            }
+            .paginator {
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
+                font-size: 0.8rem;
+            }
+            .paginator a, .paginator span {
+                padding: 6px 10px;
+                margin: 0 2px;
+                border-radius: 5px;
+                text-decoration: none;
+                color: #6C7293;
+                transition: all 0.3s;
+            }
+            .paginator a:hover {
+                background-color: #007bff;
+                color: white;
+            }
+            .paginator .active {
+                background-color: #007bff;
+                color: white;
+                font-weight: bold;
+            }
+            .paginator .disabled {
+                color: #ccc;
+                cursor: not-allowed;
+            }
+            .paginator .previous,
+            .paginator .next {
+                color: #007BFF;
+                font-size: 1rem;
+                padding: 6px 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 5px;
+            }
+            .paginator .previous:after {
+                content: "<";
+                font-weight: bold;
+            }
+            .paginator .next:after {
+                content: ">";
+                font-weight: bold;
+            }
+            .paginator .previous:hover,
+            .paginator .next:hover {
+                color: white;
+                background-color: #007bff;
+            }
+            .paginator .ellipsis {
+                padding: 6px 8px;
+                color: #6C7293;
+                font-weight: bold;
+            }
+            .paginator .ellipsis {
+                padding: 6px 8px;
+                color: #6C7293;
+                font-weight: bold;
+                display: inline-block;
+            }
+        </style>
         @endsection
         @section('JS')
             {{--  Edit Modal Script  --}}
