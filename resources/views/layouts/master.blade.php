@@ -239,6 +239,7 @@
 <script src="assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
 <script src="assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
 <script src="assets/js/jquery.cookie.js" type="text/javascript"></script>
+<script src="assets/vendors/chart.js/Chart.min.js"></script>
 <!--Internal Fileuploads js-->
 <script src="{{ URL::asset('assets/plugins/fileuploads/js/fileupload.js') }}"></script>
 <script src="{{ URL::asset('assets/plugins/fileuploads/js/file-upload.js') }}"></script>
@@ -249,6 +250,7 @@
 <script src="assets/js/misc.js"></script>
 <script src="assets/js/settings.js"></script>
 <script src="assets/js/todolist.js"></script>
+<script src="assets/js/chart.js"></script>
 <!-- endinject -->
 <!-- Custom js for this page -->
 <script src="assets/js/dashboard.js"></script>
@@ -260,6 +262,7 @@
 <script src="js/now-ui-kit.js?ver=1.1.0"></script>
 <script src="js/aos.js?ver=1.1.0"></script>
 <script src="scripts/main.js?ver=1.1.0"></script>
+
 <script>
     // Add click event listener to the icon
     document.getElementById('fullscreenBtn').addEventListener('click', function() {

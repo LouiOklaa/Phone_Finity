@@ -68,7 +68,7 @@
                         <div class="row">
                             <?php $i = 0 ?>
                             @foreach($projects as $one)
-                                <div class="col-md-4"> <!-- تقسيم العرض إلى 3 أعمدة -->
+                                <div class="col-md-4">
                                     <div class="card">
                                         <div class="cc-porfolio-image img-raised card-body"
                                              data-aos="fade-up" data-aos-anchor-placement="top-bottom">
