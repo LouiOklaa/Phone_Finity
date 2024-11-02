@@ -216,7 +216,7 @@
                                         <label>Startseitenfoto 3</label>
                                         <div class="col-sm-12 col-md-12">
                                             <input type="file" id="img3" name="img3" class="dropify"
-                                                   accept=".jpg, .png, image/jpeg, image/png" data-height=30"/>
+                                                   accept=".jpg, .png, image/jpeg, image/png" data-height="30"/>
                                         </div>
                                     </div>
                                     <div class="form-group">

@@ -243,8 +243,7 @@
             <section class="content-section">
                 <div class="container">
                     <div class="section-head text-center container-md">
-                        <h2 class="section-title text-upper text-lg" data-inview-showup="showup-translate-right">Warum uns
-                            wählen ?</h2>
+                        <h2 class="section-title text-upper text-lg" data-inview-showup="showup-translate-right">Warum wählen Sie uns ?</h2>
                         <p data-inview-showup="showup-translate-left">Einige unserer Funktionen.</p>
                     </div>
                     <div class="row cols-md rows-lg text-center">
