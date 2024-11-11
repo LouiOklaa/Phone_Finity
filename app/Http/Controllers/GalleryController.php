@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Gallery;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class GalleryController extends Controller
@@ -53,6 +54,7 @@ class GalleryController extends Controller
             'name' => $request->name,
             'note' => $request->note,
             'media' => $file_name,
+            'created_by' => auth()->id(),
 
         ]);
 

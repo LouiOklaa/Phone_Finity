@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('amount');
             $table->text('note')->nullable();
             $table->string('image');
+            $table->string('created_by');
             $table->timestamps();
         });
     }

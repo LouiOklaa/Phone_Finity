@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name', 100);
             $table->text('note')->nullable();
             $table->string('media');
+            $table->string('created_by');
             $table->timestamps();
         });
     }

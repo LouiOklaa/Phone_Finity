@@ -13,5 +13,6 @@ class Gallery extends Model
         'name',
         'note',
         'media',
+        'created_by',
     ];
 }

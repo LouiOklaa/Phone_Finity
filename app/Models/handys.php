@@ -19,6 +19,7 @@ class handys extends Model
         'amount',
         'note',
         'image',
+        'created_by',
     ];
 
     public function abschnitte(){

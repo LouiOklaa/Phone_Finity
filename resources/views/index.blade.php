@@ -682,8 +682,18 @@
                 </div>
                 <div class="footer-copyrights text-center top-separator ins-md">&copy;
                     <script>document.write(new Date().getFullYear());</script>
-                    <a href="https://www.linkedin.com/in/loui-oklaa/" style="font-weight: bolder;">Loui Oklaa</a> Alle Rechte
+                    <a href="https://www.louioklaa.de/" style="font-weight: bolder;">Loui Oklaa</a> Alle Rechte
                     vorbehalten.
+                    <a style="color: #CA5098" href="https://github.com/LouiOklaa" class="fab fa-github"></a>
+                    <a style="color: #CA5098" href="https://www.facebook.com/loui.oklaa/" class="fab fa-facebook"></a>
+                    <a style="color: #CA5098" href="https://www.linkedin.com/in/loui-oklaa/" class="fab fa-linkedin"></a>
+                    <a style="color: #CA5098" href="https://www.instagram.com/loui_oklaa/" class="fab fa-instagram"></a>
+                    <a style="color: #CA5098" href="https://wa.me/+4917670352663" class="fab fa-whatsapp"></a>
+                    <a style="color: #CA5098" href="https://x.com/loui_oklaa">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
+                            <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </footer>

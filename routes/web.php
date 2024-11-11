@@ -8,8 +8,10 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\GeneralInformationController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HandysController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\ServicesSectionsController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ViewController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -42,6 +44,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('dienstleistungen', ServicesController::class);
     Route::resource('dienstleistungensbereich', ServicesSectionsController::class);
     Route::resource('allgemeineinformationen', GeneralInformationController::class);
+    Route::get('/rollen/hinzufügen', [RoleController::class, 'create'])->name('add_roles');
+    Route::get('/rollen/anzeigen/{id}', [RoleController::class, 'show'])->name('show_roles');
+    Route::get('/rollen/bearbeiten/{id}', [RoleController::class, 'edit'])->name('edit_roles');
+    Route::resource('rollen',RoleController::class);
+    Route::get('/benutzer/bearbeiten/{id}', [UserController::class, 'edit'])->name('edit_user');
+    Route::get('/benutzer/profil/{id}', [UserController::class, 'profile'])->name('profile');
+    Route::resource('benutzer',UserController::class);
     Route::get('/dokumentation', function () { return view('Documentation.documentation'); });
 
 });

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->decimal('price',14,2);
             $table->text('note')->nullable();
             $table->string('image');
+            $table->string('created_by');
             $table->timestamps();
         });
     }

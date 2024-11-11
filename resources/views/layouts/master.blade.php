@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title> @yield("title") </title>
     {{--  Progress bar  --}}
-    <link href="css/aos.css?ver=1.1.0" rel="stylesheet">
-    <link href="css/bootstrap.min.css?ver=1.1.0" rel="stylesheet">
+    <link href="{{ URL::asset('css/aos.css?ver=1.1.0" rel="stylesheet') }}">
+    <link href="{{ URL::asset('css/bootstrap.min.css?ver=1.1.0" rel="stylesheet') }}">
     <!-- plugins:css -->
-    <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="{{ URL::asset('assets/vendors/mdi/css/materialdesignicons.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('assets/vendors/css/vendor.bundle.base.css') }}">
     <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="assets/vendors/jvectormap/jquery-jvectormap.css">
-    <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css">
-    <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.theme.default.min.css">
+    <link rel="stylesheet" href="{{ URL::asset('assets/vendors/jvectormap/jquery-jvectormap.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('assets/vendors/flag-icon-css/css/flag-icon.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('assets/vendors/owl-carousel-2/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('assets/vendors/owl-carousel-2/owl.theme.default.min.css') }}">
     <!-- End plugin css for this page -->
     <!---Internal Fileupload css-->
     <link href="{{ URL::asset('assets/plugins/fileuploads/css/fileupload.css') }}" rel="stylesheet" type="text/css" />
@@ -41,7 +41,7 @@
                 <div class="profile-desc">
                     <div class="profile-pic">
                         <div class="count-indicator">
-                            <img class="img-xs rounded-circle " src="assets/images/faces/face.jpg" alt="">
+                            <img class="img-xs rounded-circle " src="{{ URL::asset('assets/images/faces/face.jpg') }}" alt="">
                             <span class="count bg-success"></span>
                         </div>
                         <div class="profile-name">
@@ -69,6 +69,14 @@
                 <span class="nav-link">Hauptmenü</span>
             </li>
             <li class="nav-item menu-items">
+                <a class="nav-link" href="{{ url('/' . $page='admin') }}">
+              <span class="menu-icon">
+                <i class="mdi mdi-view-dashboard"></i>
+              </span>
+                    <span class="menu-title">Armaturenbrett</span>
+                </a>
+            </li>
+            <li class="nav-item menu-items">
                 <a class="nav-link" href="{{ url('/' . $page='allgemeineinformationen') }}">
               <span class="menu-icon">
                 <i class="mdi mdi-information-variant"></i>
@@ -92,14 +100,14 @@
                 </div>
             </li>
             <li class="nav-item menu-items">
-                <a class="nav-link" data-toggle="collapse" href="#ui-basic-1" aria-expanded="false" aria-controls="auth">
+                <a class="nav-link" data-toggle="collapse" href="#ui-basic-Z" aria-expanded="false" aria-controls="auth">
               <span class="menu-icon">
                 <i class="mdi mdi-headphones"></i>
               </span>
                     <span class="menu-title">Zubehör</span>
                     <i class="menu-arrow"></i>
                 </a>
-                <div class="collapse" id="ui-basic-1">
+                <div class="collapse" id="ui-basic-Z">
                     <ul class="nav flex-column sub-menu">
                         <li class="nav-item"> <a class="nav-link" href="{{ url('/' . $page='zubehör') }}">Hanadyzubehör</a></li>
                         <li class="nav-item"> <a class="nav-link" href="{{ url('/' . $page='zubehör_kategorien') }}">Zubehör Abschnitte</a></li>
@@ -107,14 +115,14 @@
                 </div>
             </li>
             <li class="nav-item menu-items">
-                <a class="nav-link" data-toggle="collapse" href="#ui-basic-2" aria-expanded="false" aria-controls="auth">
+                <a class="nav-link" data-toggle="collapse" href="#ui-basic-D" aria-expanded="false" aria-controls="auth">
               <span class="menu-icon">
                 <i class="mdi mdi-library-books"></i>
               </span>
                     <span class="menu-title">Dienstleistungen</span>
                     <i class="menu-arrow"></i>
                 </a>
-                <div class="collapse" id="ui-basic-2">
+                <div class="collapse" id="ui-basic-D">
                     <ul class="nav flex-column sub-menu">
                         <li class="nav-item"> <a class="nav-link" href="{{ url('/' . $page='dienstleistungen') }}">Dienstleistungen</a></li>
                         <li class="nav-item"> <a class="nav-link" href="{{ url('/' . $page='dienstleistungensbereich') }}">Dienstleistungensbereich</a></li>
@@ -128,6 +136,21 @@
               </span>
                     <span class="menu-title">Galerie</span>
                 </a>
+            </li>
+            <li class="nav-item menu-items">
+                <a class="nav-link" data-toggle="collapse" href="#ui-basic-E" aria-expanded="false" aria-controls="ui-basic">
+              <span class="menu-icon">
+                <i class="mdi mdi-settings"></i>
+              </span>
+                    <span class="menu-title">Einstellungen</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="ui-basic-E">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link" href="{{ url('/' . $page='benutzer') }}">Benutzer</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="{{ url('/' . $page='rollen') }}">Benutzerrollen</a></li>
+                    </ul>
+                </div>
             </li>
             <li class="nav-item menu-items">
                 <a class="nav-link" href="{{ url('/' . $page='dokumentation') }}">
@@ -163,7 +186,7 @@
                         <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                             <!-- Smaller profile picture for opening dropdown -->
                             <div class="navbar-profile">
-                                <img class="img-xs rounded-circle" src="assets/images/faces/face.jpg" alt="" style="width: 35px; height: 35px;"> <!-- Reduced size here -->
+                                <img class="img-xs rounded-circle" src="{{ URL::asset('assets/images/faces/face.jpg') }}" alt="" style="width: 35px; height: 35px;"> <!-- Reduced size here -->
                                 <p class="mb-0 d-none d-sm-block navbar-profile-name">{{ Auth::user()->name }}</p>
                                 <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                             </div>
@@ -171,10 +194,52 @@
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
                             <!-- User profile with picture and email in the dropdown -->
                             <div class="dropdown-item preview-item" style="display: flex; flex-direction: column; align-items: center;  pointer-events: none;">
-                                <img class="img-md rounded-circle mb-2" src="assets/images/faces/face.jpg" alt="" style="width: 50px; height: 50px;"> <!-- This size remains as it is -->
+                                <img class="img-md rounded-circle mb-2" src="{{ URL::asset('assets/images/faces/face.jpg') }}" alt="" style="width: 50px; height: 50px;"> <!-- This size remains as it is -->
                                 <p class="mb-0 font-weight-bold">{{ Auth::user()->name }}</p>
                                 <p class="text-muted small">{{ Auth::user()->email }}</p>
                             </div>
+
+                            <div class="dropdown-divider"></div>
+
+                            <!-- Show User Profile -->
+                            <a style="height: 40px;" class="dropdown-item preview-item" href="{{ route('profile', Auth::user()->id) }}">
+                                <div class="preview-thumbnail">
+                                    <div class="preview-icon menu-icon rounded-circle">
+                                        <i class="mdi mdi-account-circle text-primary"></i>
+                                    </div>
+                                </div>
+                                <div class="preview-item-content">
+                                    <p class="preview-subject mb-1">Profil Anzeigen</p>
+                                </div>
+                            </a>
+
+                            <div class="dropdown-divider"></div>
+
+                            <!-- Show User Permission -->
+                            <a style="height: 40px;" class="dropdown-item preview-item" href="{{ route('show_roles', \Spatie\Permission\Models\Role::where('name' , '=' , Auth::user()->role_name)->first()) }}">
+                                <div class="preview-thumbnail">
+                                    <div class="preview-icon menu-icon rounded-circle">
+                                        <i class="mdi mdi-shield-outline text-info"></i>
+                                    </div>
+                                </div>
+                                <div class="preview-item-content">
+                                    <p class="preview-subject mb-1">Konto Berechtigungen</p>
+                                </div>
+                            </a>
+
+                            <div class="dropdown-divider"></div>
+
+                            <!-- Edit User Button -->
+                            <a style="height: 40px;" class="dropdown-item preview-item" href="{{ route('edit_user', Auth::user()->id) }}">
+                                <div class="preview-thumbnail">
+                                    <div class="preview-icon menu-icon rounded-circle">
+                                        <i class="mdi mdi-account-box-outline text-success"></i>
+                                    </div>
+                                </div>
+                                <div class="preview-item-content">
+                                    <p class="preview-subject mb-1">Profil Bearbeiten</p>
+                                </div>
+                            </a>
 
                             <div class="dropdown-divider"></div>
 
@@ -199,7 +264,7 @@
                             <a style="height: 40px;" class="dropdown-item preview-item" href="https://mail.google.com/mail/?view=cm&fs=1&to=louioklaa2001@gmail.com" target="_blank">
                                 <div class="preview-thumbnail">
                                     <div class="preview-icon rounded-circle">
-                                        <i class="mdi mdi-contact-mail text-primary"></i>
+                                        <i class="mdi mdi-contact-mail text-warning"></i>
                                     </div>
                                 </div>
                                 <div class="preview-item-content">
@@ -220,7 +285,17 @@
 
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
-            <div class="footer-copyrights text-center top-separator ins-md" style="font-size: 15px; font-weight: bolder;">&copy; <script>document.write(new Date().getFullYear());</script> <a href="https://www.linkedin.com/in/loui-oklaa/"  style="font-weight: bolder; color: #0162E8">Loui Oklaa</a> Alle Rechte vorbehalten.</div>
+            <div class="footer-copyrights text-center top-separator ins-md" style="font-size: 15px; font-weight: bolder;">&copy; <script>document.write(new Date().getFullYear());</script> <a href="https://www.louioklaa.de/"  style="font-weight: bolder; color: #0162E8">Loui Oklaa</a> Alle Rechte vorbehalten.
+                <a style="color: #FFFFFF" href="https://github.com/LouiOklaa" class="mdi mdi-github-circle"></a>
+                <a style="color: #FFFFFF" href="https://www.facebook.com/loui.oklaa/" class="mdi mdi-facebook"></a>
+                <a style="color: #FFFFFF" href="https://www.linkedin.com/in/loui-oklaa/" class="mdi mdi-linkedin"></a>
+                <a style="color: #FFFFFF" href="https://www.instagram.com/loui_oklaa/" class="mdi mdi-instagram"></a>
+                <a style="color: #FFFFFF" href="https://wa.me/+4917670352663" class="mdi mdi-whatsapp"></a>
+                <a style="color: #FFFFFF" href="https://x.com/loui_oklaa">
+                    <svg style="margin-bottom: 8px" xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
+                        <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+                    </svg>
+                </a></div>
         </footer>
         <!-- partial -->
     </div>
@@ -230,38 +305,38 @@
 </div>
 <!-- container-scroller -->
 <!-- plugins:js -->
-<script src="assets/vendors/js/vendor.bundle.base.js"></script>
+<script src="{{ URL::asset('assets/vendors/js/vendor.bundle.base.js') }}"></script>
 <!-- endinject -->
 <!-- Plugin js for this page -->
-<script src="assets/vendors/chart.js/Chart.min.js"></script>
-<script src="assets/vendors/progressbar.js/progressbar.min.js"></script>
-<script src="assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
-<script src="assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-<script src="assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
-<script src="assets/js/jquery.cookie.js" type="text/javascript"></script>
-<script src="assets/vendors/chart.js/Chart.min.js"></script>
+<script src="{{ URL::asset('assets/vendors/chart.js/Chart.min.js') }}"></script>
+<script src="{{ URL::asset('assets/vendors/progressbar.js/progressbar.min.js') }}"></script>
+<script src="{{ URL::asset('assets/vendors/jvectormap/jquery-jvectormap.min.js') }}"></script>
+<script src="{{ URL::asset('assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
+<script src="{{ URL::asset('assets/vendors/owl-carousel-2/owl.carousel.min.js') }}"></script>
+<script src="{{ URL::asset('assets/js/jquery.cookie.js') }}" type="text/javascript"></script>
+<script src="{{ URL::asset('assets/vendors/chart.js/Chart.min.js') }}"></script>
 <!--Internal Fileuploads js-->
 <script src="{{ URL::asset('assets/plugins/fileuploads/js/fileupload.js') }}"></script>
 <script src="{{ URL::asset('assets/plugins/fileuploads/js/file-upload.js') }}"></script>
 <!-- End plugin js for this page -->
 <!-- inject:js -->
-<script src="assets/js/off-canvas.js"></script>
-<script src="assets/js/hoverable-collapse.js"></script>
-<script src="assets/js/misc.js"></script>
-<script src="assets/js/settings.js"></script>
-<script src="assets/js/todolist.js"></script>
-<script src="assets/js/chart.js"></script>
+<script src="{{ URL::asset('assets/js/off-canvas.js') }}"></script>
+<script src="{{ URL::asset('assets/js/hoverable-collapse.js') }}"></script>
+<script src="{{ URL::asset('assets/js/misc.js') }}"></script>
+<script src="{{ URL::asset('assets/js/settings.js') }}"></script>
+<script src="{{ URL::asset('assets/js/todolist.js') }}"></script>
+<script src="{{ URL::asset('assets/js/chart.js') }}"></script>
 <!-- endinject -->
 <!-- Custom js for this page -->
-<script src="assets/js/dashboard.js"></script>
+<script src="{{ URL::asset('assets/js/dashboard.js') }}"></script>
 <!-- End custom js for this page -->
 {{--Progress Js--}}
-<script src="js/core/jquery.3.2.1.min.js?ver=1.1.0"></script>
-<script src="js/core/popper.min.js?ver=1.1.0"></script>
-<script src="js/core/bootstrap.min.js?ver=1.1.0"></script>
-<script src="js/now-ui-kit.js?ver=1.1.0"></script>
-<script src="js/aos.js?ver=1.1.0"></script>
-<script src="scripts/main.js?ver=1.1.0"></script>
+<script src="{{ URL::asset('js/core/jquery.3.2.1.min.js?ver=1.1.0') }}"></script>
+<script src="{{ URL::asset('js/core/popper.min.js?ver=1.1.0') }}"></script>
+<script src="{{ URL::asset('js/core/bootstrap.min.js?ver=1.1.0') }}"></script>
+<script src="{{ URL::asset('js/now-ui-kit.js?ver=1.1.0') }}"></script>
+<script src="{{ URL::asset('js/aos.js?ver=1.1.0') }}"></script>
+<script src="{{ URL::asset('scripts/main.js?ver=1.1.0') }}"></script>
 
 <script>
     // Add click event listener to the icon
