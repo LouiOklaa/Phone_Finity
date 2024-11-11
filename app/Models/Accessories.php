@@ -17,6 +17,7 @@ class Accessories extends Model
         'price',
         'note',
         'image',
+        'created_by',
     ];
 
     public function sections(){

@@ -11,7 +11,7 @@
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <ul class="list-inline text-center">
+                            <ul style="color: #00c292" class="list-inline text-center">
                                 <li class="list-inline-item">D</li>
                                 <li class="list-inline-item">O</li>
                                 <li class="list-inline-item">K</li>

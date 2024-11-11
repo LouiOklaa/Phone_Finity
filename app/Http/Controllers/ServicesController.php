@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Services;
 use App\Models\ServicesSections;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class ServicesController extends Controller
@@ -62,6 +63,7 @@ class ServicesController extends Controller
             'price' => $request->price,
             'note' => $request->note,
             'image' => $file_name,
+            'created_by' => auth()->id(),
 
         ]);
 

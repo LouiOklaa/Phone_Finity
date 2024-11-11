@@ -6,6 +6,7 @@ use App\Models\abschnitte;
 use App\Models\Accessories;
 use App\Models\accessories_sections;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class AccessoriesController extends Controller
@@ -68,6 +69,7 @@ class AccessoriesController extends Controller
             'price' => $request->price,
             'note' => $request->note,
             'image' => $file_name,
+            'created_by' => auth()->id(),
 
         ]);
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\abschnitte;
 use App\Models\handys;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
@@ -70,6 +71,7 @@ class HandysController extends Controller
             'amount' => $request->amount,
             'note' => $request->note,
             'image' => $file_name,
+            'created_by' => auth()->id(),
 
         ]);
 

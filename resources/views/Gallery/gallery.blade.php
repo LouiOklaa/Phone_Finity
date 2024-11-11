@@ -45,7 +45,7 @@
             @endif
             <div class="card">
                 <div class="card-body">
-                    <ul class="list-inline text-center">
+                    <ul style="color: #00c292" class="list-inline text-center">
                         <li class="list-inline-item">G</li>
                         <li class="list-inline-item">A</li>
                         <li class="list-inline-item">L</li>
