@@ -2,6 +2,17 @@
 @section('title')
     LouiSoft Admin
 @endsection
+@section('CSS')
+    <style>
+        .preview-item:hover {
+            background-color: #16181b;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    </style>
+@endsection
 @section('contents')
     <!-- partial -->
     <div class="main-panel">
@@ -257,26 +268,32 @@
                 <div class="col-md-4 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
+
                             <div class="d-flex flex-row justify-content-between">
-                                <h4 class="card-title">Messages</h4>
-                                <p class="text-muted mb-1 small">View all</p>
+                                <h4 class="card-title">Neueste Nachrichten</h4>
+                                <a href="{{route('show_all_messages')}}" class="text-muted mb-1 small">Alle anzeigen</a>
                             </div>
                             <div class="preview-list">
-                                <div class="preview-item border-bottom">
-                                    <div class="preview-thumbnail">
-                                        <img src="assets/images/faces/face6.jpg" alt="image" class="rounded-circle"/>
-                                    </div>
-                                    <div class="preview-item-content d-flex flex-grow">
-                                        <div class="flex-grow">
-                                            <div class="d-flex d-md-block d-xl-flex justify-content-between">
-                                                <h6 class="preview-subject">Leonard</h6>
-                                                <p class="text-muted text-small">5 minutes ago</p>
+                                @foreach($latestEmails as $one)
+                                    <a href="{{route('show_message' , $one->id)}}" class="text-decoration-none" style="color: inherit;">
+                                        <div class="preview-item border-bottom">
+                                            <div class="preview-thumbnail">
+                                                <img src="{{ URL::asset('assets/images/faces/face2.jpg') }}" alt="image" class="rounded-circle"/>
                                             </div>
-                                            <p class="text-muted">Well, it seems to be working now.</p>
+                                            <div class="preview-item-content d-flex flex-grow">
+                                                <div class="flex-grow">
+                                                    <div class="d-flex d-md-block d-xl-flex justify-content-between">
+                                                        <h6 class="preview-subject">{{$one->name}}</h6>
+                                                        <p class="text-muted text-small">{{$one->sent_at_formatted}}</p>
+                                                    </div>
+                                                    <p class="text-muted">{{$one->email}}</p>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
+                                    </a>
+                                @endforeach
                             </div>
+
                         </div>
                     </div>
                 </div>

@@ -130,7 +130,7 @@
                         </li>
                         <li><a href="{{ route('show_gallery') }}">Galerie</a></li>
                         <li>
-                            <a href="contact-us.html">Kontakt</a><span class="toggle-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
+                            <a href="{{route('contact_us')}}">Kontakt</a><span class="toggle-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
                         </li>
                     </ul>
                     <div class="clearfix"></div>
@@ -254,6 +254,8 @@
 
     <script src="{{ asset('assets/js/script.js') }}" type="text/javascript"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+
+   @yield('JS')
 
     <!-- Sort All mobiles Script -->
     <script>
