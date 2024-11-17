@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EmailLog;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard.dashboard');
+
+        $latestEmails = EmailLog::latest()->take(4)->get();
+
+        return view('dashboard.dashboard' , compact('latestEmails'));
     }
 }

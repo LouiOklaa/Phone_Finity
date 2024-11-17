@@ -4,10 +4,12 @@ use App\Http\Controllers\AbschnitteController;
 use App\Http\Controllers\AccessoriesController;
 use App\Http\Controllers\AccessoriesSectionsController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\GeneralInformationController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HandysController;
+use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\ServicesSectionsController;
@@ -44,6 +46,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('dienstleistungen', ServicesController::class);
     Route::resource('dienstleistungensbereich', ServicesSectionsController::class);
     Route::resource('allgemeineinformationen', GeneralInformationController::class);
+    Route::get('/alle_nachrichten', [MessagesController::class, 'index'])->name('show_all_messages');
+    Route::get('/nachricht/{id}', [MessagesController::class, 'viewMessage'])->name('show_message');
+    Route::post('/nachricht/{id}/reply', [MessagesController::class, 'replyMessage'])->name('admin_replyMessage');
     Route::get('/rollen/hinzufügen', [RoleController::class, 'create'])->name('add_roles');
     Route::get('/rollen/anzeigen/{id}', [RoleController::class, 'show'])->name('show_roles');
     Route::get('/rollen/bearbeiten/{id}', [RoleController::class, 'edit'])->name('edit_roles');
@@ -74,5 +79,8 @@ Route::post('/alle_dienstleistungen/sortieren', [ViewController::class, 'sortAll
 Route::post('/dienstleistung/sortieren', [ViewController::class, 'sortServices'])->name('sort_services');
 
 Route::get('/unsere_galerie' , [ViewController::class, 'showGallery'])->name('show_gallery');
+
+Route::post('/anfrage/senden', [ContactController::class, 'send'])->name('send_email');
+Route::get('/kontakt', function () {$information = \App\Models\GeneralInformation::first(); return view('emails.contact_us' , compact('information')); })->name('contact_us');
 
 Route::get('/{page}', [AdminController::class, 'index']);

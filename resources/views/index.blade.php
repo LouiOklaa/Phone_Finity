@@ -130,7 +130,7 @@
                             </li>
                             <li><a href="{{ route('show_gallery') }}">Galerie</a></li>
                             <li>
-                                <a href="contact-us.html">Kontakt</a><span class="toggle-icon"><i class="fas fa-chevron-down"
+                                <a href="{{route('contact_us')}}">Kontakt</a><span class="toggle-icon"><i class="fas fa-chevron-down"
                                                                                                   aria-hidden="true"></i></span>
                             </li>
                         </ul>
@@ -581,7 +581,7 @@
                         </div>
                     </div>
                     <div class="contact-btn">
-                        <a href="contact-us.html" class="btn btns-white text-upper">Kontaktiere Sie uns</a>
+                        <a href="{{route('contact_us')}}" class="btn btns-white text-upper">Kontaktiere Sie uns</a>
                     </div>
                 </div>
             </div>

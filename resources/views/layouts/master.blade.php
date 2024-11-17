@@ -138,6 +138,14 @@
                 </a>
             </li>
             <li class="nav-item menu-items">
+                <a class="nav-link" href="/alle_nachrichten">
+            <span class="menu-icon">
+                <i class="mdi mdi-message"></i>
+            </span>
+                    <span class="menu-title">Nachrichten</span>
+                </a>
+            </li>
+            <li class="nav-item menu-items">
                 <a class="nav-link" data-toggle="collapse" href="#ui-basic-E" aria-expanded="false" aria-controls="ui-basic">
               <span class="menu-icon">
                 <i class="mdi mdi-settings"></i>
