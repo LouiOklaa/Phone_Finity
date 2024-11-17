@@ -6,7 +6,6 @@
     <!-- partial -->
     <div class="main-panel">
         <div class="content-wrapper">
-
             @if (session()->has('Add'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <strong>{{ session()->get('Add') }}</strong>
@@ -54,12 +53,14 @@
                         <li class="list-inline-item">I</li>
                         <li class="list-inline-item">E</li>
                     </ul>
+                    @can('InGalerieHinzufügen')
                     <div class="add-btn">
                         <button style="height: 30px" type="button"
                                 class="btn btn-inverse-primary btn-fw embed-responsive btn-rounded" href="#add_modal"
                                 data-toggle="modal">Hinzufügen
                         </button>
                     </div>
+                    @endcan
                     <br>
                     <div class="showing shop-results-text">
                         Anzeigen von @if($projects->firstItem()==0)0 @else {{ $projects->firstItem() }} @endif bis @if($projects->lastItem()==0) 0 @else {{ $projects->lastItem() }} @endif von {{ $projects->total() }} gesamt
@@ -92,13 +93,17 @@
                                         </div>
                                         <br>
                                         <div class="text-center" style="margin-bottom: 10px;">
+                                            @can('InGalerieBearbeiten')
                                             <button class="btn btn-sm btn-rounded btn-inverse-primary" href="#edit_modal" title="Edit"
                                                     data-id="{{ $one->id }}" data-name="{{ $one->name }}" data-note="{{ $one->note }}"
                                                     data-toggle="modal">Bearbeiten
                                             </button>
+                                            @endcan
+                                            @can('InGalerieLöschen')
                                             <button class="btn btn-sm btn-rounded btn-inverse-danger" href="#delete_modal" title="Delete"
                                                     data-id="{{ $one->id }}" data-name="{{ $one->name }}" data-toggle="modal">Löschen
                                             </button>
+                                            @endcan
                                         </div>
                                     </div>
                                 </div>

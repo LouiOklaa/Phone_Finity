@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    Dienstleistungensbereich
+    Dienste Kategorien
 @endsection
 @section('contents')
 
@@ -66,29 +66,31 @@
                                 <li class="list-inline-item">N</li>
                                 <li class="list-inline-item"></li>
                                 <li class="list-inline-item"></li>
+                                <li class="list-inline-item">K</li>
                                 <li class="list-inline-item">A</li>
-                                <li class="list-inline-item">B</li>
-                                <li class="list-inline-item">S</li>
-                                <li class="list-inline-item">C</li>
-                                <li class="list-inline-item">H</li>
-                                <li class="list-inline-item">N</li>
-                                <li class="list-inline-item">I</li>
-                                <li class="list-inline-item">T</li>
                                 <li class="list-inline-item">T</li>
                                 <li class="list-inline-item">E</li>
+                                <li class="list-inline-item">G</li>
+                                <li class="list-inline-item">O</li>
+                                <li class="list-inline-item">R</li>
+                                <li class="list-inline-item">I</li>
+                                <li class="list-inline-item">E</li>
+                                <li class="list-inline-item">N</li>
                             </ul>
+                            @can('DienstKategorienHinzufügen')
                             <div class="add-btn">
                                 <button style="height: 30px" type="button"
                                         class="btn btn-inverse-primary btn-fw embed-responsive btn-rounded"
-                                        href="#add_modal" data-toggle="modal">Abschnitt Hinzufügen
+                                        href="#add_modal" data-toggle="modal">Kategorie Hinzufügen
                                 </button>
                             </div>
+                            @endcan
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
                                     <tr>
                                         <th> #</th>
-                                        <th>Abschnitt Name</th>
+                                        <th>Kategorie Name</th>
                                         <th>Beschreibung</th>
                                         <th>Aktion</th>
                                     </tr>
@@ -102,15 +104,19 @@
                                             <td>{{$one->name}}</td>
                                             <td>{{$one->note}}</td>
                                             <td>
+                                                @can('DienstKategorienBearbeite')
                                                 <button class="btn btn-sm btn-rounded btn-inverse-primary"
                                                         href="#edit_modal" title="Edit" data-id="{{$one->id}}"
                                                         data-name="{{$one->name}}" data-note="{{$one->note}}"
                                                         data-toggle="modal">Bearbeiten
                                                 </button>
+                                                @endcan
+                                                @can('DienstKategorienLöschen')
                                                 <button class="btn btn-sm btn-rounded btn-inverse-danger" title="Delete"
                                                         href="#delete_modal" data-id="{{$one->id}}"
                                                         data-name="{{$one->name}}" data-toggle="modal">Löschen
                                                 </button>
+                                                @endcan
                                             </td>
                                         </tr>
                                     @endforeach
@@ -126,17 +132,17 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content modal-content-demo">
                             <div class="modal-header">
-                                <h6 class="modal-title">Abschnitt Hinzufügen</h6>
+                                <h6 class="modal-title">Kategorie Hinzufügen</h6>
                                 <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span
                                             aria-hidden="true">&times;</span></button>
                             </div>
                             <div class="modal-body">
-                                <form action="{{route('dienstleistungensbereich.store')}}" method="post"
+                                <form action="{{route('dienste_kategorien.store')}}" method="post"
                                       autocomplete="off">
                                     {{ csrf_field() }}
                                     <div class="form-group">
                                         <input type="hidden" name="id" id="id" value="">
-                                        <label for="name" class="col-form-label">Abschnitte Name :</label>
+                                        <label for="name" class="col-form-label">Kategorie Name :</label>
                                         <input class="form-control" name="name" id="name" type="text"
                                                style="color: #6C7293">
                                     </div>
@@ -163,17 +169,17 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content modal-content-demo">
                             <div class="modal-header">
-                                <h4 class="modal-title">Abschnitt bearbeiten</h4>
+                                <h4 class="modal-title">Kategorie bearbeiten</h4>
                                 <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span
                                             aria-hidden="true">&times;</span></button>
                             </div>
                             <div class="modal-body">
-                                <form action="dienstleistungensbereich/update" method="post" autocomplete="off">
+                                <form action="dienste_kategorien/update" method="post" autocomplete="off">
                                     {{method_field('patch')}}
                                     {{csrf_field()}}
                                     <div class="modal-body">
                                         <div class="form-group">
-                                            <label for="name">Abschnitt Name</label>
+                                            <label for="name">Kategorie Name</label>
                                             <input type="hidden" class="form-control" id="id" name="id">
                                             <input type="text" class="form-control" id="name" name="name"
                                                    style="color: #6C7293">
@@ -204,18 +210,18 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content modal-content-demo">
                             <div class="modal-header">
-                                <h4 class="modal-title">Sind Sie sicher, dass Sie diesen Abschnitt löschen möchten
+                                <h4 class="modal-title">Sind Sie sicher, dass Sie diesen Kategorie löschen möchten
                                     ?</h4>
                                 <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span
                                             aria-hidden="true">&times;</span></button>
                             </div>
                             <div class="modal-body">
-                                <form action="dienstleistungensbereich/destroy" method="post">
+                                <form action="dienste_kategorien/destroy" method="post">
                                     {{method_field('delete')}}
                                     {{csrf_field()}}
                                     <div class="modal-body">
                                         <div class="form-group">
-                                            <label for="company_name">Abschnitt Name</label>
+                                            <label for="company_name">Kategorie Name</label>
                                             <input type="hidden" class="form-control" id="id" name="id">
                                             <input class="form-control" name="name" id="name" type="text"
                                                    style="color: #6C7293; background: #2A3038" readonly>

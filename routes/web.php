@@ -38,13 +38,13 @@ Auth::routes(['register' => false ,'reset' => false ,'verify' => false ,'confirm
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/admin', [HomeController::class, 'index']);
-    Route::resource('handys', HandysController::class);
-    Route::resource('abschnitte', AbschnitteController::class);
+    Route::resource('handys', HandysController::class)->name('index', 'devices');
+    Route::resource('handys_kategorien', AbschnitteController::class);
     Route::resource('zubehör_kategorien', AccessoriesSectionsController::class);
     Route::resource('zubehör', AccessoriesController::class);
     Route::resource('galerie', GalleryController::class);
     Route::resource('dienstleistungen', ServicesController::class);
-    Route::resource('dienstleistungensbereich', ServicesSectionsController::class);
+    Route::resource('dienste_kategorien', ServicesSectionsController::class);
     Route::resource('allgemeineinformationen', GeneralInformationController::class);
     Route::get('/alle_nachrichten', [MessagesController::class, 'index'])->name('show_all_messages');
     Route::get('/nachricht/{id}', [MessagesController::class, 'viewMessage'])->name('show_message');

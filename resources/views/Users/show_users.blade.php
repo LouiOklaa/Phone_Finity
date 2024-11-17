@@ -98,12 +98,14 @@
                                 <li class="list-inline-item">E</li>
                                 <li class="list-inline-item">R</li>
                             </ul>
+                            @can('BenutzerHinzufügen')
                             <div class="add-btn">
                                 <button style="height: 30px" type="button"
                                         class="btn btn-inverse-primary btn-fw embed-responsive btn-rounded"
                                         href="#add_modal" data-toggle="modal">Benutzer hinzufügen
                                 </button>
                             </div>
+                            @endcan
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
@@ -123,7 +125,7 @@
                                         <tr>
                                             <td> {{$i}} </td>
                                             <td>
-                                                <a href="{{route('profile' , $user->id)}}">{{$user->name}}</a>
+                                                <a @can('AlleProfileAnzeigen') href="{{route('profile' , $user->id)}}" @endcan>{{$user->name}}</a>
                                             </td>
                                             <td>{{$user->email}}</td>
                                             <td>
@@ -148,6 +150,7 @@
                                             </td>
                                             <td>
                                                 @if ($user->role_name !== 'Owner')
+                                                    @can('BenutzerBearbeiten')
                                                     <button class="btn btn-sm btn-rounded btn-inverse-primary"
                                                             href="#edit_modal" title="Edit" data-id="{{$user->id}}"
                                                             data-name="{{$user->name}}"
@@ -156,11 +159,13 @@
                                                             data-status="{{$user->status}}"
                                                             data-toggle="modal">Bearbeiten
                                                     </button>
-
+                                                    @endcan
+                                                    @can('BenutzerLöschen')
                                                     <button class="btn btn-sm btn-rounded btn-inverse-danger" title="Delete"
                                                             href="#delete_modal" data-id="{{$user->id}}"
                                                             data-name="{{$user->name}}" data-toggle="modal">Löschen
                                                     </button>
+                                                    @endcan
                                                 @endif
                                             </td>
                                         </tr>

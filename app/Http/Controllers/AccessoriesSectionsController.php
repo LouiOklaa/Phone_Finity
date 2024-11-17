@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class AccessoriesSectionsController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:ZubehörKategorien|ZubehörKategorienHinzufügen|ZubehörKategorienBearbeiten|ZubehörKategorienLöschen', ['only' => ['index']]);
+        $this->middleware('permission:ZubehörKategorienHinzufügen', ['only' => ['store']]);
+        $this->middleware('permission:ZubehörKategorienBearbeiten', ['only' => ['update']]);
+        $this->middleware('permission:ZubehörKategorienLöschen', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      */
@@ -35,8 +42,8 @@ class AccessoriesSectionsController extends Controller
 
         ],[
 
-            'name.required' =>'Bitte geben Sie den Abschnitt name ein',
-            'name.unique' =>'Der Abschnitt name ist bereits registriert',
+            'name.required' =>'Bitte geben Sie die Kategorie name ein',
+            'name.unique' =>'Die Kategorie name ist bereits registriert',
 
         ]);
         accessories_sections::create([
@@ -46,7 +53,7 @@ class AccessoriesSectionsController extends Controller
 
         ]);
 
-        session()->flash('Add' , 'Der Abschnitt wurde erfolgreich hinzugefügt');
+        session()->flash('Add' , 'Die Kategorie wurde erfolgreich hinzugefügt');
         return redirect("/zubehör_kategorien");
     }
 
@@ -79,8 +86,8 @@ class AccessoriesSectionsController extends Controller
 
         ],[
 
-            'name.required' =>'Bitte geben Sie den abschnitt name ein',
-            'name.unique' =>'Der abschnitt name ist bereits registriert',
+            'name.required' =>'Bitte geben Sie die Kategorie name ein',
+            'name.unique' =>'Die Kategorie name ist bereits registriert',
 
         ]);
 
@@ -90,7 +97,7 @@ class AccessoriesSectionsController extends Controller
             'note' => $request->note,
         ]);
 
-        session()->flash('Edit','Der Abschnitt wurde erflogreich geändert');
+        session()->flash('Edit','Die Kategorie wurde erfolgreich geändert');
         return redirect('/zubehör_kategorien');
     }
 
@@ -102,7 +109,7 @@ class AccessoriesSectionsController extends Controller
         $id = $request->id;
         accessories_sections::find($id)->delete();
 
-        session()->flash('Delete','Der Abschnitt wurde erflogreich gelöscht');
+        session()->flash('Delete','Die Kategorie wurde erfolgreich gelöscht');
         return redirect('/zubehör_kategorien');
     }
 }

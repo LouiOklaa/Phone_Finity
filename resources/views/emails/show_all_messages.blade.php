@@ -109,7 +109,7 @@
                         <div class="card-body">
                             <div class="preview-list">
                                 @foreach($latestEmails as $one)
-                                    <a href="{{route('show_message' , $one->id)}}" class="preview-item border-bottom text-decoration-none" style="color: inherit;">
+                                    <a @can('Nachricht') href="{{route('show_message' , $one->id)}}" @endcan class="preview-item border-bottom text-decoration-none" style="color: inherit;">
                                         <div class="preview-thumbnail">
                                             <img src="{{ URL::asset('assets/images/faces/face2.jpg') }}" alt="image" class="rounded-circle"/>
                                         </div>

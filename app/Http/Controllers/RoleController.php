@@ -9,13 +9,15 @@ class RoleController extends Controller
     /**
      * Display a listing of the resource.
      */
-   /* function __construct()
+    function __construct()
     {
-        $this->middleware('permission:role-list|role-create|role-edit|role-delete', ['only' => ['index','store']]);
-        $this->middleware('permission:role-create', ['only' => ['create','store']]);
-        $this->middleware('permission:role-edit', ['only' => ['edit','update']]);
-        $this->middleware('permission:role-delete', ['only' => ['destroy']]);
-    }*/
+        $this->middleware('permission:BenutzerRollen|RollenHinzufügen|RollenBearbeiten|RollenLöschen|AlleRollenAnzeigen', ['only' => ['index']]);
+        $this->middleware('permission:RollenHinzufügen', ['only' => ['create','store']]);
+        $this->middleware('permission:AlleRollenAnzeigen|RollenAnzeigen', ['only' => ['show']]);
+        $this->middleware('permission:RollenBearbeiten', ['only' => ['edit','update']]);
+        $this->middleware('permission:RollenLöschen', ['only' => ['destroy']]);
+    }
+
 
     /**
      * Display a listing of the resource.

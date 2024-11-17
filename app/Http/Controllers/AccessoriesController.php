@@ -6,11 +6,18 @@ use App\Models\abschnitte;
 use App\Models\Accessories;
 use App\Models\accessories_sections;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class AccessoriesController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:HandysZubehör|HandysZubehörHinzufügen|HandysZubehörBearbeiten|HandysZubehörLöschen', ['only' => ['index']]);
+        $this->middleware('permission:HandysZubehörHinzufügen', ['only' => ['store']]);
+        $this->middleware('permission:HandysZubehörBearbeiten', ['only' => ['update']]);
+        $this->middleware('permission:HandysZubehörLöschen', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -47,7 +54,7 @@ class AccessoriesController extends Controller
         ],[
 
             'name.required' =>'Bitte geben Sie den Handynamen ein',
-            'section_id.required' =>'Bitte wählen Sie den Abschnitt aus',
+            'section_id.required' =>'Bitte wählen Sie die Kategorie aus',
             'price.required' =>'Bitte geben Sie den Preis an',
             'brand.required' =>'Bitte geben Sie den Marke an',
             'image.required' =>'Bitte geben Sie den Foto an',
@@ -109,7 +116,7 @@ class AccessoriesController extends Controller
         ], [
 
 
-            'section_name.required' => 'Bitte wählen Sie den Abschnitt aus',
+            'section_name.required' => 'Bitte wählen Sie die Kategorie aus',
             'price.required' => 'Bitte geben Sie den Preis ein',
 
         ]);

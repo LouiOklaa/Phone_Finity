@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    Rollen Anzeigen
+    Berechtigungen Anzeigen
 @endsection
 @section('CSS')
     <style>
@@ -64,10 +64,18 @@
                     <div class="card">
                         <div class="card-body">
                             <ul style="color: #00c292" class="list-inline text-center">
+                                <li class="list-inline-item">B</li>
+                                <li class="list-inline-item">E</li>
                                 <li class="list-inline-item">R</li>
-                                <li class="list-inline-item">O</li>
-                                <li class="list-inline-item">L</li>
-                                <li class="list-inline-item">L</li>
+                                <li class="list-inline-item">E</li>
+                                <li class="list-inline-item">C</li>
+                                <li class="list-inline-item">H</li>
+                                <li class="list-inline-item">T</li>
+                                <li class="list-inline-item">I</li>
+                                <li class="list-inline-item">G</li>
+                                <li class="list-inline-item">U</li>
+                                <li class="list-inline-item">N</li>
+                                <li class="list-inline-item">G</li>
                                 <li class="list-inline-item">E</li>
                                 <li class="list-inline-item">N</li>
                                 <li class="list-inline-item"></li>

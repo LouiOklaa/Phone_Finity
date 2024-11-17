@@ -131,7 +131,7 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-9">
-                                                <h5 class="text-left text-size">Handys hinzugefügt</h5>
+                                                <h5 class="text-left text-size">Hinzugefügte Handys</h5>
                                                 <h4 class="text-muted font-weight-normal text-left">{{number_format(\App\Models\handys::where('created_by' , '=' , $user->id)->count())}}</h4>
                                             </div>
                                             <div class="col-3">
@@ -148,7 +148,7 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-9">
-                                                <h5 class="text-left text-size">Zubehör hinzugefügt</h5>
+                                                <h5 class="text-left text-size">Hinzugefügte Zubehör</h5>
                                                 <h4 class="text-muted font-weight-normal text-left">{{number_format(\App\Models\Accessories::where('created_by' , '=' , $user->id)->count())}}</h4>
                                             </div>
                                             <div class="col-3">
@@ -165,7 +165,7 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-9">
-                                                <h5 class="text-left text-size">Dienste hinzugefügt</h5>
+                                                <h5 class="text-left text-size">Hinzugefügte Dienste</h5>
                                                 <h4 class="text-muted font-weight-normal text-left">{{number_format(\App\Models\Services::where('created_by' , '=' , $user->id)->count())}}</h4>
                                             </div>
                                             <div class="col-3">
@@ -183,7 +183,7 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-9">
-                                                <h5 class="text-left text-size">Anhänge hinzugefügt</h5>
+                                                <h5 class="text-left text-size">Hinzugefügte Anhänge</h5>
                                                 <h4 class="text-muted font-weight-normal text-left">{{number_format(\App\Models\Gallery::where('created_by' , '=' , $user->id)->count())}}</h4>
                                             </div>
                                             <div class="col-3">
@@ -200,7 +200,7 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-9">
-                                                <h5 class="text-left text-size">Berechtigungen erteilt</h5>
+                                                <h5 class="text-left text-size" style="font-size: 12px">Erteilte Berechtigungen</h5>
                                                 <h4 class="text-muted font-weight-normal text-left">{{number_format(\Spatie\Permission\Models\Permission::join("role_has_permissions","role_has_permissions.permission_id","=","permissions.id")->where("role_has_permissions.role_id",$user->id)->count())}}</h4>
                                             </div>
                                             <div class="col-3">
@@ -217,7 +217,7 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-9">
-                                                <h5 class="text-left text-size">Benutzerberechtigung</h5>
+                                                <h5 class="text-left text-size">Benutzerrolle</h5>
                                                 <h4 class="text-muted font-weight-normal text-left">{{$user->role_name}}</h4>
                                             </div>
                                             <div class="col-3">

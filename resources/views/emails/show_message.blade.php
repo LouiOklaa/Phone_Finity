@@ -169,10 +169,12 @@
                                     @endforeach
 
                                 </div>
+                                @can('NachrichtSenden')
                                 <div class="chat-footer">
                                     <input name="reply" id="reply" class="form-control" type="text" placeholder="Nachricht...">
                                     <button type="submit">&#x27A4;</button>
                                 </div>
+                                @endcan
                             </form>
                         </div>
                     </div>

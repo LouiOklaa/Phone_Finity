@@ -58,6 +58,7 @@
                                 <li class="list-inline-item">E</li>
                                 <li class="list-inline-item">N</li>
                             </ul>
+                            @can('AllgemeineInformationenBearbeiten')
                             <div class="edit_modal">
                                 <button style="height: 30px" type="button"
                                         class="btn btn-inverse-primary btn-fw embed-responsive btn-rounded"
@@ -67,10 +68,10 @@
                                         data-address_link="{{$information->address_link}}"
                                         data-facebook_link="{{$information->facebook_link}}"
                                         data-instagram_link="{{$information->instagram_link}}"
-                                        data-tiktok_link="{{$information->tiktok_link}}" data-toggle="modal">Allgemeine
-                                    Informationen Bearbeiten
+                                        data-tiktok_link="{{$information->tiktok_link}}" data-toggle="modal">Allgemeine Informationen Bearbeiten
                                 </button>
                             </div>
+                            @endcan
                             <br>
                             <form class="forms-sample">
                                 <div class="form-group">

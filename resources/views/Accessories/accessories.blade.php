@@ -56,19 +56,21 @@
                                 <li class="list-inline-item">Ö</li>
                                 <li class="list-inline-item">R</li>
                             </ul>
+                            @can('HandysZubehörHinzufügen')
                             <div class="add-btn">
                                 <button style="height: 30px" type="button"
                                         class="btn btn-inverse-primary btn-fw embed-responsive btn-rounded"
                                         href="#add_modal" data-toggle="modal">Produkt Hinzufügen
                                 </button>
                             </div>
+                            @endcan
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
                                     <tr>
                                         <th> #</th>
                                         <th>Name</th>
-                                        <th>Abschnitt</th>
+                                        <th>Kategorie</th>
                                         <th>Marke</th>
                                         <th>Preis</th>
                                         <th>Beschreibung</th>
@@ -91,6 +93,7 @@
                                                             src="Attachments/Accessories/{{$one->image}}"
                                                             style="height:30px; width:50px; border-radius: 0;"></a></td>
                                             <td>
+                                                @can('HandysZubehörBearbeiten')
                                                 <button class="btn btn-sm btn-rounded btn-inverse-primary"
                                                         href="#edit_modal" title="Edit" data-id="{{$one->id}}"
                                                         data-name="{{$one->name}}"
@@ -98,10 +101,13 @@
                                                         data-brand="{{$one->brand}}" data-price="{{$one->price}}"
                                                         data-note="{{$one->note}}" data-toggle="modal">Bearbeiten
                                                 </button>
+                                                @endcan
+                                                @can('HandysZubehörLöschen')
                                                 <button class="btn btn-sm btn-rounded btn-inverse-danger" title="Delete"
                                                         href="#delete_modal" data-id="{{$one->id}}"
                                                         data-name="{{$one->name}}" data-toggle="modal">Löschen
                                                 </button>
+                                                @endcan
                                             </td>
                                         </tr>
                                     @endforeach
@@ -130,9 +136,9 @@
                                         <input class="form-control" name="name" id="name" type="text">
                                     </div>
                                     <div class="form-group">
-                                        <label class="my-1 mr-2" for="section_id">Abschnitt :</label>
+                                        <label class="my-1 mr-2" for="section_id">Kategorie :</label>
                                         <select name="section_id" id="section_id" class="form-control select2">
-                                            <option value="#" selected disabled>-- Abschnitt auswählen --</option>
+                                            <option value="#" selected disabled>-- Kategorie auswählen --</option>
                                             @foreach ($sections as $one)
                                                 <option value="{{ $one->id }}">{{ $one->name }}</option>
                                             @endforeach
@@ -197,7 +203,7 @@
                                                    style="color: #6C7293" required>
                                         </div>
                                         <div class="form-group">
-                                            <label class="my-1 mr-2" for="section_name">Abschnitt :</label>
+                                            <label class="my-1 mr-2" for="section_name">Kategorie :</label>
                                             <select name="section_name" id="section_name" class="form-control">
                                                 @foreach ($sections as $one)
                                                     <option> {{$one->name}} </option>

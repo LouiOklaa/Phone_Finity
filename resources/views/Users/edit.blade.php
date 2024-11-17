@@ -44,8 +44,13 @@
                                             <label for="name" class="col-sm-3 col-form-label">Benutzername :</label>
                                             <div class="col-sm-9">
                                                 <input type="hidden" class="form-control" id="id" name="id" value="{{ $user->id }}">
-                                                <input type="text" class="form-control" name="name" id="name"
-                                                       style="color: #6C7293" value="{{ $user->name }}"/>
+                                                @if ($user->role_name !== 'Owner')
+                                                    <input type="text" class="form-control" name="name" id="name"
+                                                           style="color: #6C7293;background: #2A3038" value="{{ $user->name }}"/>
+                                                @else
+                                                    <input type="text" class="form-control" name="name" id="name"
+                                                           style="color: #6C7293;background: #2A3038" value="{{ $user->name }}" readonly/>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -53,72 +58,23 @@
                                         <div class="form-group row">
                                             <label for="email" class="col-sm-3 col-form-label">E-Mail :</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" name="email" id="email"
-                                                       style="color: #6C7293" value="{{ $user->email }}"/>
+                                                @if ($user->role_name !== 'Owner')
+                                                    <input type="text" class="form-control" name="email" id="email"
+                                                           style="color: #6C7293;background: #2A3038" value="{{ $user->email }}"/>
+                                                @else
+                                                    <input type="text" class="form-control" name="email" id="email"
+                                                           style="color: #6C7293;background: #2A3038" value="{{ $user->email }}"  readonly/>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <br>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group row">
-                                            <label for="password" class="col-sm-3 col-form-label">Passwort :</label>
-                                            <div class="col-sm-9">
-                                                <input type="password" class="form-control" name="password"
-                                                       id="password" style="color: #6C7293"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group row">
-                                            <label for="confirm-password" class="col-sm-3 col-form-label">PW
-                                                bestätigen :</label>
-                                            <div class="col-sm-9">
-                                                <input type="password" class="form-control" name="confirm-password"
-                                                       id="confirm-password" style="color: #6C7293"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group row">
-                                            <label for="role_name" class="col-sm-3 col-form-label">Benutzerrecht :</label>
-                                            <div class="col-sm-9">
-                                                <select name="role_name" id="role_name" class="form-control">
-                                                    <option>{{$user->role_name}}</option>
-                                                    @foreach ($roles as $one)
-                                                        @if($one !== $user->role_name)
-                                                            <option value="{{ $one }}">{{ $one }}</option>
-                                                        @endif
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group row">
-                                            <label for="status" class="col-sm-3 col-form-label">Benutzerstatus
-                                                :</label>
-                                            <div class="col-sm-9">
-                                                <select name="status" id="status" class="form-control">
-                                                    <option value="{{ $user->status}}">{{ $user->status}}</option>
-                                                    @if($user->status == "Inactive")
-                                                        <option value="Active">Aktive</option>
-                                                    @else
-                                                        <option value="Inactive">Inaktiv</option>
-                                                    @endif
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <br>
+                                @if ($user->role_name !== 'Owner')
                                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                                     <button type="submit" class="btn btn-rounded btn-primary">Aktualisieren</button>
                                 </div>
+                                @endif
                             </form>
                         </div>
                     </div>
