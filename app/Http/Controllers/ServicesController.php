@@ -5,11 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\Services;
 use App\Models\ServicesSections;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class ServicesController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:HandysDienste|HandysDiensteHinzufügen|HandysDiensteBearbeiten|HandysDiensteLöschen', ['only' => ['index']]);
+        $this->middleware('permission:HandysDiensteHinzufügen', ['only' => ['store']]);
+        $this->middleware('permission:HandysDiensteBearbeiten', ['only' => ['update']]);
+        $this->middleware('permission:HandysDiensteLöschen', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -43,7 +50,7 @@ class ServicesController extends Controller
         ],[
 
             'name.required' =>'Bitte geben Sie den Handynamen ein',
-            'section_id.required' =>'Bitte wählen Sie den Abschnitt aus',
+            'section_id.required' =>'Bitte wählen Sie die Kategorie aus',
             'price.required' =>'Bitte geben Sie den Preis an',
             'image.required' =>'Bitte geben Sie den Foto an',
 
@@ -102,7 +109,7 @@ class ServicesController extends Controller
         ], [
 
 
-            'section_name.required' => 'Bitte wählen Sie den Abschnitt aus',
+            'section_name.required' => 'Bitte wählen Sie die Kategorie aus',
             'price.required' => 'Bitte geben Sie den Preis ein',
 
         ]);

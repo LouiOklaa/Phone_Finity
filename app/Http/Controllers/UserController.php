@@ -11,6 +11,14 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:Benutzer|BenutzerHinzufügen|BenutzerBearbeiten|BenutzerLöschen|AlleProfileAnzeigen', ['only' => ['index']]);
+        $this->middleware('permission:BenutzerHinzufügen', ['only' => ['store']]);
+        $this->middleware('permission:BenutzerBearbeiten', ['only' => ['edit' , 'update']]);
+        $this->middleware('permission:BenutzerLöschen', ['only' => ['destroy']]);
+        $this->middleware('permission:AlleProfileAnzeigen|ProfilAnzeigen', ['only' => ['profile']]);
+    }
 
     /**
      * Display a listing of the resource.

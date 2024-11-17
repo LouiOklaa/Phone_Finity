@@ -4,11 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Gallery;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class GalleryController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:Galerie|InGalerieHinzufügen|InGalerieBearbeiten|InGalerieLöschen', ['only' => ['index']]);
+        $this->middleware('permission:InGalerieHinzufügen', ['only' => ['store']]);
+        $this->middleware('permission:InGalerieBearbeiten', ['only' => ['update']]);
+        $this->middleware('permission:InGalerieLöschen', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      */

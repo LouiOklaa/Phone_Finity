@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Storage;
 
 class GeneralInformationController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:AllgemeineInformationen|AllgemeineInformationenBearbeiten', ['only' => ['index']]);
+        $this->middleware('permission:AllgemeineInformationenBearbeiten', ['only' => ['update']]);
+    }
     /**
      * Display a listing of the resource.
      */

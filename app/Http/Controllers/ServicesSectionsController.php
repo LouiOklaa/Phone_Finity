@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
 
 class ServicesSectionsController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:DiensteKategorien|DienstKategorienHinzufügen|DienstKategorienBearbeite|DienstKategorienLöschen', ['only' => ['index']]);
+        $this->middleware('permission:DienstKategorienHinzufügen', ['only' => ['store']]);
+        $this->middleware('permission:DienstKategorienBearbeite', ['only' => ['update']]);
+        $this->middleware('permission:DienstKategorienLöschen', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -35,8 +43,8 @@ class ServicesSectionsController extends Controller
 
         ],[
 
-            'name.required' =>'Bitte geben Sie den Abschnitt name ein',
-            'name.unique' =>'Der Abschnitt name ist bereits registriert',
+            'name.required' =>'Bitte geben Sie die Kategorie name ein',
+            'name.unique' =>'Die Kategorie name ist bereits registriert',
 
         ]);
         ServicesSections::create([
@@ -46,8 +54,8 @@ class ServicesSectionsController extends Controller
 
         ]);
 
-        session()->flash('Add' , 'Der Abschnitt wurde erfolgreich hinzugefügt');
-        return redirect("/dienstleistungensbereich");
+        session()->flash('Add' , 'Die Kategorie wurde erfolgreich hinzugefügt');
+        return redirect("/dienste_kategorien");
     }
 
     /**
@@ -79,8 +87,8 @@ class ServicesSectionsController extends Controller
 
         ],[
 
-            'name.required' =>'Bitte geben Sie den abschnitt name ein',
-            'name.unique' =>'Der abschnitt name ist bereits registriert',
+            'name.required' =>'Bitte geben Sie die Kategorie name ein',
+            'name.unique' =>'Die Kategorie name ist bereits registriert',
 
         ]);
 
@@ -90,8 +98,8 @@ class ServicesSectionsController extends Controller
             'note' => $request->note,
         ]);
 
-        session()->flash('Edit','Der Abschnitt wurde erflogreich geändert');
-        return redirect('/dienstleistungensbereich');
+        session()->flash('Edit','Die Kategorie wurde erfolgreich geändert');
+        return redirect('/dienste_kategorien');
     }
 
     /**
@@ -102,7 +110,7 @@ class ServicesSectionsController extends Controller
         $id = $request->id;
         ServicesSections::find($id)->delete();
 
-        session()->flash('Delete','Der Abschnitt wurde erflogreich gelöscht');
-        return redirect('/dienstleistungensbereich');
+        session()->flash('Delete','Die Kategorie wurde erfolgreich gelöscht');
+        return redirect('/dienste_kategorien');
     }
 }

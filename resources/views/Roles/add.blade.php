@@ -88,7 +88,7 @@
                                 <div class="col-md-12">
                                     <ul id="treeview1">
                                         <li>
-                                            <a style="text-decoration: none " href="#">Rollen</a>
+                                            <a style="text-decoration: none " href="#">Berechtigungen</a>
                                             <ul>
                                                 @foreach($permission as $value)
                                                     <li>

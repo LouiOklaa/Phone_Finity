@@ -65,12 +65,14 @@
                                 <li class="list-inline-item">E</li>
                                 <li class="list-inline-item">N</li>
                             </ul>
+                            @can('RollenHinzufügen')
                             <div class="add-btn">
                                 <a style="height: 30px; display: flex; justify-content: center; align-items: center; text-align: center; padding: 5px 15px;"
                                         class="btn btn-inverse-primary btn-fw embed-responsive btn-rounded"
                                         href="{{ route('add_roles') }}">Rollen hinzufügen
                                 </a>
                             </div>
+                            @endcan
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
@@ -88,17 +90,23 @@
                                             <td> {{$i}} </td>
                                             <td>{{$role->name}}</td>
                                             <td>
+                                                @can('AlleRollenAnzeigen')
                                                 <a class="btn btn-sm btn-rounded btn-inverse-warning"
                                                         href="{{ route('show_roles' , $role->id)}}" title="Anzeigen">Anzeigen
                                                 </a>
+                                                @endcan
                                                 @if ($role->name !== 'Owner')
+                                                    @can('RollenBearbeiten')
                                                     <a class="btn btn-sm btn-rounded btn-inverse-primary"
                                                             href="{{ route('edit_roles' , $role->id)}}" title="Bearbeiten">Bearbeiten
                                                     </a>
+                                                    @endcan
+                                                    @can('RollenLöschen')
                                                     <button class="btn btn-sm btn-rounded btn-inverse-danger" title="Löschen"
                                                             href="#delete_modal" data-id="{{$role->id}}"
                                                             data-name="{{$role->name}}" data-toggle="modal">Löschen
                                                     </button>
+                                                    @endcan
                                                 @endif
                                             </td>
                                         </tr>

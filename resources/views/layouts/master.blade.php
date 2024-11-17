@@ -68,22 +68,27 @@
             <li class="nav-item nav-category">
                 <span class="nav-link">Hauptmenü</span>
             </li>
+            @can('Armaturenbrett')
             <li class="nav-item menu-items">
-                <a class="nav-link" href="{{ url('/' . $page='admin') }}">
+                <a class="nav-link" href="/admin">
               <span class="menu-icon">
                 <i class="mdi mdi-view-dashboard"></i>
               </span>
                     <span class="menu-title">Armaturenbrett</span>
                 </a>
             </li>
+            @endcan
+            @can('AllgemeineInformationen')
             <li class="nav-item menu-items">
-                <a class="nav-link" href="{{ url('/' . $page='allgemeineinformationen') }}">
+                <a class="nav-link" href="/allgemeineinformationen">
               <span class="menu-icon">
                 <i class="mdi mdi-information-variant"></i>
               </span>
                     <span class="menu-title">Allg. Informationen</span>
                 </a>
             </li>
+            @endcan
+            @can('Handys')
             <li class="nav-item menu-items">
                 <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <span class="menu-icon">
@@ -94,11 +99,17 @@
                 </a>
                 <div class="collapse" id="ui-basic">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"> <a class="nav-link" href="{{ url('/' . $page='handys') }}">Gerätes</a></li>
-                        <li class="nav-item"> <a class="nav-link" href="{{ url('/' . $page='abschnitte') }}">Abschnitte</a></li>
+                        @can('Geräte')
+                        <li class="nav-item"> <a class="nav-link" href="{{route('devices')}}">Gerätes</a></li>
+                        @endcan
+                        @can('GeräteKategorien')
+                        <li class="nav-item"> <a class="nav-link" href="/handys_kategorien">Gerätes Kategorien</a></li>
+                        @endcan
                     </ul>
                 </div>
             </li>
+            @endcan
+            @can('Zubehör')
             <li class="nav-item menu-items">
                 <a class="nav-link" data-toggle="collapse" href="#ui-basic-Z" aria-expanded="false" aria-controls="auth">
               <span class="menu-icon">
@@ -109,11 +120,17 @@
                 </a>
                 <div class="collapse" id="ui-basic-Z">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"> <a class="nav-link" href="{{ url('/' . $page='zubehör') }}">Hanadyzubehör</a></li>
-                        <li class="nav-item"> <a class="nav-link" href="{{ url('/' . $page='zubehör_kategorien') }}">Zubehör Abschnitte</a></li>
+                        @can('HandysZubehör')
+                        <li class="nav-item"> <a class="nav-link" href="/zubehör">Hanadyzubehör</a></li>
+                        @endcan
+                        @can('ZubehörKategorien')
+                        <li class="nav-item"> <a class="nav-link" href="/zubehör_kategorien">Zubehör Kategorien</a></li>
+                        @endcan
                     </ul>
                 </div>
             </li>
+            @endcan
+            @can('Dienstleistungen')
             <li class="nav-item menu-items">
                 <a class="nav-link" data-toggle="collapse" href="#ui-basic-D" aria-expanded="false" aria-controls="auth">
               <span class="menu-icon">
@@ -124,19 +141,27 @@
                 </a>
                 <div class="collapse" id="ui-basic-D">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"> <a class="nav-link" href="{{ url('/' . $page='dienstleistungen') }}">Dienstleistungen</a></li>
-                        <li class="nav-item"> <a class="nav-link" href="{{ url('/' . $page='dienstleistungensbereich') }}">Dienstleistungensbereich</a></li>
+                        @can('HandysDienste')
+                        <li class="nav-item"> <a class="nav-link" href="/dienstleistungen">Dienstleistungen</a></li>
+                        @can('DiensteKategorien')
+                        @endcan
+                        <li class="nav-item"> <a class="nav-link" href="/dienste_kategorien">Dienste Kategorien</a></li>
+                        @endcan
                     </ul>
                 </div>
             </li>
+            @endcan
+            @can('Galerie')
             <li class="nav-item menu-items">
-                <a class="nav-link" href="{{ url('/' . $page='galerie') }}">
+                <a class="nav-link" href="/galerie">
               <span class="menu-icon">
                 <i class="mdi mdi-collage"></i>
               </span>
                     <span class="menu-title">Galerie</span>
                 </a>
             </li>
+            @endcan
+            @can('AlleNachrichtenAnzeigen')
             <li class="nav-item menu-items">
                 <a class="nav-link" href="/alle_nachrichten">
             <span class="menu-icon">
@@ -145,23 +170,30 @@
                     <span class="menu-title">Nachrichten</span>
                 </a>
             </li>
-            <li class="nav-item menu-items">
-                <a class="nav-link" data-toggle="collapse" href="#ui-basic-E" aria-expanded="false" aria-controls="ui-basic">
-              <span class="menu-icon">
+            @endcan
+            @can('Einstellungen')
+                <li class="nav-item menu-items">
+                    <a class="nav-link" data-toggle="collapse" href="#ui-basic-E" aria-expanded="false" aria-controls="ui-basic-E">
+            <span class="menu-icon">
                 <i class="mdi mdi-settings"></i>
-              </span>
-                    <span class="menu-title">Einstellungen</span>
-                    <i class="menu-arrow"></i>
-                </a>
-                <div class="collapse" id="ui-basic-E">
-                    <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"> <a class="nav-link" href="{{ url('/' . $page='benutzer') }}">Benutzer</a></li>
-                        <li class="nav-item"> <a class="nav-link" href="{{ url('/' . $page='rollen') }}">Benutzerrollen</a></li>
-                    </ul>
-                </div>
-            </li>
+            </span>
+                        <span class="menu-title">Einstellungen</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="ui-basic-E">
+                        <ul class="nav flex-column sub-menu">
+                            @can('Benutzer')
+                                <li class="nav-item"> <a class="nav-link" href="/benutzer">Benutzer</a></li>
+                            @endcan
+                            @can('BenutzerRollen')
+                                <li class="nav-item"> <a class="nav-link" href="/rollen">Benutzerrollen</a></li>
+                            @endcan
+                        </ul>
+                    </div>
+                </li>
+            @endcan
             <li class="nav-item menu-items">
-                <a class="nav-link" href="{{ url('/' . $page='dokumentation') }}">
+                <a class="nav-link" href="/dokumentation">
               <span class="menu-icon">
                 <i class="mdi mdi-file-document-box"></i>
               </span>
@@ -209,6 +241,7 @@
 
                             <div class="dropdown-divider"></div>
 
+                            @can('ProfilAnzeigen')
                             <!-- Show User Profile -->
                             <a style="height: 40px;" class="dropdown-item preview-item" href="{{ route('profile', Auth::user()->id) }}">
                                 <div class="preview-thumbnail">
@@ -222,7 +255,8 @@
                             </a>
 
                             <div class="dropdown-divider"></div>
-
+                            @endcan
+                            @can('RollenAnzeigen')
                             <!-- Show User Permission -->
                             <a style="height: 40px;" class="dropdown-item preview-item" href="{{ route('show_roles', \Spatie\Permission\Models\Role::where('name' , '=' , Auth::user()->role_name)->first()) }}">
                                 <div class="preview-thumbnail">
@@ -236,7 +270,8 @@
                             </a>
 
                             <div class="dropdown-divider"></div>
-
+                            @endcan
+                            @can('BenutzerBearbeiten')
                             <!-- Edit User Button -->
                             <a style="height: 40px;" class="dropdown-item preview-item" href="{{ route('edit_user', Auth::user()->id) }}">
                                 <div class="preview-thumbnail">
@@ -250,7 +285,7 @@
                             </a>
 
                             <div class="dropdown-divider"></div>
-
+                            @endcan
                             <!-- Logout Button -->
                             <a style="height: 40px;" class="dropdown-item preview-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                 <div class="preview-thumbnail">

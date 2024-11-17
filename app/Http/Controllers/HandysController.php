@@ -5,12 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\abschnitte;
 use App\Models\handys;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 class HandysController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:Geräte|GerätHinzufügen|GerätBearbeiten|GerätLöschen', ['only' => ['index']]);
+        $this->middleware('permission:GerätHinzufügen', ['only' => ['store']]);
+        $this->middleware('permission:GerätBearbeiten', ['only' => ['update']]);
+        $this->middleware('permission:GerätLöschen', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -48,7 +55,7 @@ class HandysController extends Controller
 
             'name.required' =>'Bitte geben Sie den Handynamen ein',
             'name.unique' =>'Dieses Handy existiert bereits',
-            'section_id.required' =>'Bitte wählen Sie den Handytyp aus',
+            'section_id.required' =>'Bitte wählen Sie die Kategorie aus',
             'status.required' =>'Bitte wählen Sie den Zustand des Handy aus',
             'preis.required' =>'Bitte geben Sie den Handypreis an',
             'amount.required' =>'Bitte geben Sie den Menge an',
@@ -120,7 +127,7 @@ class HandysController extends Controller
             ], [
 
                 'name.required' => 'Bitte geben Sie den Handynamen ein',
-                'section_name.required' => 'Bitte geben Sie den Abschnitt ein',
+                'section_name.required' => 'Bitte geben Sie die Kategorie ein',
                 'preis.required' => 'Bitte geben Sie den Preis ein',
                 'amount.required' => 'Bitte geben Sie den Menge ein',
 
@@ -162,7 +169,7 @@ class HandysController extends Controller
             ], [
 
                 'name.required' => 'Bitte geben Sie den Handynamen ein',
-                'name.unique' => 'Das Handynamen ist in diesem Abschnitt bereits vorhanded',
+                'name.unique' => 'Das Handynamen ist in diese Kategorie bereits vorhanded',
                 'section_name.required' => 'Bitte wählen Sie den Handytyp aus',
                 'preis.required' => 'Bitte geben Sie den Preis ein',
                 'amount.required' => 'Bitte geben Sie den Menge ein',
@@ -192,7 +199,7 @@ class HandysController extends Controller
             }
         }
 
-        session()->flash('Edit','Das Handy wurde erflogreich geänderts');
+        session()->flash('Edit','Das Handy wurde erfolgreich geändert');
         return redirect('/handys');
     }
 
@@ -208,7 +215,7 @@ class HandysController extends Controller
 
         Storage::disk('public_handys')->delete($image);
 
-        session()->flash('Delete','Das Handy wurde erflogreich gelöscht');
+        session()->flash('Delete','Das Handy wurde erfolgreich gelöscht');
         return redirect('/handys');
     }
 }
