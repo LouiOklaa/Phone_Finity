@@ -40,5 +40,13 @@ class AppServiceProvider extends ServiceProvider
                 'services_sections' => $services_sections,
             ]);
         });
+
+        View::composer('Reports.mobiles_reports', function ($view) {
+            $categories = abschnitte::all();
+
+            $view->with([
+                'categories' => $categories,
+            ]);
+        });
     }
 }

@@ -5,6 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title> @yield("title") </title>
+    <!-- Datepicker styles -->
+    <link rel="stylesheet" href="{{ URL::asset('assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('assets/vendors/bootstrap-datepicker/datetime/bootstrap-datetimepicker.min.css') }}">
     {{--  Progress bar  --}}
     <link href="{{ URL::asset('css/aos.css?ver=1.1.0" rel="stylesheet') }}">
     <link href="{{ URL::asset('css/bootstrap.min.css?ver=1.1.0" rel="stylesheet') }}">
@@ -171,6 +174,21 @@
                 </a>
             </li>
             @endcan
+            <li class="nav-item menu-items">
+                <a class="nav-link" data-toggle="collapse" href="#ui-basic-X" aria-expanded="false" aria-controls="ui-basic-E">
+            <span class="menu-icon">
+                <i class="mdi mdi-file-find"></i>
+            </span>
+                    <span class="menu-title">Berichte</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="ui-basic-X">
+                    <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link" href="/handyberichte">Handys Berichte</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="/rollen">Zubehör Berichte</a></li>
+                    </ul>
+                </div>
+            </li>
             @can('Einstellungen')
                 <li class="nav-item menu-items">
                     <a class="nav-link" data-toggle="collapse" href="#ui-basic-E" aria-expanded="false" aria-controls="ui-basic-E">
@@ -363,6 +381,7 @@
 <script src="{{ URL::asset('assets/plugins/fileuploads/js/file-upload.js') }}"></script>
 <!-- End plugin js for this page -->
 <!-- inject:js -->
+<script src="{{ URL::asset('assets/js/data-table.js') }}"></script>
 <script src="{{ URL::asset('assets/js/off-canvas.js') }}"></script>
 <script src="{{ URL::asset('assets/js/hoverable-collapse.js') }}"></script>
 <script src="{{ URL::asset('assets/js/misc.js') }}"></script>
@@ -380,6 +399,8 @@
 <script src="{{ URL::asset('js/now-ui-kit.js?ver=1.1.0') }}"></script>
 <script src="{{ URL::asset('js/aos.js?ver=1.1.0') }}"></script>
 <script src="{{ URL::asset('scripts/main.js?ver=1.1.0') }}"></script>
+<script src="{{ URL::asset('assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
+<script src="{{ URL::asset('assets/vendors/bootstrap-datepicker/datetime/bootstrap-datetimepicker.min.js') }}"></script>
 
 <script>
     // Add click event listener to the icon

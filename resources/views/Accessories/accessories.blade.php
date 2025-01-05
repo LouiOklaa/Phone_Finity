@@ -56,14 +56,17 @@
                                 <li class="list-inline-item">Ö</li>
                                 <li class="list-inline-item">R</li>
                             </ul>
-                            @can('HandysZubehörHinzufügen')
-                            <div class="add-btn">
-                                <button style="height: 30px" type="button"
-                                        class="btn btn-inverse-primary btn-fw embed-responsive btn-rounded"
-                                        href="#add_modal" data-toggle="modal">Produkt Hinzufügen
-                                </button>
+                            <div class="d-flex justify-content-between">
+                                @can('ExportExcel')
+                                <a href="{{route('export_accessories' , 2)}}" style="width: 160px; height: 30px; margin-right: 10px; text-align: center" type="button" class="btn btn-inverse-success btn-rounded">Export Excel</a>
+                                @endcan
+                                @can('HandysZubehörHinzufügen')
+                                    <button style="height: 30px" type="button"
+                                            class="add-btn btn btn-inverse-primary btn-fw embed-responsive btn-rounded"
+                                            href="#add_modal" data-toggle="modal">Produkt Hinzufügen
+                                    </button>
+                                @endcan
                             </div>
-                            @endcan
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>

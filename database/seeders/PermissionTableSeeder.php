@@ -74,6 +74,8 @@ class PermissionTableSeeder extends Seeder
             'RollenAnzeigen',
             'AlleRollenAnzeigen',
 
+            'ExportExcel',
+
             'Dokumentation',
 
         ];

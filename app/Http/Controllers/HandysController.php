@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ExportExcel;
 use App\Models\abschnitte;
 use App\Models\handys;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
+use Maatwebsite\Excel\Facades\Excel;
 
 class HandysController extends Controller
 {
@@ -16,6 +18,7 @@ class HandysController extends Controller
         $this->middleware('permission:GerätHinzufügen', ['only' => ['store']]);
         $this->middleware('permission:GerätBearbeiten', ['only' => ['update']]);
         $this->middleware('permission:GerätLöschen', ['only' => ['destroy']]);
+        $this->middleware('permission:ExportExcel', ['only' => ['MobilesExport']]);
     }
 
     /**
@@ -217,5 +220,10 @@ class HandysController extends Controller
 
         session()->flash('Delete','Das Handy wurde erfolgreich gelöscht');
         return redirect('/handys');
+    }
+
+    public function MobilesExport($PageId)
+    {
+        return Excel::download(new ExportExcel($PageId), 'Handys.xlsx');
     }
 }

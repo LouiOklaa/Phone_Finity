@@ -10,6 +10,7 @@ use App\Http\Controllers\GeneralInformationController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HandysController;
 use App\Http\Controllers\MessagesController;
+use App\Http\Controllers\MobilesReportsController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\ServicesSectionsController;
@@ -39,13 +40,16 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/admin', [HomeController::class, 'index']);
     Route::resource('handys', HandysController::class)->name('index', 'devices');
+    Route::get('/handys/export/{PageId}', [HandysController::class, 'MobilesExport'])->name('export_mobiles');
     Route::resource('handys_kategorien', AbschnitteController::class);
     Route::resource('zubehör_kategorien', AccessoriesSectionsController::class);
     Route::resource('zubehör', AccessoriesController::class);
+    Route::get('/zubehör/export/{PageId}', [AccessoriesController::class, 'AccessoriesExport'])->name('export_accessories');
     Route::resource('galerie', GalleryController::class);
     Route::resource('dienstleistungen', ServicesController::class);
     Route::resource('dienste_kategorien', ServicesSectionsController::class);
     Route::resource('allgemeineinformationen', GeneralInformationController::class);
+
     Route::get('/alle_nachrichten', [MessagesController::class, 'index'])->name('show_all_messages');
     Route::get('/nachricht/{id}', [MessagesController::class, 'viewMessage'])->name('show_message');
     Route::post('/nachricht/{id}/reply', [MessagesController::class, 'replyMessage'])->name('admin_replyMessage');
@@ -56,6 +60,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/benutzer/bearbeiten/{id}', [UserController::class, 'edit'])->name('edit_user');
     Route::get('/benutzer/profil/{id}', [UserController::class, 'profile'])->name('profile');
     Route::resource('benutzer',UserController::class);
+
+
+    Route::get('/handyberichte', [MobilesReportsController::class, 'index'])->name('mobiles_reports');
+    Route::post('/handysuche', [MobilesReportsController::class, 'search_mobiles'])->name('mobiles_search');
+
+
     Route::get('/dokumentation', function () { return view('Documentation.documentation'); });
 
 });
