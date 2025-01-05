@@ -64,6 +64,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/handyberichte', [MobilesReportsController::class, 'index'])->name('mobiles_reports');
     Route::post('/handysuche', [MobilesReportsController::class, 'search_mobiles'])->name('mobiles_search');
+    Route::post('/handyberichte/export/{PageId}', [MobilesReportsController::class, 'MobilesReportsExport'])->name('export_MobilesReports');
+
 
 
     Route::get('/dokumentation', function () { return view('Documentation.documentation'); });
