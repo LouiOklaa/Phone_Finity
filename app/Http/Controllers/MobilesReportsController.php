@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\handys;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use App\Exports\ExportExcel;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class MobilesReportsController extends Controller
 {
@@ -82,6 +85,13 @@ class MobilesReportsController extends Controller
             return view('Reports.mobiles_reports')->withDetails($mobiles);
 
         }
+
+    }
+
+    public function MobilesReportsExport(Request $request , $PageId)
+    {
+        $details = json_decode($request->input('details'), true);
+        return Excel::download(new ExportExcel($PageId, $details), 'Handyberichte.xlsx');
 
     }
 }

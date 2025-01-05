@@ -10,6 +10,14 @@
             border: none;
             width: auto;
         }
+
+        .btn-inverse-success {
+            border-radius: 25px;
+            padding: 10px 20px;
+            border: none;
+            width: auto;
+        }
+
         .row .col-lg-3 {
             display: flex;
             flex-direction: column;
@@ -114,9 +122,20 @@
                                     </div><br>
 
                                     <div class="row">
-                                        <div class="col-lg-2">
+                                        <div class="col-lg-1">
                                             <button class="btn btn-inverse-primary btn-block">suchen</button>
                                         </div>
+                                        @if (isset($details))
+                                            @can('ExportExcel')
+                                                <div class="col-lg-2">
+                                                    <form action="{{ route('export_MobilesReports', 3) }}" method="POST">
+                                                        @csrf
+                                                        <input type="hidden" name="details" value="{{ json_encode($details) }}">
+                                                        <button type="submit" class="btn btn-inverse-success btn-block">Export Excel</button>
+                                                    </form>
+                                                </div>
+                                            @endcan
+                                        @endif
                                     </div>
                                 </form>
                             </div>
@@ -176,7 +195,7 @@
         @section('JS')
             <script>
                 var date = $('.fc-datepicker').datepicker({
-                    dateFormat: 'yy-dd-mm'
+                    dateFormat: 'dd.mm.yy'
                 }).val();
             </script>
             <script>
