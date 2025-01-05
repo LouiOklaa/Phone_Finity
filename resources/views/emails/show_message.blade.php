@@ -144,9 +144,6 @@
                         <li class="list-inline-item">H</li>
                         <li class="list-inline-item">A</li>
                         <li class="list-inline-item">T</li>
-                        <li class="list-inline-item">T</li>
-                        <li class="list-inline-item">E</li>
-                        <li class="list-inline-item">N</li>
                     </ul>
                     <div class="card">
                         <div class="chat-container">

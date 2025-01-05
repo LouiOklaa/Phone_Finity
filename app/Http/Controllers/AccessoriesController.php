@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ExportExcel;
 use App\Models\abschnitte;
 use App\Models\Accessories;
 use App\Models\accessories_sections;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AccessoriesController extends Controller
 {
@@ -16,6 +18,7 @@ class AccessoriesController extends Controller
         $this->middleware('permission:HandysZubehörHinzufügen', ['only' => ['store']]);
         $this->middleware('permission:HandysZubehörBearbeiten', ['only' => ['update']]);
         $this->middleware('permission:HandysZubehörLöschen', ['only' => ['destroy']]);
+        $this->middleware('permission:ExportExcel', ['only' => ['AccessoriesExport']]);
     }
 
     /**
@@ -168,5 +171,10 @@ class AccessoriesController extends Controller
         session()->flash('Delete','Das Produkt wurde erflogreich gelöscht');
         return back();
 
+    }
+
+    public function AccessoriesExport($PageId)
+    {
+        return Excel::download(new ExportExcel($PageId), 'Zubehör.xlsx');
     }
 }

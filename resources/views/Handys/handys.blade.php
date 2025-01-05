@@ -55,16 +55,19 @@
                                 <li class="list-inline-item">Y</li>
                                 <li class="list-inline-item">S</li>
                             </ul>
-                            @can('GerätHinzufügen')
-                            <div class="add-btn">
-                                <button style="height: 30px" type="button"
-                                        class="btn btn-inverse-primary btn-fw embed-responsive btn-rounded"
-                                        href="#add_modal" data-toggle="modal">Handy Hinzufügen
-                                </button>
+                            <div class="d-flex justify-content-between">
+                                @can('ExportExcel')
+                                <a href="{{route('export_mobiles' , 1)}}" style="width: 160px; height: 30px; margin-right: 10px; text-align: center" type="button" class="btn btn-inverse-success btn-rounded">Export Excel</a>
+                                @endcan
+                                @can('GerätHinzufügen')
+                                    <button style="height: 30px" type="button"
+                                            class="add-btn btn btn-inverse-primary btn-fw embed-responsive btn-rounded"
+                                            href="#add_modal" data-toggle="modal">Handy Hinzufügen
+                                    </button>
+                                @endcan
                             </div>
-                            @endcan
                             <div class="table-responsive">
-                                <table class="table">
+                                <table id="order-listing" class="table">
                                     <thead>
                                     <tr>
                                         <th> #</th>
@@ -76,6 +79,7 @@
                                         <th>Beschreibung</th>
                                         <th>Foto</th>
                                         <th>Aktion</th>
+
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -89,7 +93,11 @@
                                             <td>{{$one->status}}</td>
                                             <td>{{$one->preis}} €</td>
                                             <td>{{$one->amount}} Stück</td>
-                                            <td>{{$one->note}}</td>
+                                            @if($one->note == NULL)
+                                                <td style="text-align: center;">---</td>
+                                            @else
+                                                <td style="text-align: center">{{$one->note}}</td>
+                                            @endif
                                             <td><a href="{{asset( 'Attachments/Handys/' . $one->image)}}"><img
                                                             src="Attachments/Handys/{{$one->image}}"
                                                             style="height:30px; width:50px; border-radius: 0;"></a></td>
