@@ -176,7 +176,7 @@
         @section('JS')
             <script>
                 var date = $('.fc-datepicker').datepicker({
-                    dateFormat: 'yy-mm-dd'
+                    dateFormat: 'yy-dd-mm'
                 }).val();
             </script>
             <script>
