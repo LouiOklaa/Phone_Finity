@@ -237,6 +237,57 @@
                             <i class="mdi mdi-fullscreen" style="font-size: 23px;"></i>
                         </a>
                     </li>
+                    @can('Benachrichtigungen')
+                        <li class="nav-item dropdown border-left">
+                            <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
+                               data-toggle="dropdown">
+                                <i class="mdi mdi-bell"></i>
+                                @if( $notifications->count() !== 0)
+                                    <span class="count"
+                                          style="background-color: red;color: white;display: inline-flex;align-items: center;justify-content: center;border-radius: 50%;min-width: 10px;height: 10px;font-size: 7px;padding: 3px;">{{ $notifications->count() }}</span>
+                                @endif
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list dropdown-custom"
+                                 aria-labelledby="notificationDropdown"
+                                 style="  max-height: 370px;overflow-y: auto; width: 350px;">
+                                <div class="card" style="border: none; padding: 0;">
+                                    <div class="d-flex justify-content-between align-items-center" style="padding: 10px;">
+                                        <h6 class="mb-0">Benachrichtigungen</h6>
+                                        <a href="{{route('markAllAsRead')}}" type="submit" class="text-muted p-0"
+                                           style="font-size: 12px;">Alle als gelesen markieren</a>
+                                    </div>
+                                    <p class="text-muted mb-0" style="font-size: 13px; padding: 0 10px;">Sie haben <span
+                                            style="color: white; background: linear-gradient(45deg, #ff0000, #F84E6A) ; border-radius: 50%;">&nbsp {{ $notifications->count() }}&nbsp </span>
+                                        ungelesene Nachrichten</p>
+                                </div>
+
+                                <div class="dropdown-divider"></div>
+
+                                @forelse ($notifications as $notification)
+                                    <a href="{{route('show_message' , [$notification->id])}}"
+                                       class="dropdown-item preview-item">
+                                        <div class="preview-thumbnail">
+                                            <img src="{{ URL::asset('assets/images/faces/face2.jpg') }}"
+                                                 alt="image" class="rounded-circle profile-pic">
+                                        </div>
+                                        <div class="preview-item-content">
+                                            <p class="preview-subject ellipsis mb-1">{{$notification->name}} <i
+                                                    class="badge badge-danger" style="font-size: 10px; padding: 2px 5px;">neu</i>
+                                            </p>
+                                            <p class="text-muted mb-0">{{$notification->email}}</p>
+                                        </div>
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                @empty
+                                    <p class="p-3 mb-0 text-center">Keine neuen Benachrichtigungen</p>
+                                    <div class="dropdown-divider"></div>
+                                @endforelse
+                                <p href="{{route('show_all_messages')}}" class="p-3 mb-0 text-center"><a class="text-muted"
+                                                                                                         href="{{route('show_all_messages')}}">Alle
+                                        Benachrichtigungen anzeigen</a></p>
+                            </div>
+                        </li>
+                    @endcan
                     <li class="nav-item dropdown border-left">
                         <div class="nav-link nav-itemd-none d-md-flex">
                             <span class="avatar country-Flag mr-0 align-self-center bg-transparent"><img src="{{URL::asset('assets/images/icons/palestine_flag.png')}}" alt="img"></span>

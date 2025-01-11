@@ -43,6 +43,7 @@ class LogEmailSent
                 // Update messages in the database
                 $emailLog->update([
                     'message' => $messages,
+                    'is_notified' => false,
                 ]);
             } else {
                 // If there is no record, create a new record

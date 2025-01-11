@@ -21492,6 +21492,16 @@ div.tagsinput {
     .dropdown-item {
         padding: 5px 10px;
     }
+
+    @media (max-width: 768px) {
+        .dropdown-custom {
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            right: auto !important;
+            width: 90% !important;
+            max-width: 340px;
+        }
+    }
 }
 
 /*# sourceMappingURL=maps/style.css.map */

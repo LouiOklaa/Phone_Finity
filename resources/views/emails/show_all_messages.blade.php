@@ -109,14 +109,22 @@
                         <div class="card-body">
                             <div class="preview-list">
                                 @foreach($latestEmails as $one)
-                                    <a @can('Nachricht') href="{{route('show_message' , $one->id)}}" @endcan class="preview-item border-bottom text-decoration-none" style="color: inherit;">
+                                    <a @can('Nachricht') href="{{route('show_message' , $one->id)}}"
+                                       @endcan class="preview-item border-bottom text-decoration-none"
+                                       style="color: inherit;">
                                         <div class="preview-thumbnail">
-                                            <img src="{{ URL::asset('assets/images/faces/face2.jpg') }}" alt="image" class="rounded-circle"/>
+                                            <img src="{{ URL::asset('assets/images/faces/face2.jpg') }}"
+                                                 alt="image" class="rounded-circle"/>
                                         </div>
                                         <div class="preview-item-content d-flex flex-grow">
                                             <div class="flex-grow">
                                                 <div class="d-flex d-md-block d-xl-flex justify-content-between">
-                                                    <h6 class="preview-subject">{{$one->name}}</h6>
+                                                    <h6 class="preview-subject">{{$one->name}}
+                                                        @if($one->is_notified == 0)
+                                                            <i class="badge badge-primary"
+                                                               style="font-size: 10px; padding: 2px 5px;">ungelesen</i>
+                                                        @endif
+                                                    </h6>
                                                     <p class="text-muted text-small">{{$one->sent_at_formatted}}</p>
                                                 </div>
                                                 <p class="text-muted">{{$one->email}}</p>

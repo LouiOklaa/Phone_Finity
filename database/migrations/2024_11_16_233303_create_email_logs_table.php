@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email')->unique(); // Make email unique to identify conversations
             $table->json('message');
             $table->json('replies')->nullable();
+            $table->boolean('is_notified')->default(false);
             $table->timestamp('sent_at');
             $table->timestamps();
         });
