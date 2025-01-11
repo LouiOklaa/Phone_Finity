@@ -91,7 +91,11 @@
                                             <td>{{$one->section_name}}</td>
                                             <td>{{$one->brand}}</td>
                                             <td>{{$one->price}} €</td>
-                                            <td>{{$one->note}}</td>
+                                            @if($one->note == NULL)
+                                                <td>---</td>
+                                            @else
+                                                <td>{{$one->note}}</td>
+                                            @endif
                                             <td><a href="{{asset( 'Attachments/Accessories/' . $one->image)}}"><img
                                                             src="Attachments/Accessories/{{$one->image}}"
                                                             style="height:30px; width:50px; border-radius: 0;"></a></td>

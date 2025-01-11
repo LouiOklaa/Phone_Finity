@@ -60,6 +60,8 @@ class PermissionTableSeeder extends Seeder
             'Nachricht',
             'NachrichtSenden',
 
+            'Berichte',
+
             'Einstellungen',
             'Benutzer',
             'BenutzerHinzufügen',

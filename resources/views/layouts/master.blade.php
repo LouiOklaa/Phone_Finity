@@ -174,6 +174,7 @@
                 </a>
             </li>
             @endcan
+            @can('Berichte')
             <li class="nav-item menu-items">
                 <a class="nav-link" data-toggle="collapse" href="#ui-basic-X" aria-expanded="false" aria-controls="ui-basic-E">
             <span class="menu-icon">
@@ -185,10 +186,11 @@
                 <div class="collapse" id="ui-basic-X">
                     <ul class="nav flex-column sub-menu">
                             <li class="nav-item"> <a class="nav-link" href="/handyberichte">Handys Berichte</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="/rollen">Zubehör Berichte</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="/zubehörberichte">Zubehör Berichte</a></li>
                     </ul>
                 </div>
             </li>
+            @endcan
             @can('Einstellungen')
                 <li class="nav-item menu-items">
                     <a class="nav-link" data-toggle="collapse" href="#ui-basic-E" aria-expanded="false" aria-controls="ui-basic-E">

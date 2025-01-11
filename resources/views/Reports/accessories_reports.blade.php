@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    Handys Berichte
+    Zubehör Berichte
 @endsection
 @section('CSS')
     <style>
@@ -49,51 +49,53 @@
                                 <li class="list-inline-item">E</li>
                             </ul>
                             <div class="card">
-                                <form action="{{route('mobiles_search')}}" method="POST" role="search" autocomplete="off">
+                                <form action="{{route('accessories_search')}}" method="POST" role="search" autocomplete="off">
                                     {{ csrf_field() }}
 
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-5">
                                         <label class="radiobox">
                                             <input checked name="radio" type="radio" value="1" id="type_div">
-                                            <span>Suchen nach Handytyp und Zustand</span>
+                                            <span>Suchen nach Produktkategorie und Produktmarke</span>
                                         </label>
                                     </div>
 
                                     <div class="col-lg-4 mg-t-20 mg-lg-t-0">
                                         <label class="radiobox">
                                             <input name="radio" value="2" type="radio" id="name_div">
-                                            <span>Suche nach Handynamen</span>
+                                            <span>Suche nach Produktname</span>
                                         </label>
                                     </div><br><br>
 
                                     <div class="row">
-                                        <!-- Search by type and status -->
-                                        <div class="col-lg-3" id="mobiles_type">
-                                            <p class="mg-b-10">Kategorie des Handys</p>
-                                            <select id="kategorie" class="form-control select" name="mobiles_type" style="color: #6C7293;" required>
-                                                <option value="null" disabled {{ (old('mobiles_type') == null && !isset($mobiles_type)) ? 'selected' : '' }}>Kategorie wählen</option>
+                                        <!-- Search by category and brand -->
+                                        <div class="col-lg-3" id="product_category">
+                                            <p class="mg-b-10">Kategorie des Produkts</p>
+                                            <select id="kategorie" class="form-control select" name="product_category" style="color: #6C7293;" required>
+                                                <option value="null" disabled {{ (old('product_category') == null && !isset($product_category)) ? 'selected' : '' }}>Kategorie wählen</option>
                                                 @foreach($categories as $one)
-                                                    <option value="{{ $one->id }}" {{ (old('mobiles_type') == $one->id || isset($mobiles_type) && $mobiles_type == $one->id) ? 'selected' : '' }}>{{ $one->name }}</option>
+                                                    <option value="{{ $one->id }}" {{ (old('product_category') == $one->id || isset($product_category) && $product_category == $one->id) ? 'selected' : '' }}>{{ $one->name }}</option>
                                                 @endforeach
                                             </select>
 
                                         </div>
 
-                                        <div class="col-lg-3" id="mobiles_status">
-                                            <p class="mg-b-10">Zustand des Handys</p>
-                                            <select id="zustand" class="form-control select2" name="mobiles_status" style="color: #6C7293;" required>
-                                                <option value="null" disabled {{ (old('mobiles_status') == null && !isset($mobiles_status)) ? 'selected' : '' }}>Zustand wählen</option>
-                                                <option value="Alle" {{ (old('mobiles_status') == 'Alle' || isset($mobiles_status) && $mobiles_status == 'Alle') ? 'selected' : '' }}>Alle</option>
-                                                <option value="Neu" {{ (old('mobiles_status') == 'Neu' || isset($mobiles_status) && $mobiles_status == 'Neu') ? 'selected' : '' }}>Neu</option>
-                                                <option value="Gebraucht" {{ (old('mobiles_status') == 'Gebraucht' || isset($mobiles_status) && $mobiles_status == 'Gebraucht') ? 'selected' : '' }}>Gebraucht</option>
+                                        <div class="col-lg-3" id="product_brand">
+                                            <p class="mg-b-10">Marke des Produkts</p>
+                                            <select id="brand" class="form-control select2" name="product_brand" style="color: #6C7293;" required>
+                                                <option value="null" disabled {{ (old('product_brand') == null && !isset($product_brand)) ? 'selected' : '' }}>Marke wählen</option>
+                                                <option value="Alle" {{ (old('product_brand') == 'Alle' || isset($product_brand) && $product_brand == 'Alle') ? 'selected' : '' }}>Alle</option>
+                                                @foreach($brands as $one)
+                                                    <option value="{{ $one->name }}" {{ (old('product_brand') == $one->name || isset($product_brand) && $product_brand == $one->name) ? 'selected' : '' }}>{{ $one->name }}</option>
+                                                @endforeach
+                                                <option value="Andere" {{ (old('product_brand') == 'Andere' || isset($product_brand) && $product_brand == 'Andere') ? 'selected' : '' }}>Andere</option>
                                             </select>
 
                                         </div>
 
                                         <!-- Search by name -->
-                                        <div class="col-lg-3" id="mobile_name" style="display: none;">
-                                            <p class="mg-b-10">Name des Handys</p>
-                                            <input type="text" name="mobile_name" class="form-control text-muted" placeholder="Geben Sie den Handynamen ein">
+                                        <div class="col-lg-3" id="product_name" style="display: none;">
+                                            <p class="mg-b-10">Name des Produkts</p>
+                                            <input type="text" name="product_name" class="form-control text-muted" placeholder="Geben Sie das Produktname ein">
                                         </div>
 
                                         <div class="col-lg-3" id="start_at">
@@ -124,7 +126,7 @@
                                 </form>
                                 @if (isset($details))
                                     @can('ExportExcel')
-                                        <form action="{{ route('export_MobilesReports', 3) }}" method="POST">
+                                        <form action="{{ route('export_AccessoriesReports', 4) }}" method="POST">
                                             @csrf
                                             <input type="hidden" name="details" value="{{ json_encode($details) }}">
                                             <button type="submit" class="btn btn-inverse-success btn-block mt-3">Export Excel</button>
@@ -141,9 +143,8 @@
                                             <th>#</th>
                                             <th>Name</th>
                                             <th>Kategorie</th>
-                                            <th>Zustand</th>
+                                            <th>Marke</th>
                                             <th>Preis</th>
-                                            <th>Menge</th>
                                             <th>Beschreibung</th>
                                             <th>Foto</th>
                                         </tr>
@@ -156,16 +157,15 @@
                                                 <td>{{$i}}</td>
                                                 <td>{{$x->name}}</td>
                                                 <td>{{$x->section_name}}</td>
-                                                <td>{{$x->status}}</td>
-                                                <td>{{$x->preis}}</td>
-                                                <td>{{$x->amount}}</td>
+                                                <td>{{$x->brand}}</td>
+                                                <td>{{$x->price}}</td>
                                                 @if($x->note == NULL)
                                                     <td style="text-align: center;">---</td>
                                                 @else
                                                     <td style="text-align: center">{{$x->note}}</td>
                                                 @endif
-                                                <td><a href="{{asset( 'Attachments/Handys/' . $x->image)}}"><img
-                                                            src="Attachments/Handys/{{$x->image}}"
+                                                <td><a href="{{asset( 'Attachments/Accessories/' . $x->image)}}"><img
+                                                            src="Attachments/Accessories/{{$x->image}}"
                                                             style="height:30px; width:50px; border-radius: 0;"></a></td>
                                                 <td>
                                             </tr>
@@ -193,18 +193,18 @@
             </script>
             <script>
                 $(document).ready(function() {
-                    $('#mobile_name').hide();
+                    $('#product_name').hide();
                     $('input[type="radio"]').click(function() {
                         if ($(this).attr('id') == 'type_div') {
-                            $('#mobile_name').hide();
-                            $('#mobiles_type').show();
-                            $('#mobiles_status').show();
+                            $('#product_name').hide();
+                            $('#product_category').show();
+                            $('#product_brand').show();
                             $('#start_at').show();
                             $('#end_at').show();
                         } else {
-                            $('#mobile_name').show();
-                            $('#mobiles_type').hide();
-                            $('#mobiles_status').hide();
+                            $('#product_name').show();
+                            $('#product_category').hide();
+                            $('#product_brand').hide();
                             $('#start_at').hide();
                             $('#end_at').hide();
                         }

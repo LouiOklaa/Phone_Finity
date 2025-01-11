@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AbschnitteController;
 use App\Http\Controllers\AccessoriesController;
+use App\Http\Controllers\AccessoriesReportsController;
 use App\Http\Controllers\AccessoriesSectionsController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContactController;
@@ -60,14 +61,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/benutzer/bearbeiten/{id}', [UserController::class, 'edit'])->name('edit_user');
     Route::get('/benutzer/profil/{id}', [UserController::class, 'profile'])->name('profile');
     Route::resource('benutzer',UserController::class);
-
-
     Route::get('/handyberichte', [MobilesReportsController::class, 'index'])->name('mobiles_reports');
-    Route::post('/handysuche', [MobilesReportsController::class, 'search_mobiles'])->name('mobiles_search');
+    Route::post('/handysuche', [MobilesReportsController::class, 'SearchMobiles'])->name('mobiles_search');
     Route::post('/handyberichte/export/{PageId}', [MobilesReportsController::class, 'MobilesReportsExport'])->name('export_MobilesReports');
-
-
-
+    Route::get('/zubehörberichte', [AccessoriesReportsController::class, 'index'])->name('accessories_reports');
+    Route::post('/zubehörsuche', [AccessoriesReportsController::class, 'SearchAccessories'])->name('accessories_search');
+    Route::post('/zubehörberichte/export/{PageId}', [AccessoriesReportsController::class, 'AccessoriesReportsExport'])->name('export_AccessoriesReports');
     Route::get('/dokumentation', function () { return view('Documentation.documentation'); });
 
 });

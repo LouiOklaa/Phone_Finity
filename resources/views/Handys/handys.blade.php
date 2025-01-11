@@ -94,9 +94,9 @@
                                             <td>{{$one->preis}} €</td>
                                             <td>{{$one->amount}} Stück</td>
                                             @if($one->note == NULL)
-                                                <td style="text-align: center;">---</td>
+                                                <td>---</td>
                                             @else
-                                                <td style="text-align: center">{{$one->note}}</td>
+                                                <td>{{$one->note}}</td>
                                             @endif
                                             <td><a href="{{asset( 'Attachments/Handys/' . $one->image)}}"><img
                                                             src="Attachments/Handys/{{$one->image}}"
@@ -150,8 +150,8 @@
                                         <label class="my-1 mr-2" for="section_id">Kategorie :</label>
                                         <select name="section_id" id="section_id" class="form-control select2">
                                             <option value="#" selected disabled>-- Kategorie auswählen --</option>
-                                            @foreach ($abschnitte as $one)
-                                                <option value="{{ $one->id }}">{{ $one->name }}</option>
+                                            @foreach ($abschnitte as $x)
+                                                <option value="{{ $x->id }}">{{ $x->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>

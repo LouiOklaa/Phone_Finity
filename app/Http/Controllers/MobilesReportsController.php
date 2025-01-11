@@ -11,6 +11,11 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class MobilesReportsController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:Berichte', ['only' => ['index' , 'SearchMobiles' , 'MobilesReportsExport']]);
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -19,7 +24,7 @@ class MobilesReportsController extends Controller
         return view('Reports.mobiles_reports');
     }
 
-    public function search_mobiles(Request $request){
+    public function SearchMobiles(Request $request){
 
 
         $radio = $request->radio;
