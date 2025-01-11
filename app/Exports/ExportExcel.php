@@ -27,7 +27,7 @@ class ExportExcel implements FromCollection,WithHeadings
         if ($this->PageId == 1 || $this->PageId == 3) {
             return ["Name" , "Kategorie" , "Zustand" , "Preis" , "Menge" , "Beschreibung"];
          }
-        elseif ($this->PageId == 2) {
+        elseif ($this->PageId == 2 || $this->PageId == 4) {
             return ["Name" , "Kategorie" , "Marke" , "Preis" , "Beschreibung"];
         }
 
@@ -46,6 +46,7 @@ class ExportExcel implements FromCollection,WithHeadings
         elseif ($this->PageId == 2) {
             return Accessories::select('name', 'section_name', 'brand' , 'price', DB::raw("COALESCE(note, '---') as note"))->get();
         }
+
         //Export Mobiles Reports
         elseif ($this->PageId == 3) {
             return collect($this->data)->map(function ($item) {
@@ -55,6 +56,19 @@ class ExportExcel implements FromCollection,WithHeadings
                     'status' => $item['status'],
                     'preis' => $item['preis'],
                     'amount' => $item['amount'],
+                    'note' => $item['note'] ?? '---',
+                ];
+            });
+        }
+
+        //Export Accessories Reports
+        elseif ($this->PageId == 4) {
+            return collect($this->data)->map(function ($item) {
+                return [
+                    'name' => $item['name'],
+                    'section_name' => $item['section_name'],
+                    'brand' => $item['brand'],
+                    'price' => $item['price'],
                     'note' => $item['note'] ?? '---',
                 ];
             });

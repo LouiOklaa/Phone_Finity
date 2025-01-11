@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\abschnitte;
 use App\Models\Accessories;
+use App\Models\accessories_sections;
 use App\Models\GeneralInformation;
 use App\Models\ServicesSections;
 use Illuminate\Support\ServiceProvider;
@@ -46,6 +47,16 @@ class AppServiceProvider extends ServiceProvider
 
             $view->with([
                 'categories' => $categories,
+            ]);
+        });
+
+        View::composer('Reports.accessories_reports', function ($view) {
+            $categories = accessories_sections::all();
+            $brands = abschnitte::all();
+
+            $view->with([
+                'categories' => $categories,
+                'brands' => $brands,
             ]);
         });
     }
