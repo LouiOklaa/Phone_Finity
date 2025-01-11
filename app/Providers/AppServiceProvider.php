@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\abschnitte;
 use App\Models\Accessories;
 use App\Models\accessories_sections;
+use App\Models\EmailLog;
 use App\Models\GeneralInformation;
 use App\Models\ServicesSections;
 use Illuminate\Support\ServiceProvider;
@@ -57,6 +58,13 @@ class AppServiceProvider extends ServiceProvider
             $view->with([
                 'categories' => $categories,
                 'brands' => $brands,
+            ]);
+        });
+
+        View::composer('layouts.master', function ($view) {
+            $notifications = EmailLog::where('is_notified', false)->get();
+            $view->with([
+                'notifications' => $notifications,
             ]);
         });
     }
