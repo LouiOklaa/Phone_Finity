@@ -93,7 +93,7 @@
                                         <!-- Search by name -->
                                         <div class="col-lg-3" id="mobile_name" style="display: none;">
                                             <p class="mg-b-10">Name des Handys</p>
-                                            <input type="text" name="mobile_name" class="form-control text-muted" placeholder="Geben Sie den Handynamen ein">
+                                            <input type="text" name="mobile_name" class="form-control text-muted" placeholder="Geben Sie den Handynamen ein" value="{{ old('mobile_name', isset($mobile_name) ? $mobile_name : '') }}">
                                         </div>
 
                                         <div class="col-lg-3" id="start_at">
@@ -193,7 +193,25 @@
             </script>
             <script>
                 $(document).ready(function() {
-                    $('#mobile_name').hide();
+
+                    var selectedRadio = "{{ isset($radio) ? $radio : 1 }}";
+
+                    if (selectedRadio == 1) {
+                        $('#mobile_name').hide();
+                        $('#mobiles_type').show();
+                        $('#mobiles_status').show();
+                        $('#start_at').show();
+                        $('#end_at').show();
+                        $('#type_div').prop('checked', true);
+                    } else {
+                        $('#mobile_name').show();
+                        $('#mobiles_type').hide();
+                        $('#mobiles_status').hide();
+                        $('#start_at').hide();
+                        $('#end_at').hide();
+                        $('#name_div').prop('checked', true);
+                    }
+
                     $('input[type="radio"]').click(function() {
                         if ($(this).attr('id') == 'type_div') {
                             $('#mobile_name').hide();
@@ -211,5 +229,6 @@
                     });
                 });
             </script>
+
 
 @endsection

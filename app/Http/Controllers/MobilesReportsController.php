@@ -32,6 +32,7 @@ class MobilesReportsController extends Controller
         $mobiles_status = $request->mobiles_status;
         $start_at = $request->start_at ? Carbon::parse($request->start_at)->toDateString() : null;
         $end_at = $request->end_at ? Carbon::parse($request->end_at)->toDateString() : null;
+        $mobile_name = $request->mobile_name;
 
 
         //Search With Invoice Type
@@ -43,14 +44,14 @@ class MobilesReportsController extends Controller
                 if ($mobiles_status == 'Alle'){
 
                     $mobiles = handys::select('*')->where('section_id','=',$mobiles_type)->get();
-                    return view('Reports.mobiles_reports',compact('mobiles_status' , 'mobiles_type'))->withDetails($mobiles);
+                    return view('Reports.mobiles_reports',compact('mobiles_status' , 'mobiles_type' , 'radio'))->withDetails($mobiles);
 
                 }
 
                 else{
 
                     $mobiles = handys::select('*')->where('section_id','=',$mobiles_type)->where('status','=',$mobiles_status)->get();
-                    return view('Reports.mobiles_reports',compact('mobiles_status' , 'mobiles_type'))->withDetails($mobiles);
+                    return view('Reports.mobiles_reports',compact('mobiles_status' , 'mobiles_type' , 'radio'))->withDetails($mobiles);
 
                 }
 
@@ -66,7 +67,7 @@ class MobilesReportsController extends Controller
                         $start_at = Carbon::parse($start_at)->format('d.m.Y');
                         $end_at = Carbon::parse($end_at)->format('d.m.Y');
                     }
-                    return view('Reports.mobiles_reports', compact('mobiles_status' , 'mobiles_type' , 'start_at', 'end_at'))->withDetails($mobiles);
+                    return view('Reports.mobiles_reports', compact('mobiles_status' , 'mobiles_type' , 'start_at', 'end_at' , 'radio'))->withDetails($mobiles);
                 }
 
                 else{
@@ -76,7 +77,7 @@ class MobilesReportsController extends Controller
                         $start_at = Carbon::parse($start_at)->format('d.m.Y');
                         $end_at = Carbon::parse($end_at)->format('d.m.Y');
                     }
-                    return view('Reports.mobiles_reports', compact('mobiles_status' , 'mobiles_type', 'start_at', 'end_at'))->withDetails($mobiles);
+                    return view('Reports.mobiles_reports', compact('mobiles_status' , 'mobiles_type', 'start_at', 'end_at' , 'radio'))->withDetails($mobiles);
 
                 }
             }
@@ -87,7 +88,8 @@ class MobilesReportsController extends Controller
         else {
 
             $mobiles = handys::select('*')->where('name', 'LIKE', '%' . $request->mobile_name . '%')->get();
-            return view('Reports.mobiles_reports')->withDetails($mobiles);
+            return view('Reports.mobiles_reports', compact('radio', 'mobile_name'))->withDetails($mobiles);
+
 
         }
 
