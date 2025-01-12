@@ -29,14 +29,16 @@ class AppServiceProvider extends ServiceProvider
     {
         View::composer('layouts.master_home_page', function ($view) {
             $information = GeneralInformation::first();
-            $handys_sections = abschnitte::all();
+            $handys_sectionsNew = abschnitte::has('newMobiles')->get();
+            $handys_sectionsUsed = abschnitte::has('usedMobiles')->get();
             $accessories = accessories::all();
             $accessories_brand = accessories::pluck('brand')->unique();
             $services_sections = ServicesSections::all();
 
             $view->with([
                 'information' => $information,
-                'handys_sections' => $handys_sections,
+                'handys_sectionsNew' => $handys_sectionsNew,
+                'handys_sectionsUsed' => $handys_sectionsUsed,
                 'accessories' => $accessories,
                 'accessories_brand' => $accessories_brand,
                 'services_sections' => $services_sections,

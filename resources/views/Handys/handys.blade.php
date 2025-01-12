@@ -143,12 +143,11 @@
                                     <div class="form-group">
                                         <input type="hidden" name="id" id="id" value="">
                                         <label for="name" class="col-form-label">Gerät Name :</label>
-                                        <input class="form-control" name="name" id="name" type="text"
-                                               style="color: #6C7293">
+                                        <input class="form-control text-muted" name="name" id="name" type="text">
                                     </div>
                                     <div class="form-group">
                                         <label class="my-1 mr-2" for="section_id">Kategorie :</label>
-                                        <select name="section_id" id="section_id" class="form-control select2">
+                                        <select name="section_id" id="section_id" class="form-control text-muted select2">
                                             <option value="#" selected disabled>-- Kategorie auswählen --</option>
                                             @foreach ($abschnitte as $x)
                                                 <option value="{{ $x->id }}">{{ $x->name }}</option>
@@ -157,7 +156,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="status" class="col-form-label">Zustand :</label>
-                                        <select name="status" id="status" class="form-control" onchange="myFunction()">
+                                        <select name="status" id="status" class="form-control text-muted" onchange="myFunction()">
                                             <!--placeholder-->
                                             <option value="" selected disabled>-- Zustand auswählen --</option>
                                             <option value="Neu">Neu</option>
@@ -166,18 +165,15 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="preis" class="col-form-label">Preis :</label>
-                                        <input class="form-control" name="preis" id="preis" type="number"
-                                               style="color: #6C7293">
+                                        <input class="form-control text-muted" name="preis" id="preis" type="number">
                                     </div>
                                     <div class="form-group">
                                         <label for="amount" class="col-form-label">Menge :</label>
-                                        <input class="form-control" name="amount" id="amount" type="number"
-                                               style="color: #6C7293">
+                                        <input class="form-control text-muted" name="amount" id="amount" type="number">
                                     </div>
                                     <div class="form-group">
                                         <label for="note">Beschreibung :</label>
-                                        <textarea class="form-control" name="note" id="note" rows="3"
-                                                  style="color: #6C7293"></textarea>
+                                        <textarea class="form-control text-muted" name="note" id="note" rows="3"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>Handy Foto </label>
@@ -187,8 +183,8 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-rounded btn-primary">Bestätigung</button>
-                                        <button type="button" class="btn btn-rounded btn-danger" data-dismiss="modal">
+                                        <button type="submit" class="btn btn-rounded btn-outline-primary">Bestätigung</button>
+                                        <button type="button" class="btn btn-rounded btn-outline-secondary" data-dismiss="modal">
                                             Abbrechen
                                         </button>
                                     </div>
@@ -216,12 +212,11 @@
                                         <div class="form-group">
                                             <label for="name">Gerät Name :</label>
                                             <input type="hidden" class="form-control" id="id" name="id">
-                                            <input type="text" class="form-control" id="name" name="name"
-                                                   style="color: #6C7293" required>
+                                            <input type="text" class="form-control text-muted" id="name" name="name" required>
                                         </div>
                                         <div class="form-group">
                                             <label class="my-1 mr-2" for="section_name">Kategorie :</label>
-                                            <select name="section_name" id="section_name" class="form-control">
+                                            <select name="section_name" id="section_name" class="form-control text-muted">
                                                 @foreach ($abschnitte as $one)
                                                     <option> {{$one->name}} </option>
                                                 @endforeach
@@ -229,25 +224,22 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="my-1 mr-2" for="status">Zustand :</label>
-                                            <select name="status" id="status" class="form-control" required>
+                                            <select name="status" id="status" class="form-control text-muted" required>
                                                 <option value="Neu">Neu</option>
                                                 <option value="Gebraucht">Gebraucht</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="preis" class="col-form-label">Preis :</label>
-                                            <input class="form-control" name="preis" id="preis" type="number"
-                                                   style="color: #6C7293" required>
+                                            <input class="form-control text-muted" name="preis" id="preis" type="number" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="amount" class="col-form-label">Menge :</label>
-                                            <input class="form-control" name="amount" id="amount" type="number"
-                                                   style="color: #6C7293" required>
+                                            <input class="form-control text-muted" name="amount" id="amount" type="number" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="note">Beschreibung :</label>
-                                            <textarea class="form-control" name="note" id="note" rows="3"
-                                                      style="color: #6C7293"></textarea>
+                                            <textarea class="form-control text-muted" name="note" id="note" rows="3"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>Handy Foto </label>
@@ -288,8 +280,8 @@
                                         <div class="form-group">
                                             <label for="company_name">Gerät Name</label>
                                             <input type="hidden" class="form-control" id="id" name="id">
-                                            <input class="form-control" name="name" id="name" type="text"
-                                                   style="color: #6C7293; background: #2A3038" readonly>
+                                            <input class="form-control text-muted" name="name" id="name" type="text"
+                                                   style="background: #2A3038" readonly>
                                         </div>
                                     </div>
                                     <div class="modal-footer">

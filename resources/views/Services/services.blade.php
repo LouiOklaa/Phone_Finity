@@ -140,11 +140,11 @@
                                     <div class="form-group">
                                         <input type="hidden" name="id" id="id" value="">
                                         <label for="name" class="col-form-label">Dienstleistungen Name :</label>
-                                        <input class="form-control" name="name" id="name" type="text">
+                                        <input class="form-control text-muted" name="name" id="name" type="text">
                                     </div>
                                     <div class="form-group">
                                         <label class="my-1 mr-2" for="section_id">Kategorie :</label>
-                                        <select name="section_id" id="section_id" class="form-control select2">
+                                        <select name="section_id" id="section_id" class="form-control text-muted select2">
                                             <option value="#" selected disabled>-- Kategorie auswählen --</option>
                                             @foreach ($sections as $one)
                                                 <option value="{{ $one->id }}">{{ $one->name }}</option>
@@ -153,11 +153,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="price" class="col-form-label">Preis :</label>
-                                        <input class="form-control" name="price" id="price" type="number">
+                                        <input class="form-control text-muted" name="price" id="price" type="number">
                                     </div>
                                     <div class="form-group">
                                         <label for="note">Beschreibung :</label>
-                                        <textarea class="form-control" name="note" id="note" rows="3"></textarea>
+                                        <textarea class="form-control text-muted" name="note" id="note" rows="3"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>Dienstleistungen Foto </label>
@@ -167,8 +167,8 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-rounded btn-primary">Bestätigung</button>
-                                        <button type="button" class="btn btn-rounded btn-danger" data-dismiss="modal">
+                                        <button type="submit" class="btn btn-rounded btn-outline-primary">Bestätigung</button>
+                                        <button type="button" class="btn btn-rounded btn-outline-secondary" data-dismiss="modal">
                                             Abbrechen
                                         </button>
                                     </div>
@@ -196,12 +196,11 @@
                                         <div class="form-group">
                                             <label for="name">Dienstleistungen Name :</label>
                                             <input type="hidden" class="form-control" id="id" name="id">
-                                            <input type="text" class="form-control" id="name" name="name"
-                                                   style="color: #6C7293" required>
+                                            <input type="text" class="form-control text-muted" id="name" name="name" required>
                                         </div>
                                         <div class="form-group">
                                             <label class="my-1 mr-2" for="section_name">Kategorie :</label>
-                                            <select name="section_name" id="section_name" class="form-control">
+                                            <select name="section_name" id="section_name" class="form-control text-muted">
                                                 @foreach ($sections as $one)
                                                     <option> {{$one->name}} </option>
                                                 @endforeach
@@ -209,12 +208,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="price" class="col-form-label">Preis :</label>
-                                            <input class="form-control" name="price" id="price" type="number"
-                                                   style="color: #6C7293" required>
+                                            <input class="form-control text-muted" name="price" id="price" type="number" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="note">Beschreibung :</label>
-                                            <textarea class="form-control" name="note" id="note" rows="3"></textarea>
+                                            <textarea class="form-control text-muted" name="note" id="note" rows="3"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>Dienstleistungen Foto </label>
@@ -256,8 +254,8 @@
                                         <div class="form-group">
                                             <label for="company_name">Dienstleistungen Name</label>
                                             <input type="hidden" class="form-control" id="id" name="id">
-                                            <input class="form-control" name="name" id="name" type="text"
-                                                   style="color: #6C7293; background: #2A3038" readonly>
+                                            <input class="form-control text-muted" name="name" id="name" type="text"
+                                                   style="background: #2A3038" readonly>
                                         </div>
                                     </div>
                                     <div class="modal-footer">

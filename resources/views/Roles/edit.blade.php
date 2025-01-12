@@ -107,7 +107,7 @@
                                 </div>
                                 <!-- /col -->
                                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                    <button type="submit" class="btn btn-rounded btn-primary">Aktualisieren</button>
+                                    <button type="submit" class="btn btn-rounded btn-inverse-primary">Aktualisieren</button>
                                 </div>
                             @else
                                 <p style="font-size: 1.5rem;font-weight: 600;color: #3e4b5b; text-align: center">Die Besitzer Berechtigung kann nicht geändert werden.</p>

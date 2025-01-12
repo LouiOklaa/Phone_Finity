@@ -161,13 +161,11 @@
                                             <div class="form-group">
                                                 <input type="hidden" name="id" id="id" value="">
                                                 <label for="name" class="col-form-label">Projekt Name :</label>
-                                                <input class="form-control" name="name" id="name" type="text"
-                                                       style="color: #6C7293">
+                                                <input class="form-control text-muted" name="name" id="name" type="text">
                                             </div>
                                             <div class="form-group">
                                                 <label for="note">Beschreibung :</label>
-                                                <textarea class="form-control" name="note" id="note" rows="3"
-                                                          style="color: #6C7293"></textarea>
+                                                <textarea class="form-control text-muted" name="note" id="note" rows="3"></textarea>
                                             </div>
                                             <div class="form-group">
                                                 <label>Projekt Foto oder Video </label>
@@ -178,9 +176,9 @@
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="submit" class="btn btn-rounded btn-primary">Bestätigung
+                                                <button type="submit" class="btn btn-rounded btn-outline-primary">Bestätigung
                                                 </button>
-                                                <button type="button" class="btn btn-rounded btn-danger"
+                                                <button type="button" class="btn btn-rounded btn-outline-secondary"
                                                         data-dismiss="modal">Abbrechen
                                                 </button>
                                             </div>
@@ -208,13 +206,11 @@
                                                 <div class="form-group">
                                                     <label for="name">Projekt Name :</label>
                                                     <input type="hidden" class="form-control" id="id" name="id">
-                                                    <input type="text" class="form-control" id="name" name="name"
-                                                           style="color: #6C7293">
+                                                    <input type="text" class="form-control text-muted" id="name" name="name">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="note">Beschreibung :</label>
-                                                    <textarea class="form-control" name="note" id="note" rows="3"
-                                                              style="color: #6C7293"></textarea>
+                                                    <textarea class="form-control text-muted" name="note" id="note" rows="3"></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Projekt Foto oder Video </label>
@@ -259,8 +255,8 @@
                                                 <div class="form-group">
                                                     <label for="name">Projekt Name :</label>
                                                     <input type="hidden" class="form-control" id="id" name="id">
-                                                    <input class="form-control" name="name" id="name" type="text"
-                                                           style="color: #6C7293; background: #2A3038" readonly>
+                                                    <input class="form-control text-muted" name="name" id="name" type="text"
+                                                           style="background: #2A3038" readonly>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">

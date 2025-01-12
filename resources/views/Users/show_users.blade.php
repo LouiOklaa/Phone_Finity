@@ -194,8 +194,7 @@
                                             <div class="form-group row">
                                                 <label for="name" class="col-sm-3 col-form-label">Benutzername :</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="name" id="name"
-                                                           style="color: #6C7293"/>
+                                                    <input type="text" class="form-control text-muted" name="name" id="name"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -203,8 +202,7 @@
                                             <div class="form-group row">
                                                 <label for="email" class="col-sm-3 col-form-label">E-Mail :</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="email" id="email"
-                                                           style="color: #6C7293"/>
+                                                    <input type="text" class="form-control text-muted" name="email" id="email"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -215,8 +213,8 @@
                                             <div class="form-group row">
                                                 <label for="password" class="col-sm-3 col-form-label">Passwort :</label>
                                                 <div class="col-sm-9">
-                                                    <input type="password" class="form-control" name="password"
-                                                           id="password" style="color: #6C7293"/>
+                                                    <input type="password" class="form-control text-muted" name="password"
+                                                           id="password"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -225,8 +223,8 @@
                                                 <label for="confirm-password" class="col-sm-3 col-form-label">PW
                                                     bestätigen :</label>
                                                 <div class="col-sm-9">
-                                                    <input type="password" class="form-control" name="confirm-password"
-                                                           id="confirm-password" style="color: #6C7293"/>
+                                                    <input type="password" class="form-control text-muted" name="confirm-password"
+                                                           id="confirm-password"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -239,7 +237,7 @@
                                                     :</label>
                                                 <div class="col-sm-9">
                                                     <select name="role_name" id="role_name"
-                                                            class="form-control select2">
+                                                            class="form-control text-muted select2">
                                                         <option value="#" selected disabled>-- Benutzerrecht auswählen
                                                             --
                                                         </option>
@@ -255,7 +253,7 @@
                                                 <label class="col-sm-3 col-form-label" for="status">Benutzerstatus
                                                     :</label>
                                                 <div class="col-sm-9">
-                                                    <select name="status" id="status" class="form-control select2">
+                                                    <select name="status" id="status" class="form-control text-muted select2">
                                                         <option value="#" selected disabled>-- Benutzerstatus auswählen --
                                                         </option>
                                                         <option value="Active">Aktive</option>
@@ -266,8 +264,8 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-rounded btn-primary">Bestätigung</button>
-                                        <button type="button" class="btn btn-rounded btn-danger" data-dismiss="modal">
+                                        <button type="submit" class="btn btn-rounded btn-outline-primary">Bestätigung</button>
+                                        <button type="button" class="btn btn-rounded btn-outline-secondary" data-dismiss="modal">
                                             Abbrechen
                                         </button>
                                     </div>
@@ -297,8 +295,7 @@
                                                 <input type="hidden" class="form-control" id="id" name="id">
                                                 <label for="name" class="col-sm-3 col-form-label">Benutzername :</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" id="name" name="name"
-                                                           style="color: #6C7293"/>
+                                                    <input type="text" class="form-control text-muted" id="name" name="name"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -306,8 +303,7 @@
                                             <div class="form-group row">
                                                 <label for="email" class="col-sm-3 col-form-label">E-Mail :</label>
                                                 <div class="col-sm-9">
-                                                    <input type="email" class="form-control" id="email" name="email"
-                                                           style="color: #6C7293"/>
+                                                    <input type="email" class="form-control text-muted" id="email" name="email"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -318,8 +314,8 @@
                                             <div class="form-group row">
                                                 <label for="password" class="col-sm-3 col-form-label">Passwort :</label>
                                                 <div class="col-sm-9">
-                                                    <input type="password" class="form-control" name="password"
-                                                           id="password" style="color: #6C7293"/>
+                                                    <input type="password" class="form-control text-muted" name="password"
+                                                           id="password"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -328,8 +324,8 @@
                                                 <label for="confirm-password" class="col-sm-3 col-form-label">PW
                                                     bestätigen :</label>
                                                 <div class="col-sm-9">
-                                                    <input type="password" class="form-control" name="confirm-password"
-                                                           id="confirm-password" style="color: #6C7293"/>
+                                                    <input type="password" class="form-control text-muted" name="confirm-password"
+                                                           id="confirm-password"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -341,7 +337,7 @@
                                                 <label for="role_name" class="col-sm-3 col-form-label">Benutzerrecht
                                                     :</label>
                                                 <div class="col-sm-9">
-                                                    <select name="role_name" id="role_name" class="form-control">
+                                                    <select name="role_name" id="role_name" class="form-control text-muted">
                                                         @foreach ($roles as $one)
                                                             <option> {{$one}} </option>
                                                         @endforeach
@@ -354,7 +350,7 @@
                                                 <label for="status" class="col-sm-3 col-form-label">Benutzerstatus
                                                     :</label>
                                                 <div class="col-sm-9">
-                                                    <select name="status" id="status" class="form-control">
+                                                    <select name="status" id="status" class="form-control text-muted">
                                                         <option value="{{ $user->status}}">{{ $user->status}}</option>
                                                         @if($user->status == "Inactive")
                                                             <option value="Active">Aktive</option>
@@ -397,8 +393,8 @@
                                         <div class="form-group">
                                             <label for="company_name">Benutzername :</label>
                                             <input type="hidden" class="form-control" id="id" name="id">
-                                            <input class="form-control" name="name" id="name" type="text"
-                                                   style="color: #6C7293; background: #2A3038" readonly>
+                                            <input class="form-control text-muted" name="name" id="name" type="text"
+                                                   style="background: #2A3038" readonly>
                                         </div>
                                     </div>
                                     <div class="modal-footer">

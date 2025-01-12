@@ -80,7 +80,7 @@
                             <span class="menu-item">Neue Handys</span>
                             <span class="toggle-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
                             <ul class="right">
-                                @foreach($handys_sections as $one)
+                                @foreach($handys_sectionsNew as $one)
                                     <li><a href="{{ route('new_mobiles', $one->name) }}">{{$one->name}}</a></li>
                                 @endforeach
                             </ul>
@@ -89,7 +89,7 @@
                             <span class="menu-item">Gebrauchte Handys</span>
                             <span class="toggle-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
                             <ul class="right">
-                                @foreach($handys_sections as $one)
+                                @foreach($handys_sectionsUsed as $one)
                                     <li><a href="{{ route('used_mobiles', $one->name) }}">{{$one->name}}</a></li>
                                 @endforeach
                             </ul>

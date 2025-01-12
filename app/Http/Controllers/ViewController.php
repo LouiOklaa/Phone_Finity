@@ -17,12 +17,13 @@ class ViewController extends Controller
     {
         $information = GeneralInformation::first();
         $handys = handys::all();
-        $handys_sections = abschnitte::all();
+        $handys_sectionsNew = abschnitte::has('newMobiles')->get();
+        $handys_sectionsUsed = abschnitte::has('usedMobiles')->get();
         $services = Services::all();
         $accessories = accessories::all();
         $accessories_brand = accessories::pluck('brand')->unique();
         $services_sections = ServicesSections::all();
-        return view('index' , compact('information' , 'handys' , 'services' , 'accessories' , 'handys_sections' , 'accessories_brand' , 'services_sections'));
+        return view('index' , compact('information' , 'handys' , 'services' , 'accessories' , 'handys_sectionsNew' , 'handys_sectionsUsed' , 'accessories_brand' , 'services_sections'));
     }
 
     public function showNewMobiles($section_name)
