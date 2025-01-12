@@ -7,7 +7,9 @@
 @endsection
 @section('contents')
 <section class="map-section" data-inview-showup="showup-translate-up">
-    <div class="gmap" data-lat="13.43312005807037" data-lng="52.48489494840933" id="map"></div>
+    <div class="gmap" data-lat="13.43312005807037" data-lng="52.48489494840933" id="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2429.6837276016236!2d13.430518076190484!3d52.4848619388312!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a84f002a2e23b7%3A0x2f726219b273d37e!2sPhone%20Finity!5e0!3m2!1sen!2sde!4v1736719772120!5m2!1sen!2sde" frameborder="0" style="border:0; width: 100%; height: 500px;" allowfullscreen></iframe>
+    </div>
     <div class="info-wrap">
         <div class="info-container">
             <div class="our-info side main-bg">
@@ -80,28 +82,6 @@
     </div>
 @endsection
 @section('JS')
-    <!-- Google Maps -->
-    <script>
-        function initMap() {
-            var location = { lat: 52.48489494840933, lng: 13.43312005807037 };
-
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 18,
-                center: location
-            });
-
-            var marker = new google.maps.Marker({
-                position: location,
-                map: map,
-                title: "Standort",
-                icon: {
-                    url: "http://maps.google.com/mapfiles/ms/icons/pink-dot.png",
-                    scaledSize: new google.maps.Size(50, 50)
-                }
-            });
-        }
-    </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADTYd1v2wopvONfGy3sG7kq2iHwnISVKo&callback=initMap"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
