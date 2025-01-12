@@ -14,9 +14,15 @@ class abschnitte extends Model
         'note',
     ];
 
-    public function handys(){
-        return
-        $this->hasMany(handys::class);
+    public function newMobiles(){
+
+        return $this->hasMany(handys::class, 'section_id')->where('status' , 'Neu');
+
+    }
+
+    public function usedMobiles(){
+
+        return $this->hasMany(handys::class, 'section_id')->where('status' , 'Gebraucht');
 
     }
 }

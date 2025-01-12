@@ -106,7 +106,7 @@
                                 </div>
                                 <!-- /col -->
                                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                    <button type="submit" class="btn btn-rounded btn-primary">Bestätigung</button>
+                                    <button type="submit" class="btn btn-rounded btn-inverse-primary">Bestätigung</button>
                                 </div>
                             </div>
                         </div>
