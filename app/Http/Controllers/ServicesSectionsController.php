@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Services;
 use App\Models\ServicesSections;
 use Illuminate\Http\Request;
 
@@ -96,6 +97,10 @@ class ServicesSectionsController extends Controller
         $sections->update([
             'name' => $request->name,
             'note' => $request->note,
+        ]);
+
+        Services::where('section_id', $id)->update([
+            'section_name' => $request->name,
         ]);
 
         session()->flash('Edit','Die Kategorie wurde erfolgreich geändert');

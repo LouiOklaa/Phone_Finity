@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\abschnitte;
+use App\Models\handys;
 use Illuminate\Http\Request;
 
 class AbschnitteController extends Controller
@@ -95,6 +96,10 @@ class AbschnitteController extends Controller
         $abschnitte->update([
             'name' => $request->name,
             'note' => $request->note,
+        ]);
+
+        handys::where('section_id', $id)->update([
+            'section_name' => $request->name,
         ]);
 
         session()->flash('Edit','Die Kategorie wurde erfolgreich geändert');

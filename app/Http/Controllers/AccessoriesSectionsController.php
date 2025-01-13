@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Accessories;
 use App\Models\accessories_sections;
 use Illuminate\Http\Request;
 
@@ -95,6 +96,10 @@ class AccessoriesSectionsController extends Controller
         $sections->update([
             'name' => $request->name,
             'note' => $request->note,
+        ]);
+
+        accessories::where('section_id', $id)->update([
+            'section_name' => $request->name,
         ]);
 
         session()->flash('Edit','Die Kategorie wurde erfolgreich geändert');

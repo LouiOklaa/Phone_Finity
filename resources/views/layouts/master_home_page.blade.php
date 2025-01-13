@@ -206,7 +206,7 @@
                     </div>
                 </div>
             </div>
-            <div class="footer-copyrights text-center top-separator ins-md">&copy; <script>document.write(new Date().getFullYear());</script> <a href="https://www.louioklaa.de/"  style="font-weight: bolder;">Loui Oklaa</a> Alle Rechte vorbehalten.
+            <div class="footer-copyrights text-center top-separator ins-md">&copy; <script>document.write(new Date().getFullYear());</script> <a href="https://www.louioklaa.com/"  style="font-weight: bolder;">Loui Oklaa</a> Alle Rechte vorbehalten.
                 <a style="color: #CA5098" href="https://github.com/LouiOklaa" class="fab fa-github"></a>
                 <a style="color: #CA5098" href="https://www.facebook.com/loui.oklaa/" class="fab fa-facebook"></a>
                 <a style="color: #CA5098" href="https://www.linkedin.com/in/loui-oklaa/" class="fab fa-linkedin"></a>
