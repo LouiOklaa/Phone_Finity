@@ -6,6 +6,53 @@
     Kontakt
 @endsection
 @section('contents')
+    <section class="content-section">
+        <div class="container">
+
+            <div class="section-head text-center container-md">
+
+                <h2 class="section-title text-upper text-lg" data-inview-showup="showup-translate-right">Fragen Sie gerne an!</h2>
+
+                <p data-inview-showup="showup-translate-left">Wir sind für Sie da – lassen Sie uns wissen, wie wir helfen können!</p>
+            </div>
+            <form id="contact-form" action="{{ route('send_email') }}" method="post" class="md-col-8 md-col-offs-2" data-inview-showup="showup-translate-down">
+                @csrf
+                <div class="field-group">
+                    <div class="field-wrap">
+                        <input type="text" class="field-control" name="name" id="name" placeholder="Name"  required/>
+                        <span class="field-back"></span>
+                    </div>
+                </div>
+                <div class="field-group">
+                    <div class="field-wrap">
+                        <input type="email" class="field-control" name="email" id="email" placeholder="E-Mail" required/>
+                        <span class="field-back"></span>
+                    </div>
+                </div>
+                <div class="field-group">
+                    <div class="field-wrap">
+                        <input type="text" class="field-control" name="phone" id="phone" placeholder="E-Telefonnummer" required/>
+                        <span class="field-back"></span>
+                    </div>
+                </div>
+                <div class="field-group">
+                    <div class="field-wrap">
+                        <textarea class="field-control" name="message" placeholder="Ihr Nachricht" required></textarea>
+                        <span class="field-back"></span>
+                    </div>
+                </div>
+                <div class="my-3">
+                    <div id="error-message" style="color: red;"></div>
+                    <div id="success-message" style="color: #CA5098; font-weight: bolder"></div>
+                </div>
+                <div class="btn-block text-center">
+                    <button class="btn text-upper ajax-disabled" type="submit" id="submit-btn">
+                        Senden
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
 <section class="map-section" data-inview-showup="showup-translate-up">
     <div class="gmap" data-lat="13.43312005807037" data-lng="52.48489494840933" id="map">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2429.6837276016236!2d13.430518076190484!3d52.4848619388312!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a84f002a2e23b7%3A0x2f726219b273d37e!2sPhone%20Finity!5e0!3m2!1sen!2sde!4v1736719772120!5m2!1sen!2sde" frameborder="0" style="border:0; width: 100%; height: 500px;" allowfullscreen></iframe>
@@ -28,53 +75,7 @@
         </div>
     </div>
 </section>
-<section class="content-section">
-                <div class="container">
 
-                    <div class="section-head text-center container-md">
-
-                        <h2 class="section-title text-upper text-lg" data-inview-showup="showup-translate-right">Request a Callback</h2>
-
-                        <p data-inview-showup="showup-translate-left">if your need personal assistance, fill the form bellow we will reply back to your asap!</p>
-                    </div>
-                    <form id="contact-form" action="{{ route('send_email') }}" method="post" class="md-col-8 md-col-offs-2" data-inview-showup="showup-translate-down">
-                        @csrf
-                        <div class="field-group">
-                            <div class="field-wrap">
-                                <input type="text" class="field-control" name="name" id="name" placeholder="Name"  required/>
-                                <span class="field-back"></span>
-                            </div>
-                        </div>
-                        <div class="field-group">
-                            <div class="field-wrap">
-                                <input type="email" class="field-control" name="email" id="email" placeholder="E-Mail" required/>
-                                <span class="field-back"></span>
-                            </div>
-                        </div>
-                        <div class="field-group">
-                            <div class="field-wrap">
-                                <input type="text" class="field-control" name="phone" id="phone" placeholder="E-Telefonnummer" required/>
-                                <span class="field-back"></span>
-                            </div>
-                        </div>
-                        <div class="field-group">
-                            <div class="field-wrap">
-                                <textarea class="field-control" name="message" placeholder="Ihr Nachricht" required></textarea>
-                                <span class="field-back"></span>
-                            </div>
-                        </div>
-                        <div class="my-3">
-                            <div id="error-message" style="color: red;"></div>
-                            <div id="success-message" style="color: #CA5098; font-weight: bolder"></div>
-                        </div>
-                        <div class="btn-block text-center">
-                            <button class="btn text-upper ajax-disabled" type="submit" id="submit-btn">
-                                Senden
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </section>
 
     <div class="loader-block">
         <div class="loader-back alt-bg"></div>

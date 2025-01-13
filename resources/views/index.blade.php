@@ -662,15 +662,15 @@
                         </div>
                         <div class="sm-col-8 sm-push-1">
                             <div class="row cols-md">
-                                <div class="sm-col-4">
+                                <div class="sm-col-3">
                                     <div class="footer-title alt-color text-upper">Adresse</div>
                                     <div class="footer-text">{{$information->address}}</div>
                                 </div>
-                                <div class="sm-col-4">
+                                <div class="sm-col-3">
                                     <div class="footer-title alt-color text-upper">Kontakte</div>
                                     <div class="footer-text">{{$information->phone_number}}<br/>{{$information->email}}</div>
                                 </div>
-                                <div class="sm-col-4">
+                                <div class="sm-col-3">
                                     <div class="footer-title alt-color text-upper">Soziale Medien</div>
                                     <div class="cols-list socials cols-sm inline-block">
                                         <a href="{{$information->facebook_link}}" class="list-item">&nbsp<i class="fab fa-facebook-f" aria-hidden="true"></i>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
@@ -678,13 +678,21 @@
                                         <a href="{{$information->tiktok_link}}" class="list-item"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
                                     </div>
                                 </div>
+                                <div class="sm-col-3">
+                                    <div class="footer-title alt-color text-upper">Unternehmen</div>
+                                    <ul class="list">
+                                        <li><a class="content-link" href="service.html">Data recovery</a></li>
+                                        <li><a class="content-link" href="service.html">Computer repair</a></li>
+                                        <li><a class="content-link" href="service.html">Mobile service</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="footer-copyrights text-center top-separator ins-md">&copy;
                     <script>document.write(new Date().getFullYear());</script>
-                    <a href="https://www.louioklaa.de/" style="font-weight: bolder;">Loui Oklaa</a> Alle Rechte
+                    <a href="https://www.louioklaa.com/" style="font-weight: bolder;">Loui Oklaa</a> Alle Rechte
                     vorbehalten.
                     <a style="color: #CA5098" href="https://github.com/LouiOklaa" class="fab fa-github"></a>
                     <a style="color: #CA5098" href="https://www.facebook.com/loui.oklaa/" class="fab fa-facebook"></a>

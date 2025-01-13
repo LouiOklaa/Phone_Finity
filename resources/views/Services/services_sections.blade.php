@@ -179,7 +179,7 @@
                                         <div class="form-group">
                                             <label for="name">Kategorie Name</label>
                                             <input type="hidden" class="form-control" id="id" name="id">
-                                            <input type="text" class="form-control text-muteds" id="name" name="name">
+                                            <input type="text" class="form-control text-muted" id="name" name="name">
                                         </div>
                                         <div class="form-group">
                                             <label for="note">Beschreibung</label>
