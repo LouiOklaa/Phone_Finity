@@ -9,6 +9,9 @@
         <!-- Animate.css -->
         <link href="./assets/animate.css/animate.css" rel="stylesheet" type="text/css"/>
 
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
         <!-- Font Awesome iconic font -->
         <link href="./assets/fontawesome/css/all.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700" rel="stylesheet"/>
@@ -340,11 +343,37 @@
                                     <div><b class="item-title">Spezifikationen : </b>
                                         <b>
                                             @if($one->note != 0)
-                                                {{$one->note}}
+                                                @php
+                                                    $maxLength = 10;
+                                                    $note = $one->note;
+                                                @endphp
+                                                @if(strlen($note) > $maxLength)
+                                                    {{ substr($note, 0, $maxLength) }}...
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#noteModalMobiles{{ $one->id }}" style="color: #CA5098;">Mehr erfahren</a>
+                                                @else
+                                                    {{ $note }}
+                                                @endif
                                             @else
                                                 Unverfügbar
                                             @endif
                                         </b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="noteModalMobiles{{ $one->id }}" tabindex="-1" aria-labelledby="noteModalMobiles{{ $one->id }}" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="noteModalMobiles{{ $one->id }}">Spezifikationen</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <b> {!! nl2br(e($one->note)) !!}</b>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
                                     </div>
                                 </div>
                             </div>
@@ -395,12 +424,38 @@
                                     <div><b class="item-title">Preis : </b><b>{{$one->price}}€</b></div>
                                     <div><b class="item-title">Spezifikationen : </b>
                                         <b>
-                                            @if(!empty($one->note))
-                                                {{$one->note}}
+                                            @if($one->note != 0)
+                                                @php
+                                                    $maxLength = 10;
+                                                    $note = $one->note;
+                                                @endphp
+                                                @if(strlen($note) > $maxLength)
+                                                    {{ substr($note, 0, $maxLength) }}...
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#noteModalAccessories{{ $one->id }}" style="color: #CA5098;">Mehr erfahren</a>
+                                                @else
+                                                    {{ $note }}
+                                                @endif
                                             @else
                                                 Unverfügbar
                                             @endif
                                         </b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="noteModalAccessories{{ $one->id }}" tabindex="-1" aria-labelledby="noteModalAccessories{{ $one->id }}" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="noteModalAccessories{{ $one->id }}">Spezifikationen</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <b> {!! nl2br(e($one->note)) !!}</b>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
                                     </div>
                                 </div>
                             </div>
@@ -437,11 +492,37 @@
                                     <div><b class="item-title">Reparaturdauer : </b>
                                         <b>
                                             @if($one->note != 0)
-                                                {{$one->note}}
+                                                @php
+                                                    $maxLength = 10;
+                                                    $note = $one->note;
+                                                @endphp
+                                                @if(strlen($note) > $maxLength)
+                                                    {{ substr($note, 0, $maxLength) }}...
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#noteModalServices{{ $one->id }}" style="color: #CA5098;">Mehr erfahren</a>
+                                                @else
+                                                    {{ $note }}
+                                                @endif
                                             @else
-                                                Unverfügbar.
+                                                Unverfügbar
                                             @endif
                                         </b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="noteModalServices{{ $one->id }}" tabindex="-1" aria-labelledby="noteModalServices{{ $one->id }}" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="noteModalServices{{ $one->id }}">Spezifikationen</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <b> {!! nl2br(e($one->note)) !!}</b>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
                                     </div>
                                 </div>
                             </div>
@@ -710,6 +791,9 @@
 
         <!-- jQuery library -->
         <script src="./assets/jquery/jquery-3.3.1.js"></script>
+
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
         <!-- Paralax.js -->
         <script src="./assets/parallax.js/parallax.js"></script>

@@ -12,6 +12,10 @@
 
     <link href="{{ asset('assets/css/pex-theme.css') }}" rel="stylesheet" type="text/css" />
 
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
     <!-- Font Awesome iconic font -->
 
     <link href="{{ asset('assets/fontawesome/css/all.css') }}" rel="stylesheet" type="text/css" />
@@ -247,6 +251,10 @@
     <!-- Pentix scripts start -->
 
     <script src="{{ asset('assets/js/pentix.js') }}" type="text/javascript"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 
     <!-- Pentix scripts end -->
 

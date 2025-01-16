@@ -231,7 +231,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="note">Beschreibung :</label>
-                                            <textarea class="form-control" name="note" id="note" rows="3"></textarea>
+                                            <textarea class="form-control text-muted" name="note" id="note" rows="3"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>Handy Foto </label>
