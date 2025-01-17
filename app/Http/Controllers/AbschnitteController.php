@@ -20,7 +20,7 @@ class AbschnitteController extends Controller
      */
     public function index()
     {
-        $abschnitte = abschnitte::all();
+        $abschnitte = abschnitte::paginate(10);
         return view('Handys.abschnitte' , compact('abschnitte'));
     }
 

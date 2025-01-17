@@ -28,7 +28,7 @@ class AccessoriesController extends Controller
     {
         $sections = accessories_sections::all();
         $brand = abschnitte::pluck('name');
-        $accessories = accessories::all();
+        $accessories = accessories::paginate(10);
         return view('Accessories.accessories' , compact('sections' , 'accessories' , 'brand'));
     }
 

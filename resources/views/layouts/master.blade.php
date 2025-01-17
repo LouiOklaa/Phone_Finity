@@ -470,6 +470,23 @@
     });
 </script>
 
+{{-- Table Search Script --}}
+<script>
+    document.getElementById('search-input').addEventListener('keyup', function () {
+        var searchValue = this.value.toLowerCase();
+        var rows = document.querySelectorAll('#order-listing tbody tr');
+
+        rows.forEach(function (row) {
+            var rowText = row.innerText.toLowerCase();
+            if (rowText.includes(searchValue)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
+</script>
+
 @yield('JS')
 
 </body>

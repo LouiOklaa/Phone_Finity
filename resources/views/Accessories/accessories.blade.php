@@ -67,7 +67,18 @@
                                     </button>
                                 @endcan
                             </div>
-                            <div class="table-responsive">
+                            <div class="row justify-content-between align-items-center mt-3">
+                                <div class="col-md-6">
+                                    <input id="search-input" type="text" class="form-control text-muted" placeholder="Suchen..."
+                                           style="width: 200px; height: 30px; font-size: 14px; border-radius: 15px;">
+                                </div>
+                                <div class=" col-md-6 text-muted text-right" style="font-size: 14px">
+                                    Anzeigen von @if($accessories->firstItem()==0)0 @else {{ $accessories->firstItem() }} @endif
+                                    bis @if($accessories->lastItem()==0) 0 @else {{ $accessories->lastItem() }} @endif
+                                    von {{ $accessories->total() }} gesamt
+                                </div>
+                            </div>
+                            <div id="order-listing" class="table-responsive">
                                 <table class="table">
                                     <thead>
                                     <tr>
@@ -120,6 +131,41 @@
                                     @endforeach
                                     </tbody>
                                 </table>
+                            </div>
+                            <div class="text-center shift-lg paginator-container" data-inview-showup="showup-translate-up">
+                                <div class="paginator">
+                                    {{-- Link to Previous Page --}}
+                                    @if ($accessories->onFirstPage())
+                                        <span class="previous disabled"><i class="fas fa-angle-left" aria-hidden="true"></i></span>
+                                    @else
+                                        <a href="{{ $accessories->previousPageUrl() }}" class="previous"><i class="fas fa-angle-left" aria-hidden="true"></i></a>
+                                    @endif
+
+                                    {{-- Loop through available pages --}}
+                                    @for ($i = 1; $i <= $accessories->lastPage(); $i++)
+                                        @if ($i === 1 || $i === $accessories->lastPage() || abs($accessories->currentPage() - $i) <= 1)
+                                            {{-- Show current, first, last, and neighboring pages --}}
+                                            @if ($i === $accessories->currentPage())
+                                                <span class="active">{{ $i }}</span>
+                                            @else
+                                                <a href="{{ $accessories->url($i) }}">{{ $i }}</a>
+                                            @endif
+                                        @elseif ($i === 2 && $accessories->currentPage() > 3)
+                                            {{-- Show ellipsis after the first page --}}
+                                            <span class="ellipsis">...</span>
+                                        @elseif ($i === $accessories->lastPage() - 1 && $accessories->currentPage() < $accessories->lastPage() - 2)
+                                            {{-- Show ellipsis before the last page --}}
+                                            <span class="ellipsis">...</span>
+                                        @endif
+                                    @endfor
+
+                                    {{-- Link to Next Page --}}
+                                    @if ($accessories->hasMorePages())
+                                        <a href="{{ $accessories->nextPageUrl() }}" class="next"><i class="fas fa-angle-right" aria-hidden="true"></i></a>
+                                    @else
+                                        <span class="next disabled"><i class="fas fa-angle-right" aria-hidden="true"></i></span>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>

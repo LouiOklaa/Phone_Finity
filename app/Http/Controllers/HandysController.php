@@ -27,7 +27,7 @@ class HandysController extends Controller
     public function index()
     {
         $abschnitte = abschnitte::all();
-        $handys = handys::all();
+        $handys = handys::paginate(10);
         return view('Handys.handys' , compact('abschnitte' , 'handys'));
     }
 

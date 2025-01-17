@@ -106,7 +106,18 @@
                                 </button>
                             </div>
                             @endcan
-                            <div class="table-responsive">
+                            <div class="row justify-content-between align-items-center mt-3">
+                                <div class="col-md-6">
+                                    <input id="search-input" type="text" class="form-control text-muted" placeholder="Suchen..."
+                                           style="width: 200px; height: 30px; font-size: 14px; border-radius: 15px;">
+                                </div>
+                                <div class=" col-md-6 text-muted text-right" style="font-size: 14px">
+                                    Anzeigen von @if($data->firstItem()==0)0 @else {{ $data->firstItem() }} @endif
+                                    bis @if($data->lastItem()==0) 0 @else {{ $data->lastItem() }} @endif
+                                    von {{ $data->total() }} gesamt
+                                </div>
+                            </div>
+                            <div id="order-listing" class="table-responsive">
                                 <table class="table">
                                     <thead>
                                     <tr>
@@ -172,6 +183,41 @@
                                     @endforeach
                                     </tbody>
                                 </table>
+                            </div>
+                            <div class="text-center shift-lg paginator-container" data-inview-showup="showup-translate-up">
+                                <div class="paginator">
+                                    {{-- Link to Previous Page --}}
+                                    @if ($data->onFirstPage())
+                                        <span class="previous disabled"><i class="fas fa-angle-left" aria-hidden="true"></i></span>
+                                    @else
+                                        <a href="{{ $data->previousPageUrl() }}" class="previous"><i class="fas fa-angle-left" aria-hidden="true"></i></a>
+                                    @endif
+
+                                    {{-- Loop through available pages --}}
+                                    @for ($i = 1; $i <= $data->lastPage(); $i++)
+                                        @if ($i === 1 || $i === $data->lastPage() || abs($data->currentPage() - $i) <= 1)
+                                            {{-- Show current, first, last, and neighboring pages --}}
+                                            @if ($i === $data->currentPage())
+                                                <span class="active">{{ $i }}</span>
+                                            @else
+                                                <a href="{{ $data->url($i) }}">{{ $i }}</a>
+                                            @endif
+                                        @elseif ($i === 2 && $data->currentPage() > 3)
+                                            {{-- Show ellipsis after the first page --}}
+                                            <span class="ellipsis">...</span>
+                                        @elseif ($i === $data->lastPage() - 1 && $data->currentPage() < $data->lastPage() - 2)
+                                            {{-- Show ellipsis before the last page --}}
+                                            <span class="ellipsis">...</span>
+                                        @endif
+                                    @endfor
+
+                                    {{-- Link to Next Page --}}
+                                    @if ($data->hasMorePages())
+                                        <a href="{{ $data->nextPageUrl() }}" class="next"><i class="fas fa-angle-right" aria-hidden="true"></i></a>
+                                    @else
+                                        <span class="next disabled"><i class="fas fa-angle-right" aria-hidden="true"></i></span>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -20,7 +20,7 @@ class AccessoriesSectionsController extends Controller
      */
     public function index()
     {
-        $sections = accessories_sections::all();
+        $sections = accessories_sections::paginate(10);
         return view('Accessories.accessories_sections' , compact('sections'));
     }
 

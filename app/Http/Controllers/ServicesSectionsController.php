@@ -21,7 +21,7 @@ class ServicesSectionsController extends Controller
      */
     public function index()
     {
-        $sections = ServicesSections::all();
+        $sections = ServicesSections::paginate(10);
         return view('Services.services_sections' , compact('sections'));
     }
 
