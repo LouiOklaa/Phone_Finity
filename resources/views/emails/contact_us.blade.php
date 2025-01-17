@@ -31,7 +31,7 @@
                 </div>
                 <div class="field-group">
                     <div class="field-wrap">
-                        <input type="text" class="field-control" name="phone" id="phone" placeholder="E-Telefonnummer" required/>
+                        <input type="text" class="field-control" name="phone" id="phone" placeholder="Telefonnummer" required/>
                         <span class="field-back"></span>
                     </div>
                 </div>

@@ -104,4 +104,8 @@ Route::get('/unsere_galerie' , [ViewController::class, 'showGallery'])->name('sh
 Route::post('/anfrage/senden', [ContactController::class, 'send'])->name('send_email');
 Route::get('/kontakt', function () {$information = \App\Models\GeneralInformation::first(); return view('emails.contact_us' , compact('information')); })->name('contact_us');
 
+Route::get('/datenschutz', function () {$information = \App\Models\GeneralInformation::first(); return view('DataProtection.data_protection' , compact('information')); })->name('data_protection');
+Route::get('/impressum', function () {$information = \App\Models\GeneralInformation::first(); return view('Imprint.imprint' , compact('information')); })->name('imprint');
+Route::get('/über_uns', function () {$information = \App\Models\GeneralInformation::first(); return view('AboutUs.about_us' , compact('information')); })->name('about_us');
+
 Route::get('/{page}', [AdminController::class, 'index']);
