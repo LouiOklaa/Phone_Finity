@@ -164,6 +164,23 @@
                 </a>
             </li>
             @endcan
+            @can('Berichte')
+                <li class="nav-item menu-items">
+                    <a class="nav-link" data-toggle="collapse" href="#ui-basic-X" aria-expanded="false" aria-controls="ui-basic-E">
+            <span class="menu-icon">
+                <i class="mdi mdi-file-find"></i>
+            </span>
+                        <span class="menu-title">Berichte</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="ui-basic-X">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link" href="/handyberichte">Handys Berichte</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="/zubehörberichte">Zubehör Berichte</a></li>
+                        </ul>
+                    </div>
+                </li>
+            @endcan
             @can('AlleNachrichtenAnzeigen')
             <li class="nav-item menu-items">
                 <a class="nav-link" href="/alle_nachrichten">
@@ -172,23 +189,6 @@
             </span>
                     <span class="menu-title">Nachrichten</span>
                 </a>
-            </li>
-            @endcan
-            @can('Berichte')
-            <li class="nav-item menu-items">
-                <a class="nav-link" data-toggle="collapse" href="#ui-basic-X" aria-expanded="false" aria-controls="ui-basic-E">
-            <span class="menu-icon">
-                <i class="mdi mdi-file-find"></i>
-            </span>
-                    <span class="menu-title">Berichte</span>
-                    <i class="menu-arrow"></i>
-                </a>
-                <div class="collapse" id="ui-basic-X">
-                    <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="/handyberichte">Handys Berichte</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="/zubehörberichte">Zubehör Berichte</a></li>
-                    </ul>
-                </div>
             </li>
             @endcan
             @can('Einstellungen')
@@ -399,7 +399,7 @@
 
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
-            <div class="footer-copyrights text-center top-separator ins-md" style="font-size: 15px; font-weight: bolder;">&copy; <script>document.write(new Date().getFullYear());</script> <a href="https://www.louioklaa.de/"  style="font-weight: bolder; color: #0162E8">Loui Oklaa</a> Alle Rechte vorbehalten.
+            <div class="footer-copyrights text-center top-separator ins-md" style="font-size: 15px; font-weight: bolder;">&copy; <script>document.write(new Date().getFullYear());</script> <a href="https://www.louioklaa.com/"  style="font-weight: bolder; color: #0162E8">Loui Oklaa</a> Alle Rechte vorbehalten.
                 <a style="color: #FFFFFF" href="https://github.com/LouiOklaa" class="mdi mdi-github-circle"></a>
                 <a style="color: #FFFFFF" href="https://www.facebook.com/loui.oklaa/" class="mdi mdi-facebook"></a>
                 <a style="color: #FFFFFF" href="https://www.linkedin.com/in/loui-oklaa/" class="mdi mdi-linkedin"></a>
