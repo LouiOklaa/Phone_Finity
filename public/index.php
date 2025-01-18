@@ -20,6 +20,12 @@ if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php'))
     require $maintenance;
 }
 
+//public path
+if (strpos($_SERVER['REQUEST_URI'], '/Attachments/') === 0) {
+    header('Location: /../public' . $_SERVER['REQUEST_URI']);
+    exit();
+}
+
 /*
 |--------------------------------------------------------------------------
 | Register The Auto Loader

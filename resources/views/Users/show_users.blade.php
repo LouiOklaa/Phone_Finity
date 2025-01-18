@@ -308,7 +308,11 @@
                                                             --
                                                         </option>
                                                         @foreach ($roles as $one)
-                                                            <option value="{{ $one }}">{{ $one }}</option>
+                                                            @if ($one === 'Owner' && Auth::user()->role_name !== 'Owner')
+                                                                <option value="{{ $one }}" disabled>{{ $one }}</option>
+                                                            @else
+                                                                <option value="{{ $one }}">{{ $one }}</option>
+                                                            @endif
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -414,7 +418,11 @@
                                                     <select name="role_name" id="role_name"
                                                             class="form-control text-muted">
                                                         @foreach ($roles as $one)
-                                                            <option> {{$one}} </option>
+                                                            @if ($one === 'Owner' && Auth::user()->role_name !== 'Owner')
+                                                                <option value="{{ $one }}" disabled>{{ $one }}</option>
+                                                            @else
+                                                                <option value="{{ $one }}">{{ $one }}</option>
+                                                            @endif
                                                         @endforeach
                                                     </select>
                                                 </div>

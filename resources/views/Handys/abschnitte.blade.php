@@ -194,11 +194,11 @@
                                     <div class="form-group">
                                         <input type="hidden" name="id" id="id" value="">
                                         <label for="name" class="col-form-label">Kategorie Name :</label>
-                                        <input class="form-control" name="name" id="name" type="text">
+                                        <input class="form-control text-muted" name="name" id="name" type="text">
                                     </div>
                                     <div class="form-group">
                                         <label for="note">Beschreibung :</label>
-                                        <textarea class="form-control" name="note" id="note" rows="3"></textarea>
+                                        <textarea class="form-control text-muted" name="note" id="note" rows="3"></textarea>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-rounded btn-outline-primary">Bestätigung

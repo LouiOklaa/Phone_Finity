@@ -215,7 +215,7 @@
                     <div class="row cols-md">
                         <div class="sm-col-3">
                             <div class="footer-title alt-color text-upper">Adresse</div>
-                            <div class="footer-text">{{$information->address}}</div>
+                            <a class="content-link" href="{{$information->address_link}}">{{$information->address}}</a>
                         </div>
                         <div class="sm-col-3">
                             <div class="footer-title alt-color text-upper">Kontakte</div>
