@@ -8,7 +8,7 @@
     <title>@yield("title")</title>
 
 
-    <!-- Animate.css -->
+    <!-- Animate.css -->ئ
 
     <link href="{{ asset('assets/css/pex-theme.css') }}" rel="stylesheet" type="text/css"/>
 
@@ -151,8 +151,7 @@
                     </li>
                     <li><a href="{{ route('show_gallery') }}">Galerie</a></li>
                     <li>
-                        <a href="{{route('contact_us')}}">Kontakt</a><span class="toggle-icon"><i
-                                class="fas fa-chevron-down" aria-hidden="true"></i></span>
+                        <a href="{{route('contact_us')}}">Kontakt</a>
                     </li>
                 </ul>
                 <div class="clearfix"></div>
@@ -289,7 +288,7 @@
 
 <!-- Pentix scripts start -->
 
-<script src="{{ asset('assets/js/pentix.js') }}" type="text/javascript"></script>
+<script src="./assets/pentix/js/pentix.js" type="text/javascript"></script>
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -300,9 +299,16 @@
 <!-- Inits theme scripts -->
 
 <script src="{{ asset('assets/js/script.js') }}" type="text/javascript"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
 
 @yield('JS')
+
+<script>
+    $(document).ready(function () {
+        $(".toggle-icon").on("click", function () {
+            $(this).next("ul").slideToggle();
+        });
+    });
+</script>
 
 <!-- Sort All mobiles Script -->
 <script>

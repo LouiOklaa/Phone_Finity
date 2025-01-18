@@ -133,9 +133,7 @@
                     </li>
                     <li><a href="{{ route('show_gallery') }}">Galerie</a></li>
                     <li>
-                        <a href="{{route('contact_us')}}">Kontakt</a><span class="toggle-icon"><i
-                                class="fas fa-chevron-down"
-                                aria-hidden="true"></i></span>
+                        <a href="{{route('contact_us')}}">Kontakt</a>
                     </li>
                 </ul>
                 <div class="clearfix"></div>
