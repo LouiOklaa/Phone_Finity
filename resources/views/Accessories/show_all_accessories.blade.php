@@ -1,9 +1,9 @@
 @extends('layouts.master_home_page')
 @section('title')
-    Zubehör
+    Alle Zubehör
 @endsection
 @section('current_page')
-    Zubehör
+    Alle Zubehör
 @endsection
 @section('contents')
 

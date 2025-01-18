@@ -81,7 +81,7 @@
                     </div>
                     <div class="info-block">
                         <div class="info-title text-upper">Öffnungszeit</div>
-                        <div class="info-line">Montag-Samstag<span class="pull-right">10:00 - 21:00</span></div>
+                        <div class="info-line">Montag-Samstag<span class="pull-right">12:00 - 20:00</span></div>
                         <div class="info-line">Sonntag<span class="pull-right">geschlossen</span></div>
                     </div>
                 </div>
