@@ -723,6 +723,29 @@
                 </div>
             </div>
         </section>
+        <!-- Modal for Cookies -->
+        <div class="modal fade" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="cookieModalLabel">Cookies Zustimmung</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Schließen"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            Wir verwenden Cookies, um Ihre Erfahrung auf unserer Website zu verbessern und relevante Inhalte anzuzeigen.
+                            Indem Sie auf "Akzeptieren" klicken, stimmen Sie der Verwendung von Cookies zu.
+                            <a href="{{route('data_protection')}}" target="_blank">Mehr erfahren</a>.
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Ablehnen</button>
+                        <button type="button" class="btn btn-sm btn-primary" id="acceptCookies">Akzeptieren</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="loader-block">
             <div class="loader-back alt-bg"></div>
             <div class="loader-image"><img class="image" src="./assets/images/parts/loader.gif" alt=""/></div>
@@ -825,6 +848,32 @@
         <!-- Inits theme scripts -->
 
         <script src="./assets/js/script.js" type="text/javascript"></script>
+
+        <!-- Cookies scripts -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const cookieModal = new bootstrap.Modal(document.getElementById("cookieModal"), {
+                backdrop: 'static', // The module can only be closed via buttons
+                keyboard: false
+            });
+
+            const cookiesAccepted = localStorage.getItem("cookiesAccepted");
+
+            // If the user has not previously consented to cookies, display the module after 3 seconds
+            if (!cookiesAccepted) {
+                setTimeout(() => {
+                    cookieModal.show();
+                }, 3000); // Delay 3 seconds
+            }
+
+            // When you click on "Akzeptieren"
+            document.getElementById("acceptCookies").addEventListener("click", () => {
+                localStorage.setItem("cookiesAccepted", "true");
+                cookieModal.hide();
+            });
+        });
+
+    </script>
 
          </body>
 
