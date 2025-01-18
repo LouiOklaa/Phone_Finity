@@ -38,6 +38,7 @@ class LoginController extends Controller
         $this->middleware('auth')->only('logout');
     }
 
+    //Just Active User can login
     protected function credentials(\Illuminate\Http\Request $request)
     {
         return ['email' => $request->email, 'password' => $request->password, 'status' => 'Active'];
