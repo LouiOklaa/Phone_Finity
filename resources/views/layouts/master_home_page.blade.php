@@ -8,7 +8,7 @@
     <title>@yield("title")</title>
 
 
-    <!-- Animate.css -->ئ
+    <!-- Animate.css -->
 
     <link href="{{ asset('assets/css/pex-theme.css') }}" rel="stylesheet" type="text/css"/>
 
@@ -288,7 +288,7 @@
 
 <!-- Pentix scripts start -->
 
-<script src="./assets/pentix/js/pentix.js" type="text/javascript"></script>
+<script src="{{ asset('assets/js/pentix.js') }}" type="text/javascript"></script>
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
