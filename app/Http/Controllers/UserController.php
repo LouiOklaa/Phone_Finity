@@ -15,7 +15,7 @@ class UserController extends Controller
     {
         $this->middleware('permission:Benutzer|BenutzerHinzufügen|BenutzerBearbeiten|BenutzerLöschen|AlleProfileAnzeigen', ['only' => ['index']]);
         $this->middleware('permission:BenutzerHinzufügen', ['only' => ['store']]);
-        $this->middleware('permission:BenutzerBearbeiten', ['only' => ['edit' , 'update']]);
+        $this->middleware('permission:BenutzerBearbeiten', ['only' => ['edit', 'update']]);
         $this->middleware('permission:BenutzerLöschen', ['only' => ['destroy']]);
         $this->middleware('permission:AlleProfileAnzeigen|ProfilAnzeigen', ['only' => ['profile']]);
     }
@@ -26,8 +26,8 @@ class UserController extends Controller
     public function index()
     {
         $data = User::paginate(10);
-        $roles = Role::pluck('name','name')->all();
-        return view('Users.show_users',compact('data' , 'roles'));
+        $roles = Role::pluck('name', 'name')->all();
+        return view('Users.show_users', compact('data', 'roles'));
     }
 
     /**
@@ -54,17 +54,17 @@ class UserController extends Controller
             'role_name' => 'required',
             'status' => 'required'
 
-        ],[
+        ], [
 
             'name.required' => 'Bitte geben Sie der Benutzernamen ein',
             'name.unique' => 'Dieser Benutzername existiert bereits',
             'email.required' => 'Bitte geben Sie die E-Mail-Adresse ein',
             'email.email' => 'E-Mail muss das Format haben : example@exampel.com',
             'email.unique' => 'Diese E-Mail existiert bereits',
-            'password.required' =>'Bitte Passwort eingeben',
-            'password.same' =>'Passwörter stimmen nicht überein',
-            'role_name.required' =>'Bitte wählen Sie mindestens eine Berechtigung aus',
-            'status.required' =>'Bitte wählen Sie ein Benutzerstatus  aus',
+            'password.required' => 'Bitte Passwort eingeben',
+            'password.same' => 'Passwörter stimmen nicht überein',
+            'role_name.required' => 'Bitte wählen Sie mindestens eine Berechtigung aus',
+            'status.required' => 'Bitte wählen Sie ein Benutzerstatus  aus',
 
         ]);
 
@@ -73,7 +73,7 @@ class UserController extends Controller
         $user = User::create($input);
         $user->assignRole($request->input('role_name'));
 
-        session()->flash('Add','Der Benutzer wurde erfolgreich hinzugefügt');
+        session()->flash('Add', 'Der Benutzer wurde erfolgreich hinzugefügt');
         return redirect()->route('benutzer.index');
     }
 
@@ -93,10 +93,10 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        $roles = Role::pluck('name','name')->all();
-        $userRole = $user->roles->pluck('name','name')->all();
+        $roles = Role::pluck('name', 'name')->all();
+        $userRole = $user->roles->pluck('name', 'name')->all();
 
-        return view('Users.edit',compact('user','roles','userRole'));
+        return view('Users.edit', compact('user', 'roles', 'userRole'));
     }
 
     /**
@@ -108,43 +108,41 @@ class UserController extends Controller
         $id = $request->id;
         $this->validate($request, [
 
-            'name' => 'required|unique:users,name,'.$id,
-            'email' => 'required|email|unique:users,email,'.$id,
+            'name' => 'required|unique:users,name,' . $id,
+            'email' => 'required|email|unique:users,email,' . $id,
             'password' => 'required|same:confirm-password',
             'role_name' => 'required'
 
-        ],[
+        ], [
 
             'name.required' => 'Bitte geben Sie der Benutzernamen ein',
             'name.unique' => 'Dieser Benutzername existiert bereits',
             'email.required' => 'Bitte geben Sie die E-Mail-Adresse ein',
             'email.email' => 'E-Mail muss das Format haben : example@exampel.com',
             'email.unique' => 'Diese E-Mail existiert bereits',
-            'password.required' =>'Bitte Passwort eingeben',
-            'password.same' =>'Passwörter stimmen nicht überein',
-            'role_name.required' =>'Bitte wählen Sie mindestens eine Berechtigung aus',
+            'password.required' => 'Bitte Passwort eingeben',
+            'password.same' => 'Passwörter stimmen nicht überein',
+            'role_name.required' => 'Bitte wählen Sie mindestens eine Berechtigung aus',
 
         ]);
 
         $input = $request->all();
-        if(!empty($input['password'])){
+        if (!empty($input['password'])) {
 
             $input['password'] = Hash::make($input['password']);
 
-        }
+        } else {
 
-        else{
-
-            $input = array_except($input,array('password'));
+            $input = array_except($input, array('password'));
 
         }
 
         $user = User::find($id);
         $user->update($input);
-        DB::table('model_has_roles')->where('model_id',$id)->delete();
+        DB::table('model_has_roles')->where('model_id', $id)->delete();
         $user->assignRole($request->input('role_name'));
 
-        session()->flash('Edit','Der Benutzer wurde erfolgreich geändert');
+        session()->flash('Edit', 'Der Benutzer wurde erfolgreich geändert');
         return redirect()->route('benutzer.index');
     }
 
@@ -156,15 +154,16 @@ class UserController extends Controller
     {
         User::find($request->id)->delete();
 
-        session()->flash('Delete','Der Benutzer wurde erfolgreich gelöscht');
+        session()->flash('Delete', 'Der Benutzer wurde erfolgreich gelöscht');
         return redirect()->route('benutzer.index');
     }
 
-    public function profile ($id){
+    public function profile($id)
+    {
 
         $user = User::find($id);
-        $role = Role::where('name' , '=' , Auth::user()->role_name)->first();
-        return view('Users.profile',compact('role' , 'user'));
+        $role = Role::where('name', '=', Auth::user()->role_name)->first();
+        return view('Users.profile', compact('role', 'user'));
 
 
     }

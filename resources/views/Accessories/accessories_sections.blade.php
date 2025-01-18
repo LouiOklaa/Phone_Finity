@@ -69,21 +69,30 @@
                                 <li class="list-inline-item">N</li>
                             </ul>
                             @can('ZubehörKategorienHinzufügen')
-                            <div class="add-btn">
-                                <button style="height: 30px" type="button"
-                                        class="btn btn-inverse-primary btn-fw embed-responsive btn-rounded"
-                                        href="#add_modal" data-toggle="modal">Kategorie Hinzufügen
-                                </button>
-                            </div>
+                                <div class="add-btn">
+                                    <button style="height: 30px" type="button"
+                                            class="btn btn-inverse-primary btn-fw embed-responsive btn-rounded"
+                                            href="#add_modal" data-toggle="modal">Kategorie Hinzufügen
+                                    </button>
+                                </div>
                             @endcan
                             <div class="row justify-content-between align-items-center mt-3">
                                 <div class="col-md-6">
-                                    <input id="search-input" type="text" class="form-control text-muted" placeholder="Suchen..."
+                                    <input id="search-input" type="text" class="form-control text-muted"
+                                           placeholder="Suchen..."
                                            style="width: 200px; height: 30px; font-size: 14px; border-radius: 15px;">
                                 </div>
                                 <div class=" col-md-6 text-muted text-right" style="font-size: 14px">
-                                    Anzeigen von @if($sections->firstItem()==0)0 @else {{ $sections->firstItem() }} @endif
-                                    bis @if($sections->lastItem()==0) 0 @else {{ $sections->lastItem() }} @endif
+                                    Anzeigen von @if($sections->firstItem()==0)
+                                        0
+                                    @else
+                                        {{ $sections->firstItem() }}
+                                    @endif
+                                    bis @if($sections->lastItem()==0)
+                                        0
+                                    @else
+                                        {{ $sections->lastItem() }}
+                                    @endif
                                     von {{ $sections->total() }} gesamt
                                 </div>
                             </div>
@@ -98,7 +107,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <?php $i = 0 ?>
+                                        <?php $i = 0 ?>
                                     @foreach($sections as $one)
                                             <?php $i++ ?>
                                         <tr>
@@ -107,17 +116,18 @@
                                             <td>{{$one->note}}</td>
                                             <td>
                                                 @can('ZubehörKategorienBearbeiten')
-                                                <button class="btn btn-sm btn-rounded btn-inverse-primary"
-                                                        href="#edit_modal" title="Edit" data-id="{{$one->id}}"
-                                                        data-name="{{$one->name}}" data-note="{{$one->note}}"
-                                                        data-toggle="modal">Bearbeiten
-                                                </button>
+                                                    <button class="btn btn-sm btn-rounded btn-inverse-primary"
+                                                            href="#edit_modal" title="Edit" data-id="{{$one->id}}"
+                                                            data-name="{{$one->name}}" data-note="{{$one->note}}"
+                                                            data-toggle="modal">Bearbeiten
+                                                    </button>
                                                 @endcan
                                                 @can('ZubehörKategorienLöschen')
-                                                <button class="btn btn-sm btn-rounded btn-inverse-danger" title="Delete"
-                                                        href="#delete_modal" data-id="{{$one->id}}"
-                                                        data-name="{{$one->name}}" data-toggle="modal">Löschen
-                                                </button>
+                                                    <button class="btn btn-sm btn-rounded btn-inverse-danger"
+                                                            title="Delete"
+                                                            href="#delete_modal" data-id="{{$one->id}}"
+                                                            data-name="{{$one->name}}" data-toggle="modal">Löschen
+                                                    </button>
                                                 @endcan
                                             </td>
                                         </tr>
@@ -125,13 +135,16 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="text-center shift-lg paginator-container" data-inview-showup="showup-translate-up">
+                            <div class="text-center shift-lg paginator-container"
+                                 data-inview-showup="showup-translate-up">
                                 <div class="paginator">
                                     {{-- Link to Previous Page --}}
                                     @if ($sections->onFirstPage())
-                                        <span class="previous disabled"><i class="fas fa-angle-left" aria-hidden="true"></i></span>
+                                        <span class="previous disabled"><i class="fas fa-angle-left"
+                                                                           aria-hidden="true"></i></span>
                                     @else
-                                        <a href="{{ $sections->previousPageUrl() }}" class="previous"><i class="fas fa-angle-left" aria-hidden="true"></i></a>
+                                        <a href="{{ $sections->previousPageUrl() }}" class="previous"><i
+                                                class="fas fa-angle-left" aria-hidden="true"></i></a>
                                     @endif
 
                                     {{-- Loop through available pages --}}
@@ -154,9 +167,11 @@
 
                                     {{-- Link to Next Page --}}
                                     @if ($sections->hasMorePages())
-                                        <a href="{{ $sections->nextPageUrl() }}" class="next"><i class="fas fa-angle-right" aria-hidden="true"></i></a>
+                                        <a href="{{ $sections->nextPageUrl() }}" class="next"><i
+                                                class="fas fa-angle-right" aria-hidden="true"></i></a>
                                     @else
-                                        <span class="next disabled"><i class="fas fa-angle-right" aria-hidden="true"></i></span>
+                                        <span class="next disabled"><i class="fas fa-angle-right"
+                                                                       aria-hidden="true"></i></span>
                                     @endif
                                 </div>
                             </div>
@@ -171,7 +186,7 @@
                             <div class="modal-header">
                                 <h6 class="modal-title">Kategorie Hinzufügen</h6>
                                 <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span
-                                            aria-hidden="true">&times;</span></button>
+                                        aria-hidden="true">&times;</span></button>
                             </div>
                             <div class="modal-body">
                                 <form action="{{route('zubehör_kategorien.store')}}" method="post" autocomplete="off">
@@ -183,11 +198,14 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="note">Beschreibung :</label>
-                                        <textarea class="form-control text-muted" name="note" id="note" rows="3"></textarea>
+                                        <textarea class="form-control text-muted" name="note" id="note"
+                                                  rows="3"></textarea>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-rounded btn-outline-primary">Bestätigung</button>
-                                        <button type="button" class="btn btn-rounded btn-outline-secondary" data-dismiss="modal">
+                                        <button type="submit" class="btn btn-rounded btn-outline-primary">Bestätigung
+                                        </button>
+                                        <button type="button" class="btn btn-rounded btn-outline-secondary"
+                                                data-dismiss="modal">
                                             Abbrechen
                                         </button>
                                     </div>
@@ -205,7 +223,7 @@
                             <div class="modal-header">
                                 <h4 class="modal-title">Kategorie bearbeiten</h4>
                                 <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span
-                                            aria-hidden="true">&times;</span></button>
+                                        aria-hidden="true">&times;</span></button>
                             </div>
                             <div class="modal-body">
                                 <form action="zubehör_kategorien/update" method="post" autocomplete="off">
@@ -246,7 +264,7 @@
                                 <h4 class="modal-title">Sind Sie sicher, dass Sie diesen Kategorie löschen möchten
                                     ?</h4>
                                 <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span
-                                            aria-hidden="true">&times;</span></button>
+                                        aria-hidden="true">&times;</span></button>
                             </div>
                             <div class="modal-body">
                                 <form action="zubehör_kategorien/destroy" method="post">

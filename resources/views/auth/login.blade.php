@@ -19,8 +19,10 @@
                 <div class="card col-lg-4 mx-auto">
                     <div class="card-body px-5 py-5">
                         <div class="d-flex justify-content-center align-items-center">
-                            <h2 class="main-logo1 d-flex align-items-center tx-28" style="font-size: 28px; margin-bottom: 40px">
-                                <img src="{{ URL::asset('assets/images/auth/favicon.png') }}" alt="logo" style="width: 1em; height: 1em; margin-right: 10px;"> LouiSoft
+                            <h2 class="main-logo1 d-flex align-items-center tx-28"
+                                style="font-size: 28px; margin-bottom: 40px">
+                                <img src="{{ URL::asset('assets/images/auth/favicon.png') }}" alt="logo"
+                                     style="width: 1em; height: 1em; margin-right: 10px;"> LouiSoft
                             </h2>
                         </div>
                         <h3 style="color: #0a58ca">Willkommen!</h3>
@@ -30,7 +32,8 @@
                             @csrf
                             <div class="form-group">
                                 <label>Benutzername oder E-Mail <span style="color: #0a58ca;">*</span></label>
-                                <input type="text" class="form-control @error('email') is-invalid @enderror" name="email"  required>
+                                <input type="text" class="form-control @error('email') is-invalid @enderror"
+                                       name="email" required>
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
                                        <strong>{!! $message !!}</strong>
@@ -39,7 +42,8 @@
                             </div>
                             <div class="form-group">
                                 <label>Passwort <span style="color: #0a58ca;">*</span></label>
-                                <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required>
+                                <input type="password" class="form-control @error('password') is-invalid @enderror"
+                                       name="password" required>
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -49,7 +53,9 @@
                             <div class="form-group d-flex align-items-center justify-content-between">
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}> Angemeldet bleiben </label>
+                                        <input type="checkbox" class="form-check-input" name="remember"
+                                               id="remember" {{ old('remember') ? 'checked' : '' }}> Angemeldet bleiben
+                                    </label>
                                 </div>
                             </div>
                             <div class="text-center">
@@ -57,7 +63,9 @@
                             </div>
                         </form>
                         <div class="text-center" style="margin-bottom: -30px;">
-                            <h6><span class="text-muted">© <script>document.write(new Date().getFullYear());</script> <a style="color: #0162E8;" href="https://www.facebook.com/loui.oklaa" target="_blank">Loui Oklaa</a> Alle Rechte vorbehalten.</span></h6>
+                            <h6><span class="text-muted">© <script>document.write(new Date().getFullYear());</script> <a
+                                        style="color: #0162E8;" href="https://www.facebook.com/loui.oklaa"
+                                        target="_blank">Loui Oklaa</a> Alle Rechte vorbehalten.</span></h6>
                         </div>
                     </div>
                 </div>

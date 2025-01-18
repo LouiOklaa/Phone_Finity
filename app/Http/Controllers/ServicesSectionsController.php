@@ -22,7 +22,7 @@ class ServicesSectionsController extends Controller
     public function index()
     {
         $sections = ServicesSections::paginate(10);
-        return view('Services.services_sections' , compact('sections'));
+        return view('Services.services_sections', compact('sections'));
     }
 
     /**
@@ -38,14 +38,14 @@ class ServicesSectionsController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData=$request->validate([
+        $validatedData = $request->validate([
 
             'name' => 'required|unique:services_sections|max:255',
 
-        ],[
+        ], [
 
-            'name.required' =>'Bitte geben Sie die Kategorie name ein',
-            'name.unique' =>'Die Kategorie name ist bereits registriert',
+            'name.required' => 'Bitte geben Sie die Kategorie name ein',
+            'name.unique' => 'Die Kategorie name ist bereits registriert',
 
         ]);
         ServicesSections::create([
@@ -55,7 +55,7 @@ class ServicesSectionsController extends Controller
 
         ]);
 
-        session()->flash('Add' , 'Die Kategorie wurde erfolgreich hinzugefügt');
+        session()->flash('Add', 'Die Kategorie wurde erfolgreich hinzugefügt');
         return redirect("/dienste_kategorien");
     }
 
@@ -84,12 +84,12 @@ class ServicesSectionsController extends Controller
 
         $this->validate($request, [
 
-            'name' => 'required|max:255|unique:services_sections,name,'.$id,
+            'name' => 'required|max:255|unique:services_sections,name,' . $id,
 
-        ],[
+        ], [
 
-            'name.required' =>'Bitte geben Sie die Kategorie name ein',
-            'name.unique' =>'Die Kategorie name ist bereits registriert',
+            'name.required' => 'Bitte geben Sie die Kategorie name ein',
+            'name.unique' => 'Die Kategorie name ist bereits registriert',
 
         ]);
 
@@ -103,7 +103,7 @@ class ServicesSectionsController extends Controller
             'section_name' => $request->name,
         ]);
 
-        session()->flash('Edit','Die Kategorie wurde erfolgreich geändert');
+        session()->flash('Edit', 'Die Kategorie wurde erfolgreich geändert');
         return redirect('/dienste_kategorien');
     }
 
@@ -115,7 +115,7 @@ class ServicesSectionsController extends Controller
         $id = $request->id;
         ServicesSections::find($id)->delete();
 
-        session()->flash('Delete','Die Kategorie wurde erfolgreich gelöscht');
+        session()->flash('Delete', 'Die Kategorie wurde erfolgreich gelöscht');
         return redirect('/dienste_kategorien');
     }
 }

@@ -75,15 +75,15 @@
                             </ul>
                             @if ($role->name !== 'Owner')
                                 <div class="col-md-12">
-                                <div class="form-group row d-flex align-items-center">
-                                    <div class="label-container">
-                                        <label for="name" class="col-form-label">Rollenname:</label>
-                                    </div>
-                                    <div class="input-container">
-                                        {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control' , 'style' => 'color: #6C7293;')) !!}
+                                    <div class="form-group row d-flex align-items-center">
+                                        <div class="label-container">
+                                            <label for="name" class="col-form-label">Rollenname:</label>
+                                        </div>
+                                        <div class="input-container">
+                                            {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control' , 'style' => 'color: #6C7293;')) !!}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
                                 <!-- Treeview for Permissions -->
                                 <div class="col-md-12">
@@ -107,10 +107,12 @@
                                 </div>
                                 <!-- /col -->
                                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                    <button type="submit" class="btn btn-rounded btn-inverse-primary">Aktualisieren</button>
+                                    <button type="submit" class="btn btn-rounded btn-inverse-primary">Aktualisieren
+                                    </button>
                                 </div>
                             @else
-                                <p style="font-size: 1.5rem;font-weight: 600;color: #3e4b5b; text-align: center">Die Besitzer Berechtigung kann nicht geändert werden.</p>
+                                <p style="font-size: 1.5rem;font-weight: 600;color: #3e4b5b; text-align: center">Die
+                                    Besitzer Berechtigung kann nicht geändert werden.</p>
                             @endif
                         </div>
                     </div>

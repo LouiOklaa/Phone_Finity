@@ -24,7 +24,7 @@ class ServicesController extends Controller
     {
         $sections = ServicesSections::all();
         $services = Services::paginate(10);
-        return view('Services.services' , compact('sections' , 'services'));
+        return view('Services.services', compact('sections', 'services'));
     }
 
     /**
@@ -40,24 +40,24 @@ class ServicesController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData=$request->validate([
+        $validatedData = $request->validate([
 
             'name' => 'required',
             'section_id' => 'required',
             'price' => 'required',
             'image' => 'required',
 
-        ],[
+        ], [
 
-            'name.required' =>'Bitte geben Sie den Handynamen ein',
-            'section_id.required' =>'Bitte wählen Sie die Kategorie aus',
-            'price.required' =>'Bitte geben Sie den Preis an',
-            'image.required' =>'Bitte geben Sie den Foto an',
+            'name.required' => 'Bitte geben Sie den Handynamen ein',
+            'section_id.required' => 'Bitte wählen Sie die Kategorie aus',
+            'price.required' => 'Bitte geben Sie den Preis an',
+            'image.required' => 'Bitte geben Sie den Foto an',
 
 
         ]);
 
-        $section_name = ServicesSections::where('id' , $request->section_id)->first()->name;
+        $section_name = ServicesSections::where('id', $request->section_id)->first()->name;
 
         $img = $request->file('image');
         $file_name = rand() . '.' . $img->getClientOriginalExtension();
@@ -77,7 +77,7 @@ class ServicesController extends Controller
         // Move Files
         $request->image->move(public_path('Attachments/Services'), $file_name);
 
-        session()->flash('Add' , 'Das Dienstleistungen wurde erfolgreich hinzugefügt');
+        session()->flash('Add', 'Das Dienstleistungen wurde erfolgreich hinzugefügt');
         return redirect('/dienstleistungen');
     }
 
@@ -114,8 +114,8 @@ class ServicesController extends Controller
 
         ]);
 
-        $id = ServicesSections::where('name' , $request->section_name)->first()->id;
-        $section_name = ServicesSections::where('name' , $request->section_name)->first()->name;
+        $id = ServicesSections::where('name', $request->section_name)->first()->id;
+        $section_name = ServicesSections::where('name', $request->section_name)->first()->name;
 
 
         $services = Services::findOrFail($request->id);
@@ -128,7 +128,7 @@ class ServicesController extends Controller
             'note' => $request->note,
         ]);
 
-        if ($request->hasFile('image')){
+        if ($request->hasFile('image')) {
 
             Storage::disk('public_services')->delete($services->image);
 
@@ -141,7 +141,7 @@ class ServicesController extends Controller
             $request->image->move(public_path('Attachments/Services'), $file_name);
         }
 
-        session()->flash('Edit','Des Dienstleistungen wurde erfolgreich geändert');
+        session()->flash('Edit', 'Des Dienstleistungen wurde erfolgreich geändert');
         return redirect('/dienstleistungen');
     }
 
@@ -150,13 +150,13 @@ class ServicesController extends Controller
      */
     public function destroy(Request $request)
     {
-        $image = Services::where('id' , $request->id)->first()->image;
+        $image = Services::where('id', $request->id)->first()->image;
         $services = Services::findOrFail($request->id);
         $services->delete();
 
         Storage::disk('public_services')->delete($image);
 
-        session()->flash('Delete','Das Dienstleistungen wurde erfolgreich gelöscht');
+        session()->flash('Delete', 'Das Dienstleistungen wurde erfolgreich gelöscht');
         return back();
     }
 }

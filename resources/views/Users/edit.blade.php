@@ -35,7 +35,8 @@
                                 <li class="list-inline-item">N</li>
                             </ul>
                             <br>
-                            <form action="{{route('benutzer.update' , $user->id)}}" method="post" enctype="multipart/form-data" autocomplete="off">
+                            <form action="{{route('benutzer.update' , $user->id)}}" method="post"
+                                  enctype="multipart/form-data" autocomplete="off">
                                 {{method_field('patch')}}
                                 {{csrf_field()}}
                                 <div class="row">
@@ -43,13 +44,16 @@
                                         <div class="form-group row">
                                             <label for="name" class="col-sm-3 col-form-label">Benutzername :</label>
                                             <div class="col-sm-9">
-                                                <input type="hidden" class="form-control" id="id" name="id" value="{{ $user->id }}">
+                                                <input type="hidden" class="form-control" id="id" name="id"
+                                                       value="{{ $user->id }}">
                                                 @if ($user->role_name !== 'Owner')
                                                     <input type="text" class="form-control" name="name" id="name"
-                                                           style="color: #6C7293;background: #2A3038" value="{{ $user->name }}"/>
+                                                           style="color: #6C7293;background: #2A3038"
+                                                           value="{{ $user->name }}"/>
                                                 @else
                                                     <input type="text" class="form-control" name="name" id="name"
-                                                           style="color: #6C7293;background: #2A3038" value="{{ $user->name }}" readonly/>
+                                                           style="color: #6C7293;background: #2A3038"
+                                                           value="{{ $user->name }}" readonly/>
                                                 @endif
                                             </div>
                                         </div>
@@ -60,10 +64,12 @@
                                             <div class="col-sm-9">
                                                 @if ($user->role_name !== 'Owner')
                                                     <input type="text" class="form-control" name="email" id="email"
-                                                           style="color: #6C7293;background: #2A3038" value="{{ $user->email }}"/>
+                                                           style="color: #6C7293;background: #2A3038"
+                                                           value="{{ $user->email }}"/>
                                                 @else
                                                     <input type="text" class="form-control" name="email" id="email"
-                                                           style="color: #6C7293;background: #2A3038" value="{{ $user->email }}"  readonly/>
+                                                           style="color: #6C7293;background: #2A3038"
+                                                           value="{{ $user->email }}" readonly/>
                                                 @endif
                                             </div>
                                         </div>
@@ -71,9 +77,9 @@
                                 </div>
                                 <br>
                                 @if ($user->role_name !== 'Owner')
-                                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                    <button type="submit" class="btn btn-rounded btn-primary">Aktualisieren</button>
-                                </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                                        <button type="submit" class="btn btn-rounded btn-primary">Aktualisieren</button>
+                                    </div>
                                 @endif
                             </form>
                         </div>

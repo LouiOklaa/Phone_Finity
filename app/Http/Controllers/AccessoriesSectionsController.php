@@ -15,13 +15,14 @@ class AccessoriesSectionsController extends Controller
         $this->middleware('permission:ZubehörKategorienBearbeiten', ['only' => ['update']]);
         $this->middleware('permission:ZubehörKategorienLöschen', ['only' => ['destroy']]);
     }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         $sections = accessories_sections::paginate(10);
-        return view('Accessories.accessories_sections' , compact('sections'));
+        return view('Accessories.accessories_sections', compact('sections'));
     }
 
     /**
@@ -37,14 +38,14 @@ class AccessoriesSectionsController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData=$request->validate([
+        $validatedData = $request->validate([
 
             'name' => 'required|unique:accessories_sections|max:255',
 
-        ],[
+        ], [
 
-            'name.required' =>'Bitte geben Sie die Kategorie name ein',
-            'name.unique' =>'Die Kategorie name ist bereits registriert',
+            'name.required' => 'Bitte geben Sie die Kategorie name ein',
+            'name.unique' => 'Die Kategorie name ist bereits registriert',
 
         ]);
         accessories_sections::create([
@@ -54,7 +55,7 @@ class AccessoriesSectionsController extends Controller
 
         ]);
 
-        session()->flash('Add' , 'Die Kategorie wurde erfolgreich hinzugefügt');
+        session()->flash('Add', 'Die Kategorie wurde erfolgreich hinzugefügt');
         return redirect("/zubehör_kategorien");
     }
 
@@ -83,12 +84,12 @@ class AccessoriesSectionsController extends Controller
 
         $this->validate($request, [
 
-            'name' => 'required|max:255|unique:accessories_sections,name,'.$id,
+            'name' => 'required|max:255|unique:accessories_sections,name,' . $id,
 
-        ],[
+        ], [
 
-            'name.required' =>'Bitte geben Sie die Kategorie name ein',
-            'name.unique' =>'Die Kategorie name ist bereits registriert',
+            'name.required' => 'Bitte geben Sie die Kategorie name ein',
+            'name.unique' => 'Die Kategorie name ist bereits registriert',
 
         ]);
 
@@ -102,7 +103,7 @@ class AccessoriesSectionsController extends Controller
             'section_name' => $request->name,
         ]);
 
-        session()->flash('Edit','Die Kategorie wurde erfolgreich geändert');
+        session()->flash('Edit', 'Die Kategorie wurde erfolgreich geändert');
         return redirect('/zubehör_kategorien');
     }
 
@@ -114,7 +115,7 @@ class AccessoriesSectionsController extends Controller
         $id = $request->id;
         accessories_sections::find($id)->delete();
 
-        session()->flash('Delete','Die Kategorie wurde erfolgreich gelöscht');
+        session()->flash('Delete', 'Die Kategorie wurde erfolgreich gelöscht');
         return redirect('/zubehör_kategorien');
     }
 }

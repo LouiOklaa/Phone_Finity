@@ -13,13 +13,14 @@ class GeneralInformationController extends Controller
         $this->middleware('permission:AllgemeineInformationen|AllgemeineInformationenBearbeiten', ['only' => ['index']]);
         $this->middleware('permission:AllgemeineInformationenBearbeiten', ['only' => ['update']]);
     }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         $information = GeneralInformation::first();
-        return view('General_Information.general_information' , compact('information'));
+        return view('General_Information.general_information', compact('information'));
     }
 
     /**
@@ -70,7 +71,7 @@ class GeneralInformationController extends Controller
             'instagram_link' => 'required',
             'tiktok_link' => 'required',
 
-        ],[
+        ], [
 
             'phone_number.required' => 'Bitte geben Sie den Handynummer ein',
             'address.required' => 'Bitte geben Sie die Adresse ein',
@@ -93,7 +94,7 @@ class GeneralInformationController extends Controller
             'tiktok_link' => $request->tiktok_link,
         ]);
 
-        if ($request->hasFile('img1')){
+        if ($request->hasFile('img1')) {
 
             Storage::disk('public_home-page')->delete($information->img1);
 
@@ -106,7 +107,7 @@ class GeneralInformationController extends Controller
             $request->img1->move(public_path('Attachments/Home_Page'), $file_name1);
         }
 
-        if ($request->hasFile('img2')){
+        if ($request->hasFile('img2')) {
 
             Storage::disk('public_home-page')->delete($information->img2);
 
@@ -119,7 +120,7 @@ class GeneralInformationController extends Controller
             $request->img2->move(public_path('Attachments/Home_Page'), $file_name2);
         }
 
-        if ($request->hasFile('img3')){
+        if ($request->hasFile('img3')) {
 
             Storage::disk('public_home-page')->delete($information->img3);
 
@@ -132,7 +133,7 @@ class GeneralInformationController extends Controller
             $request->img3->move(public_path('Attachments/Home_Page'), $file_name3);
         }
 
-        if ($request->hasFile('img4')){
+        if ($request->hasFile('img4')) {
 
             Storage::disk('public_home-page')->delete($information->img4);
 
@@ -146,7 +147,7 @@ class GeneralInformationController extends Controller
         }
 
 
-        session()->flash('Edit','Die Informationen wurden erfolgreich geändert');
+        session()->flash('Edit', 'Die Informationen wurden erfolgreich geändert');
         return back();
     }
 

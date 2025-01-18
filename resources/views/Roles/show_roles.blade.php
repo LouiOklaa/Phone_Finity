@@ -66,21 +66,30 @@
                                 <li class="list-inline-item">N</li>
                             </ul>
                             @can('RollenHinzufügen')
-                            <div class="add-btn">
-                                <a style="height: 30px; display: flex; justify-content: center; align-items: center; text-align: center; padding: 5px 15px;"
-                                        class="btn btn-inverse-primary btn-fw embed-responsive btn-rounded"
-                                        href="{{ route('add_roles') }}">Rollen hinzufügen
-                                </a>
-                            </div>
+                                <div class="add-btn">
+                                    <a style="height: 30px; display: flex; justify-content: center; align-items: center; text-align: center; padding: 5px 15px;"
+                                       class="btn btn-inverse-primary btn-fw embed-responsive btn-rounded"
+                                       href="{{ route('add_roles') }}">Rollen hinzufügen
+                                    </a>
+                                </div>
                             @endcan
                             <div class="row justify-content-between align-items-center mt-3">
                                 <div class="col-md-6">
-                                    <input id="search-input" type="text" class="form-control text-muted" placeholder="Suchen..."
+                                    <input id="search-input" type="text" class="form-control text-muted"
+                                           placeholder="Suchen..."
                                            style="width: 200px; height: 30px; font-size: 14px; border-radius: 15px;">
                                 </div>
                                 <div class=" col-md-6 text-muted text-right" style="font-size: 14px">
-                                    Anzeigen von @if($roles->firstItem()==0)0 @else {{ $roles->firstItem() }} @endif
-                                    bis @if($roles->lastItem()==0) 0 @else {{ $roles->lastItem() }} @endif
+                                    Anzeigen von @if($roles->firstItem()==0)
+                                        0
+                                    @else
+                                        {{ $roles->firstItem() }}
+                                    @endif
+                                    bis @if($roles->lastItem()==0)
+                                        0
+                                    @else
+                                        {{ $roles->lastItem() }}
+                                    @endif
                                     von {{ $roles->total() }} gesamt
                                 </div>
                             </div>
@@ -94,7 +103,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <?php $i = 0 ?>
+                                        <?php $i = 0 ?>
                                     @foreach ($roles as $key => $role)
                                             <?php $i++ ?>
                                         <tr>
@@ -102,21 +111,23 @@
                                             <td>{{$role->name}}</td>
                                             <td>
                                                 @can('AlleRollenAnzeigen')
-                                                <a class="btn btn-sm btn-rounded btn-inverse-warning"
-                                                        href="{{ route('show_roles' , $role->id)}}" title="Anzeigen">Anzeigen
-                                                </a>
+                                                    <a class="btn btn-sm btn-rounded btn-inverse-warning"
+                                                       href="{{ route('show_roles' , $role->id)}}" title="Anzeigen">Anzeigen
+                                                    </a>
                                                 @endcan
                                                 @if ($role->name !== 'Owner')
                                                     @can('RollenBearbeiten')
-                                                    <a class="btn btn-sm btn-rounded btn-inverse-primary"
-                                                            href="{{ route('edit_roles' , $role->id)}}" title="Bearbeiten">Bearbeiten
-                                                    </a>
+                                                        <a class="btn btn-sm btn-rounded btn-inverse-primary"
+                                                           href="{{ route('edit_roles' , $role->id)}}"
+                                                           title="Bearbeiten">Bearbeiten
+                                                        </a>
                                                     @endcan
                                                     @can('RollenLöschen')
-                                                    <button class="btn btn-sm btn-rounded btn-inverse-danger" title="Löschen"
-                                                            href="#delete_modal" data-id="{{$role->id}}"
-                                                            data-name="{{$role->name}}" data-toggle="modal">Löschen
-                                                    </button>
+                                                        <button class="btn btn-sm btn-rounded btn-inverse-danger"
+                                                                title="Löschen"
+                                                                href="#delete_modal" data-id="{{$role->id}}"
+                                                                data-name="{{$role->name}}" data-toggle="modal">Löschen
+                                                        </button>
                                                     @endcan
                                                 @endif
                                             </td>
@@ -125,13 +136,16 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="text-center shift-lg paginator-container" data-inview-showup="showup-translate-up">
+                            <div class="text-center shift-lg paginator-container"
+                                 data-inview-showup="showup-translate-up">
                                 <div class="paginator">
                                     {{-- Link to Previous Page --}}
                                     @if ($roles->onFirstPage())
-                                        <span class="previous disabled"><i class="fas fa-angle-left" aria-hidden="true"></i></span>
+                                        <span class="previous disabled"><i class="fas fa-angle-left"
+                                                                           aria-hidden="true"></i></span>
                                     @else
-                                        <a href="{{ $roles->previousPageUrl() }}" class="previous"><i class="fas fa-angle-left" aria-hidden="true"></i></a>
+                                        <a href="{{ $roles->previousPageUrl() }}" class="previous"><i
+                                                class="fas fa-angle-left" aria-hidden="true"></i></a>
                                     @endif
 
                                     {{-- Loop through available pages --}}
@@ -154,9 +168,11 @@
 
                                     {{-- Link to Next Page --}}
                                     @if ($roles->hasMorePages())
-                                        <a href="{{ $roles->nextPageUrl() }}" class="next"><i class="fas fa-angle-right" aria-hidden="true"></i></a>
+                                        <a href="{{ $roles->nextPageUrl() }}" class="next"><i class="fas fa-angle-right"
+                                                                                              aria-hidden="true"></i></a>
                                     @else
-                                        <span class="next disabled"><i class="fas fa-angle-right" aria-hidden="true"></i></span>
+                                        <span class="next disabled"><i class="fas fa-angle-right"
+                                                                       aria-hidden="true"></i></span>
                                     @endif
                                 </div>
                             </div>
@@ -205,17 +221,17 @@
         <!-- content-wrapper ends -->
         <!-- partial:../../partials/_footer.html -->
 
-@endsection
-@section('JS')
-        {{--  Delete Modal Script  --}}
-        <script>
-            $('#delete_modal').on('show.bs.modal', function (event) {
-                var button = $(event.relatedTarget)
-                var id = button.data('id')
-                var name = button.data('name')
-                var modal = $(this)
-                modal.find('.modal-body #id').val(id);
-                modal.find('.modal-body #name').val(name);
-            })
-        </script>
+        @endsection
+        @section('JS')
+            {{--  Delete Modal Script  --}}
+            <script>
+                $('#delete_modal').on('show.bs.modal', function (event) {
+                    var button = $(event.relatedTarget)
+                    var id = button.data('id')
+                    var name = button.data('name')
+                    var modal = $(this)
+                    modal.find('.modal-body #id').val(id);
+                    modal.find('.modal-body #name').val(name);
+                })
+            </script>
 @endsection

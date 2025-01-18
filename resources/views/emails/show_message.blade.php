@@ -8,7 +8,7 @@
             background: #191C24;
             border-radius: 25px;
             overflow: hidden;
-            box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         }
 
         .chat-header {
@@ -129,14 +129,14 @@
     <!-- partial -->
     <div class="main-panel">
         <div class="content-wrapper">
-                @if (session()->has('success'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong>{{ session()->get('success') }}</strong>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                @endif
+            @if (session()->has('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>{{ session()->get('success') }}</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
             <div class="card">
                 <div class="card-body">
                     <ul style="color: #00c292" class="list-inline text-center">
@@ -155,7 +155,9 @@
                                 <div class="chat-body">
                                     @foreach($conversation as $item)
                                         <div class="message {{ $item['type'] == 'reply' ? 'sent' : 'received' }}">
-                                            <img src="{{ $item['type'] == 'reply' ? URL::asset('assets/images/faces/face.jpg') : URL::asset('assets/images/faces/face2.jpg') }}" alt="">
+                                            <img
+                                                src="{{ $item['type'] == 'reply' ? URL::asset('assets/images/faces/face.jpg') : URL::asset('assets/images/faces/face2.jpg') }}"
+                                                alt="">
                                             <div class="message-content">
                                                 {{ $item['content'] }}
                                             </div>
@@ -167,10 +169,11 @@
 
                                 </div>
                                 @can('NachrichtSenden')
-                                <div class="chat-footer">
-                                    <input name="reply" id="reply" class="form-control" type="text" placeholder="Nachricht...">
-                                    <button type="submit">&#x27A4;</button>
-                                </div>
+                                    <div class="chat-footer">
+                                        <input name="reply" id="reply" class="form-control" type="text"
+                                               placeholder="Nachricht...">
+                                        <button type="submit">&#x27A4;</button>
+                                    </div>
                                 @endcan
                             </form>
                         </div>

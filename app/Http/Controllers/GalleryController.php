@@ -15,13 +15,14 @@ class GalleryController extends Controller
         $this->middleware('permission:InGalerieBearbeiten', ['only' => ['update']]);
         $this->middleware('permission:InGalerieLöschen', ['only' => ['destroy']]);
     }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         $projects = gallery::paginate(6);
-        return view('Gallery.gallery' , compact('projects'));
+        return view('Gallery.gallery', compact('projects'));
     }
 
     /**
@@ -37,24 +38,24 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData=$request->validate([
+        $validatedData = $request->validate([
 
             'name' => 'required',
             'media' => 'required|file|mimes:jpeg,png,jpg,gif,svg,mp4,mov,mkv|max:10240',
 
-        ],[
+        ], [
 
-            'name.required' =>'Bitte geben Sie den Projektnamen ein',
-            'media.required' =>'Bitte geben Sie ein Foto oder Video des Projekt eni',
-            'media.file' =>'Die Datei muss ein Foto oder Video sein',
-            'media.mimes' =>'Die Datei muss vom Typ jpeg,png,jpg,mp4,mov,mkv sein',
+            'name.required' => 'Bitte geben Sie den Projektnamen ein',
+            'media.required' => 'Bitte geben Sie ein Foto oder Video des Projekt eni',
+            'media.file' => 'Die Datei muss ein Foto oder Video sein',
+            'media.mimes' => 'Die Datei muss vom Typ jpeg,png,jpg,mp4,mov,mkv sein',
 
         ]);
 
         $media = $request->file('media');
         $file_name = rand() . '.' . $media->getClientOriginalExtension();
 
-         gallery::create([
+        gallery::create([
 
             'name' => $request->name,
             'note' => $request->note,
@@ -66,7 +67,7 @@ class GalleryController extends Controller
         // Move Files
         $request->media->move(public_path('Attachments/Galerie'), $file_name);
 
-        session()->flash('Add' , 'Das Projekt wurde erfolgreich hinzugefügt');
+        session()->flash('Add', 'Das Projekt wurde erfolgreich hinzugefügt');
         return back();
     }
 
@@ -93,16 +94,16 @@ class GalleryController extends Controller
     {
         $id = $request->id;
 
-        $validatedData=$request->validate([
+        $validatedData = $request->validate([
 
             'name' => 'required',
             'media' => 'file|mimes:jpeg,png,jpg,gif,svg,mp4,mov,mkv|max:10240',
 
-        ],[
+        ], [
 
-            'name.required' =>'Bitte geben Sie den Projektnamen ein',
-            'media.file' =>'Die Datei muss ein Foto oder Video sein',
-            'media.mimes' =>'Die Datei muss vom Typ jpeg,png,jpg,mp4,mov,mkv sein',
+            'name.required' => 'Bitte geben Sie den Projektnamen ein',
+            'media.file' => 'Die Datei muss ein Foto oder Video sein',
+            'media.mimes' => 'Die Datei muss vom Typ jpeg,png,jpg,mp4,mov,mkv sein',
 
         ]);
 
@@ -113,7 +114,7 @@ class GalleryController extends Controller
             'note' => $request->note,
         ]);
 
-        if ($request->hasFile('media')){
+        if ($request->hasFile('media')) {
 
             Storage::disk('public_gallery')->delete($projects->media);
 
@@ -126,7 +127,7 @@ class GalleryController extends Controller
             $request->media->move(public_path('Attachments/Galerie'), $file_name);
         }
 
-        session()->flash('Edit' , 'Das Projekt wurde erfolgreich geändert');
+        session()->flash('Edit', 'Das Projekt wurde erfolgreich geändert');
         return back();
     }
 
@@ -136,13 +137,13 @@ class GalleryController extends Controller
     public function destroy(Request $request)
     {
         $id = $request->id;
-        $media = gallery::where('id' , $request->id)->first()->media;
+        $media = gallery::where('id', $request->id)->first()->media;
 
         gallery::findOrFail($id)->delete();
 
         Storage::disk('public_gallery')->delete($media);
 
-        session()->flash('Delete','Das Projekt wurde erfolgreich gelöscht');
+        session()->flash('Delete', 'Das Projekt wurde erfolgreich gelöscht');
         return back();
     }
 }

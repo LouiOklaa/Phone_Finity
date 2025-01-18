@@ -59,18 +59,20 @@
                                 <li class="list-inline-item">N</li>
                             </ul>
                             @can('AllgemeineInformationenBearbeiten')
-                            <div class="edit_modal">
-                                <button style="height: 30px" type="button"
-                                        class="btn btn-inverse-primary btn-fw embed-responsive btn-rounded"
-                                        href="#edit_modal" data-id="{{$information->id}}"
-                                        data-phone_number="{{$information->phone_number}}"
-                                        data-email="{{$information->email}}" data-address="{{$information->address}}"
-                                        data-address_link="{{$information->address_link}}"
-                                        data-facebook_link="{{$information->facebook_link}}"
-                                        data-instagram_link="{{$information->instagram_link}}"
-                                        data-tiktok_link="{{$information->tiktok_link}}" data-toggle="modal">Allgemeine Informationen Bearbeiten
-                                </button>
-                            </div>
+                                <div class="edit_modal">
+                                    <button style="height: 30px" type="button"
+                                            class="btn btn-inverse-primary btn-fw embed-responsive btn-rounded"
+                                            href="#edit_modal" data-id="{{$information->id}}"
+                                            data-phone_number="{{$information->phone_number}}"
+                                            data-email="{{$information->email}}"
+                                            data-address="{{$information->address}}"
+                                            data-address_link="{{$information->address_link}}"
+                                            data-facebook_link="{{$information->facebook_link}}"
+                                            data-instagram_link="{{$information->instagram_link}}"
+                                            data-tiktok_link="{{$information->tiktok_link}}" data-toggle="modal">
+                                        Allgemeine Informationen Bearbeiten
+                                    </button>
+                                </div>
                             @endcan
                             <br>
                             <form class="forms-sample">
@@ -127,17 +129,17 @@
                                         <tbody>
                                         <tr class="text-center">
                                             <td><a href="{{asset( 'Attachments/Home_Page/' . $information->img1)}}"><img
-                                                            src="Attachments/Home_Page/{{$information->img1}}"
-                                                            style="height:30px; width:50px; border-radius: 0;"></a></td>
+                                                        src="Attachments/Home_Page/{{$information->img1}}"
+                                                        style="height:30px; width:50px; border-radius: 0;"></a></td>
                                             <td><a href="{{asset( 'Attachments/Home_Page/' . $information->img2)}}"><img
-                                                            src="Attachments/Home_Page/{{$information->img2}}"
-                                                            style="height:30px; width:50px; border-radius: 0;"></a></td>
+                                                        src="Attachments/Home_Page/{{$information->img2}}"
+                                                        style="height:30px; width:50px; border-radius: 0;"></a></td>
                                             <td><a href="{{asset( 'Attachments/Home_Page/' . $information->img3)}}"><img
-                                                            src="Attachments/Home_Page/{{$information->img3}}"
-                                                            style="height:30px; width:50px; border-radius: 0;"></a></td>
+                                                        src="Attachments/Home_Page/{{$information->img3}}"
+                                                        style="height:30px; width:50px; border-radius: 0;"></a></td>
                                             <td><a href="{{asset( 'Attachments/Home_Page/' . $information->img4)}}"><img
-                                                            src="Attachments/Home_Page/{{$information->img4}}"
-                                                            style="height:30px; width:50px; border-radius: 0;"></a></td>
+                                                        src="Attachments/Home_Page/{{$information->img4}}"
+                                                        style="height:30px; width:50px; border-radius: 0;"></a></td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -154,7 +156,7 @@
                             <div class="modal-header">
                                 <h4 class="modal-title">Allgemeine Informationen Bearbeiten</h4>
                                 <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span
-                                            aria-hidden="true">&times;</span></button>
+                                        aria-hidden="true">&times;</span></button>
                             </div>
                             <div class="modal-body">
                                 <form action="allgemeineinformationen/update" method="post"

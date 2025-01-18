@@ -13,7 +13,8 @@
         </h1>
     </div><br><br>
     <div class="container">
-        <p><span style="font-weight: bolder; font-size: 25px">Phone Finity</span><br><b>Inh.</b> : MOHAMAD ALHAJ YOUNES<br>{{$information->address}}<br>Telefon
+        <p><span style="font-weight: bolder; font-size: 25px">Phone Finity</span><br><b>Inh.</b> : MOHAMAD ALHAJ
+            YOUNES<br>{{$information->address}}<br>Telefon
             : {{$information->phone_number}}<br>E-Mail : <a
                 href="{{route('contact_us')}}">{{$information->email}}</a><br>Internet : <a href="{{url('/')}}">www.phone-finity.de</a>
         </p><br><br>
@@ -25,7 +26,8 @@
 
         <br><br>
         <p><strong>Bereitstellung von Daten und Informationen / Haftungsausschluss</strong></p>
-        <p>Die Phone Finity bemüht sich, dass die auf dieser Website enthaltenen Informationen und Daten zutreffend sind.
+        <p>Die Phone Finity bemüht sich, dass die auf dieser Website enthaltenen Informationen und Daten zutreffend
+            sind.
             Eine Gewähr oder Haftung für die Aktualität, Richtigkeit und Vollständigkeit der zur Verfügung gestellten
             Informationen und Daten ist jedoch ausgeschlossen.</p>
         <p>Die Phone Finity behält sich vor, ohne Ankündigung Änderungen oder Ergänzungen der bereitgestellten

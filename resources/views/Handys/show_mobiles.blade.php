@@ -29,13 +29,23 @@
                             <div class="field-group shop-line-field chosen-field">
                                 <label>Sortieren nach</label>
                                 <div class="field-wrap">
-                                    <select class="field-control shop-results-text2" name="sort2" id="sort2" onchange="handleSortChange()">
+                                    <select class="field-control shop-results-text2" name="sort2" id="sort2"
+                                            onchange="handleSortChange()">
                                         <option value="" disabled selected>Filter</option>
-                                        <option value="name" {{ request('sort') == 'name' ? 'selected' : '' }}>Name</option>
-                                        <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }}>Neueste</option>
-                                        <option value="oldest" {{ request('sort') == 'oldest' ? 'selected' : '' }}>Älteste</option>
-                                        <option value="price1" {{ request('sort') == 'price1' ? 'selected' : '' }}>Niedrigster Preis</option>
-                                        <option value="price2" {{ request('sort') == 'price2' ? 'selected' : '' }}>Höchster Preis</option>
+                                        <option value="name" {{ request('sort') == 'name' ? 'selected' : '' }}>Name
+                                        </option>
+                                        <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }}>
+                                            Neueste
+                                        </option>
+                                        <option value="oldest" {{ request('sort') == 'oldest' ? 'selected' : '' }}>
+                                            Älteste
+                                        </option>
+                                        <option value="price1" {{ request('sort') == 'price1' ? 'selected' : '' }}>
+                                            Niedrigster Preis
+                                        </option>
+                                        <option value="price2" {{ request('sort') == 'price2' ? 'selected' : '' }}>
+                                            Höchster Preis
+                                        </option>
                                     </select>
                                     <span class="select-arrow"><i class="fas fa-chevron-down"></i></span>
                                     <span class="field-back"></span>
@@ -43,7 +53,15 @@
                             </div>
                         </div>
                         <div class="showing shop-results-text">
-                            Anzeigen von @if($handys->firstItem()==0)0 @else {{ $handys->firstItem() }} @endif bis @if($handys->lastItem()==0) 0 @else {{ $handys->lastItem() }} @endif von {{ $handys->total() }} gesamt
+                            Anzeigen von @if($handys->firstItem()==0)
+                                0
+                            @else
+                                {{ $handys->firstItem() }}
+                            @endif bis @if($handys->lastItem()==0)
+                                0
+                            @else
+                                {{ $handys->lastItem() }}
+                            @endif von {{ $handys->total() }} gesamt
                         </div>
                     </div>
                 </form>
@@ -52,7 +70,7 @@
                         @include('Handys.partials_mobiles_list')
                     @else
                         <div class="text-center" style="margin-top: 30px;">
-                          <h3>Derzeit sind keine Handys in dieser Kategorie verfügbar 😞</h3>
+                            <h3>Derzeit sind keine Handys in dieser Kategorie verfügbar 😞</h3>
                         </div>
                     @endif
                 </div>
@@ -62,7 +80,8 @@
                         @if ($handys->onFirstPage())
                             <span class="previous disabled"><i class="fas fa-angle-left" aria-hidden="true"></i></span>
                         @else
-                            <a href="{{ $handys->previousPageUrl() }}" class="previous"><i class="fas fa-angle-left" aria-hidden="true"></i></a>
+                            <a href="{{ $handys->previousPageUrl() }}" class="previous"><i class="fas fa-angle-left"
+                                                                                           aria-hidden="true"></i></a>
                         @endif
 
                         {{-- Loop through available pages --}}
@@ -76,7 +95,8 @@
 
                         {{-- Link to Next Page --}}
                         @if ($handys->hasMorePages())
-                            <a href="{{ $handys->nextPageUrl() }}" class="next"><i class="fas fa-angle-right" aria-hidden="true"></i></a>
+                            <a href="{{ $handys->nextPageUrl() }}" class="next"><i class="fas fa-angle-right"
+                                                                                   aria-hidden="true"></i></a>
                         @else
                             <span class="next disabled"><i class="fas fa-angle-right" aria-hidden="true"></i></span>
                         @endif

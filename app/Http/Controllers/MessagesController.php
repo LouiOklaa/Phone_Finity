@@ -15,6 +15,7 @@ class MessagesController extends Controller
         $this->middleware('permission:Nachricht|NachrichtSenden', ['only' => ['viewMessage']]);
         $this->middleware('permission:NachrichtSenden', ['only' => ['replyMessage']]);
     }
+
     public function index()
     {
         $latestEmails = EmailLog::orderBy('created_at', 'desc')->paginate(12);

@@ -23,6 +23,7 @@
             flex-direction: column;
             justify-content: flex-start;
         }
+
         .form-control {
             height: 40px;
         }
@@ -49,7 +50,8 @@
                                 <li class="list-inline-item">E</li>
                             </ul>
                             <div class="card">
-                                <form action="{{route('accessories_search')}}" method="POST" role="search" autocomplete="off">
+                                <form action="{{route('accessories_search')}}" method="POST" role="search"
+                                      autocomplete="off">
                                     {{ csrf_field() }}
 
                                     <div class="col-lg-5">
@@ -64,16 +66,22 @@
                                             <input name="radio" value="2" type="radio" id="name_div">
                                             <span>Suche nach Produktname</span>
                                         </label>
-                                    </div><br><br>
+                                    </div>
+                                    <br><br>
 
                                     <div class="row">
                                         <!-- Search by category and brand -->
                                         <div class="col-lg-3" id="product_category">
                                             <p class="mg-b-10">Kategorie des Produkts</p>
-                                            <select id="kategorie" class="form-control select" name="product_category" style="color: #6C7293;" required>
-                                                <option value="null" disabled {{ (old('product_category') == null && !isset($product_category)) ? 'selected' : '' }}>Kategorie wählen</option>
+                                            <select id="kategorie" class="form-control select" name="product_category"
+                                                    style="color: #6C7293;" required>
+                                                <option value="null"
+                                                        disabled {{ (old('product_category') == null && !isset($product_category)) ? 'selected' : '' }}>
+                                                    Kategorie wählen
+                                                </option>
                                                 @foreach($categories as $one)
-                                                    <option value="{{ $one->id }}" {{ (old('product_category') == $one->id || isset($product_category) && $product_category == $one->id) ? 'selected' : '' }}>{{ $one->name }}</option>
+                                                    <option
+                                                        value="{{ $one->id }}" {{ (old('product_category') == $one->id || isset($product_category) && $product_category == $one->id) ? 'selected' : '' }}>{{ $one->name }}</option>
                                                 @endforeach
                                             </select>
 
@@ -81,13 +89,24 @@
 
                                         <div class="col-lg-3" id="product_brand">
                                             <p class="mg-b-10">Marke des Produkts</p>
-                                            <select id="brand" class="form-control select2" name="product_brand" style="color: #6C7293;" required>
-                                                <option value="null" disabled {{ (old('product_brand') == null && !isset($product_brand)) ? 'selected' : '' }}>Marke wählen</option>
-                                                <option value="Alle" {{ (old('product_brand') == 'Alle' || isset($product_brand) && $product_brand == 'Alle') ? 'selected' : '' }}>Alle</option>
+                                            <select id="brand" class="form-control select2" name="product_brand"
+                                                    style="color: #6C7293;" required>
+                                                <option value="null"
+                                                        disabled {{ (old('product_brand') == null && !isset($product_brand)) ? 'selected' : '' }}>
+                                                    Marke wählen
+                                                </option>
+                                                <option
+                                                    value="Alle" {{ (old('product_brand') == 'Alle' || isset($product_brand) && $product_brand == 'Alle') ? 'selected' : '' }}>
+                                                    Alle
+                                                </option>
                                                 @foreach($brands as $one)
-                                                    <option value="{{ $one->name }}" {{ (old('product_brand') == $one->name || isset($product_brand) && $product_brand == $one->name) ? 'selected' : '' }}>{{ $one->name }}</option>
+                                                    <option
+                                                        value="{{ $one->name }}" {{ (old('product_brand') == $one->name || isset($product_brand) && $product_brand == $one->name) ? 'selected' : '' }}>{{ $one->name }}</option>
                                                 @endforeach
-                                                <option value="Andere" {{ (old('product_brand') == 'Andere' || isset($product_brand) && $product_brand == 'Andere') ? 'selected' : '' }}>Andere</option>
+                                                <option
+                                                    value="Andere" {{ (old('product_brand') == 'Andere' || isset($product_brand) && $product_brand == 'Andere') ? 'selected' : '' }}>
+                                                    Andere
+                                                </option>
                                             </select>
 
                                         </div>
@@ -95,7 +114,8 @@
                                         <!-- Search by name -->
                                         <div class="col-lg-3" id="product_name" style="display: none;">
                                             <p class="mg-b-10">Name des Produkts</p>
-                                            <input type="text" name="product_name" class="form-control text-muted" placeholder="Geben Sie das Produktname ein">
+                                            <input type="text" name="product_name" class="form-control text-muted"
+                                                   placeholder="Geben Sie das Produktname ein">
                                         </div>
 
                                         <div class="col-lg-3" id="start_at">
@@ -106,7 +126,9 @@
                                                         <i class="mdi mdi-18px mdi-calendar"></i>
                                                     </div>
                                                 </div>
-                                                <input class="form-control fc-datepicker" value="{{ $start_at ?? '' }}" name="start_at" placeholder="TT.MM.JJJJ" type="text" style="color: #6C7293;">
+                                                <input class="form-control fc-datepicker" value="{{ $start_at ?? '' }}"
+                                                       name="start_at" placeholder="TT.MM.JJJJ" type="text"
+                                                       style="color: #6C7293;">
                                             </div>
                                         </div>
 
@@ -118,7 +140,9 @@
                                                         <i class="mdi mdi-18px mdi-calendar"></i>
                                                     </div>
                                                 </div>
-                                                <input class="form-control fc-datepicker" value="{{ $end_at ?? '' }}" name="end_at" placeholder="TT.MM.JJJJ" type="text" style="color: #6C7293;">
+                                                <input class="form-control fc-datepicker" value="{{ $end_at ?? '' }}"
+                                                       name="end_at" placeholder="TT.MM.JJJJ" type="text"
+                                                       style="color: #6C7293;">
                                             </div>
                                         </div>
                                     </div>
@@ -129,7 +153,9 @@
                                         <form action="{{ route('export_AccessoriesReports', 4) }}" method="POST">
                                             @csrf
                                             <input type="hidden" name="details" value="{{ json_encode($details) }}">
-                                            <button type="submit" class="btn btn-inverse-success btn-block mt-3">Export Excel</button>
+                                            <button type="submit" class="btn btn-inverse-success btn-block mt-3">Export
+                                                Excel
+                                            </button>
                                         </form>
                                     @endcan
                                 @endif
@@ -137,7 +163,8 @@
 
                             @if (isset($details))
                                 <div class="table-responsive">
-                                    <table id="example1" class="table key-buttons text-md-nowrap" data-page-length='50' style=" text-align: center">
+                                    <table id="example1" class="table key-buttons text-md-nowrap" data-page-length='50'
+                                           style=" text-align: center">
                                         <thead>
                                         <tr>
                                             <th>#</th>
@@ -150,9 +177,9 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <?php $i=0?>
+                                            <?php $i = 0 ?>
                                         @foreach($details as $x)
-                                            <?php $i ++?>
+                                                <?php $i++ ?>
                                             <tr>
                                                 <td>{{$i}}</td>
                                                 <td>{{$x->name}}</td>
@@ -174,7 +201,8 @@
                                     </table>
                                     @if(count($details) === 0)
                                         <br>
-                                        <p class="text-center text-muted" style="font-size: 18px">Keine Daten gefunden</p>
+                                        <p class="text-center text-muted" style="font-size: 18px">Keine Daten
+                                            gefunden</p>
                                     @endif
                                 </div>
                             @endif
@@ -192,9 +220,9 @@
                 }).val();
             </script>
             <script>
-                $(document).ready(function() {
+                $(document).ready(function () {
                     $('#product_name').hide();
-                    $('input[type="radio"]').click(function() {
+                    $('input[type="radio"]').click(function () {
                         if ($(this).attr('id') == 'type_div') {
                             $('#product_name').hide();
                             $('#product_category').show();

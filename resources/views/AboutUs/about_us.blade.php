@@ -36,7 +36,8 @@
                 <div class="contact-icon xs-hidden"><i class="fas fa-bicycle" aria-hidden="true"></i></div>
                 <div class="contact-content">
                     <div class="contact-title">Kostenlose Beratung anfordern</div>
-                    <div class="text-justify only-xs-text-justify-center">Holen Sie sich Antworten und Ratschläge von den Leuten, von denen Sie sie brauchen.
+                    <div class="text-justify only-xs-text-justify-center">Holen Sie sich Antworten und Ratschläge von
+                        den Leuten, von denen Sie sie brauchen.
                     </div>
                 </div>
                 <div class="contact-btn">

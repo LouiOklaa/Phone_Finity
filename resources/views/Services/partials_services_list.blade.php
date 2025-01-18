@@ -7,18 +7,23 @@
                     src="{{url('/Attachments/Services/' .$one->image)}}" alt=""/></a>
             <div class="item-content2 shift-md">
                 <div class="item-textes">
-                    <div class="item-title text-upper hover"><i style="font-style: normal; font-size: 18px;" class="content-link">{{$one->name}}</i>
+                    <div class="item-title text-upper hover"><i style="font-style: normal; font-size: 18px;"
+                                                                class="content-link">{{$one->name}}</i>
                     </div>
                 </div>
                 <div class="item-prices">
-                    <div class="item-price" style="color: #CA5098; ">Ab..&nbsp&nbsp{{$one->price}}€</div><br>
+                    <div class="item-price" style="color: #CA5098; ">Ab..&nbsp&nbsp{{$one->price}}€</div>
+                    <br>
                 </div>
             </div>
             <div class="item-content">
-                <div><b style="font-family: Montserrat; font-weight: 600; color: #CA5098; font-size: 16px;  margin-bottom: 15px;">Typ : </b><b>{{$one->section_name}}</b></div>
+                <div>
+                    <b style="font-family: Montserrat; font-weight: 600; color: #CA5098; font-size: 16px;  margin-bottom: 15px;">Typ
+                        : </b><b>{{$one->section_name}}</b></div>
             </div>
             <div>
-                <b style="font-family: Montserrat; font-weight: 600; color: #CA5098; font-size: 16px; margin-bottom: 15px;">Spezifikationen : </b>
+                <b style="font-family: Montserrat; font-weight: 600; color: #CA5098; font-size: 16px; margin-bottom: 15px;">Spezifikationen
+                    : </b>
                 <b>
                     @if($one->note != 0)
                         @php
@@ -27,7 +32,8 @@
                         @endphp
                         @if(strlen($note) > $maxLength)
                             {{ substr($note, 0, $maxLength) }}...
-                            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#noteModal{{ $one->id }}" style="color: #CA5098;">Mehr erfahren</a>
+                            <a href="javascript:void(0)" data-bs-toggle="modal"
+                               data-bs-target="#noteModal{{ $one->id }}" style="color: #CA5098;">Mehr erfahren</a>
                         @else
                             {{ $note }}
                         @endif
@@ -39,7 +45,8 @@
         </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="noteModal{{ $one->id }}" tabindex="-1" aria-labelledby="noteModalLabel{{ $one->id }}" aria-hidden="true">
+    <div class="modal fade" id="noteModal{{ $one->id }}" tabindex="-1" aria-labelledby="noteModalLabel{{ $one->id }}"
+         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">

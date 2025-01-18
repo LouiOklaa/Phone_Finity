@@ -54,20 +54,29 @@
                         <li class="list-inline-item">E</li>
                     </ul>
                     @can('InGalerieHinzufügen')
-                    <div class="add-btn">
-                        <button style="height: 30px" type="button"
-                                class="btn btn-inverse-primary btn-fw embed-responsive btn-rounded" href="#add_modal"
-                                data-toggle="modal">Hinzufügen
-                        </button>
-                    </div>
+                        <div class="add-btn">
+                            <button style="height: 30px" type="button"
+                                    class="btn btn-inverse-primary btn-fw embed-responsive btn-rounded"
+                                    href="#add_modal"
+                                    data-toggle="modal">Hinzufügen
+                            </button>
+                        </div>
                     @endcan
                     <br>
                     <div class="showing shop-results-text">
-                        Anzeigen von @if($projects->firstItem()==0)0 @else {{ $projects->firstItem() }} @endif bis @if($projects->lastItem()==0) 0 @else {{ $projects->lastItem() }} @endif von {{ $projects->total() }} gesamt
+                        Anzeigen von @if($projects->firstItem()==0)
+                            0
+                        @else
+                            {{ $projects->firstItem() }}
+                        @endif bis @if($projects->lastItem()==0)
+                            0
+                        @else
+                            {{ $projects->lastItem() }}
+                        @endif von {{ $projects->total() }} gesamt
                     </div>
                     <div class="gallery">
                         <div class="row">
-                            <?php $i = 0 ?>
+                                <?php $i = 0 ?>
                             @foreach($projects as $one)
                                 <div class="col-md-4">
                                     <div class="card">
@@ -94,15 +103,19 @@
                                         <br>
                                         <div class="text-center" style="margin-bottom: 10px;">
                                             @can('InGalerieBearbeiten')
-                                            <button class="btn btn-sm btn-rounded btn-inverse-primary" href="#edit_modal" title="Edit"
-                                                    data-id="{{ $one->id }}" data-name="{{ $one->name }}" data-note="{{ $one->note }}"
-                                                    data-toggle="modal">Bearbeiten
-                                            </button>
+                                                <button class="btn btn-sm btn-rounded btn-inverse-primary"
+                                                        href="#edit_modal" title="Edit"
+                                                        data-id="{{ $one->id }}" data-name="{{ $one->name }}"
+                                                        data-note="{{ $one->note }}"
+                                                        data-toggle="modal">Bearbeiten
+                                                </button>
                                             @endcan
                                             @can('InGalerieLöschen')
-                                            <button class="btn btn-sm btn-rounded btn-inverse-danger" href="#delete_modal" title="Delete"
-                                                    data-id="{{ $one->id }}" data-name="{{ $one->name }}" data-toggle="modal">Löschen
-                                            </button>
+                                                <button class="btn btn-sm btn-rounded btn-inverse-danger"
+                                                        href="#delete_modal" title="Delete"
+                                                        data-id="{{ $one->id }}" data-name="{{ $one->name }}"
+                                                        data-toggle="modal">Löschen
+                                                </button>
                                             @endcan
                                         </div>
                                     </div>
@@ -115,7 +128,8 @@
                                 @if ($projects->onFirstPage())
                                     <span class="previous disabled"><i class="fas fa-angle-left" aria-hidden="true"></i></span>
                                 @else
-                                    <a href="{{ $projects->previousPageUrl() }}" class="previous"><i class="fas fa-angle-left" aria-hidden="true"></i></a>
+                                    <a href="{{ $projects->previousPageUrl() }}" class="previous"><i
+                                            class="fas fa-angle-left" aria-hidden="true"></i></a>
                                 @endif
 
                                 {{-- Loop through available pages --}}
@@ -138,9 +152,11 @@
 
                                 {{-- Link to Next Page --}}
                                 @if ($projects->hasMorePages())
-                                    <a href="{{ $projects->nextPageUrl() }}" class="next"><i class="fas fa-angle-right" aria-hidden="true"></i></a>
+                                    <a href="{{ $projects->nextPageUrl() }}" class="next"><i class="fas fa-angle-right"
+                                                                                             aria-hidden="true"></i></a>
                                 @else
-                                    <span class="next disabled"><i class="fas fa-angle-right" aria-hidden="true"></i></span>
+                                    <span class="next disabled"><i class="fas fa-angle-right"
+                                                                   aria-hidden="true"></i></span>
                                 @endif
                             </div>
                         </div>
@@ -161,11 +177,13 @@
                                             <div class="form-group">
                                                 <input type="hidden" name="id" id="id" value="">
                                                 <label for="name" class="col-form-label">Projekt Name :</label>
-                                                <input class="form-control text-muted" name="name" id="name" type="text">
+                                                <input class="form-control text-muted" name="name" id="name"
+                                                       type="text">
                                             </div>
                                             <div class="form-group">
                                                 <label for="note">Beschreibung :</label>
-                                                <textarea class="form-control text-muted" name="note" id="note" rows="3"></textarea>
+                                                <textarea class="form-control text-muted" name="note" id="note"
+                                                          rows="3"></textarea>
                                             </div>
                                             <div class="form-group">
                                                 <label>Projekt Foto oder Video </label>
@@ -176,7 +194,8 @@
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="submit" class="btn btn-rounded btn-outline-primary">Bestätigung
+                                                <button type="submit" class="btn btn-rounded btn-outline-primary">
+                                                    Bestätigung
                                                 </button>
                                                 <button type="button" class="btn btn-rounded btn-outline-secondary"
                                                         data-dismiss="modal">Abbrechen
@@ -206,11 +225,13 @@
                                                 <div class="form-group">
                                                     <label for="name">Projekt Name :</label>
                                                     <input type="hidden" class="form-control" id="id" name="id">
-                                                    <input type="text" class="form-control text-muted" id="name" name="name">
+                                                    <input type="text" class="form-control text-muted" id="name"
+                                                           name="name">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="note">Beschreibung :</label>
-                                                    <textarea class="form-control text-muted" name="note" id="note" rows="3"></textarea>
+                                                    <textarea class="form-control text-muted" name="note" id="note"
+                                                              rows="3"></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Projekt Foto oder Video </label>
@@ -255,7 +276,8 @@
                                                 <div class="form-group">
                                                     <label for="name">Projekt Name :</label>
                                                     <input type="hidden" class="form-control" id="id" name="id">
-                                                    <input class="form-control text-muted" name="name" id="name" type="text"
+                                                    <input class="form-control text-muted" name="name" id="name"
+                                                           type="text"
                                                            style="background: #2A3038" readonly>
                                                 </div>
                                             </div>

@@ -15,13 +15,14 @@ class AbschnitteController extends Controller
         $this->middleware('permission:GeräteKategorienBearbeiten', ['only' => ['update']]);
         $this->middleware('permission:GeräteKategorienLöschen', ['only' => ['destroy']]);
     }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         $abschnitte = abschnitte::paginate(10);
-        return view('Handys.abschnitte' , compact('abschnitte'));
+        return view('Handys.abschnitte', compact('abschnitte'));
     }
 
     /**
@@ -37,14 +38,14 @@ class AbschnitteController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData=$request->validate([
+        $validatedData = $request->validate([
 
             'name' => 'required|unique:abschnittes|max:255',
 
-        ],[
+        ], [
 
-            'name.required' =>'Bitte geben Sie die Kategorie name ein',
-            'name.unique' =>'Die Kategorie name ist bereits registriert',
+            'name.required' => 'Bitte geben Sie die Kategorie name ein',
+            'name.unique' => 'Die Kategorie name ist bereits registriert',
 
         ]);
         abschnitte::create([
@@ -54,7 +55,7 @@ class AbschnitteController extends Controller
 
         ]);
 
-        session()->flash('Add' , 'Die Kategorie wurde erfolgreich hinzugefügt');
+        session()->flash('Add', 'Die Kategorie wurde erfolgreich hinzugefügt');
         return redirect("/handys_kategorien");
     }
 
@@ -83,12 +84,12 @@ class AbschnitteController extends Controller
 
         $this->validate($request, [
 
-            'name' => 'required|max:255|unique:abschnittes,name,'.$id,
+            'name' => 'required|max:255|unique:abschnittes,name,' . $id,
 
-        ],[
+        ], [
 
-            'name.required' =>'Bitte geben Sie die Kategorie name ein',
-            'name.unique' =>'Die Kategorie name ist bereits registriert',
+            'name.required' => 'Bitte geben Sie die Kategorie name ein',
+            'name.unique' => 'Die Kategorie name ist bereits registriert',
 
         ]);
 
@@ -102,7 +103,7 @@ class AbschnitteController extends Controller
             'section_name' => $request->name,
         ]);
 
-        session()->flash('Edit','Die Kategorie wurde erfolgreich geändert');
+        session()->flash('Edit', 'Die Kategorie wurde erfolgreich geändert');
         return redirect('/handys_kategorien');
     }
 
@@ -114,7 +115,7 @@ class AbschnitteController extends Controller
         $id = $request->id;
         abschnitte::find($id)->delete();
 
-        session()->flash('Delete','Die Kategorie wurde erfolgreich gelöscht');
+        session()->flash('Delete', 'Die Kategorie wurde erfolgreich gelöscht');
         return redirect('/handys_kategorien');
     }
 }

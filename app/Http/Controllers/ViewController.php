@@ -23,22 +23,23 @@ class ViewController extends Controller
         $accessories = accessories::all();
         $accessories_brand = accessories::pluck('brand')->unique();
         $services_sections = ServicesSections::all();
-        return view('index' , compact('information' , 'handys' , 'services' , 'accessories' , 'handys_sectionsNew' , 'handys_sectionsUsed' , 'accessories_brand' , 'services_sections'));
+        return view('index', compact('information', 'handys', 'services', 'accessories', 'handys_sectionsNew', 'handys_sectionsUsed', 'accessories_brand', 'services_sections'));
     }
 
     public function showNewMobiles($section_name)
     {
-        $handys = handys::where('section_name', $section_name)->where('status' , 'Neu')->paginate(9);
+        $handys = handys::where('section_name', $section_name)->where('status', 'Neu')->paginate(9);
 
         return view('Handys.show_mobiles', compact('handys'));
     }
 
     public function showUsedMobiles($section_name)
     {
-        $handys = handys::where('section_name', $section_name)->where('status' , 'Gebraucht')->paginate(9);
+        $handys = handys::where('section_name', $section_name)->where('status', 'Gebraucht')->paginate(9);
 
         return view('Handys.show_mobiles', compact('handys'));
     }
+
     public function showMobiles()
     {
         $handys = handys::paginate(9);
@@ -108,17 +109,15 @@ class ViewController extends Controller
         return response()->json(['html' => $html]);
     }
 
-    public function showAccessories(Request $request , $brand = null , $section_name = null)
+    public function showAccessories(Request $request, $brand = null, $section_name = null)
     {
 
-        if ($request->routeIs('show_accessories')){
+        if ($request->routeIs('show_accessories')) {
 
-            $accessories = accessories::where('brand' , $brand)->where('section_name', $section_name)->paginate(9);
+            $accessories = accessories::where('brand', $brand)->where('section_name', $section_name)->paginate(9);
             return view('Accessories.show_accessories', compact('accessories'));
 
-        }
-
-        else{
+        } else {
 
             $accessories = accessories::paginate(9);
             return view('Accessories.show_all_accessories', compact('accessories'));
@@ -131,7 +130,7 @@ class ViewController extends Controller
         $query = Accessories::query();
 
         if ($request->has('brand') && $request->has('section_name')) {
-            $query->where('brand', $request->get('brand'))->where('section_name' , $request->get('section_name'));
+            $query->where('brand', $request->get('brand'))->where('section_name', $request->get('section_name'));
         }
 
         //paginate to get data for the page only
@@ -188,19 +187,17 @@ class ViewController extends Controller
         return response()->json(['html' => $html]);
     }
 
-    public function showServices(Request $request , $section_name = null)
+    public function showServices(Request $request, $section_name = null)
     {
 
-        if ($request->routeIs('show_services')){
+        if ($request->routeIs('show_services')) {
 
             $section_name = str_replace('-', ' ', urldecode($section_name));
-            $services = Services::where('section_name' , $section_name)->paginate(9);
+            $services = Services::where('section_name', $section_name)->paginate(9);
 
             return view('Services.show_services', compact('services'));
 
-        }
-
-        else{
+        } else {
 
             $services = Services::paginate(9);
             return view('Services.show_all_services', compact('services'));
@@ -213,7 +210,7 @@ class ViewController extends Controller
         $query = Services::query();
 
         if ($request->has('sectionName')) {
-            $query->where('section_name' , $request->get('sectionName'));
+            $query->where('section_name', $request->get('sectionName'));
         }
 
         //paginate to get data for the page only

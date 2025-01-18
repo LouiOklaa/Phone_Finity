@@ -4,81 +4,92 @@
 @endsection
 @section('CSS')
     <style>
-    .preview-item:hover {
-        background-color: #2B2F3A;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        padding-left: 10px;
-        padding-right: 10px;
-        border-radius: 20px;
-    }
+        .preview-item:hover {
+            background-color: #2B2F3A;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 20px;
+        }
 
-    .paginator-container {
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-    }
-    .paginator {
-        display: inline-flex;
-        align-items: center;
-        gap: 4px;
-        font-size: 0.8rem;
-    }
-    .paginator a, .paginator span {
-        padding: 6px 10px;
-        margin: 0 2px;
-        border-radius: 5px;
-        text-decoration: none;
-        color: #6C7293;
-        transition: all 0.3s;
-    }
-    .paginator a:hover {
-        background-color: #007bff;
-        color: white;
-    }
-    .paginator .active {
-        background-color: #007bff;
-        color: white;
-        font-weight: bold;
-    }
-    .paginator .disabled {
-        color: #ccc;
-        cursor: not-allowed;
-    }
-    .paginator .previous,
-    .paginator .next {
-        color: #007BFF;
-        font-size: 1rem;
-        padding: 6px 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 5px;
-    }
-    .paginator .previous:after {
-        content: "<";
-        font-weight: bold;
-    }
-    .paginator .next:after {
-        content: ">";
-        font-weight: bold;
-    }
-    .paginator .previous:hover,
-    .paginator .next:hover {
-        color: white;
-        background-color: #007bff;
-    }
-    .paginator .ellipsis {
-        padding: 6px 8px;
-        color: #6C7293;
-        font-weight: bold;
-    }
-    .paginator .ellipsis {
-        padding: 6px 8px;
-        color: #6C7293;
-        font-weight: bold;
-        display: inline-block;
-    }
+        .paginator-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .paginator {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.8rem;
+        }
+
+        .paginator a, .paginator span {
+            padding: 6px 10px;
+            margin: 0 2px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #6C7293;
+            transition: all 0.3s;
+        }
+
+        .paginator a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .paginator .active {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+        }
+
+        .paginator .disabled {
+            color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .paginator .previous,
+        .paginator .next {
+            color: #007BFF;
+            font-size: 1rem;
+            padding: 6px 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+        }
+
+        .paginator .previous:after {
+            content: "<";
+            font-weight: bold;
+        }
+
+        .paginator .next:after {
+            content: ">";
+            font-weight: bold;
+        }
+
+        .paginator .previous:hover,
+        .paginator .next:hover {
+            color: white;
+            background-color: #007bff;
+        }
+
+        .paginator .ellipsis {
+            padding: 6px 8px;
+            color: #6C7293;
+            font-weight: bold;
+        }
+
+        .paginator .ellipsis {
+            padding: 6px 8px;
+            color: #6C7293;
+            font-weight: bold;
+            display: inline-block;
+        }
     </style>
 @endsection
 @section('contents')
@@ -92,8 +103,8 @@
                         <li class="list-inline-item">L</li>
                         <li class="list-inline-item">L</li>
                         <li class="list-inline-item">E</li>
-                        <li class="list-inline-item"> </li>
-                        <li class="list-inline-item"> </li>
+                        <li class="list-inline-item"></li>
+                        <li class="list-inline-item"></li>
                         <li class="list-inline-item">N</li>
                         <li class="list-inline-item">A</li>
                         <li class="list-inline-item">C</li>
@@ -133,13 +144,16 @@
                                     </a>
                                 @endforeach
                             </div>
-                            <div class="text-center shift-lg paginator-container" data-inview-showup="showup-translate-up">
+                            <div class="text-center shift-lg paginator-container"
+                                 data-inview-showup="showup-translate-up">
                                 <div class="paginator">
                                     {{-- Link to Previous Page --}}
                                     @if ($latestEmails->onFirstPage())
-                                        <span class="previous disabled"><i class="fas fa-angle-left" aria-hidden="true"></i></span>
+                                        <span class="previous disabled"><i class="fas fa-angle-left"
+                                                                           aria-hidden="true"></i></span>
                                     @else
-                                        <a href="{{ $latestEmails->previousPageUrl() }}" class="previous"><i class="fas fa-angle-left" aria-hidden="true"></i></a>
+                                        <a href="{{ $latestEmails->previousPageUrl() }}" class="previous"><i
+                                                class="fas fa-angle-left" aria-hidden="true"></i></a>
                                     @endif
 
                                     {{-- Loop through available pages --}}
@@ -162,9 +176,11 @@
 
                                     {{-- Link to Next Page --}}
                                     @if ($latestEmails->hasMorePages())
-                                        <a href="{{ $latestEmails->nextPageUrl() }}" class="next"><i class="fas fa-angle-right" aria-hidden="true"></i></a>
+                                        <a href="{{ $latestEmails->nextPageUrl() }}" class="next"><i
+                                                class="fas fa-angle-right" aria-hidden="true"></i></a>
                                     @else
-                                        <span class="next disabled"><i class="fas fa-angle-right" aria-hidden="true"></i></span>
+                                        <span class="next disabled"><i class="fas fa-angle-right"
+                                                                       aria-hidden="true"></i></span>
                                     @endif
                                 </div>
                             </div>

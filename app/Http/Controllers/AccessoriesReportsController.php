@@ -12,7 +12,7 @@ class AccessoriesReportsController extends Controller
 {
     function __construct()
     {
-        $this->middleware('permission:Berichte', ['only' => ['index' , 'SearchAccessories' , 'AccessoriesReportsExport']]);
+        $this->middleware('permission:Berichte', ['only' => ['index', 'SearchAccessories', 'AccessoriesReportsExport']]);
     }
 
     /**
@@ -23,7 +23,8 @@ class AccessoriesReportsController extends Controller
         return view('Reports.accessories_reports');
     }
 
-    public function SearchAccessories(Request $request){
+    public function SearchAccessories(Request $request)
+    {
 
 
         $radio = $request->radio;
@@ -37,52 +38,44 @@ class AccessoriesReportsController extends Controller
         if ($radio == 1) {
 
             //Without Select Date
-            if ($product_category && $product_brand && $start_at =='' && $end_at =='') {
+            if ($product_category && $product_brand && $start_at == '' && $end_at == '') {
 
-                if ($product_brand == 'Alle'){
+                if ($product_brand == 'Alle') {
 
-                    $products = Accessories::select('*')->where('section_id','=',$product_category)->get();
-                    return view('Reports.accessories_reports',compact('product_category' , 'product_brand'))->withDetails($products);
+                    $products = Accessories::select('*')->where('section_id', '=', $product_category)->get();
+                    return view('Reports.accessories_reports', compact('product_category', 'product_brand'))->withDetails($products);
 
-                }
+                } else {
 
-                else{
-
-                    $products = Accessories::select('*')->where('section_id','=',$product_category)->where('brand','=',$product_brand)->get();
-                    return view('Reports.accessories_reports',compact('product_category' , 'product_brand'))->withDetails($products);
+                    $products = Accessories::select('*')->where('section_id', '=', $product_category)->where('brand', '=', $product_brand)->get();
+                    return view('Reports.accessories_reports', compact('product_category', 'product_brand'))->withDetails($products);
 
                 }
 
-            }
-
-            //With Select Date
+            } //With Select Date
             else {
 
-                if ($product_brand == 'Alle'){
+                if ($product_brand == 'Alle') {
 
-                    $products = Accessories::whereBetween('created_at', [$start_at, $end_at])->where('section_id','=',$product_category)->get();
-                    if ($start_at !='' && $end_at !=''){
+                    $products = Accessories::whereBetween('created_at', [$start_at, $end_at])->where('section_id', '=', $product_category)->get();
+                    if ($start_at != '' && $end_at != '') {
                         $start_at = Carbon::parse($start_at)->format('d.m.Y');
                         $end_at = Carbon::parse($end_at)->format('d.m.Y');
                     }
-                    return view('Reports.accessories_reports', compact('product_category' , 'product_brand' , 'start_at', 'end_at'))->withDetails($products);
-                }
+                    return view('Reports.accessories_reports', compact('product_category', 'product_brand', 'start_at', 'end_at'))->withDetails($products);
+                } else {
 
-                else{
-
-                    $products = Accessories::whereBetween('created_at', [$start_at, $end_at])->where('section_id','=',$product_category)->where('brand','=',$product_brand)->get();
-                    if ($start_at !='' && $end_at !=''){
+                    $products = Accessories::whereBetween('created_at', [$start_at, $end_at])->where('section_id', '=', $product_category)->where('brand', '=', $product_brand)->get();
+                    if ($start_at != '' && $end_at != '') {
                         $start_at = Carbon::parse($start_at)->format('d.m.Y');
                         $end_at = Carbon::parse($end_at)->format('d.m.Y');
                     }
-                    return view('Reports.accessories_reports', compact('product_category' , 'product_brand', 'start_at', 'end_at'))->withDetails($products);
+                    return view('Reports.accessories_reports', compact('product_category', 'product_brand', 'start_at', 'end_at'))->withDetails($products);
 
                 }
             }
 
-        }
-
-        //Search With Invoice Number
+        } //Search With Invoice Number
         else {
 
             $products = Accessories::select('*')->where('name', 'LIKE', '%' . $request->product_name . '%')->get();
@@ -93,7 +86,7 @@ class AccessoriesReportsController extends Controller
 
     }
 
-    public function AccessoriesReportsExport(Request $request , $PageId)
+    public function AccessoriesReportsExport(Request $request, $PageId)
     {
         $details = json_decode($request->input('details'), true);
         return Excel::download(new ExportExcel($PageId, $details), 'Zubehörberichte.xlsx');

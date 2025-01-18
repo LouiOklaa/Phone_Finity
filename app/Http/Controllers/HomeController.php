@@ -29,6 +29,6 @@ class HomeController extends Controller
 
         $latestEmails = EmailLog::latest()->take(4)->get();
 
-        return view('dashboard.dashboard' , compact('latestEmails'));
+        return view('dashboard.dashboard', compact('latestEmails'));
     }
 }

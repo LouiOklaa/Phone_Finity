@@ -29,7 +29,7 @@ class AccessoriesController extends Controller
         $sections = accessories_sections::all();
         $brand = abschnitte::pluck('name');
         $accessories = accessories::paginate(10);
-        return view('Accessories.accessories' , compact('sections' , 'accessories' , 'brand'));
+        return view('Accessories.accessories', compact('sections', 'accessories', 'brand'));
     }
 
     /**
@@ -46,7 +46,7 @@ class AccessoriesController extends Controller
     public function store(Request $request)
     {
 
-        $validatedData=$request->validate([
+        $validatedData = $request->validate([
 
             'name' => 'required',
             'section_id' => 'required',
@@ -54,18 +54,18 @@ class AccessoriesController extends Controller
             'brand' => 'required',
             'image' => 'required',
 
-        ],[
+        ], [
 
-            'name.required' =>'Bitte geben Sie den Handynamen ein',
-            'section_id.required' =>'Bitte wählen Sie die Kategorie aus',
-            'price.required' =>'Bitte geben Sie den Preis an',
-            'brand.required' =>'Bitte geben Sie den Marke an',
-            'image.required' =>'Bitte geben Sie den Foto an',
+            'name.required' => 'Bitte geben Sie den Handynamen ein',
+            'section_id.required' => 'Bitte wählen Sie die Kategorie aus',
+            'price.required' => 'Bitte geben Sie den Preis an',
+            'brand.required' => 'Bitte geben Sie den Marke an',
+            'image.required' => 'Bitte geben Sie den Foto an',
 
 
         ]);
 
-        $section_name = accessories_sections::where('id' , $request->section_id)->first()->name;
+        $section_name = accessories_sections::where('id', $request->section_id)->first()->name;
 
         $img = $request->file('image');
         $file_name = rand() . '.' . $img->getClientOriginalExtension();
@@ -86,7 +86,7 @@ class AccessoriesController extends Controller
         // Move Files
         $request->image->move(public_path('Attachments/Accessories'), $file_name);
 
-        session()->flash('Add' , 'Das Produkt wurde erfolgreich hinzugefügt');
+        session()->flash('Add', 'Das Produkt wurde erfolgreich hinzugefügt');
         return redirect('/zubehör');
     }
 
@@ -124,35 +124,35 @@ class AccessoriesController extends Controller
 
         ]);
 
-        $id = accessories_sections::where('name' , $request->section_name)->first()->id;
-        $section_name = accessories_sections::where('name' , $request->section_name)->first()->name;
+        $id = accessories_sections::where('name', $request->section_name)->first()->id;
+        $section_name = accessories_sections::where('name', $request->section_name)->first()->name;
 
 
         $accessories = accessories::findOrFail($request->id);
 
-            $accessories->update([
-                'name' => $request->name,
-                'section_id' => $id,
-                'section_name' => $section_name,
-                'brand' => $request->brand,
-                'price' => $request->price,
-                'note' => $request->note,
-            ]);
+        $accessories->update([
+            'name' => $request->name,
+            'section_id' => $id,
+            'section_name' => $section_name,
+            'brand' => $request->brand,
+            'price' => $request->price,
+            'note' => $request->note,
+        ]);
 
-            if ($request->hasFile('image')){
+        if ($request->hasFile('image')) {
 
-                Storage::disk('public_accessories')->delete($accessories->image);
+            Storage::disk('public_accessories')->delete($accessories->image);
 
-                $img = $request->file('image');
-                $file_name = rand() . '.' . $img->getClientOriginalExtension();
-                $accessories->image = $file_name;
-                $accessories->save();
+            $img = $request->file('image');
+            $file_name = rand() . '.' . $img->getClientOriginalExtension();
+            $accessories->image = $file_name;
+            $accessories->save();
 
-                // Move File
-                $request->image->move(public_path('Attachments/Accessories'), $file_name);
-            }
+            // Move File
+            $request->image->move(public_path('Attachments/Accessories'), $file_name);
+        }
 
-        session()->flash('Edit','Des Produkt wurde erfolgreich geändert');
+        session()->flash('Edit', 'Des Produkt wurde erfolgreich geändert');
         return redirect('/zubehör');
     }
 
@@ -162,13 +162,13 @@ class AccessoriesController extends Controller
     public function destroy(Request $request)
     {
 
-        $image = accessories::where('id' , $request->id)->first()->image;
+        $image = accessories::where('id', $request->id)->first()->image;
         $accessories = accessories::findOrFail($request->id);
         $accessories->delete();
 
         Storage::disk('public_accessories')->delete($image);
 
-        session()->flash('Delete','Das Produkt wurde erfolgreich gelöscht');
+        session()->flash('Delete', 'Das Produkt wurde erfolgreich gelöscht');
         return back();
 
     }

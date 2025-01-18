@@ -23,6 +23,7 @@
             flex-direction: column;
             justify-content: flex-start;
         }
+
         .form-control {
             height: 40px;
         }
@@ -49,7 +50,8 @@
                                 <li class="list-inline-item">E</li>
                             </ul>
                             <div class="card">
-                                <form action="{{route('mobiles_search')}}" method="POST" role="search" autocomplete="off">
+                                <form action="{{route('mobiles_search')}}" method="POST" role="search"
+                                      autocomplete="off">
                                     {{ csrf_field() }}
 
                                     <div class="col-lg-4">
@@ -64,16 +66,22 @@
                                             <input name="radio" value="2" type="radio" id="name_div">
                                             <span>Suche nach Handynamen</span>
                                         </label>
-                                    </div><br><br>
+                                    </div>
+                                    <br><br>
 
                                     <div class="row">
                                         <!-- Search by type and status -->
                                         <div class="col-lg-3" id="mobiles_type">
                                             <p class="mg-b-10">Kategorie des Handys</p>
-                                            <select id="kategorie" class="form-control select" name="mobiles_type" style="color: #6C7293;" required>
-                                                <option value="null" disabled {{ (old('mobiles_type') == null && !isset($mobiles_type)) ? 'selected' : '' }}>Kategorie wählen</option>
+                                            <select id="kategorie" class="form-control select" name="mobiles_type"
+                                                    style="color: #6C7293;" required>
+                                                <option value="null"
+                                                        disabled {{ (old('mobiles_type') == null && !isset($mobiles_type)) ? 'selected' : '' }}>
+                                                    Kategorie wählen
+                                                </option>
                                                 @foreach($categories as $one)
-                                                    <option value="{{ $one->id }}" {{ (old('mobiles_type') == $one->id || isset($mobiles_type) && $mobiles_type == $one->id) ? 'selected' : '' }}>{{ $one->name }}</option>
+                                                    <option
+                                                        value="{{ $one->id }}" {{ (old('mobiles_type') == $one->id || isset($mobiles_type) && $mobiles_type == $one->id) ? 'selected' : '' }}>{{ $one->name }}</option>
                                                 @endforeach
                                             </select>
 
@@ -81,11 +89,24 @@
 
                                         <div class="col-lg-3" id="mobiles_status">
                                             <p class="mg-b-10">Zustand des Handys</p>
-                                            <select id="zustand" class="form-control select2" name="mobiles_status" style="color: #6C7293;" required>
-                                                <option value="null" disabled {{ (old('mobiles_status') == null && !isset($mobiles_status)) ? 'selected' : '' }}>Zustand wählen</option>
-                                                <option value="Alle" {{ (old('mobiles_status') == 'Alle' || isset($mobiles_status) && $mobiles_status == 'Alle') ? 'selected' : '' }}>Alle</option>
-                                                <option value="Neu" {{ (old('mobiles_status') == 'Neu' || isset($mobiles_status) && $mobiles_status == 'Neu') ? 'selected' : '' }}>Neu</option>
-                                                <option value="Gebraucht" {{ (old('mobiles_status') == 'Gebraucht' || isset($mobiles_status) && $mobiles_status == 'Gebraucht') ? 'selected' : '' }}>Gebraucht</option>
+                                            <select id="zustand" class="form-control select2" name="mobiles_status"
+                                                    style="color: #6C7293;" required>
+                                                <option value="null"
+                                                        disabled {{ (old('mobiles_status') == null && !isset($mobiles_status)) ? 'selected' : '' }}>
+                                                    Zustand wählen
+                                                </option>
+                                                <option
+                                                    value="Alle" {{ (old('mobiles_status') == 'Alle' || isset($mobiles_status) && $mobiles_status == 'Alle') ? 'selected' : '' }}>
+                                                    Alle
+                                                </option>
+                                                <option
+                                                    value="Neu" {{ (old('mobiles_status') == 'Neu' || isset($mobiles_status) && $mobiles_status == 'Neu') ? 'selected' : '' }}>
+                                                    Neu
+                                                </option>
+                                                <option
+                                                    value="Gebraucht" {{ (old('mobiles_status') == 'Gebraucht' || isset($mobiles_status) && $mobiles_status == 'Gebraucht') ? 'selected' : '' }}>
+                                                    Gebraucht
+                                                </option>
                                             </select>
 
                                         </div>
@@ -93,7 +114,9 @@
                                         <!-- Search by name -->
                                         <div class="col-lg-3" id="mobile_name" style="display: none;">
                                             <p class="mg-b-10">Name des Handys</p>
-                                            <input type="text" name="mobile_name" class="form-control text-muted" placeholder="Geben Sie den Handynamen ein" value="{{ old('mobile_name', isset($mobile_name) ? $mobile_name : '') }}">
+                                            <input type="text" name="mobile_name" class="form-control text-muted"
+                                                   placeholder="Geben Sie den Handynamen ein"
+                                                   value="{{ old('mobile_name', isset($mobile_name) ? $mobile_name : '') }}">
                                         </div>
 
                                         <div class="col-lg-3" id="start_at">
@@ -104,7 +127,9 @@
                                                         <i class="mdi mdi-18px mdi-calendar"></i>
                                                     </div>
                                                 </div>
-                                                <input class="form-control fc-datepicker" value="{{ $start_at ?? '' }}" name="start_at" placeholder="TT.MM.JJJJ" type="text" style="color: #6C7293;">
+                                                <input class="form-control fc-datepicker" value="{{ $start_at ?? '' }}"
+                                                       name="start_at" placeholder="TT.MM.JJJJ" type="text"
+                                                       style="color: #6C7293;">
                                             </div>
                                         </div>
 
@@ -116,7 +141,9 @@
                                                         <i class="mdi mdi-18px mdi-calendar"></i>
                                                     </div>
                                                 </div>
-                                                <input class="form-control fc-datepicker" value="{{ $end_at ?? '' }}" name="end_at" placeholder="TT.MM.JJJJ" type="text" style="color: #6C7293;">
+                                                <input class="form-control fc-datepicker" value="{{ $end_at ?? '' }}"
+                                                       name="end_at" placeholder="TT.MM.JJJJ" type="text"
+                                                       style="color: #6C7293;">
                                             </div>
                                         </div>
                                     </div>
@@ -127,7 +154,9 @@
                                         <form action="{{ route('export_MobilesReports', 3) }}" method="POST">
                                             @csrf
                                             <input type="hidden" name="details" value="{{ json_encode($details) }}">
-                                            <button type="submit" class="btn btn-inverse-success btn-block mt-3">Export Excel</button>
+                                            <button type="submit" class="btn btn-inverse-success btn-block mt-3">Export
+                                                Excel
+                                            </button>
                                         </form>
                                     @endcan
                                 @endif
@@ -135,7 +164,8 @@
 
                             @if (isset($details))
                                 <div class="table-responsive">
-                                    <table id="example1" class="table key-buttons text-md-nowrap" data-page-length='50' style=" text-align: center">
+                                    <table id="example1" class="table key-buttons text-md-nowrap" data-page-length='50'
+                                           style=" text-align: center">
                                         <thead>
                                         <tr>
                                             <th>#</th>
@@ -149,9 +179,9 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <?php $i=0?>
+                                            <?php $i = 0 ?>
                                         @foreach($details as $x)
-                                            <?php $i ++?>
+                                                <?php $i++ ?>
                                             <tr>
                                                 <td>{{$i}}</td>
                                                 <td>{{$x->name}}</td>
@@ -174,7 +204,8 @@
                                     </table>
                                     @if(count($details) === 0)
                                         <br>
-                                        <p class="text-center text-muted" style="font-size: 18px">Keine Daten gefunden</p>
+                                        <p class="text-center text-muted" style="font-size: 18px">Keine Daten
+                                            gefunden</p>
                                     @endif
                                 </div>
                             @endif
@@ -192,7 +223,7 @@
                 }).val();
             </script>
             <script>
-                $(document).ready(function() {
+                $(document).ready(function () {
 
                     var selectedRadio = "{{ isset($radio) ? $radio : 1 }}";
 
@@ -212,7 +243,7 @@
                         $('#name_div').prop('checked', true);
                     }
 
-                    $('input[type="radio"]').click(function() {
+                    $('input[type="radio"]').click(function () {
                         if ($(this).attr('id') == 'type_div') {
                             $('#mobile_name').hide();
                             $('#mobiles_type').show();
@@ -229,6 +260,5 @@
                     });
                 });
             </script>
-
 
 @endsection

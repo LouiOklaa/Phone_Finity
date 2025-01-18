@@ -56,7 +56,9 @@
                             </ul>
                             <div class="d-flex justify-content-between">
                                 @can('ExportExcel')
-                                <a href="{{route('export_mobiles' , 1)}}" style="width: 160px; height: 30px; margin-right: 10px; text-align: center" type="button" class="btn btn-inverse-success btn-rounded">Export Excel</a>
+                                    <a href="{{route('export_mobiles' , 1)}}"
+                                       style="width: 160px; height: 30px; margin-right: 10px; text-align: center"
+                                       type="button" class="btn btn-inverse-success btn-rounded">Export Excel</a>
                                 @endcan
                                 @can('GerätHinzufügen')
                                     <button style="height: 30px" type="button"
@@ -67,12 +69,21 @@
                             </div>
                             <div class="row justify-content-between align-items-center mt-3">
                                 <div class="col-md-6">
-                                    <input id="search-input" type="text" class="form-control text-muted" placeholder="Suchen..."
+                                    <input id="search-input" type="text" class="form-control text-muted"
+                                           placeholder="Suchen..."
                                            style="width: 200px; height: 30px; font-size: 14px; border-radius: 15px;">
                                 </div>
                                 <div class=" col-md-6 text-muted text-right" style="font-size: 14px">
-                                    Anzeigen von @if($handys->firstItem()==0)0 @else {{ $handys->firstItem() }} @endif
-                                    bis @if($handys->lastItem()==0) 0 @else {{ $handys->lastItem() }} @endif
+                                    Anzeigen von @if($handys->firstItem()==0)
+                                        0
+                                    @else
+                                        {{ $handys->firstItem() }}
+                                    @endif
+                                    bis @if($handys->lastItem()==0)
+                                        0
+                                    @else
+                                        {{ $handys->lastItem() }}
+                                    @endif
                                     von {{ $handys->total() }} gesamt
                                 </div>
                             </div>
@@ -94,7 +105,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <?php $i = 0 ?>
+                                        <?php $i = 0 ?>
                                     @foreach($handys as $one)
                                             <?php $i++ ?>
                                         <tr>
@@ -110,24 +121,25 @@
                                                 <td>{{$one->note}}</td>
                                             @endif
                                             <td><a href="{{asset( 'Attachments/Handys/' . $one->image)}}"><img
-                                                            src="Attachments/Handys/{{$one->image}}"
-                                                            style="height:30px; width:50px; border-radius: 0;"></a></td>
+                                                        src="Attachments/Handys/{{$one->image}}"
+                                                        style="height:30px; width:50px; border-radius: 0;"></a></td>
                                             <td>
                                                 @can('GerätBearbeiten')
-                                                <button class="btn btn-sm btn-rounded btn-inverse-primary"
-                                                        href="#edit_modal" title="Edit" data-id="{{$one->id}}"
-                                                        data-name="{{$one->name}}"
-                                                        data-section_name="{{$one->section_name}}"
-                                                        data-status="{{$one->status}}" data-preis="{{$one->preis}}"
-                                                        data-amount="{{$one->amount}}" data-note="{{$one->note}}"
-                                                        data-toggle="modal">Bearbeiten
-                                                </button>
+                                                    <button class="btn btn-sm btn-rounded btn-inverse-primary"
+                                                            href="#edit_modal" title="Edit" data-id="{{$one->id}}"
+                                                            data-name="{{$one->name}}"
+                                                            data-section_name="{{$one->section_name}}"
+                                                            data-status="{{$one->status}}" data-preis="{{$one->preis}}"
+                                                            data-amount="{{$one->amount}}" data-note="{{$one->note}}"
+                                                            data-toggle="modal">Bearbeiten
+                                                    </button>
                                                 @endcan
                                                 @can('GerätLöschen')
-                                                <button class="btn btn-sm btn-rounded btn-inverse-danger" title="Delete"
-                                                        href="#delete_modal" data-id="{{$one->id}}"
-                                                        data-name="{{$one->name}}" data-toggle="modal">Löschen
-                                                </button>
+                                                    <button class="btn btn-sm btn-rounded btn-inverse-danger"
+                                                            title="Delete"
+                                                            href="#delete_modal" data-id="{{$one->id}}"
+                                                            data-name="{{$one->name}}" data-toggle="modal">Löschen
+                                                    </button>
                                                 @endcan
                                             </td>
                                         </tr>
@@ -135,13 +147,16 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="text-center shift-lg paginator-container" data-inview-showup="showup-translate-up">
+                            <div class="text-center shift-lg paginator-container"
+                                 data-inview-showup="showup-translate-up">
                                 <div class="paginator">
                                     {{-- Link to Previous Page --}}
                                     @if ($handys->onFirstPage())
-                                        <span class="previous disabled"><i class="fas fa-angle-left" aria-hidden="true"></i></span>
+                                        <span class="previous disabled"><i class="fas fa-angle-left"
+                                                                           aria-hidden="true"></i></span>
                                     @else
-                                        <a href="{{ $handys->previousPageUrl() }}" class="previous"><i class="fas fa-angle-left" aria-hidden="true"></i></a>
+                                        <a href="{{ $handys->previousPageUrl() }}" class="previous"><i
+                                                class="fas fa-angle-left" aria-hidden="true"></i></a>
                                     @endif
 
                                     {{-- Loop through available pages --}}
@@ -164,9 +179,11 @@
 
                                     {{-- Link to Next Page --}}
                                     @if ($handys->hasMorePages())
-                                        <a href="{{ $handys->nextPageUrl() }}" class="next"><i class="fas fa-angle-right" aria-hidden="true"></i></a>
+                                        <a href="{{ $handys->nextPageUrl() }}" class="next"><i
+                                                class="fas fa-angle-right" aria-hidden="true"></i></a>
                                     @else
-                                        <span class="next disabled"><i class="fas fa-angle-right" aria-hidden="true"></i></span>
+                                        <span class="next disabled"><i class="fas fa-angle-right"
+                                                                       aria-hidden="true"></i></span>
                                     @endif
                                 </div>
                             </div>
@@ -180,7 +197,7 @@
                             <div class="modal-header">
                                 <h6 class="modal-title">Handy Hinzufügen</h6>
                                 <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span
-                                            aria-hidden="true">&times;</span></button>
+                                        aria-hidden="true">&times;</span></button>
                             </div>
                             <div class="modal-body">
                                 <form action="{{route('handys.store')}}" method="post" enctype="multipart/form-data"
@@ -193,7 +210,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="my-1 mr-2" for="section_id">Kategorie :</label>
-                                        <select name="section_id" id="section_id" class="form-control text-muted select2">
+                                        <select name="section_id" id="section_id"
+                                                class="form-control text-muted select2">
                                             <option value="#" selected disabled>-- Kategorie auswählen --</option>
                                             @foreach ($abschnitte as $x)
                                                 <option value="{{ $x->id }}">{{ $x->name }}</option>
@@ -202,7 +220,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="status" class="col-form-label">Zustand :</label>
-                                        <select name="status" id="status" class="form-control text-muted" onchange="myFunction()">
+                                        <select name="status" id="status" class="form-control text-muted"
+                                                onchange="myFunction()">
                                             <!--placeholder-->
                                             <option value="" selected disabled>-- Zustand auswählen --</option>
                                             <option value="Neu">Neu</option>
@@ -219,7 +238,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="note">Beschreibung :</label>
-                                        <textarea class="form-control text-muted" name="note" id="note" rows="3"></textarea>
+                                        <textarea class="form-control text-muted" name="note" id="note"
+                                                  rows="3"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>Handy Foto </label>
@@ -229,8 +249,10 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-rounded btn-outline-primary">Bestätigung</button>
-                                        <button type="button" class="btn btn-rounded btn-outline-secondary" data-dismiss="modal">
+                                        <button type="submit" class="btn btn-rounded btn-outline-primary">Bestätigung
+                                        </button>
+                                        <button type="button" class="btn btn-rounded btn-outline-secondary"
+                                                data-dismiss="modal">
                                             Abbrechen
                                         </button>
                                     </div>
@@ -247,7 +269,7 @@
                             <div class="modal-header">
                                 <h4 class="modal-title">Handy bearbeiten</h4>
                                 <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span
-                                            aria-hidden="true">&times;</span></button>
+                                        aria-hidden="true">&times;</span></button>
                             </div>
                             <div class="modal-body">
                                 <form action="handys/update" method="post" enctype="multipart/form-data"
@@ -258,11 +280,13 @@
                                         <div class="form-group">
                                             <label for="name">Gerät Name :</label>
                                             <input type="hidden" class="form-control" id="id" name="id">
-                                            <input type="text" class="form-control text-muted" id="name" name="name" required>
+                                            <input type="text" class="form-control text-muted" id="name" name="name"
+                                                   required>
                                         </div>
                                         <div class="form-group">
                                             <label class="my-1 mr-2" for="section_name">Kategorie :</label>
-                                            <select name="section_name" id="section_name" class="form-control text-muted">
+                                            <select name="section_name" id="section_name"
+                                                    class="form-control text-muted">
                                                 @foreach ($abschnitte as $one)
                                                     <option> {{$one->name}} </option>
                                                 @endforeach
@@ -277,15 +301,18 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="preis" class="col-form-label">Preis :</label>
-                                            <input class="form-control text-muted" name="preis" id="preis" type="number" required>
+                                            <input class="form-control text-muted" name="preis" id="preis" type="number"
+                                                   required>
                                         </div>
                                         <div class="form-group">
                                             <label for="amount" class="col-form-label">Menge :</label>
-                                            <input class="form-control text-muted" name="amount" id="amount" type="number" required>
+                                            <input class="form-control text-muted" name="amount" id="amount"
+                                                   type="number" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="note">Beschreibung :</label>
-                                            <textarea class="form-control text-muted" name="note" id="note" rows="3"></textarea>
+                                            <textarea class="form-control text-muted" name="note" id="note"
+                                                      rows="3"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>Handy Foto </label>
@@ -316,7 +343,7 @@
                             <div class="modal-header">
                                 <h4 class="modal-title">Sind Sie sicher, dass Sie dieses Handy löschen möchten ?</h4>
                                 <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span
-                                            aria-hidden="true">&times;</span></button>
+                                        aria-hidden="true">&times;</span></button>
                             </div>
                             <div class="modal-body">
                                 <form action="handys/destroy" method="post">

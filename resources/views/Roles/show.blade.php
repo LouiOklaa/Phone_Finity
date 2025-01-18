@@ -97,7 +97,7 @@
                                         <a style="text-decoration: none " href="#">{{ $role->name }}</a>
                                         <ul>
                                             @if(!empty($rolePermissions))
-                                               @foreach($rolePermissions as $v)
+                                                @foreach($rolePermissions as $v)
                                                     <li style="color: #6C7293;">{{ $v->name }}</li>
                                                 @endforeach
                                             @endif
@@ -110,22 +110,22 @@
                 </div>
             </div>
         </div>
-<!-- content-wrapper ends -->
-@endsection
+        <!-- content-wrapper ends -->
+        @endsection
 
-@section('JS')
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Toggle Treeview display
-            const treeToggle = document.querySelector('#treeview1 > li > a');
-            treeToggle.addEventListener('click', function () {
-                const parentLi = this.parentElement;
-                parentLi.classList.toggle('open');
-                const nestedUl = parentLi.querySelector('ul');
-                if (nestedUl) {
-                    nestedUl.style.display = nestedUl.style.display === 'block' ? 'none' : 'block';
-                }
-            });
-        });
-    </script>
+        @section('JS')
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    // Toggle Treeview display
+                    const treeToggle = document.querySelector('#treeview1 > li > a');
+                    treeToggle.addEventListener('click', function () {
+                        const parentLi = this.parentElement;
+                        parentLi.classList.toggle('open');
+                        const nestedUl = parentLi.querySelector('ul');
+                        if (nestedUl) {
+                            nestedUl.style.display = nestedUl.style.display === 'block' ? 'none' : 'block';
+                        }
+                    });
+                });
+            </script>
 @endsection

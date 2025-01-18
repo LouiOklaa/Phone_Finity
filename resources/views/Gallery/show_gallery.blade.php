@@ -9,7 +9,15 @@
     <section class="content-section">
         <div class="container">
             <div class="showing shop-results-text">
-                Anzeigen von @if($projects->firstItem()==0)0 @else {{ $projects->firstItem() }} @endif bis @if($projects->lastItem()==0) 0 @else {{ $projects->lastItem() }} @endif von {{ $projects->total() }} gesamt
+                Anzeigen von @if($projects->firstItem()==0)
+                    0
+                @else
+                    {{ $projects->firstItem() }}
+                @endif bis @if($projects->lastItem()==0)
+                    0
+                @else
+                    {{ $projects->lastItem() }}
+                @endif von {{ $projects->total() }} gesamt
             </div>
             @if(count($projects) !== 0)
                 <div class="shuffle-js">
@@ -22,9 +30,11 @@
                                         <div class="block-link">
                                             <div class="image-wrap">
                                                 @if(in_array($mediaExtensions , ['jpg' , 'jpeg' , 'png' , 'gif']))
-                                                    <img class="image" src="Attachments/Galerie/{{$one->media}}" alt=""/>
+                                                    <img class="image" src="Attachments/Galerie/{{$one->media}}"
+                                                         alt=""/>
                                                 @elseif(in_array($mediaExtensions , ['mp4' , 'mkv' , 'mov']))
-                                                    <video class="image" src="Attachments/Galerie/{{$one->media}}" alt=""></video>
+                                                    <video class="image" src="Attachments/Galerie/{{$one->media}}"
+                                                           alt=""></video>
                                                 @endif
                                             </div>
                                             <div class="hover">
@@ -57,7 +67,8 @@
                 @if ($projects->onFirstPage())
                     <span class="previous disabled"><i class="fas fa-angle-left" aria-hidden="true"></i></span>
                 @else
-                    <a href="{{ $projects->previousPageUrl() }}" class="previous"><i class="fas fa-angle-left" aria-hidden="true"></i></a>
+                    <a href="{{ $projects->previousPageUrl() }}" class="previous"><i class="fas fa-angle-left"
+                                                                                     aria-hidden="true"></i></a>
                 @endif
 
                 {{-- Loop through available pages --}}
@@ -71,7 +82,8 @@
 
                 {{-- Link to Next Page --}}
                 @if ($projects->hasMorePages())
-                    <a href="{{ $projects->nextPageUrl() }}" class="next"><i class="fas fa-angle-right" aria-hidden="true"></i></a>
+                    <a href="{{ $projects->nextPageUrl() }}" class="next"><i class="fas fa-angle-right"
+                                                                             aria-hidden="true"></i></a>
                 @else
                     <span class="next disabled"><i class="fas fa-angle-right" aria-hidden="true"></i></span>
                 @endif

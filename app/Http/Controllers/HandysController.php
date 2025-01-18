@@ -28,7 +28,7 @@ class HandysController extends Controller
     {
         $abschnitte = abschnitte::all();
         $handys = handys::paginate(10);
-        return view('Handys.handys' , compact('abschnitte' , 'handys'));
+        return view('Handys.handys', compact('abschnitte', 'handys'));
     }
 
     /**
@@ -45,7 +45,7 @@ class HandysController extends Controller
     public function store(Request $request)
     {
 
-        $validatedData=$request->validate([
+        $validatedData = $request->validate([
 
             'name' => 'required|unique:handys',
             'section_id' => 'required',
@@ -54,19 +54,19 @@ class HandysController extends Controller
             'amount' => 'required',
             'image' => 'required',
 
-        ],[
+        ], [
 
-            'name.required' =>'Bitte geben Sie den Handynamen ein',
-            'name.unique' =>'Dieses Handy existiert bereits',
-            'section_id.required' =>'Bitte wählen Sie die Kategorie aus',
-            'status.required' =>'Bitte wählen Sie den Zustand des Handy aus',
-            'preis.required' =>'Bitte geben Sie den Handypreis an',
-            'amount.required' =>'Bitte geben Sie den Menge an',
-            'image.required' =>'Bitte geben Sie ein Handyfoto ein',
+            'name.required' => 'Bitte geben Sie den Handynamen ein',
+            'name.unique' => 'Dieses Handy existiert bereits',
+            'section_id.required' => 'Bitte wählen Sie die Kategorie aus',
+            'status.required' => 'Bitte wählen Sie den Zustand des Handy aus',
+            'preis.required' => 'Bitte geben Sie den Handypreis an',
+            'amount.required' => 'Bitte geben Sie den Menge an',
+            'image.required' => 'Bitte geben Sie ein Handyfoto ein',
 
         ]);
 
-        $section_name = abschnitte::where('id' , $request->section_id)->first()->name;
+        $section_name = abschnitte::where('id', $request->section_id)->first()->name;
 
         $img = $request->file('image');
         $file_name = rand() . '.' . $img->getClientOriginalExtension();
@@ -85,10 +85,10 @@ class HandysController extends Controller
 
         ]);
 
-            // Move Files
-            $request->image->move(public_path('Attachments/Handys'), $file_name);
+        // Move Files
+        $request->image->move(public_path('Attachments/Handys'), $file_name);
 
-        session()->flash('Add' , 'Das Handy wurde erfolgreich hinzugefügt');
+        session()->flash('Add', 'Das Handy wurde erfolgreich hinzugefügt');
         return redirect('/handys');
     }
 
@@ -113,13 +113,13 @@ class HandysController extends Controller
      */
     public function update(Request $request)
     {
-        $id = abschnitte::where('name' , $request->section_name)->first()->id;
-        $section_name = abschnitte::where('name' , $request->section_name)->first()->name;
+        $id = abschnitte::where('name', $request->section_name)->first()->id;
+        $section_name = abschnitte::where('name', $request->section_name)->first()->name;
 
 
         $handy = handys::findOrFail($request->id);
 
-        if ($handy->name == $request->name && $handy->section_id == $id ){
+        if ($handy->name == $request->name && $handy->section_id == $id) {
 
             $this->validate($request, [
 
@@ -145,7 +145,7 @@ class HandysController extends Controller
                 'amount' => $request->amount,
                 'note' => $request->note,
             ]);
-            if ($request->hasFile('image')){
+            if ($request->hasFile('image')) {
 
                 Storage::disk('public_handys')->delete($handy->image);
 
@@ -157,13 +157,11 @@ class HandysController extends Controller
                 // Move File
                 $request->image->move(public_path('Attachments/Handys'), $file_name);
             }
-        }
-
-        else {
+        } else {
             $this->validate($request, [
 
                 'name' => ['required', Rule::unique('handys')
-                    ->where(function ($query) use ($request , $id) {
+                    ->where(function ($query) use ($request, $id) {
                         return $query->where('name', $request->name)->where('section_id', $id);
                     })],
                 'section_name' => 'required',
@@ -188,7 +186,7 @@ class HandysController extends Controller
                 'amount' => $request->amount,
                 'note' => $request->note,
             ]);
-            if ($request->hasFile('image')){
+            if ($request->hasFile('image')) {
 
                 Storage::disk('public_handys')->delete($handy->image);
 
@@ -202,7 +200,7 @@ class HandysController extends Controller
             }
         }
 
-        session()->flash('Edit','Das Handy wurde erfolgreich geändert');
+        session()->flash('Edit', 'Das Handy wurde erfolgreich geändert');
         return redirect('/handys');
     }
 
@@ -212,13 +210,13 @@ class HandysController extends Controller
     public function destroy(Request $request)
     {
         $id = $request->id;
-        $image = handys::where('id' , $request->id)->first()->image;
+        $image = handys::where('id', $request->id)->first()->image;
 
         handys::findOrFail($id)->delete();
 
         Storage::disk('public_handys')->delete($image);
 
-        session()->flash('Delete','Das Handy wurde erfolgreich gelöscht');
+        session()->flash('Delete', 'Das Handy wurde erfolgreich gelöscht');
         return redirect('/handys');
     }
 
