@@ -487,6 +487,30 @@
     });
 </script>
 
+<!-- Cookies scripts -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const cookieModalAdmin = new bootstrap.Modal(document.getElementById("cookieModalAdmin"), {
+            backdrop: 'static',
+            keyboard: false
+        });
+
+        const cookiesAcceptedAdmin = localStorage.getItem("cookiesAcceptedAdmin");
+
+        if (!cookiesAcceptedAdmin) {
+            setTimeout(() => {
+                cookieModalAdmin.show();
+            }, 3000);
+        }
+
+        document.getElementById("acceptCookiesAdmin").addEventListener("click", () => {
+            localStorage.setItem("cookiesAcceptedAdmin", "true");
+            cookieModalAdmin.hide();
+        });
+    });
+
+</script>
+
 @yield('JS')
 
 </body>

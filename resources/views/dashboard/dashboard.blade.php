@@ -319,6 +319,28 @@
                 </div>
                 @endcan
             </div>
+                <!-- Modal for Cookies -->
+                <div class="modal fade" id="cookieModalAdmin" tabindex="-1" aria-labelledby="cookieModalAdminLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="cookieModalAdminLabel">Cookies Zustimmung</h5>
+                                <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>
+                                    Wir verwenden Cookies, um Ihre Erfahrung auf unserer Website zu verbessern und relevante Inhalte anzuzeigen.
+                                    Indem Sie auf "Akzeptieren" klicken, stimmen Sie der Verwendung von Cookies zu.
+                                    <a href="{{route('data_protection')}}" target="_blank">Mehr erfahren</a>.
+                                </p>
+                                <div class="modal-footer">
+                                    <button id="acceptCookiesAdmin" type="submit" class="btn btn-rounded btn-outline-primary">Akzeptieren</button>
+                                    <button type="button" class="btn btn-rounded btn-outline-secondary" data-dismiss="modal">Ablehnen</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </div>
         <!-- content-wrapper ends -->
 @endsection
