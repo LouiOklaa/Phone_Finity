@@ -39,13 +39,12 @@ class GalleryController extends Controller
     {
         $validatedData=$request->validate([
 
-            'name' => 'required|unique:galleries',
+            'name' => 'required',
             'media' => 'required|file|mimes:jpeg,png,jpg,gif,svg,mp4,mov,mkv|max:10240',
 
         ],[
 
             'name.required' =>'Bitte geben Sie den Projektnamen ein',
-            'name.unique' =>'Dieses Projekt existiert bereits',
             'media.required' =>'Bitte geben Sie ein Foto oder Video des Projekt eni',
             'media.file' =>'Die Datei muss ein Foto oder Video sein',
             'media.mimes' =>'Die Datei muss vom Typ jpeg,png,jpg,mp4,mov,mkv sein',
@@ -96,13 +95,12 @@ class GalleryController extends Controller
 
         $validatedData=$request->validate([
 
-            'name' => 'required|unique:galleries,name,'.$id,
+            'name' => 'required',
             'media' => 'file|mimes:jpeg,png,jpg,gif,svg,mp4,mov,mkv|max:10240',
 
         ],[
 
             'name.required' =>'Bitte geben Sie den Projektnamen ein',
-            'name.unique' =>'Dieses Projekt existiert bereits',
             'media.file' =>'Die Datei muss ein Foto oder Video sein',
             'media.mimes' =>'Die Datei muss vom Typ jpeg,png,jpg,mp4,mov,mkv sein',
 
@@ -128,7 +126,7 @@ class GalleryController extends Controller
             $request->media->move(public_path('Attachments/Galerie'), $file_name);
         }
 
-        session()->flash('Edit' , 'Des Projekt wurde erflogreich geänderts');
+        session()->flash('Edit' , 'Das Projekt wurde erfolgreich geändert');
         return back();
     }
 
@@ -144,7 +142,7 @@ class GalleryController extends Controller
 
         Storage::disk('public_gallery')->delete($media);
 
-        session()->flash('Delete','Das Projekt wurde erflogreich gelöscht');
+        session()->flash('Delete','Das Projekt wurde erfolgreich gelöscht');
         return back();
     }
 }

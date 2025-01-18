@@ -152,7 +152,7 @@ class AccessoriesController extends Controller
                 $request->image->move(public_path('Attachments/Accessories'), $file_name);
             }
 
-        session()->flash('Edit','Des Produkt wurde erflogreich geänderts');
+        session()->flash('Edit','Des Produkt wurde erfolgreich geändert');
         return redirect('/zubehör');
     }
 
@@ -168,7 +168,7 @@ class AccessoriesController extends Controller
 
         Storage::disk('public_accessories')->delete($image);
 
-        session()->flash('Delete','Das Produkt wurde erflogreich gelöscht');
+        session()->flash('Delete','Das Produkt wurde erfolgreich gelöscht');
         return back();
 
     }
