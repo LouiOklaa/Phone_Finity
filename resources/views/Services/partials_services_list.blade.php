@@ -50,7 +50,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="noteModalLabel{{ $one->id }}">Spezifikationen</h5>
+                    <h5 class="modal-title" id="noteModalLabel{{ $one->id }}">Beschreibung</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
